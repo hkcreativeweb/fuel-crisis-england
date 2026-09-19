@@ -27,7 +27,7 @@ import { imageCredits } from "@/lib/data/image-credits";
 export const metadata: Metadata = {
   title: "Follow The Money",
   description:
-    "The full investigation: what motorists pay, what government collects through Fuel Duty and VAT, what energy companies report, and what policy choices exist — with verified figures and sources throughout.",
+    "The full investigation: what motorists pay, what government collects through Fuel Duty and VAT, what energy companies report, and what policy choices exist, with verified figures and sources throughout.",
 };
 
 const tocLinks = [
@@ -62,7 +62,7 @@ export default function FollowTheMoneyPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
             What motorists pay, what government collects, what energy companies report, how the numbers
-            have changed since 1995, and what policy choices exist — with verified figures, clear
+            have changed since 1995, and what policy choices exist, with verified figures, clear
             sourcing, and evidence rather than assumptions.
           </p>
 
@@ -93,7 +93,7 @@ export default function FollowTheMoneyPage() {
 
       <section id="signature" className="scroll-mt-24 bg-charcoal-900 py-16 sm:py-20">
         <Container>
-          <SectionHeading tone="dark" eyebrow="The signature feature" title="Follow the £50" description="Enter an amount, then watch it move through the system — tax, industry, and retail." />
+          <SectionHeading tone="dark" eyebrow="The signature feature" title="Follow the £50" description="Enter an amount, then watch it move through the system: tax, industry, and retail." />
           <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_1.2fr] lg:items-start">
             <PhotoDataCallout
               credit={imageCredits["forecourt-close"]}
@@ -111,7 +111,7 @@ export default function FollowTheMoneyPage() {
 
       <section id="corporate-profits" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="How much are companies making?" title="Billions — But From What?" description="Verified annual financial results for five major energy companies, with each accounting measure clearly labelled." />
+          <SectionHeading eyebrow="How much are companies making?" title="Billions, But From What?" description="Verified annual financial results for five major energy companies, with each accounting measure clearly labelled." />
           <div className="mt-10">
             <CorporateProfitsGrid />
           </div>
@@ -129,7 +129,7 @@ export default function FollowTheMoneyPage() {
 
       <section id="profits-vs-fuel" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Explore the trends" title="Corporate Profits vs Fuel Prices" description="An interactive comparison — not proof of cause and effect." />
+          <SectionHeading eyebrow="Explore the trends" title="Corporate Profits vs Fuel Prices" description="An interactive comparison, not proof of cause and effect." />
           <div className="mt-10">
             <ProfitsVsFuelExplorer />
           </div>
@@ -196,7 +196,7 @@ export default function FollowTheMoneyPage() {
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-petrol-300">What we are asking for</p>
             <h2 className="mt-2 text-2xl font-extrabold text-white sm:text-3xl">Our Public Policy Demands</h2>
             <p className="mt-2 max-w-xl text-sm text-slate-300">
-              Freezing Fuel Duty, reviewing fuel taxation, investigating excessive profits, and more — with
+              Freezing Fuel Duty, reviewing fuel taxation, investigating excessive profits, and more, with
               clear explainers on what government can and can&apos;t do quickly.
             </p>
           </div>
@@ -244,7 +244,7 @@ export default function FollowTheMoneyPage() {
 
       <section id="profits-timeline" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="The full picture, not just the highlights" title="Corporate Profits Timeline" description="Shell and BP's annual results since 2015 — including the weaker years, not just the strongest ones." />
+          <SectionHeading eyebrow="The full picture, not just the highlights" title="Corporate Profits Timeline" description="Shell and BP's annual results since 2015, including the weaker years, not just the strongest ones." />
           <div className="mt-10">
             <CorporateProfitsTimeline />
           </div>
@@ -274,8 +274,8 @@ export default function FollowTheMoneyPage() {
           </p>
           <div className="mt-8">
             <Alert tone="info" className="mx-auto max-w-2xl text-left">
-              This page gives you the data, sources, and explanations to understand the situation yourself
-              — it does not tell you what conclusion to reach.
+              This page gives you the data, sources, and explanations to understand the situation yourself.
+              It does not tell you what conclusion to reach.
             </Alert>
           </div>
           <div className="mt-8">

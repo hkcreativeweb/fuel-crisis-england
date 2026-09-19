@@ -57,7 +57,7 @@ const verifiedCategories = [
   { label: "Fuel", detail: "UK petrol and diesel pump prices, DESNZ weekly series." },
   { label: "Wages", detail: "Minimum/Living Wage rates and average weekly earnings, GOV.UK / ONS." },
   { label: "Disposable income", detail: "Real households' disposable income per head, ONS." },
-  { label: "General consumer prices", detail: "The overall CPI index (all items), ONS — a single broad measure, not split by category here." },
+  { label: "General consumer prices", detail: "The overall CPI index (all items), ONS. A single broad measure, not split by category here." },
 ];
 
 export function CostOfLivingContext() {
@@ -66,7 +66,7 @@ export function CostOfLivingContext() {
       <p className="max-w-2xl text-sm leading-relaxed text-charcoal-700">
         The cost of living is broader than the price of fuel. Housing, food, energy, transport and other
         household expenses all matter. This section therefore separates fuel affordability from wider
-        household costs — using the broad, verified indicators below rather than a single invented
+        household costs, using the broad, verified indicators below rather than a single invented
         &quot;cost of living score&quot;.
       </p>
 
@@ -81,8 +81,8 @@ export function CostOfLivingContext() {
 
       <div className="mt-6">
         <Alert tone="info" title="What this section does not cover.">
-          The Office for National Statistics also publishes category-level detail — food, housing, energy,
-          transport, household goods and services — within its CPI basket and its Family Spending /
+          The Office for National Statistics also publishes category-level detail: food, housing, energy,
+          transport, household goods and services, within its CPI basket and its Family Spending and
           Household Finances releases. We have not itemised those category-by-category figures for each
           year shown here, because doing so reliably across an 11-year span would require verifying each
           category against its own dataset and methodology change. Rather than approximate that, we show
@@ -94,13 +94,13 @@ export function CostOfLivingContext() {
       <div className="mt-10 grid gap-8 lg:grid-cols-2">
         <ChartCard
           title="Income growth vs consumer-price growth"
-          description="Average weekly earnings (nominal) against the overall CPI index — indexed to each series' earliest available year so the two can be compared as % change."
+          description="Average weekly earnings (nominal) against the overall CPI index, indexed to each series' earliest available year so the two can be compared as % change."
           series={[earningsSeries, cpiSeries]}
           indexed
         />
         <ChartCard
           title="Petrol price vs minimum wage"
-          description="UK petrol pump price against the Minimum/Living Wage rate in force — indexed to each series' earliest available year."
+          description="UK petrol pump price against the Minimum/Living Wage rate in force, indexed to each series' earliest available year."
           series={[petrolSeries, minimumWageSeries]}
           indexed
         />

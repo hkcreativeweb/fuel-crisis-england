@@ -1,5 +1,5 @@
 const VERIFIED_RATE = 1.3353; // £1 = $X, Bank of England, 17 September 2026
-const BASE_OIL_PRICE_USD = 75; // illustrative, round figure — not a real quoted price
+const BASE_OIL_PRICE_USD = 75; // illustrative, round figure, not a real quoted price
 
 const scenarios = [
   { label: "Weaker pound", rate: 1.2 },
@@ -11,13 +11,13 @@ export function ExchangeRateExample() {
   return (
     <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="rounded-md bg-amber-50 p-3 text-center text-xs font-bold uppercase tracking-wide text-amber-900 ring-1 ring-amber-600/20">
-        Illustrative example — not a forecast
+        Illustrative example, not a forecast
       </div>
 
       <p className="mt-4 text-sm leading-relaxed text-charcoal-700">
         Say a barrel of crude oil costs a round <strong>$75</strong> (a simplified illustrative figure, not
         a live quote). The table below shows how the sterling cost changes purely because of the exchange
-        rate — even though the dollar price hasn&apos;t moved at all.
+        rate, even though the dollar price hasn&apos;t moved at all.
       </p>
 
       <div className="mt-6 grid gap-3 sm:grid-cols-3">
@@ -37,7 +37,7 @@ export function ExchangeRateExample() {
         Current verified rate: £1 = ${VERIFIED_RATE} (Bank of England, spot rate, 17 September 2026).
         Because crude oil and many petroleum products are traded internationally in US dollars, a weaker
         pound makes the same dollar-priced oil more expensive in sterling terms, and a stronger pound
-        makes it cheaper — independent of any change in the oil price itself.
+        makes it cheaper, independent of any change in the oil price itself.
       </p>
     </div>
   );

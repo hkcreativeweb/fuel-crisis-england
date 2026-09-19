@@ -7,9 +7,9 @@ import { cn } from "@/lib/utils";
 const PRESETS = [
   { label: "£1bn", value: 1 },
   { label: "£5bn", value: 5 },
-  { label: "£13.4bn — Shell's FY2025 profit", value: 13.359 },
-  { label: "£22.5bn — Shell's FY2025 adjusted earnings", value: 13.876 },
-  { label: "£24.25bn — a year of Fuel Duty receipts", value: 24.25 },
+  { label: "£13.4bn: Shell's FY2025 profit", value: 13.359 },
+  { label: "£22.5bn: Shell's FY2025 adjusted earnings", value: 13.876 },
+  { label: "£24.25bn: a year of Fuel Duty receipts", value: 24.25 },
 ];
 
 export function BillionsVisual() {
@@ -78,8 +78,8 @@ export function BillionsVisual() {
       </div>
 
       <p className="mt-6 text-xs leading-relaxed text-charcoal-600">
-        A billion is a thousand million — one thousand times larger than a million. Company profit and
-        government receipt figures on this page are usually reported in millions; we show them here at
+        A billion is a thousand million, one thousand times larger than a million. Company profit and
+        government receipt figures on this page are usually reported in millions. We show them here at
         scale so the size of the number is easier to grasp.
       </p>
     </div>

@@ -16,9 +16,9 @@ export const policyDemands: PolicyDemand[] = [
     statement:
       "FCE calls on Government to keep Fuel Duty under review and consider whether further relief is appropriate while motorists and businesses face high transport costs.",
     explanationPoints: [
-      "Fuel Duty is a government-set tax — Government can change the rate through policy and legislation.",
+      "Fuel Duty is a government-set tax. Government can change the rate through policy and legislation.",
       "The current rate, previous rate, and any officially confirmed future changes are shown below, sourced directly to GOV.UK and legislation.gov.uk.",
-      "We do not state that any future tax reduction is guaranteed — only officially confirmed changes are shown as such.",
+      "We do not state that any future tax reduction is guaranteed. Only officially confirmed changes are shown as such.",
       "Any further relief would need to be weighed against public finances and other spending priorities.",
     ],
   },
@@ -43,12 +43,12 @@ export const policyDemands: PolicyDemand[] = [
     title: "Competition & Margins",
     tagline: "Investigate The Evidence",
     statement:
-      "We do not automatically accuse retailers of profiteering. We call for appropriate scrutiny where evidence indicates unusual margins, spreads or pricing behaviour — and we link directly to what the regulator has actually found.",
+      "We do not automatically accuse retailers of profiteering. We call for appropriate scrutiny where evidence indicates unusual margins, spreads or pricing behaviour, and we link directly to what the regulator has actually found.",
     explanationPoints: [
       "The CMA's own Enhanced Road Fuel Monitoring findings are shown below, not our own claims.",
       "Wholesale prices, pump prices, retailer margins and retail spreads all matter, and each can move independently.",
       "High margins in a single period do not, by themselves, prove unfair pricing.",
-      "Let the evidence speak for itself — see the real data below.",
+      "Let the evidence speak for itself. See the real data below.",
     ],
   },
   {
@@ -60,9 +60,9 @@ export const policyDemands: PolicyDemand[] = [
       "Where evidence indicates exceptional profits during a cost-of-living crisis, we call on Government and relevant regulators to examine whether any policy response is appropriate.",
     explanationPoints: [
       "Policymakers can consider mechanisms such as windfall taxes, excess-profit taxation, temporary targeted measures, or additional transparency requirements.",
-      "No single mechanism is automatically correct — each carries trade-offs for investment, energy security, consumer prices and legal design.",
+      "No single mechanism is automatically correct. Each carries trade-offs for investment, energy security, consumer prices and legal design.",
       "Any measure would need to distinguish UK-specific activity from global company profits.",
-      "We do not present one mechanism as the obvious answer — see the full explainer below.",
+      "We do not present one mechanism as the obvious answer. See the full explainer below.",
     ],
   },
   {
@@ -79,7 +79,7 @@ export const policyDemands: PolicyDemand[] = [
       "Tradespeople travelling between jobs.",
       "Carers and home-visiting workers.",
       "Rural motorists, small businesses, and people who depend on a vehicle for work.",
-      "No single support scheme is automatically correct — this requires proper policy design and a fair definition of who qualifies.",
+      "No single support scheme is automatically correct. This requires proper policy design and a fair definition of who qualifies.",
     ],
   },
   {

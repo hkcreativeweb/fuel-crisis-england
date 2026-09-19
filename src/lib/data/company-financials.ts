@@ -6,13 +6,13 @@ import type { Company, CompanyFinancialYear } from "@/lib/types";
  * Every figure below was checked against the company's own SEC filing
  * (6-K/8-K exhibit) or official press release / annual report. Figures
  * are shown exactly as reported, with the company's own name for each
- * accounting measure preserved — net income ("income attributable to
- * shareholders" or equivalent) is never conflated with an adjusted /
+ * accounting measure preserved. Net income ("income attributable to
+ * shareholders" or equivalent) is never conflated with an adjusted or
  * underlying earnings measure.
  *
  * All five companies report in US dollars. Values here have been
- * converted to pounds sterling at a single fixed rate — £1 = $1.3353
- * (Bank of England, spot rate, 17 September 2026) — applied uniformly
+ * converted to pounds sterling at a single fixed rate, £1 = $1.3353
+ * (Bank of England, spot rate, 17 September 2026), applied uniformly
  * to every figure, including the historical timeline. This is an
  * approximate, present-day GBP equivalent, not the exchange rate on
  * each historical reporting date. See the conversion note rendered
@@ -68,8 +68,8 @@ export const latestCompanyFinancials: Record<string, CompanyFinancialYear> = {
     adjustedEarnings: { measureName: "Underlying replacement cost (RC) profit (non-GAAP)", value: 5605, currency: "GBP", unit: "million", verified: true },
     priorYearNetIncome: { measureName: "Profit attributable to bp shareholders (FY2024)", value: 285, currency: "GBP", unit: "million", verified: true },
     percentChangeNetIncome: -85.6,
-    contextNote: "Statutory profit was close to zero even though underlying replacement cost profit — BP's preferred non-GAAP measure — was several billion dollars, showing how different these two figures can be in the same year.",
-    source: "BP plc Fourth Quarter and Full Year 2025 Results (SEC Form 6-K); originally reported in US dollars",
+    contextNote: "Statutory profit was close to zero even though underlying replacement cost profit, BP's preferred non-GAAP measure, was several billion dollars, showing how different these two figures can be in the same year.",
+    source: "BP plc Fourth Quarter and Full Year 2025 Results (SEC Form 6-K), originally reported in US dollars",
     sourceUrl: "https://www.sec.gov/Archives/edgar/data/313807/000031380726000002/a31122025bp6kq4.htm",
     verified: true,
     asOf: "2026-02-09",
@@ -172,9 +172,9 @@ export const companyProfitTimelines: Record<"shell" | "bp", CompanyFinancialYear
     yr("FY2017", 183166, 2538, false, "Gradual recovery as OPEC+ cuts took hold.", "https://www.sec.gov/Archives/edgar/data/313807/000162828019000923/a31122018bp6kq4.htm", "2019-02-05"),
     yr("FY2018", 227468, 7027, false, "Stronger prices through most of the year.", "https://www.sec.gov/Archives/edgar/data/313807/000162828019000923/a31122018bp6kq4.htm", "2019-02-05"),
     yr("FY2019", 211650, 3015, false, "Relatively stable prices.", "https://www.sec.gov/Archives/edgar/data/313807/000162828021001266/a31122020bp6kq4.htm", "2021-02-02"),
-    yr("FY2020", 137422, -15206, true, "COVID-19 demand collapse; BP recorded a large net loss with significant impairments.", "https://www.sec.gov/Archives/edgar/data/313807/000162828021001266/a31122020bp6kq4.htm", "2021-02-02"),
+    yr("FY2020", 137422, -15206, true, "COVID-19 demand collapse. BP recorded a large net loss with significant impairments.", "https://www.sec.gov/Archives/edgar/data/313807/000162828021001266/a31122020bp6kq4.htm", "2021-02-02"),
     yr("FY2021", 122965, 5665, false, "Demand and prices recovered through the year.", "https://www.sec.gov/Archives/edgar/data/313807/000031380723000002/a31122022bp6kq4.htm", "2023-02-07"),
-    yr("FY2022", 186393, -1863, true, "Statutory loss driven by a ~£18bn charge for exiting BP's stake in Rosneft following Russia's invasion of Ukraine — even though underlying replacement cost profit was a record £20,712m the same year.", "https://www.sec.gov/Archives/edgar/data/313807/000031380723000002/a31122022bp6kq4.htm", "2023-02-07"),
+    yr("FY2022", 186393, -1863, true, "Statutory loss driven by a ~£18bn charge for exiting BP's stake in Rosneft following Russia's invasion of Ukraine, even though underlying replacement cost profit was a record £20,712m the same year.", "https://www.sec.gov/Archives/edgar/data/313807/000031380723000002/a31122022bp6kq4.htm", "2023-02-07"),
     yr("FY2023", 159539, 11412, false, "Prices normalised down from the 2022 peak.", "https://www.sec.gov/Archives/edgar/data/313807/000031380724000003/a31122023bp6kq4.htm", "2024-02-05"),
     yr("FY2024", 145757, 285, false, "Weaker refining margins and lower prices reduced statutory profit close to zero.", "https://www.sec.gov/Archives/edgar/data/313807/000031380726000002/a31122025bp6kq4.htm", "2026-02-09"),
     yr("FY2025", 144199, 41, false, "Statutory profit remained close to zero despite underlying replacement cost profit of £5,606m, again showing the gap between the two measures.", "https://www.sec.gov/Archives/edgar/data/313807/000031380726000002/a31122025bp6kq4.htm", "2026-02-09"),

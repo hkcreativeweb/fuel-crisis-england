@@ -15,10 +15,10 @@ export type LiveIndicator = {
 
 /**
  * Every figure that could plausibly be read as "what's happening right
- * now". None of these are annual averages — each is either a genuine
+ * now". None of these are annual averages, each is either a genuine
  * live/current snapshot or explicitly the latest available published
  * figure, labelled accordingly. This is the ONLY place "now" data
- * lives; historical annual data lives in yearly-snapshots.ts and must
+ * lives. Historical annual data lives in yearly-snapshots.ts and must
  * never be merged with this file's figures without an explicit label.
  */
 export const liveIndicators: LiveIndicator[] = [
@@ -31,7 +31,7 @@ export const liveIndicators: LiveIndicator[] = [
     lastUpdated: "2026-09-14",
     dataPeriod: "Week commencing 14 September 2026",
     geography: "UK",
-    source: "GOV.UK / DESNZ — Weekly road fuel prices",
+    source: "GOV.UK / DESNZ: Weekly road fuel prices",
     sourceUrl: "https://www.gov.uk/government/statistics/weekly-road-fuel-prices",
   },
   {
@@ -43,7 +43,7 @@ export const liveIndicators: LiveIndicator[] = [
     lastUpdated: "2026-09-14",
     dataPeriod: "Week commencing 14 September 2026",
     geography: "UK",
-    source: "GOV.UK / DESNZ — Weekly road fuel prices",
+    source: "GOV.UK / DESNZ: Weekly road fuel prices",
     sourceUrl: "https://www.gov.uk/government/statistics/weekly-road-fuel-prices",
   },
   {
@@ -55,7 +55,7 @@ export const liveIndicators: LiveIndicator[] = [
     lastUpdated: "2026-06-15",
     dataPeriod: "Current rate, in force since 15 June 2026",
     geography: "UK",
-    source: "GOV.UK — Amended Fuel Duty rates: 2026 to 2027",
+    source: "GOV.UK, Amended Fuel Duty rates: 2026 to 2027",
     sourceUrl: "https://www.gov.uk/government/publications/amended-fuel-duty-rates-for-2026-to-2027/amended-fuel-duty-rates-2026-to-2027",
   },
   {
@@ -67,7 +67,7 @@ export const liveIndicators: LiveIndicator[] = [
     lastUpdated: "2026-09-08",
     dataPeriod: "Current standard rate",
     geography: "UK",
-    source: "GOV.UK — VAT rates",
+    source: "GOV.UK: VAT rates",
     sourceUrl: "https://www.gov.uk/vat-rates",
   },
   {
@@ -115,7 +115,7 @@ export const liveIndicators: LiveIndicator[] = [
     lastUpdated: "2026-09-16",
     dataPeriod: "12 months to August 2026",
     geography: "UK",
-    source: "ONS — Consumer price inflation, UK",
+    source: "ONS: Consumer price inflation, UK",
     sourceUrl: "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2026",
   },
   {
@@ -127,7 +127,7 @@ export const liveIndicators: LiveIndicator[] = [
     lastUpdated: "2026-09-15",
     dataPeriod: "May–July 2026 (3-month average)",
     geography: "Great Britain",
-    source: "ONS — Average Weekly Earnings in Great Britain",
+    source: "ONS: Average Weekly Earnings in Great Britain",
     sourceUrl: "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/september2026",
   },
   {
@@ -139,7 +139,7 @@ export const liveIndicators: LiveIndicator[] = [
     lastUpdated: "2026-04-01",
     dataPeriod: "Current rate, effective from 1 April 2026",
     geography: "UK",
-    source: "GOV.UK — National Minimum Wage and National Living Wage rates",
+    source: "GOV.UK: National Minimum Wage and National Living Wage rates",
     sourceUrl: "https://www.gov.uk/national-minimum-wage-rates",
   },
   {
@@ -170,10 +170,10 @@ export const liveIndicators: LiveIndicator[] = [
 ];
 
 /**
- * Latest available major company financial results — the most recent
+ * Latest available major company financial results: the most recent
  * full fiscal year reported (see company-financials.ts for the full
  * verified detail). Flagged here to make explicit these are "latest
- * available", not "live" — corporate results are published
+ * available", not "live". Corporate results are published
  * periodically, not continuously.
  */
 export const latestCompanyResultsNote = {

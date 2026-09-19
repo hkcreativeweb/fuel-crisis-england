@@ -19,20 +19,20 @@ export function FallsSlowerThanRises() {
       <div className="flex flex-wrap items-center gap-3">
         <StatusBadge status="historical" />
         <p className="text-xs font-semibold uppercase tracking-wide text-charcoal-600">
-          &ldquo;Rocket and feather&rdquo; pricing — what regulators actually found
+          &ldquo;Rocket and feather&rdquo; pricing: what regulators actually found
         </p>
       </div>
 
       <p className="mt-4 text-sm leading-relaxed text-charcoal-700">
         &ldquo;Rocket and feather&rdquo; describes a pattern where retail prices rise quickly when wholesale
         costs increase (like a rocket) but fall only slowly when wholesale costs decrease (like a feather).
-        Do not assume this applies everywhere, all the time — here is what has actually been measured, and
+        Do not assume this applies everywhere, all the time. Here is what has actually been measured, and
         when.
       </p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <div className="rounded-md border border-slate-200 p-4">
-          <p className="text-xs font-bold uppercase tracking-wide text-navy-900">RAC analysis, diesel &amp; petrol — Oct–Dec 2022</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-navy-900">RAC analysis, diesel &amp; petrol: Oct–Dec 2022</p>
           <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
             Petrol wholesale costs fell <strong>23p/litre</strong> over 9 weeks (mid-Oct to mid-Dec 2022) but
             pump prices fell only <strong>18p/litre</strong>. Diesel wholesale costs fell{" "}
@@ -49,7 +49,7 @@ export function FallsSlowerThanRises() {
         </div>
 
         <div className="rounded-md border border-slate-200 p-4">
-          <p className="text-xs font-bold uppercase tracking-wide text-navy-900">CMA road fuel market study — final report, 2023</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-navy-900">CMA road fuel market study: final report, 2023</p>
           <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
             The CMA found evidence of a rocket-and-feather pattern <strong>specifically for diesel</strong>{" "}
             during 2022, with no equivalent evidence for diesel before that year. Treat this as diesel-specific
@@ -62,14 +62,14 @@ export function FallsSlowerThanRises() {
       <div className="mt-6 rounded-md bg-slate-50 p-4">
         <div className="flex flex-wrap items-center gap-2">
           <StatusBadge status="latest-available" />
-          <p className="text-xs font-bold uppercase tracking-wide text-navy-900">CMA Enhanced Road Fuel Monitoring — August 2026 (data to end June 2026)</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-navy-900">CMA Enhanced Road Fuel Monitoring: August 2026 (data to end June 2026)</p>
         </div>
         <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
           The CMA&apos;s most recent monitoring report documents a similar asymmetric pattern in 2026: over
           May–June 2026, petrol margins &ldquo;generally remain[ed] below their pre-conflict level&rdquo;, while
           diesel margins &ldquo;tended to remain above their pre-conflict level...falling to pre-conflict levels
           only at the end of June.&rdquo; The CMA said this &ldquo;suggests that retailer responses to
-          reductions in wholesale diesel costs may have been more delayed&rdquo; — attributed partly to
+          reductions in wholesale diesel costs may have been more delayed&rdquo;, attributed partly to
           &ldquo;passive pricing strategies&rdquo;, not to a deliberate change in strategy to exploit the
           situation.
         </p>
@@ -92,7 +92,7 @@ export function FallsSlowerThanRises() {
       </ul>
 
       <div className="mt-6">
-        <Alert tone="warning" title="What the evidence does — and doesn't — show.">
+        <Alert tone="warning" title="What the evidence does and doesn't show.">
           Regulators have found clear, quantified evidence of asymmetric pricing for diesel in specific
           periods (2022 and again in 2026). We have not found equivalent quantified evidence that this is a
           permanent, universal, or deliberately engineered feature of the whole market, or that it applies

@@ -16,7 +16,7 @@ export const fuelDutyFigure: TaxFigure = {
   verified: true,
   value: "52.95 pence per litre",
   effectiveFrom: "A temporary 5p/litre cut, first introduced March 2022, extended at Autumn Budget 2025 to run through 31 December 2026.",
-  sourceName: "GOV.UK — Amended Fuel Duty rates: 2026 to 2027",
+  sourceName: "GOV.UK, Amended Fuel Duty rates: 2026 to 2027",
   sourceUrl: "https://www.gov.uk/government/publications/amended-fuel-duty-rates-for-2026-to-2027/amended-fuel-duty-rates-2026-to-2027",
 };
 
@@ -25,6 +25,6 @@ export const vatOnFuelFigure: TaxFigure = {
   verified: true,
   value: "20% (standard rate)",
   effectiveFrom: "Petrol and diesel are not on GOV.UK's reduced or zero-rate lists, so the standard rate applies.",
-  sourceName: "GOV.UK — VAT rates",
+  sourceName: "GOV.UK: VAT rates",
   sourceUrl: "https://www.gov.uk/vat-rates",
 };

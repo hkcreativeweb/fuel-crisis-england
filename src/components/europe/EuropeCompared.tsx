@@ -54,7 +54,7 @@ export function EuropeCompared() {
         </p>
       </div>
 
-      {/* Spotlight comparison — large numbers, no card chrome */}
+      {/* Spotlight comparison: large numbers, no card chrome */}
       <div id="price-breakdown" className="scroll-mt-24 mt-10 grid gap-10 border-b border-slate-200 pb-10 lg:grid-cols-2">
         <div>
           <label htmlFor="spotlight-country" className="block text-xs font-bold uppercase tracking-[0.1em] text-charcoal-500">
@@ -94,14 +94,14 @@ export function EuropeCompared() {
 
           <p className="mt-6 text-sm leading-relaxed text-charcoal-700">
             For a 50-litre fill-up, that&apos;s a difference of{" "}
-            <strong className="tabular-nums">€{Math.abs(diff50L).toFixed(2)}</strong> —{" "}
+            <strong className="tabular-nums">€{Math.abs(diff50L).toFixed(2)}</strong>.{" "}
             {spotlightCountry.country} is {diff50L >= 0 ? "more expensive" : "cheaper"} than the UK for {fuel} at
             today&apos;s prices.
           </p>
         </div>
 
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.1em] text-charcoal-500">How the price is built — {spotlightCountry.country}</p>
+          <p className="text-xs font-bold uppercase tracking-[0.1em] text-charcoal-500">How the price is built: {spotlightCountry.country}</p>
           <div className="mt-4 space-y-3">
             {[
               { label: "Before tax", value: spotlight.beforeTaxEUR, known: true },
@@ -129,7 +129,7 @@ export function EuropeCompared() {
           {!spotlightCountry.dutyIsExact ? (
             <p className="mt-3 text-xs text-charcoal-500">
               &ldquo;Duty &amp; other taxes&rdquo; is a calculated remainder (total minus before-tax price minus
-              VAT), not a figure the Oil Bulletin states directly — it may include minor indirect taxes beyond
+              VAT), not a figure the Oil Bulletin states directly. It may include minor indirect taxes beyond
               fuel duty.
             </p>
           ) : null}
@@ -181,10 +181,10 @@ export function EuropeCompared() {
         <p className="mt-1.5 text-sm text-charcoal-700">
           <a href={europeFuelPriceSource.url} target="_blank" rel="noopener noreferrer" className="font-semibold text-petrol-600 underline underline-offset-2">
             {europeFuelPriceSource.name}
-          </a>{" "}
-          — data for the week of 14 September 2026, published 16 September 2026. UK figures use the same
+          </a>
+          , data for the week of 14 September 2026, published 16 September 2026. UK figures use the same
           GOV.UK/DESNZ data as the rest of this site, converted to EUR using the {ukFuelPriceSourceNote.fxSource}.
-          EUR figures are for comparison only — they are not what UK motorists pay.
+          EUR figures are for comparison only. They are not what UK motorists pay.
         </p>
       </div>
     </div>

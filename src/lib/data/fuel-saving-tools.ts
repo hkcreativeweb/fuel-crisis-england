@@ -18,7 +18,7 @@ export const fuelSavingTools: FuelSavingTool[] = [
     pricing: "Free with paid options",
     platforms: "Web, iOS, Android",
     url: "https://www.petrolprices.com/",
-    privacyNote: "May request location access to find nearby stations — check the app's own privacy policy before granting permissions.",
+    privacyNote: "May request location access to find nearby stations. Check the app's own privacy policy before granting permissions.",
   },
   {
     category: "Fuel-price comparison",
@@ -27,7 +27,7 @@ export const fuelSavingTools: FuelSavingTool[] = [
     pricing: "Free",
     platforms: "Web",
     url: "https://www.rac.co.uk/drive/advice/fuel-watch/",
-    privacyNote: "A standard content website — no account required to view prices.",
+    privacyNote: "A standard content website. No account required to view prices.",
   },
   {
     category: "Fuel-price comparison",
@@ -45,7 +45,7 @@ export const fuelSavingTools: FuelSavingTool[] = [
     pricing: "Free",
     platforms: "Web, iOS, Android",
     url: "https://maps.google.com/",
-    privacyNote: "Uses location data for navigation — review Google's privacy settings for location history.",
+    privacyNote: "Uses location data for navigation. Review Google's privacy settings for location history.",
   },
   {
     category: "Route planning",
@@ -54,7 +54,7 @@ export const fuelSavingTools: FuelSavingTool[] = [
     pricing: "Free",
     platforms: "iOS, Android",
     url: "https://www.waze.com/",
-    privacyNote: "Relies on continuous location sharing while in use — review the app's privacy settings.",
+    privacyNote: "Relies on continuous location sharing while in use. Review the app's privacy settings.",
   },
   {
     category: "Route planning",
@@ -63,7 +63,7 @@ export const fuelSavingTools: FuelSavingTool[] = [
     pricing: "Free",
     platforms: "Web",
     url: "https://www.theaa.com/route-planner/",
-    privacyNote: "A standard web tool — check the AA's own privacy policy for details.",
+    privacyNote: "A standard web tool. Check the AA's own privacy policy for details.",
   },
   {
     category: "EV charging comparison",
@@ -81,7 +81,7 @@ export const fuelSavingTools: FuelSavingTool[] = [
     pricing: "Free",
     platforms: "Android",
     url: "https://www.fuelio.net/",
-    privacyNote: "Fuel and mileage data is typically stored on your device unless you enable cloud backup — check the app's settings.",
+    privacyNote: "Fuel and mileage data is typically stored on your device unless you enable cloud backup. Check the app's settings.",
   },
   {
     category: "Fuel tracking",
@@ -99,6 +99,6 @@ export const fuelSavingTools: FuelSavingTool[] = [
     pricing: "Free",
     platforms: "Any device",
     url: "#",
-    privacyNote: "Entirely under your own control — nothing is shared unless you choose to share it.",
+    privacyNote: "Entirely under your own control. Nothing is shared unless you choose to share it.",
   },
 ];

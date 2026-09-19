@@ -60,14 +60,14 @@ export default function WhyIsFuelExpensivePage() {
             <p className="text-6xl font-extrabold tabular-nums text-white sm:text-7xl">
               {now.petrolPencePerLitre?.toFixed(1)}p
             </p>
-            <p className="mb-2 text-lg text-slate-300">per litre, petrol — {now.year}</p>
+            <p className="mb-2 text-lg text-slate-300">per litre, petrol, {now.year}</p>
           </div>
           <h1 className="mt-6 max-w-2xl text-3xl font-extrabold leading-tight text-white sm:text-4xl">
             Why is fuel so expensive?
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-300">
             The price at the pump is the result of several different costs, taxes and market factors. Not
-            a simplistic answer — the full chain, examined honestly.
+            a simplistic answer. The full chain, examined honestly.
           </p>
           <nav aria-label="Section contents" className="mt-8 flex flex-wrap gap-2">
             {tocLinks.map((link) => (
@@ -85,7 +85,7 @@ export default function WhyIsFuelExpensivePage() {
 
       <section id="one-litre" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Where does the money from one litre go?" title="Follow one litre" description="Eight stops between the oil field and your fuel tank — clearly split between market costs and tax." />
+          <SectionHeading eyebrow="Where does the money from one litre go?" title="Follow one litre" description="Eight stops between the oil field and your fuel tank, clearly split between market costs and tax." />
           <div className="mt-10">
             <FollowOneLitre />
           </div>
@@ -128,7 +128,7 @@ export default function WhyIsFuelExpensivePage() {
 
       <section id="falls-slower" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="An investigative question" title="Do prices rise faster than they fall?" description="The 'rocket and feather' question — evidence-led, not assumed." />
+          <SectionHeading eyebrow="An investigative question" title="Do prices rise faster than they fall?" description="The 'rocket and feather' question, evidence-led, not assumed." />
           <div className="mt-10">
             <FallsSlowerThanRises />
           </div>
@@ -155,7 +155,7 @@ export default function WhyIsFuelExpensivePage() {
 
       <section id="timeline" className="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Why is fuel more expensive than it used to be?" title="Price vs purchasing power" description="Not just what the price was — what it meant relative to income at the time." />
+          <SectionHeading eyebrow="Why is fuel more expensive than it used to be?" title="Price vs purchasing power" description="Not just what the price was, but what it meant relative to income at the time." />
           <div className="mt-10">
             <FollowTheMoneyTimeline />
           </div>
@@ -178,7 +178,7 @@ export default function WhyIsFuelExpensivePage() {
           <SectionHeading
             eyebrow="The number on the pump is only one part of the story"
             title="From the pump to the year"
-            description="A small per-litre number becomes a much larger annual one — shown against real earnings figures."
+            description="A small per-litre number becomes a much larger annual one, shown against real earnings figures."
           />
           <div className="mt-10">
             <PumpToAnnualCost />
@@ -205,7 +205,7 @@ export default function WhyIsFuelExpensivePage() {
               </div>
             </div>
             <div>
-              <h3 className="mb-4 text-base font-bold text-navy-900">Oil Down — Pump Down?</h3>
+              <h3 className="mb-4 text-base font-bold text-navy-900">Oil Down, Pump Down?</h3>
               <OilDownPumpDown />
             </div>
           </div>
@@ -216,7 +216,7 @@ export default function WhyIsFuelExpensivePage() {
 
       <section id="profits" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="And then there's the profit question" title="Billions — but from what?" />
+          <SectionHeading eyebrow="And then there's the profit question" title="Billions, but from what?" />
           <div className="mt-10">
             <CorporateProfitsGrid />
           </div>
@@ -227,7 +227,7 @@ export default function WhyIsFuelExpensivePage() {
 
       <section id="government-revenue" className="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="What does government collect?" title="Government revenue, not government profit" description="Tax receipts form part of public revenue and help fund public spending — a different thing from company profit." />
+          <SectionHeading eyebrow="What does government collect?" title="Government revenue, not government profit" description="Tax receipts form part of public revenue and help fund public spending, a different thing from company profit." />
           <div className="mt-10">
             <GovernmentCollectsDashboard />
           </div>

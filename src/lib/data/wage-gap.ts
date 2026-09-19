@@ -24,7 +24,7 @@ export const wageGapMeasures: WageGapMeasure[] = [
     id: "min-vs-median",
     title: "Minimum wage vs median wage",
     explanation:
-      "Compares the statutory minimum hourly rate to the median hourly wage across all employees. This shows how far the wage floor sits below typical pay — it does not measure how many people are paid the minimum, or how pay is distributed above it.",
+      "Compares the statutory minimum hourly rate to the median hourly wage across all employees. This shows how far the wage floor sits below typical pay. It does not measure how many people are paid the minimum, or how pay is distributed above it.",
     series: [emptySeries("min-vs-median", "Minimum wage as % of median wage", "%")],
   },
   {
@@ -38,7 +38,7 @@ export const wageGapMeasures: WageGapMeasure[] = [
     id: "average-vs-executive",
     title: "Average earnings vs executive compensation",
     explanation:
-      "Compares typical employee pay at a company or across the economy to the total compensation of senior executives or CEOs. This measures a different thing again — internal pay dispersion within organisations, rather than the pay floor or the whole distribution.",
+      "Compares typical employee pay at a company or across the economy to the total compensation of senior executives or CEOs. This measures a different thing again: internal pay dispersion within organisations, rather than the pay floor or the whole distribution.",
     series: [emptySeries("avg-vs-exec", "CEO-to-median-worker pay ratio", "ratio")],
   },
   {
@@ -55,7 +55,7 @@ export const wageGapMeasures: WageGapMeasure[] = [
     id: "income-distribution",
     title: "Income distribution",
     explanation:
-      "Looks at how total household income is shared across the population — for example the share held by the top and bottom fifths of households. This is a broader measure of inequality than any single pay comparison, and includes income from sources other than wages.",
+      "Looks at how total household income is shared across the population, for example the share held by the top and bottom fifths of households. This is a broader measure of inequality than any single pay comparison, and includes income from sources other than wages.",
     series: [emptySeries("income-distribution", "Income share by quintile", "%")],
   },
 ];

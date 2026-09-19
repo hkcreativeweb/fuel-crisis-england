@@ -9,24 +9,24 @@ export function GovernmentCollectsDashboard() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <StatCard
           tone="light"
-          label="Fuel Duty — full financial year"
+          label="Fuel Duty: full financial year"
           value={`£${fuelDutyReceiptsFullYear.amountGBP}bn`}
           caption={`${fuelDutyReceiptsFullYear.periodLabel} · as of ${formatDate(fuelDutyReceiptsFullYear.asOf!)}`}
         />
         <StatCard
           tone="light"
-          label="Fuel Duty — year to date"
+          label="Fuel Duty: year to date"
           value={`£${fuelDutyReceiptsPartYear.amountGBP}bn`}
           caption={`${fuelDutyReceiptsPartYear.periodLabel} · as of ${formatDate(fuelDutyReceiptsPartYear.asOf!)}`}
         />
         <StatCard
           tone="light"
-          label="Fuel Duty — latest quarter"
+          label="Fuel Duty: latest quarter"
           value={`£${(fuelDutyReceiptsQuarter.totalGBPMillion / 1000).toFixed(2)}bn`}
           caption={`${fuelDutyReceiptsQuarter.periodLabel} · petrol £${(fuelDutyReceiptsQuarter.petrolGBPMillion / 1000).toFixed(2)}bn, diesel £${(fuelDutyReceiptsQuarter.dieselGBPMillion / 1000).toFixed(2)}bn`}
         />
         <StatCard tone="light" label="VAT on fuel" value="Not separately published" caption="HMRC does not publish a fuel-specific VAT receipts figure" />
-        <StatCard tone="light" label="Total fuel-related tax" value="Not calculated" caption="Only shown once components are genuinely comparable — see note below" />
+        <StatCard tone="light" label="Total fuel-related tax" value="Not calculated" caption="Only shown once components are genuinely comparable. See note below" />
       </div>
 
       <div className="mt-6 space-y-4">
@@ -39,7 +39,7 @@ export function GovernmentCollectsDashboard() {
         </Alert>
         <p className="text-xs text-charcoal-600">
           The full-year and year-to-date Fuel Duty figures come from two different HMRC publications with
-          different cut-off dates — they are not directly comparable to each other and are shown
+          different cut-off dates. They are not directly comparable to each other and are shown
           separately for that reason.
         </p>
       </div>

@@ -137,7 +137,7 @@ export function ProfitsVsFuelExplorer() {
             {selectedWithoutData.length > 0 ? (
               <p className="mt-3 text-xs text-charcoal-600">
                 {selectedWithoutData.map((id) => options.find((o) => o.id === id)?.label).join(", ")} not
-                shown — no verified historical data connected yet.
+                shown. No verified historical data connected yet.
               </p>
             ) : null}
           </>
@@ -151,7 +151,7 @@ export function ProfitsVsFuelExplorer() {
 
       <Alert tone="warning" title="Correlation does not necessarily mean that one factor caused another." className="mt-6">
         These figures show how two measurements changed over time. They do not, by themselves, prove that
-        one caused the other — fuel prices are influenced by crude oil prices, refining costs, wholesale
+        one caused the other. Fuel prices are influenced by crude oil prices, refining costs, wholesale
         markets, taxes, exchange rates, distribution costs, competition and other factors.
       </Alert>
     </div>

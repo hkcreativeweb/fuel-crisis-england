@@ -9,31 +9,31 @@ const CURRENT_YEAR = 2026;
  * traces back to exactly one of these.
  */
 export const dataSources: Record<string, DataSourceEntry> = {
-  fuelPrices: { category: "Fuel prices", name: "GOV.UK / DESNZ — Weekly road fuel prices", url: "https://www.gov.uk/government/statistics/weekly-road-fuel-prices" },
-  minimumWage: { category: "Minimum wage", name: "GOV.UK — National Minimum Wage and National Living Wage rates", url: "https://www.gov.uk/national-minimum-wage-rates" },
-  cpi: { category: "Consumer prices", name: "ONS — Consumer Prices Index (D7BT), 2015=100", url: "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bt/mm23" },
-  earnings: { category: "Average earnings", name: "ONS — Average Weekly Earnings, regular pay, whole economy (KAI7)", url: "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/timeseries/kai7/emp" },
-  bankRate: { category: "Bank Rate", name: "Bank of England — Official Bank Rate history", url: "https://www.bankofengland.co.uk/boeapps/database/Bank-Rate.asp" },
-  householdIncome: { category: "Household income", name: "ONS — Real households' disposable income per head (CRXX, UKEA)", url: "https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/crxx/ukea" },
+  fuelPrices: { category: "Fuel prices", name: "GOV.UK / DESNZ: Weekly road fuel prices", url: "https://www.gov.uk/government/statistics/weekly-road-fuel-prices" },
+  minimumWage: { category: "Minimum wage", name: "GOV.UK: National Minimum Wage and National Living Wage rates", url: "https://www.gov.uk/national-minimum-wage-rates" },
+  cpi: { category: "Consumer prices", name: "ONS: Consumer Prices Index (D7BT), 2015=100", url: "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bt/mm23" },
+  earnings: { category: "Average earnings", name: "ONS: Average Weekly Earnings, regular pay, whole economy (KAI7)", url: "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/timeseries/kai7/emp" },
+  bankRate: { category: "Bank Rate", name: "Bank of England: Official Bank Rate history", url: "https://www.bankofengland.co.uk/boeapps/database/Bank-Rate.asp" },
+  householdIncome: { category: "Household income", name: "ONS: Real households' disposable income per head (CRXX, UKEA)", url: "https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/crxx/ukea" },
 };
 
 /**
  * Year-by-year data used by the historical explorer and the "Then vs
  * Now" comparison. Every fuel-price figure here is a point-in-time
- * snapshot on a specific date — we do NOT have a verified annual
+ * snapshot on a specific date. We do NOT have a verified annual
  * average for any year, so we never present one as if we did.
  * `pricesAsOf` always names the exact date(s) behind the number.
  *
  * Minimum wage, CPI, average earnings, Bank Rate and household
  * disposable income are each independently verified against their own
- * primary source and carry their own effective period — they are not
+ * primary source and carry their own effective period. They are not
  * assumed to share the fuel-price date's exact methodology, only its
  * approximate reference point. Where a figure cannot be verified for a
  * given year, it is left `null` rather than estimated (see each
  * field's comment for exactly what was checked and what wasn't).
  *
  * The current year (2026) is explicitly marked `isCompletedYear:
- * false` — its figures describe current/live conditions, not a
+ * false`. Its figures describe current/live conditions, not a
  * finished year, and must never be labelled as a "2026 average".
  */
 function base(year: string): YearlySnapshot {
@@ -67,8 +67,8 @@ function base(year: string): YearlySnapshot {
 
 /**
  * Fuel price + duty + VAT figures for these years are the first
- * weekly price GOV.UK/DESNZ published on or after 1 January that year
- * — a genuine, dated, single-week snapshot from the primary source
+ * weekly price GOV.UK/DESNZ published on or after 1 January that year:
+ * a genuine, dated, single-week snapshot from the primary source
  * (see pump-price-history.ts), NOT an annual average.
  */
 function withFuel(year: string, date: string, petrol: number, diesel: number, duty: number, vat: number): YearlySnapshot {
@@ -77,7 +77,7 @@ function withFuel(year: string, date: string, petrol: number, diesel: number, du
     petrolPencePerLitre: petrol,
     dieselPencePerLitre: diesel,
     pricesPeriodType: "point-in-time",
-    pricesAsOf: `Week commencing ${date} — not an annual average`,
+    pricesAsOf: `Week commencing ${date}, not an annual average`,
     fuelDutyPencePerLitre: duty,
     vatRatePercent: vat,
     verified: true,
@@ -86,22 +86,22 @@ function withFuel(year: string, date: string, petrol: number, diesel: number, du
   };
 }
 
-/** CPI index (D7BT, 2015=100) — verified annual average, ONS. Not available for the year still in progress. */
+/** CPI index (D7BT, 2015=100), verified annual average, ONS. Not available for the year still in progress. */
 function withCpi(s: YearlySnapshot, index: number): YearlySnapshot {
   return { ...s, cpiIndex: index, cpiPeriod: "Annual average, 2015=100 (ONS D7BT)" };
 }
 
-/** ONS AWE regular pay, whole economy, seasonally adjusted (series KAI7) — verified annual average, £/week. Series begins in 2000. */
+/** ONS AWE regular pay, whole economy, seasonally adjusted (series KAI7), verified annual average, £/week. Series begins in 2000. */
 function withEarnings(s: YearlySnapshot, gbpPerWeek: number): YearlySnapshot {
-  return { ...s, averageWeeklyEarnings: gbpPerWeek, averageWeeklyEarningsPeriod: "Annual average — regular pay, whole economy, seasonally adjusted (ONS KAI7)" };
+  return { ...s, averageWeeklyEarnings: gbpPerWeek, averageWeeklyEarningsPeriod: "Annual average, regular pay, whole economy, seasonally adjusted (ONS KAI7)" };
 }
 
-/** Bank of England Bank Rate in force on the snapshot's reference date — verified against the Bank's own published rate-change history. */
+/** Bank of England Bank Rate in force on the snapshot's reference date, verified against the Bank's own published rate-change history. */
 function withBankRate(s: YearlySnapshot, percent: number, effectiveFrom: string): YearlySnapshot {
   return { ...s, bankRatePercent: percent, bankRatePeriod: `In force from ${effectiveFrom}` };
 }
 
-/** ONS real households' disposable income per head (series CRXX, UKEA) — chained volume measure, reference year 2023, £, annual. */
+/** ONS real households' disposable income per head (series CRXX, UKEA), chained volume measure, reference year 2023, £, annual. */
 function withHouseholdIncome(s: YearlySnapshot, gbp: number): YearlySnapshot {
   return { ...s, realHouseholdDisposableIncomePerHead: gbp, realHouseholdDisposableIncomePeriod: "Annual, chained volume measure (reference year 2023), per head (ONS CRXX)" };
 }
@@ -117,7 +117,7 @@ function withMinimumWage(s: YearlySnapshot, rate: number, label: string, period:
   };
 }
 
-const NMW_NOTE_1995 = "The UK statutory National Minimum Wage was introduced on 1 April 1999 — in 1995 there was no single national minimum rate.";
+const NMW_NOTE_1995 = "The UK statutory National Minimum Wage was introduced on 1 April 1999. In 1995 there was no single national minimum rate.";
 const NMW_THRESHOLD_NOTE = "The age threshold for the top National Minimum/Living Wage rate has changed several times: 22+ until 2010, 21+ from 2010, 25+ (\"National Living Wage\") from 2016, 23+ from 2021, and 21+ again from 2024. Figures here always show the top-band rate in force on this snapshot's date, labelled with its age band.";
 
 export const yearlySnapshots: Record<string, YearlySnapshot> = {
@@ -140,7 +140,7 @@ export const yearlySnapshots: Record<string, YearlySnapshot> = {
     cpiIndex: 72.7,
     cpiPeriod: "Annual average, 2015=100 (ONS D7BT)",
     averageWeeklyEarnings: 296,
-    averageWeeklyEarningsPeriod: "Annual average — regular pay, whole economy, seasonally adjusted (ONS KAI7)",
+    averageWeeklyEarningsPeriod: "Annual average, regular pay, whole economy, seasonally adjusted (ONS KAI7)",
     bankRatePercent: 5.5,
     bankRatePeriod: "In force from 4 November 1999",
     realHouseholdDisposableIncomePerHead: 19429,
@@ -210,7 +210,7 @@ export const yearlySnapshots: Record<string, YearlySnapshot> = {
       petrolPencePerLitre: 191.55,
       dieselPencePerLitre: 199.22,
       pricesPeriodType: "point-in-time",
-      pricesAsOf: "Week commencing 4 July 2022 (record high for both petrol and diesel) — not an annual average",
+      pricesAsOf: "Week commencing 4 July 2022, a record high for both petrol and diesel, not an annual average",
       fuelDutyPencePerLitre: 52.95,
       vatRatePercent: 20,
       verified: true,
@@ -250,12 +250,12 @@ export const yearlySnapshots: Record<string, YearlySnapshot> = {
   })(),
   "2026": (() => {
     let s = withFuel("2026", "14 September 2026", 168.14, 190.72, 52.95, 20);
-    s.pricesAsOf = "Week commencing 14 September 2026 — a live snapshot, not a 2026 annual average (2026 is still in progress)";
+    s.pricesAsOf = "Week commencing 14 September 2026, a live snapshot rather than a 2026 annual average, since 2026 is still in progress";
     s = withMinimumWage(s, 12.71, "21 and over (National Living Wage)", "From 1 April 2026");
     s.minimumWageNote = NMW_THRESHOLD_NOTE;
     s = withBankRate(s, 3.75, "18 December 2025");
     // CPI, average earnings and household disposable income are deliberately left unset for
-    // 2026: the year is still in progress, so no verified ANNUAL figure exists yet — showing
+    // 2026: the year is still in progress, so no verified ANNUAL figure exists yet. Showing
     // a partial-year number as if it were comparable to a completed year's average would be
     // exactly the kind of period-mixing this dataset is designed to avoid.
     s.source = `${pumpPriceHistorySource.name} / ${dataSources.minimumWage.name} / ${dataSources.bankRate.name}`;
@@ -265,5 +265,5 @@ export const yearlySnapshots: Record<string, YearlySnapshot> = {
 
 export const availableYears = Object.keys(yearlySnapshots);
 
-/** The year currently in progress — never treat this as a completed historical year. */
+/** The year currently in progress. Never treat this as a completed historical year. */
 export const currentYear = String(CURRENT_YEAR);

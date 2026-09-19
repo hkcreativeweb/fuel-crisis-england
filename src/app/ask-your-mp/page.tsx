@@ -18,7 +18,7 @@ export default function AskYourMPPage() {
             tone="dark"
             eyebrow="Make your voice heard"
             title="Your MP Can Hear From You"
-            description="Constituents can write to their MP about fuel affordability, Fuel Duty policy, energy-company profits, and the cost of living. Below is an evidence-based template you can edit and send yourself — nothing is ever sent automatically."
+            description="Constituents can write to their MP about fuel affordability, Fuel Duty policy, energy-company profits, and the cost of living. Below is an evidence-based template you can edit and send yourself. Nothing is ever sent automatically."
           />
         </Container>
       </section>

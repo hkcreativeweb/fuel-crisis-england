@@ -15,7 +15,7 @@ const commitments = [
   "Visible focus states on every interactive element.",
   "Colour contrast chosen with accessibility in mind across dark and light sections.",
   "Semantic headings and landmarks so screen readers can navigate the page structure.",
-  "Support for reduced-motion preferences — animations are shortened automatically if your device requests it.",
+  "Support for reduced-motion preferences: animations are shortened automatically if your device requests it.",
   "A mobile-first, responsive layout that works from small phone screens up to large desktop displays.",
 ];
 
@@ -41,7 +41,7 @@ export default function AccessibilityPage() {
             </ul>
             <p>
               This is a preview build, and we haven&apos;t yet run a full independent accessibility audit.
-              If you encounter a genuine barrier using this site, we want to know — see our{" "}
+              If you encounter a genuine barrier using this site, we want to know. See our{" "}
               <a href="/contact" className="font-semibold text-petrol-600 underline underline-offset-2">
                 Contact page
               </a>

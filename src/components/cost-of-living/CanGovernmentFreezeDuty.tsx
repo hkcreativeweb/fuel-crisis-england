@@ -9,10 +9,10 @@ const announced = fuelDutyTimeline.find((e) => e.id === "2027-01-announced");
 const explainerPoints = [
   "Fuel Duty is set by government policy, not by a fixed formula or natural law.",
   "The Chancellor and HM Treasury play a central role in proposing rate changes.",
-  "Changes are normally announced through fiscal policy events (Budgets, Autumn Statements) and implemented under the relevant legal framework — usually a statutory instrument or Finance Act provision.",
+  "Changes are normally announced through fiscal policy events (Budgets, Autumn Statements) and implemented under the relevant legal framework, usually a statutory instrument or Finance Act provision.",
   "Parliament and public-finance processes may be involved, depending on how the change is implemented.",
-  "A freeze is a policy choice, not something that happens automatically — it requires a decision to maintain the existing rate rather than let a scheduled increase take effect.",
-  "A freeze does not necessarily reduce the underlying wholesale price of fuel — it only prevents or delays a tax-rate increase for the period covered.",
+  "A freeze is a policy choice, not something that happens automatically. It requires a decision to maintain the existing rate rather than let a scheduled increase take effect.",
+  "A freeze does not necessarily reduce the underlying wholesale price of fuel. It only prevents or delays a tax-rate increase for the period covered.",
 ];
 
 export function CanGovernmentFreezeDuty() {
@@ -37,7 +37,7 @@ export function CanGovernmentFreezeDuty() {
         <div className="rounded-md bg-petrol-50 p-4">
           <ContentTag type="campaign-commentary" />
           <p className="mt-2 text-xl font-extrabold text-petrol-700">Freeze</p>
-          <p className="text-xs text-charcoal-600">Our campaign demand — not government policy</p>
+          <p className="text-xs text-charcoal-600">Our campaign demand, not government policy</p>
         </div>
       </div>
 

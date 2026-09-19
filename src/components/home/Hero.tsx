@@ -29,14 +29,14 @@ export function Hero() {
     <section className="border-b border-slate-200 bg-background">
       <Container className="grid gap-12 py-14 sm:py-20 lg:grid-cols-2 lg:items-start lg:gap-16">
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-petrol-600">FCE — Fuel Crisis England</p>
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-petrol-600">FCE: Fuel Crisis England</p>
           <div className="mt-3 h-px w-12 bg-navy-900/20" aria-hidden="true" />
           <h1 className="mt-6 text-4xl font-extrabold leading-[1.04] tracking-tight text-navy-900 sm:text-5xl lg:text-[3.1rem]">
             Fuel isn&apos;t just a number on a pump.
           </h1>
           <p className="mt-5 max-w-md text-lg leading-relaxed text-charcoal-700">
-            Follow the money from crude oil to the forecourt, and see what happens to your household
-            budget — with every figure traced to its source.
+            Follow the money from crude oil to the forecourt. See what you&apos;re paying for, where the
+            money goes, and how fuel costs affect households and businesses.
           </p>
 
           <HeroFuelDataStrip />

@@ -23,7 +23,7 @@ export default function ContactPage() {
             </p>
             <p>
               If you&apos;ve spotted an inaccuracy, an outdated figure, or a broken source link, please
-              treat every statistic on this site as something we want to get right — see our{" "}
+              treat every statistic on this site as something we want to get right. See our{" "}
               <a href="/sources" className="font-semibold text-petrol-600 underline underline-offset-2">
                 Sources page
               </a>{" "}

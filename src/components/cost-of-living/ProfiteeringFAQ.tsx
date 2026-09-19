@@ -3,9 +3,9 @@ import { profiteeringFaqs } from "@/lib/data/profiteering-faq";
 import { DataStatusBadge } from "@/components/ui/DataStatusBadge";
 
 const definitions = [
-  { term: "Excessive profit", meaning: "No single legal or economic definition — often used loosely to mean profit that seems disproportionate to risk, investment, or market conditions." },
-  { term: "Profiteering", meaning: "Generally implies deliberately exploiting a crisis or shortage to charge more than is fair — a stronger claim that typically requires specific evidence of conduct, not just a profit figure." },
-  { term: "Windfall profit", meaning: "An unexpected profit arising from external circumstances (e.g. a price spike) rather than a company's own decisions — the basis some governments have used for one-off windfall taxes." },
+  { term: "Excessive profit", meaning: "No single legal or economic definition. Often used loosely to mean profit that seems disproportionate to risk, investment, or market conditions." },
+  { term: "Profiteering", meaning: "Generally implies deliberately exploiting a crisis or shortage to charge more than is fair: a stronger claim that typically requires specific evidence of conduct, not just a profit figure." },
+  { term: "Windfall profit", meaning: "An unexpected profit arising from external circumstances (e.g. a price spike) rather than a company's own decisions. This is the basis some governments have used for one-off windfall taxes." },
 ];
 
 const evidenceItems = [
@@ -47,7 +47,7 @@ export function ProfiteeringFAQ() {
           ))}
         </ul>
         <p className="mt-3 text-xs text-charcoal-600">
-          Where a figure isn&apos;t yet verified, we don&apos;t estimate it — we show that gap honestly so
+          Where a figure isn&apos;t yet verified, we don&apos;t estimate it. We show that gap honestly so
           you know what evidence is and isn&apos;t behind a conclusion.
         </p>
       </div>
@@ -56,9 +56,9 @@ export function ProfiteeringFAQ() {
         <h3 className="text-base font-bold text-navy-900">The limits of comparing global companies to UK prices</h3>
         <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
           Shell, BP, ExxonMobil, Chevron and TotalEnergies are global businesses whose profit reflects
-          production, refining, trading and retail activity worldwide — not specifically what happens at
+          production, refining, trading and retail activity worldwide, not specifically what happens at
           a UK forecourt. A high global profit figure is not, by itself, evidence about UK pump pricing
-          specifically; UK-specific evidence (like CMA retail margin monitoring) is a separate, narrower
+          specifically. UK-specific evidence (like CMA retail margin monitoring) is a separate, narrower
           data source better suited to that question.
         </p>
       </div>
@@ -83,7 +83,7 @@ export function ProfiteeringFAQ() {
           Search CMA road fuel market findings <span aria-hidden="true">&rarr;</span>
         </a>
         <p className="mt-4 text-sm font-semibold text-navy-900">
-          We deliberately don&apos;t draw a conclusion for you here — read the evidence and decide for
+          We deliberately don&apos;t draw a conclusion for you here. Read the evidence and decide for
           yourself.
         </p>
       </div>

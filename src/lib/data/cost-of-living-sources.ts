@@ -38,13 +38,13 @@ export const costOfLivingSources: OfficialSource[] = [
     category: "Parliament",
   },
   {
-    name: "Shell plc — Investor Relations",
+    name: "Shell plc: Investor Relations",
     description: "Official annual reports and financial results.",
     url: "https://www.shell.com/investors.html",
     category: "Company",
   },
   {
-    name: "BP plc — Investor Relations",
+    name: "BP plc: Investor Relations",
     description: "Official annual reports and financial results.",
     url: "https://www.bp.com/en/global/corporate/investors.html",
     category: "Company",
@@ -56,7 +56,7 @@ export const costOfLivingSources: OfficialSource[] = [
     category: "Motoring organisation",
   },
   {
-    name: "The AA — Fuel Price Reports",
+    name: "The AA: Fuel Price Reports",
     description: "Independent analysis of UK pump prices.",
     url: "https://www.theaa.com/driving-advice/driving-costs/fuel-prices",
     category: "Motoring organisation",

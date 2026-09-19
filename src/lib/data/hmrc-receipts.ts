@@ -3,7 +3,7 @@ import type { HMRCReceipt } from "@/lib/types";
 /**
  * HMRC Fuel Duty (Hydrocarbon Oils) receipts. These two figures come
  * from two DIFFERENT HMRC publications with different cut-off dates and
- * methodologies — they are not simply the same number at different
+ * methodologies. They are not simply the same number at different
  * scales, so they are kept as separate, clearly labelled figures rather
  * than combined.
  */
@@ -36,7 +36,7 @@ export const fuelDutyReceiptsFullYear: HMRCReceipt = {
 
 /**
  * More granular quarterly breakdown from the same Hydrocarbon Oils
- * Bulletin, split between petrol and diesel — useful context but kept
+ * Bulletin, split between petrol and diesel. Useful context but kept
  * separate from the two headline figures above since it covers a
  * different (shorter) period.
  */

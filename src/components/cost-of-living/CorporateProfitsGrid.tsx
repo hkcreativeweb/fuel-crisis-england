@@ -21,7 +21,7 @@ export function CorporateProfitsGrid() {
           <ContentTag type="economic-analysis" className="mt-0.5 shrink-0" />
           <p className="text-xs leading-relaxed text-charcoal-600">
             All five companies report in US dollars. Figures above are converted to pounds sterling at
-            £1&nbsp;=&nbsp;$1.3353 (Bank of England, spot rate, 17 September 2026) — a single current
+            £1&nbsp;=&nbsp;$1.3353 (Bank of England, spot rate, 17 September 2026), a single current
             exchange rate applied to each company&apos;s most recent full-year results, so these are
             approximate GBP equivalents rather than a rate fixed by the companies themselves.
           </p>
@@ -33,7 +33,7 @@ export function CorporateProfitsGrid() {
         <h3 className="mt-3 text-base font-bold text-navy-900">Corporate profit is not the same as UK forecourt profit</h3>
         <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
           These companies report <strong>global</strong>, group-wide results across oil production, natural
-          gas, LNG, refining, chemicals, trading, retail, and renewable energy businesses — most of which
+          gas, LNG, refining, chemicals, trading, retail, and renewable energy businesses, most of which
           has nothing to do with what a UK driver pays at a specific forecourt. A large global profit figure
           does not tell you how much profit was made on a single litre of fuel sold in England, and should
           not be read as if it does.

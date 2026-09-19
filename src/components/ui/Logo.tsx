@@ -39,7 +39,7 @@ export function LogoMark({ className }: { className?: string }) {
  */
 export function Logo({ className, dark = false, compact = false }: { className?: string; dark?: boolean; compact?: boolean }) {
   return (
-    <span role="img" aria-label="FCE — Fuel Crisis England" className={cn("inline-flex items-center gap-2.5", className)}>
+    <span role="img" aria-label="FCE: Fuel Crisis England" className={cn("inline-flex items-center gap-2.5", className)}>
       <LogoMark className={compact ? "h-7 w-7" : "h-9 w-9"} />
       <span aria-hidden="true" className="flex flex-col leading-none">
         <span className={cn("font-extrabold tracking-tight", compact ? "text-lg" : "text-xl sm:text-2xl", dark ? "text-navy-900" : "text-white")}>

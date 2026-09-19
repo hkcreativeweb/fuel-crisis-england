@@ -77,7 +77,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* 01 — OUR PURPOSE */}
+      {/* 01: OUR PURPOSE */}
       <section className="bg-white py-16 sm:py-20">
         <Container>
           <SectionHeading number="01" eyebrow="Our purpose" title="What this website is for" rule />
@@ -96,7 +96,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* 02 — INDEPENDENCE */}
+      {/* 02: INDEPENDENCE */}
       <section className="bg-navy-950 py-16 sm:py-20">
         <Container>
           <SectionHeading tone="dark" number="02" eyebrow="Independence" title="Independent of political parties and government" rule />
@@ -115,7 +115,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* 03 — IMPARTIALITY */}
+      {/* 03: IMPARTIALITY */}
       <section className="bg-white py-16 sm:py-20">
         <Container>
           <SectionHeading number="03" eyebrow="Impartiality" title="Our approach to impartiality" rule />
@@ -129,7 +129,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* 04 — OUR DATA */}
+      {/* 04: OUR DATA */}
       <section className="bg-slate-50 py-16 sm:py-20">
         <Container>
           <SectionHeading number="04" eyebrow="Our data" title="Where does the data come from?" rule />
@@ -159,7 +159,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* 05 — OUR TOOLS */}
+      {/* 05: OUR TOOLS */}
       <section className="bg-white py-16 sm:py-20">
         <Container>
           <SectionHeading number="05" eyebrow="Our tools" title="Explore the data" rule />
@@ -182,7 +182,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* 06 — A NOTE ON INTERPRETATION */}
+      {/* 06: A NOTE ON INTERPRETATION */}
       <section className="bg-slate-50 py-16 sm:py-20">
         <Container>
           <SectionHeading number="06" eyebrow="A note on interpretation" title="Reading these figures carefully" rule />
@@ -224,8 +224,8 @@ export default function AboutPage() {
           </div>
           <div className="mt-8 max-w-2xl">
             <Alert tone="info" title="This is a preview build.">
-              Several features on this site — the live fuel price feed, the petition database, and public
-              submission storage — are currently running in a clearly labelled demo mode while a
+              Several features on this site, including the live fuel price feed, the petition database, and
+              public submission storage, are currently running in a clearly labelled demo mode while a
               production backend and further verified data sources are connected. Nothing on this site
               claims to be more real or more official than it is.
             </Alert>

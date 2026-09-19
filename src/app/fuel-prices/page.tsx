@@ -53,8 +53,8 @@ export default async function FuelPricesPage() {
                 <FuelPriceCard fuel="diesel" pencePerLitre={snapshot.dieselPencePerLitre} />
               </div>
               <p className="mt-4 text-xs text-charcoal-600">
-                {snapshot.provenance.asOf ? `Updated ${formatDate(snapshot.provenance.asOf)}` : null}
-                {snapshot.provenance.asOf && snapshot.provenance.source ? " — " : null}
+                {snapshot.provenance.asOf ? `Updated ${formatDate(snapshot.provenance.asOf)}.` : null}
+                {snapshot.provenance.asOf && snapshot.provenance.source ? " " : null}
                 {snapshot.provenance.source ? `Source: ${snapshot.provenance.source}` : null}
               </p>
             </>

@@ -6,7 +6,7 @@ export function CompetitionMargins() {
     <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <p className="text-sm leading-relaxed text-charcoal-700">
         The difference between the wholesale price and the retail price is{" "}
-        <strong>not automatically the retailer&apos;s profit</strong> — it covers running costs including
+        <strong>not automatically the retailer&apos;s profit</strong>. It covers running costs including
         staff, business rates, card processing fees, and site maintenance, as well as any profit margin.
       </p>
 
@@ -39,11 +39,11 @@ export function CompetitionMargins() {
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         <div className="rounded-md bg-slate-50 p-4">
-          <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Petrol — May to June 2026</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Petrol: May to June 2026</p>
           <p className="mt-2 text-sm leading-relaxed text-charcoal-700">{cmaPassThroughFindings.petrol}</p>
         </div>
         <div className="rounded-md bg-slate-50 p-4">
-          <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Diesel — May to June 2026</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Diesel: May to June 2026</p>
           <p className="mt-2 text-sm leading-relaxed text-charcoal-700">{cmaPassThroughFindings.diesel}</p>
         </div>
       </div>
@@ -56,7 +56,7 @@ export function CompetitionMargins() {
         <a href={cmaMarginSource.url} target="_blank" rel="noopener noreferrer" className="font-semibold text-petrol-600 underline underline-offset-2">
           {cmaMarginSource.name}
         </a>
-        {" "}— published {cmaMarginSource.publicationDate}, data to {cmaMarginSource.dataAsOf}.
+        , published {cmaMarginSource.publicationDate}, data to {cmaMarginSource.dataAsOf}.
       </p>
 
       <div className="mt-6">

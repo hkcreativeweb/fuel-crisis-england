@@ -65,7 +65,7 @@ const costOfLivingTemplate = `Dear [MP NAME],
 
 I am writing as a constituent about the combined pressure of fuel costs and the wider cost of living on households and businesses in our area.
 
-Fuel costs do not exist in isolation — they interact with wages, inflation, housing costs, and interest rates to shape what people can actually afford. I would like to understand the Government's overall approach to these combined pressures.
+Fuel costs do not exist in isolation. They interact with wages, inflation, housing costs, and interest rates to shape what people can actually afford. I would like to understand the Government's overall approach to these combined pressures.
 
 I would be grateful for your views on:
 
@@ -91,7 +91,7 @@ export type MPDemandQuestion = {
 
 /**
  * The main, comprehensive MP email. Selectable question blocks let the
- * user include only the topics they care about — the intro and closing
+ * user include only the topics they care about. The intro and closing
  * are fixed, but the numbered questions are built from whichever topics
  * are selected.
  */
@@ -181,19 +181,19 @@ export const mpEmailTemplates: MPEmailTemplate[] = [
   {
     topic: "fuel-duty",
     label: "Fuel Duty",
-    subject: "Fuel prices, Fuel Duty and the cost of living — request for action",
+    subject: "Fuel prices, Fuel Duty and the cost of living: request for action",
     body: coreTemplate,
   },
   {
     topic: "fuel-prices-competition",
     label: "Fuel Prices & Competition",
-    subject: "Fuel prices and competition in the road fuel market — request for information",
+    subject: "Fuel prices and competition in the road fuel market: request for information",
     body: competitionTemplate,
   },
   {
     topic: "cost-of-living",
     label: "Cost of Living",
-    subject: "Fuel costs and the wider cost of living — request for the Government's position",
+    subject: "Fuel costs and the wider cost of living: request for the Government's position",
     body: costOfLivingTemplate,
   },
 ];

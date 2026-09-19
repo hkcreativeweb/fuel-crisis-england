@@ -6,7 +6,7 @@ import { StatusBadge } from "@/components/ui/StatusBadge";
 
 export const metadata: Metadata = {
   title: "Europe Compared",
-  description: "How UK petrol and diesel prices compare with all 27 EU member states — price before tax, duty, VAT and total pump price, sourced from the European Commission's Weekly Oil Bulletin.",
+  description: "How UK petrol and diesel prices compare with all 27 EU member states: price before tax, duty, VAT and total pump price, sourced from the European Commission's Weekly Oil Bulletin.",
 };
 
 export default function EuropeComparedPage() {
@@ -22,7 +22,7 @@ export default function EuropeComparedPage() {
             Different prices.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
-            Petrol and diesel cost different amounts across Europe — not because the fuel itself is
+            Petrol and diesel cost different amounts across Europe, not because the fuel itself is
             different, but because tax policy, market structure and currency all vary by country. See how
             the UK compares, litre for litre.
           </p>
@@ -46,12 +46,12 @@ export default function EuropeComparedPage() {
           <p className="max-w-2xl text-sm leading-relaxed text-charcoal-700">
             This comparison does not imply any conclusion about which country&apos;s policy is &ldquo;right&rdquo;.
             Tax levels reflect different national choices about public spending, environmental policy and
-            fiscal priorities. We show the evidence; what it should mean for UK policy is for readers — and
+            fiscal priorities. We show the evidence. What it should mean for UK policy is for readers, and
             for{" "}
             <a href="/our-demands" className="font-semibold text-petrol-600 underline underline-offset-2">
               the debate on Our Demands
-            </a>{" "}
-            — to decide.
+            </a>
+            , to decide.
           </p>
         </Container>
       </section>

@@ -70,12 +70,12 @@ export function WageVsPump() {
       )}
 
       <p className="mt-6 text-xs text-charcoal-600">
-        Source: {snapshot.source}
+        Source: {snapshot.source}.
         {snapshot.sourceUrl ? (
           <>
-            {" — "}
+            {" "}
             <a href={snapshot.sourceUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-petrol-600 underline underline-offset-2">
-              view source
+              View source
             </a>
           </>
         ) : null}

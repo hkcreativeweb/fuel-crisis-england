@@ -17,7 +17,7 @@ export const cpiInflationSeries: EconomicSeries = {
     { period: "Aug 2025", value: 3.8 },
     { period: "Aug 2026", value: 3.1 },
   ],
-  source: "ONS — Consumer price inflation, UK (monthly bulletins)",
+  source: "ONS: Consumer price inflation, UK (monthly bulletins)",
   sourceUrl: "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2026",
   asOf: "2026-09-16",
   status: "historical",
@@ -34,7 +34,7 @@ export const cpihInflationSeries: EconomicSeries = {
     { period: "Aug 2025", value: 4.1 },
     { period: "Aug 2026", value: 3.3 },
   ],
-  source: "ONS — Consumer price inflation, UK (monthly bulletins)",
+  source: "ONS: Consumer price inflation, UK (monthly bulletins)",
   sourceUrl: "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2026",
   asOf: "2026-09-16",
   status: "historical",
@@ -65,7 +65,7 @@ export const bankRateSeries: EconomicSeries = {
     { period: "Aug 2024", value: 5.0 },
     { period: "Dec 2025", value: 3.75 },
   ],
-  source: "Bank of England — Official Bank Rate history database",
+  source: "Bank of England: Official Bank Rate history database",
   sourceUrl: "https://www.bankofengland.co.uk/boeapps/database/Bank-Rate.asp",
   asOf: "2025-12-18",
   status: "historical",
@@ -78,7 +78,7 @@ export const bankRateSeries: EconomicSeries = {
  * month key derived from that point's real published date, so series
  * from different primary sources (published on different weekdays) can
  * be aligned on a shared monthly axis without fabricating or
- * interpolating any value — each plotted point is still a genuine,
+ * interpolating any value. Each plotted point is still a genuine,
  * dated, single-week snapshot for that month, never an average.
  */
 export const petrolPriceSeries: EconomicSeries = {
@@ -106,7 +106,7 @@ export const dieselPriceSeries: EconomicSeries = {
 };
 
 /**
- * Brent crude oil spot price, from the EIA (primary source) — see
+ * Brent crude oil spot price, from the EIA (primary source). See
  * brent-crude-history.ts. Units are US$/barrel, deliberately NOT
  * converted to GBP (that would introduce a present-day exchange-rate
  * approximation into a 20+ year historical series). Compare against
@@ -126,11 +126,11 @@ export const crudeOilSeries: EconomicSeries = {
 };
 
 /**
- * Annual variants (one point per year — the first published price of
+ * Annual variants (one point per year, the first published price of
  * January that year, the same real snapshot used in yearly-snapshots.ts)
  * for charts that compare against year-keyed series like company annual
  * results (e.g. ProfitsVsFuelExplorer). Period labels are plain years
- * ("2015") to match `companyProfitSeries`'s period format — mixing
+ * ("2015") to match `companyProfitSeries`'s period format. Mixing
  * monthly and yearly period keys in the same chart would silently fail
  * to align (no shared labels), so callers must pick the matching
  * granularity rather than combining the monthly and annual variants.

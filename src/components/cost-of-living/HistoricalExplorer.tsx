@@ -128,7 +128,7 @@ export function HistoricalExplorer() {
             value={s.minimumWageVerified && s.minimumWagePerHour !== null ? s.minimumWagePerHour.toFixed(2) : null}
             prefix="£"
             unit={s.minimumWageVerified ? "/hour" : undefined}
-            meta={s.minimumWageVerified ? `${s.minimumWageLabel} — ${s.minimumWagePeriod}` : null}
+            meta={s.minimumWageVerified ? `${s.minimumWageLabel}, ${s.minimumWagePeriod}` : null}
             note={s.minimumWageNote}
             unavailableText={s.minimumWageLabel === "No statutory National Minimum Wage" ? "No statutory National Minimum Wage" : "DATA NOT AVAILABLE"}
           />
@@ -215,17 +215,17 @@ export function HistoricalExplorer() {
         <p className="mt-5 text-xs leading-relaxed text-charcoal-500">
           These calculations compare gross hourly pay with fuel prices. They do not represent disposable
           income or a complete measure of living standards. The 100-mile figure is not a claim that every
-          vehicle gets {mpg}mpg — it is an editable assumption you can change above.
+          vehicle gets {mpg}mpg. It is an editable assumption you can change above.
         </p>
       </div>
 
       <p className="mt-6 text-xs leading-relaxed text-charcoal-600">
-        Source: {s.source}
+        Source: {s.source}.
         {s.sourceUrl ? (
           <>
-            {" — "}
+            {" "}
             <a href={s.sourceUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-petrol-600 underline underline-offset-2">
-              view source
+              View source
             </a>
           </>
         ) : null}

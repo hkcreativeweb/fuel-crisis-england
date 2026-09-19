@@ -14,7 +14,7 @@ export function TheQuestionWeShouldAsk() {
           tone="dark"
           eyebrow="Look at the evidence"
           title="If Government Can Change Fuel Duty, What Should It Do About Fuel Affordability?"
-          description="We won't answer this for you. Here's the evidence — you decide what it suggests."
+          description="We won't answer this for you. Here's the evidence, and you decide what it suggests."
         />
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -30,7 +30,7 @@ export function TheQuestionWeShouldAsk() {
 
         <div className="mt-10 max-w-2xl rounded border border-white/10 bg-white/5 p-6">
           <p className="text-lg font-bold text-white">
-            How much of the pressure at the pump is influenced by government taxation — and what policy
+            How much of the pressure at the pump is influenced by government taxation, and what policy
             choices could reduce that pressure?
           </p>
           <p className="mt-3 text-sm leading-relaxed text-slate-300">

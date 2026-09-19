@@ -46,7 +46,7 @@ function CompanyTimeline({ label, years }: { label: string; years: typeof compan
       ) : (
         <div className="mt-4">
           <Alert tone="info" title="Historical timeline not yet verified.">
-            We will publish a multi-year timeline — including both strong-profit and weaker-profit years —
+            We will publish a multi-year timeline, including both strong-profit and weaker-profit years,
             once each figure is checked against {label}&apos;s official annual reports.
           </Alert>
         </div>
@@ -66,8 +66,8 @@ export function CorporateProfitsTimeline() {
         <ContentTag type="economic-analysis" className="mt-0.5 shrink-0" />
         <p className="text-xs leading-relaxed text-charcoal-600">
           Shell and BP report in US dollars. Figures above are converted to pounds sterling at
-          £1&nbsp;=&nbsp;$1.3353 (Bank of England, spot rate, 17 September 2026) for every year shown —
-          a single fixed rate, not the historical rate for each year — so these are approximate,
+          £1&nbsp;=&nbsp;$1.3353 (Bank of England, spot rate, 17 September 2026) for every year shown.
+          This is a single fixed rate, not the historical rate for each year, so these are approximate,
           present-day GBP equivalents rather than what the amount was worth in pounds at the time.
         </p>
       </div>

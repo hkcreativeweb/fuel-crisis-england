@@ -1,7 +1,7 @@
 export const siteConfig = {
   brandShort: "FCE",
   name: "Fuel Crisis England",
-  fullBrand: "FCE — Fuel Crisis England",
+  fullBrand: "FCE: Fuel Crisis England",
   tagline: "Save Fuel. Save Money. Follow The Money. Demand Accountability.",
   description:
     "Fuel Crisis England provides practical ways to save fuel and money, explains fuel prices and taxation, follows energy-company profits and helps people make their voices heard lawfully.",
@@ -33,7 +33,7 @@ export const homeNavItem: NavItem = { label: "Home", href: "/" };
 /**
  * The main navbar's structure: a handful of short category labels, each
  * revealing a dropdown of the real pages and page sections underneath.
- * This is deliberately a taxonomy, not a flat list — every page that used
+ * This is deliberately a taxonomy, not a flat list. Every page that used
  * to be a top-level link now lives inside the category it belongs to, so
  * the navbar itself only ever shows six short words.
  */

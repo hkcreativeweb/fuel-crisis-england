@@ -27,7 +27,7 @@ export default function ImpactPage() {
           <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
           <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">How fuel prices affect people</h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">
-            Fuel costs aren&apos;t an abstract statistic — they shape household budgets, working hours, and
+            Fuel costs aren&apos;t an abstract statistic. They shape household budgets, working hours, and
             business margins across England.
           </p>
           <PhotoCredit credit={credit} className="mt-10" />

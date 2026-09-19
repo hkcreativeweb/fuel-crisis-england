@@ -59,8 +59,8 @@ export default function FuelDutyAndTaxPage() {
             {fuelDutyFigure.verified && vatOnFuelFigure.verified ? (
               <Alert tone="success" title="These figures are verified.">
                 We publish current fuel duty and VAT rates only once checked against an official source
-                such as GOV.UK or HM Treasury — both figures above are cited directly. If a rate changes,
-                we do not invent an updated number; the card reverts to a clear placeholder until the new
+                such as GOV.UK or HM Treasury. Both figures above are cited directly. If a rate changes,
+                we do not invent an updated number. The card reverts to a clear placeholder until the new
                 rate is verified.
               </Alert>
             ) : (
@@ -81,7 +81,7 @@ export default function FuelDutyAndTaxPage() {
               <h2 className="text-xl font-bold text-navy-900">What is fuel duty?</h2>
               <p className="mt-3 text-sm leading-relaxed text-charcoal-700">
                 Fuel duty is a tax charged by the UK Government on every litre of petrol and diesel sold.
-                It is a <strong>fixed amount per litre</strong> — set in pence, not as a percentage — so
+                It is a <strong>fixed amount per litre</strong>, set in pence rather than as a percentage, so
                 you pay the same duty on a litre of fuel whether the underlying price is high or low.
                 Because it&apos;s fixed, fuel duty makes up a larger share of the total price when fuel is
                 cheap, and a smaller share when fuel is expensive.
@@ -105,7 +105,7 @@ export default function FuelDutyAndTaxPage() {
                 <p className="text-sm font-bold text-navy-900">Fuel duty (fixed per litre)</p>
                 <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
                   A set number of pence charged on every litre, regardless of price. If the fuel price
-                  falls, fuel duty stays the same — so it becomes a bigger proportion of what you pay.
+                  falls, fuel duty stays the same, so it becomes a bigger proportion of what you pay.
                 </p>
               </div>
               <div>
@@ -124,7 +124,7 @@ export default function FuelDutyAndTaxPage() {
               Using the verified rates above: fuel duty is a flat 52.95 pence on every litre. VAT is then
               charged at 20% on the fuel price <em>including</em> that duty. For example, on a litre
               priced at 168.1p (petrol, 14 September 2026): the pre-VAT price is 168.1p ÷ 1.2 ≈ 140.1p, so
-              VAT is roughly 28.0p. Added to the 52.95p duty, tax makes up around 81p of that litre —
+              VAT is roughly 28.0p. Added to the 52.95p duty, tax makes up around 81p of that litre,
               close to half the total pump price. See our{" "}
               <Link href="/follow-the-money#pump-price-breakdown" className="font-semibold text-petrol-600 underline underline-offset-2">
                 full pump price breakdown

@@ -16,19 +16,19 @@ export const metadata: Metadata = {
 const publishedOn = "2026-09-19";
 
 const statusMeanings: { status: DataStatusLabel; meaning: string }[] = [
-  { status: "live", meaning: "A genuine current-day figure — today's petrol price, the current Fuel Duty rate, today's exchange rate." },
-  { status: "latest-available", meaning: "The most recently published figure for something that isn't measured daily — e.g. CPI inflation, average earnings, a CMA monitoring report." },
-  { status: "ytd", meaning: "A year-to-date figure covering part of the current year only — not a full-year total, and not directly comparable to a completed year's average." },
-  { status: "historical", meaning: "A figure from a completed period (a full year, or a specific dated event) — never a live or in-progress figure." },
+  { status: "live", meaning: "A genuine current-day figure: today's petrol price, the current Fuel Duty rate, today's exchange rate." },
+  { status: "latest-available", meaning: "The most recently published figure for something that isn't measured daily, e.g. CPI inflation, average earnings, a CMA monitoring report." },
+  { status: "ytd", meaning: "A year-to-date figure covering part of the current year only, not a full-year total, and not directly comparable to a completed year's average." },
+  { status: "historical", meaning: "A figure from a completed period (a full year, or a specific dated event), never a live or in-progress figure." },
   { status: "estimate", meaning: "A figure we have calculated ourselves (e.g. by subtraction, or by applying an average margin), rather than one directly published by a primary source." },
-  { status: "projection", meaning: "A forward-looking figure that has not happened yet (e.g. a future announced tax rate) — explicitly labelled as a projection, never shown as if it were an actual reported outcome." },
+  { status: "projection", meaning: "A forward-looking figure that has not happened yet (e.g. a future announced tax rate), explicitly labelled as a projection, never shown as if it were an actual reported outcome." },
   { status: "not-yet-available", meaning: "We looked for a verified figure and could not find one from a primary source. We show this rather than guessing." },
 ];
 
 const calculationNotes = [
   {
     title: "The pump price breakdown",
-    body: "Fuel Duty and the VAT rate are exact, published rates. The retailer margin is the CMA's own reported market-wide average for the relevant month. Everything else (crude oil, exchange rate effect, refining, wholesale, distribution) is shown as a single 'wholesale, refining & distribution' figure — the remainder after duty, VAT and margin are subtracted — because no further verified public split of that remainder exists.",
+    body: "Fuel Duty and the VAT rate are exact, published rates. The retailer margin is the CMA's own reported market-wide average for the relevant month. Everything else (crude oil, exchange rate effect, refining, wholesale, distribution) is shown as a single 'wholesale, refining & distribution' figure: the remainder after duty, VAT and margin are subtracted, because no further verified public split of that remainder exists.",
   },
   {
     title: "Currency conversion",
@@ -45,10 +45,10 @@ const calculationNotes = [
 ];
 
 const cannotKnow = [
-  "How much profit any oil or energy company makes specifically from petrol and diesel sold at UK forecourts — this is not separately published by any of the five major companies we cover.",
-  "A fuel-specific breakdown of VAT receipts — HMRC publishes VAT receipts by return type/sector, not by product, so a 'VAT on fuel' total does not exist as an official figure.",
-  "A verified, primary-sourced historical crude-oil price series compatible with our UK pump-price data — where we could not verify a series against a primary source (e.g. EIA, ICE), we show 'data not available' rather than an unverified third-party figure.",
-  "The exact reason any single petrol station charges a particular price on a particular day — regional and local price variation involves many factors, and we report what regulators have found rather than inferring motives.",
+  "How much profit any oil or energy company makes specifically from petrol and diesel sold at UK forecourts. This is not separately published by any of the five major companies we cover.",
+  "A fuel-specific breakdown of VAT receipts. HMRC publishes VAT receipts by return type/sector, not by product, so a 'VAT on fuel' total does not exist as an official figure.",
+  "A verified, primary-sourced historical crude-oil price series compatible with our UK pump-price data. Where we could not verify a series against a primary source (e.g. EIA, ICE), we show 'data not available' rather than an unverified third-party figure.",
+  "The exact reason any single petrol station charges a particular price on a particular day. Regional and local price variation involves many factors, and we report what regulators have found rather than inferring motives.",
 ];
 
 export default function SourcesPage() {

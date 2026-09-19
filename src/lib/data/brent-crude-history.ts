@@ -1,27 +1,27 @@
 /**
  * Genuine, verifiable Europe Brent crude oil spot price history, from
- * the U.S. Energy Information Administration (EIA) — the standard
+ * the U.S. Energy Information Administration (EIA), the standard
  * primary-source reference for crude prices, used by the UK's own CMA
  * in its road fuel monitoring reports:
  *   https://www.eia.gov/dnav/pet/hist/RBRTEw.htm
  *
  * Each point is the FIRST weekly value published for that month (EIA's
- * own weekly series, not a monthly average) — a genuine, dated
+ * own weekly series, not a monthly average), a genuine, dated
  * single-week snapshot. Units: US dollars per barrel, FOB.
  *
  * This is a DIFFERENT primary source, in a different currency and unit,
  * from our UK pump-price series (pump-price-history.ts, GOV.UK/DESNZ,
- * pence per litre). The two are shown together for comparison only —
- * never treat them as the same measurement, and never assume one
+ * pence per litre). The two are shown together for comparison only.
+ * Never treat them as the same measurement, and never assume one
  * "explains" the other without the accompanying methodology note.
  */
 export type BrentCrudeHistoryPoint = {
-  date: string; // ISO date — the exact EIA-published weekly date
+  date: string; // ISO date, the exact EIA-published weekly date
   usdPerBarrel: number;
 };
 
 export const brentCrudeHistorySource = {
-  name: "U.S. Energy Information Administration (EIA) — Weekly Europe Brent Spot Price FOB",
+  name: "U.S. Energy Information Administration (EIA): Weekly Europe Brent Spot Price FOB",
   url: "https://www.eia.gov/dnav/pet/hist/RBRTEw.htm",
 };
 

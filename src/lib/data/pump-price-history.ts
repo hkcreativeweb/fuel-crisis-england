@@ -7,14 +7,14 @@
  *   - 2018–2026: CSV__2018_-__.csv
  *
  * Each point below is the FIRST weekly price published on or after the
- * 1st of that month — a genuine, dated, single-week snapshot, NOT a
+ * 1st of that month, a genuine, dated, single-week snapshot, NOT a
  * monthly or annual average. `date` is the exact date on the published
  * row. There is no verified DESNZ series before June 2003, so no
- * earlier points are included — we do not extrapolate or estimate
+ * earlier points are included. We do not extrapolate or estimate
  * backwards.
  */
 export type PumpPriceHistoryPoint = {
-  date: string; // ISO date — the exact DESNZ-published weekly date
+  date: string; // ISO date, the exact DESNZ-published weekly date
   petrol: number; // pence/litre, ULSP
   diesel: number; // pence/litre, ULSD
   dutyPence: number; // Fuel Duty rate in force that week, pence/litre
@@ -22,7 +22,7 @@ export type PumpPriceHistoryPoint = {
 };
 
 export const pumpPriceHistorySource = {
-  name: "GOV.UK / DESNZ — Weekly road fuel prices",
+  name: "GOV.UK / DESNZ: Weekly road fuel prices",
   url: "https://www.gov.uk/government/statistics/weekly-road-fuel-prices",
 };
 

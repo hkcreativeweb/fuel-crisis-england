@@ -30,7 +30,7 @@ export const profitCapOptions: ProfitCapOption[] = [
   {
     name: "Temporary levy",
     meaning: "A time-limited additional charge, separate from a company's standard tax obligations, applied for a defined period.",
-    whoCouldBeAffected: "Depends on how the levy is designed — could be sector-wide or targeted.",
+    whoCouldBeAffected: "Depends on how the levy is designed. Could be sector-wide or targeted.",
     legalProcess: "Requires legislation specifying the levy's scope, rate, and expiry.",
     possibleBenefits: "Time-limited nature may reduce long-term distortion to investment decisions compared with a permanent measure.",
     possibleRisks: "Companies may adjust behaviour around the levy's known end date; revenue is inherently temporary.",
@@ -58,7 +58,7 @@ export const profitCapOptions: ProfitCapOption[] = [
     name: "Competition investigation",
     meaning: "A formal regulatory investigation (e.g. by the CMA) into whether a market is functioning competitively.",
     whoCouldBeAffected: "Companies operating in the specific market under investigation.",
-    legalProcess: "Carried out under existing competition law powers already held by the CMA — does not require new primary legislation to initiate.",
+    legalProcess: "Carried out under existing competition law powers already held by the CMA. Does not require new primary legislation to initiate.",
     possibleBenefits: "Can identify specific anti-competitive practices with evidence, and lead to targeted remedies.",
     possibleRisks: "Investigations take time and may not find evidence of anti-competitive conduct even where prices are high for other reasons.",
     evidenceNeeded: "Indicators of potential competition problems, such as those the CMA already monitors in the road fuel market.",
@@ -75,7 +75,7 @@ export const profitCapOptions: ProfitCapOption[] = [
   {
     name: "Targeted subsidies for essential drivers",
     meaning: "Financial support directed at people who depend on driving for work, care, disability, or rural necessity, rather than intervening in the market itself.",
-    whoCouldBeAffected: "Does not directly affect energy companies — instead supports specific groups of drivers.",
+    whoCouldBeAffected: "Does not directly affect energy companies. Instead supports specific groups of drivers.",
     legalProcess: "Would typically be delivered through existing welfare, tax credit, or grant mechanisms, subject to Budget decisions.",
     possibleBenefits: "Can be targeted precisely at those most affected, without intervening in market pricing.",
     possibleRisks: "Requires public funding; defining eligibility fairly and practically is a genuine design challenge.",
