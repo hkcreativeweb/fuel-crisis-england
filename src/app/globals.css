@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+:root {
+  /* Warm White — main page background */
+  --background: #f8f7f4;
+  /* Charcoal — main text */
+  --foreground: #1f2937;
+
+  /* Deep Navy scale — navbar, footer, headings, dark/investigative sections.
+     --color-navy-900 is the exact FCE "Deep Navy" (#111827). */
+  --color-navy-950: #0a0e16;
+  --color-navy-900: #111827;
+  --color-navy-800: #1a2333;
+  --color-navy-700: #232d40;
+  --color-navy-600: #2d3a52;
+
+  /* Charcoal / Slate scale — body text (700), secondary/metadata text
+     (600, the exact FCE "Slate" #64748B), and darker alternate section
+     backgrounds (900/800). */
+  --color-charcoal-900: #12151b;
+  --color-charcoal-800: #1b202a;
+  --color-charcoal-700: #1f2937;
+  --color-charcoal-600: #64748b;
+
+  /* FCE Red scale — logo accent, key CTAs, important statistics,
+     fuel-price highlights, warning/attention elements.
+     --color-petrol-500 is the exact FCE Red (#D62828).
+     --color-petrol-400 is the exact FCE Bright Red (#EF4444), used
+     sparingly for alerts and high-price indicators. */
+  --color-petrol-600: #ae2020;
+  --color-petrol-500: #d62828;
+  --color-petrol-400: #ef4444;
+  --color-petrol-300: #f08585;
+  --color-petrol-100: #fbd5d5;
+  --color-petrol-50: #fdecec;
+
+  /* Section accent colours — each major area of the site carries its own
+     accent while staying within the same Navy + Red + Warm White base
+     identity. Used for eyebrow badges, icons and section-level CTAs,
+     never for the global navbar/footer chrome. */
+  --color-accent-live: #2563eb; /* LIVE / NOW */
+  --color-accent-then: #7c3aed; /* HISTORICAL / THEN */
+  --color-accent-why: #f59e0b; /* WHY IS FUEL SO EXPENSIVE? */
+  --color-accent-money: #16a34a; /* FOLLOW THE MONEY */
+  --color-accent-save: #0f766e; /* SAVE FUEL & MONEY */
+  --color-accent-cost: #ea580c; /* COST OF LIVING */
+  --color-accent-gov: #991b1b; /* GOVERNMENT ACCOUNTABILITY */
+  --color-accent-sources: #475569; /* SOURCES */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-navy-950: var(--color-navy-950);
+  --color-navy-900: var(--color-navy-900);
+  --color-navy-800: var(--color-navy-800);
+  --color-navy-700: var(--color-navy-700);
+  --color-navy-600: var(--color-navy-600);
+
+  --color-charcoal-900: var(--color-charcoal-900);
+  --color-charcoal-800: var(--color-charcoal-800);
+  --color-charcoal-700: var(--color-charcoal-700);
+  --color-charcoal-600: var(--color-charcoal-600);
+
+  --color-petrol-600: var(--color-petrol-600);
+  --color-petrol-500: var(--color-petrol-500);
+  --color-petrol-400: var(--color-petrol-400);
+  --color-petrol-300: var(--color-petrol-300);
+  --color-petrol-100: var(--color-petrol-100);
+  --color-petrol-50: var(--color-petrol-50);
+
+  --color-accent-live: var(--color-accent-live);
+  --color-accent-then: var(--color-accent-then);
+  --color-accent-why: var(--color-accent-why);
+  --color-accent-money: var(--color-accent-money);
+  --color-accent-save: var(--color-accent-save);
+  --color-accent-cost: var(--color-accent-cost);
+  --color-accent-gov: var(--color-accent-gov);
+  --color-accent-sources: var(--color-accent-sources);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.money-flow-bar {
+  width: var(--fill-width, 0%);
+  animation: money-flow-fill 700ms ease-out;
+}
+
+@keyframes money-flow-fill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--fill-width, 0%);
+  }
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-petrol-400);
+  outline-offset: 2px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

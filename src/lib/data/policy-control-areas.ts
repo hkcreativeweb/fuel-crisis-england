@@ -1,0 +1,58 @@
+import type { PolicyControlArea } from "@/lib/types";
+
+export const policyControlAreas: PolicyControlArea[] = [
+  {
+    title: "Fuel Duty",
+    whatItIs: "A fixed tax charged per litre on petrol and diesel, set by the UK Government.",
+    whoControlsIt: "HM Treasury sets the rate; changes are typically announced at a Budget or Autumn Statement and require legislation.",
+    whatHasHappened: "The rate has been held or cut in recent years, including a temporary 5p/litre cut introduced in March 2022 and subsequently extended. GOV.UK has also published confirmed future increases.",
+    currentPolicy: "52.95 pence per litre, with a confirmed increase to 55.95p from January 2027 and 57.95p from March 2027.",
+    source: "GOV.UK — Amended Fuel Duty rates: 2026 to 2027",
+    sourceUrl: "https://www.gov.uk/government/publications/amended-fuel-duty-rates-for-2026-to-2027/amended-fuel-duty-rates-2026-to-2027",
+  },
+  {
+    title: "VAT",
+    whatItIs: "A percentage-based tax charged on most goods and services, including road fuel.",
+    whoControlsIt: "HM Treasury and Parliament set the UK VAT framework and standard rate through legislation.",
+    whatHasHappened: "Road fuel for private motoring has consistently been charged at the standard rate rather than a reduced or zero rate.",
+    currentPolicy: "Standard rate of 20% applies to petrol and diesel.",
+    source: "GOV.UK — VAT rates",
+    sourceUrl: "https://www.gov.uk/vat-rates",
+  },
+  {
+    title: "Competition policy",
+    whatItIs: "Rules and monitoring intended to keep the fuel retail market competitive and prevent unfair pricing practices.",
+    whoControlsIt: "The Competition and Markets Authority (CMA), an independent regulator, with powers set by Parliament.",
+    whatHasHappened: "The CMA has carried out road fuel market studies and published ongoing monitoring reports on retailer margins and regional pricing.",
+    currentPolicy: "The CMA continues enhanced monitoring of the road fuel market, publishing regular reports.",
+    source: "GOV.UK — Competition and Markets Authority",
+    sourceUrl: "https://www.gov.uk/government/organisations/competition-and-markets-authority",
+  },
+  {
+    title: "Consumer protection",
+    whatItIs: "Legal protections and investigatory powers relating to how businesses treat consumers, including pricing transparency.",
+    whoControlsIt: "Parliament sets consumer protection law; the CMA and other regulators can investigate and enforce it.",
+    whatHasHappened: "Consumer protection law applies generally across markets, including fuel retail, and regulators can investigate specific practices where concerns are raised.",
+    currentPolicy: "Existing consumer protection and competition law continues to apply to fuel retailers.",
+    source: "GOV.UK — Competition and Markets Authority",
+    sourceUrl: "https://www.gov.uk/government/organisations/competition-and-markets-authority",
+  },
+  {
+    title: "Cost-of-living support",
+    whatItIs: "Targeted financial support measures government can introduce for households facing cost pressures.",
+    whoControlsIt: "HM Treasury and the Department for Work and Pensions, subject to Budget decisions and legislation.",
+    whatHasHappened: "Government has introduced various cost-of-living support measures in recent years, separate from Fuel Duty policy itself.",
+    currentPolicy: "See GOV.UK for current cost-of-living support schemes, which change over time.",
+    source: "GOV.UK — Cost of living support",
+    sourceUrl: "https://www.gov.uk/",
+  },
+  {
+    title: "Taxation more broadly",
+    whatItIs: "The wider tax system, including income tax, fuel duty, VAT and other levies that affect household budgets.",
+    whoControlsIt: "Parliament, through legislation typically introduced at Budgets by HM Treasury.",
+    whatHasHappened: "Tax policy changes generally go through a Budget process, parliamentary scrutiny, and legislation before taking effect.",
+    currentPolicy: "See HM Treasury Budget documents for the current tax policy position.",
+    source: "GOV.UK — HM Treasury",
+    sourceUrl: "https://www.gov.uk/government/organisations/hm-treasury",
+  },
+];
