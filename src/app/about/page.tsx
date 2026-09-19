@@ -1,112 +1,233 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Alert } from "@/components/ui/Alert";
-
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "About FCE",
-  description: `About ${siteConfig.fullBrand}: an independent civic information campaign on petrol and diesel affordability in England.`,
+  title: "About",
+  description: `About ${siteConfig.fullBrand}: an independent information and education website about fuel prices, taxation, household costs, wages and the wider economics behind what motorists pay at the pump.`,
 };
 
-const principles = [
-  {
-    title: "No fabricated data",
-    body: "We never invent fuel prices, statistics, government statements, or news articles. Where verified data isn't connected yet, we say so clearly instead of guessing.",
-  },
-  {
-    title: "Clear sourcing",
-    body: "Every figure we publish is labelled as live, historical, or demo data, with a source and date wherever possible.",
-  },
-  {
-    title: "Lawful, peaceful action only",
-    body: "We only encourage lawful, peaceful civic participation — contacting elected representatives, lawful protest, and public discussion.",
-  },
-  {
-    title: "Privacy by default",
-    body: "We collect only what's needed, never publish personal information without consent, and moderate all public submissions before they appear.",
-  },
+const purposes = [
+  "Educate",
+  "Inform",
+  "Explain",
+  "Provide accessible data",
+  "Make complex economic information easier to understand",
+  "Show how fuel prices are constructed",
+  "Explain taxation and Fuel Duty",
+  "Explore how fuel costs affect households and businesses",
+  "Compare historical prices and wages",
+  "Provide tools that allow people to explore the evidence themselves",
+];
+
+const impartialityPoints = [
+  "We aim to present information accurately and transparently, regardless of whether the evidence supports one interpretation, another interpretation, or shows that the answer is uncertain.",
+  "Where a figure comes from an external organisation, we identify the source.",
+  "Where data is incomplete, we say so.",
+  "Where different methodologies produce different results, we explain the difference.",
+  "We distinguish between documented facts, calculations, analysis and campaign or policy proposals.",
+  "We do not present political opinions as facts.",
+  "We do not ask visitors to adopt a particular political position.",
+];
+
+const dataOrganisations = [
+  "Office for National Statistics",
+  "GOV.UK",
+  "Department for Energy Security and Net Zero",
+  "Bank of England",
+  "HM Treasury",
+  "HM Revenue & Customs",
+  "Competition and Markets Authority",
+  "European Commission",
+  "other clearly identified primary or reputable sources where necessary",
+];
+
+const tools = [
+  { label: "Fuel Prices", href: "/live-fuel-prices", description: "See current and historical fuel prices." },
+  { label: "Why Is Fuel So Expensive?", href: "/why-is-fuel-expensive", description: "Understand the components between crude oil and the pump." },
+  { label: "Follow the Money", href: "/follow-the-money", description: "Explore Fuel Duty, VAT, industry economics and government revenue." },
+  { label: "Cost of Living", href: "/cost-of-living", description: "Explore fuel alongside wages, inflation and household costs." },
+  { label: "Europe", href: "/europe-compared", description: "Compare UK fuel prices with European data where methodologies are comparable." },
+  { label: "Save Fuel", href: "/save-fuel-money", description: "Practical information about driving efficiency and vehicle maintenance." },
+  { label: "Historical Explorer", href: "/fuel-prices-through-time", description: "Explore fuel prices, wages, tax and inflation across different years." },
+  { label: "Sources & Evidence", href: "/sources", description: "See where the numbers come from." },
+  { label: "Take Action", href: "/make-a-change", description: "Neutral information about lawful civic participation, contacting representatives and examining policy proposals." },
 ];
 
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-navy-950 py-14 sm:py-16">
+      <section className="bg-navy-950 py-16 sm:py-20">
         <Container>
-          <SectionHeading
-            tone="dark"
-            eyebrow="About us"
-            title={`About ${siteConfig.fullBrand}`}
-            description={siteConfig.supportingStatement}
-          />
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-petrol-300">About Fuel Crisis England</p>
+          <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
+          <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Evidence before opinion.</h1>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+            {siteConfig.name} is an independent information and education website created to help people
+            understand fuel prices, taxation, household costs, wages, supply chains and the wider economics
+            behind what motorists pay at the pump.
+          </p>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
+            The website brings together data, explanations and interactive tools so visitors can explore
+            the numbers for themselves.
+          </p>
         </Container>
       </section>
 
-      <section className="bg-white py-14 sm:py-16">
+      {/* 01 — OUR PURPOSE */}
+      <section className="bg-white py-16 sm:py-20">
         <Container>
-          <div className="max-w-3xl space-y-5 text-sm leading-relaxed text-charcoal-700 sm:text-base">
-            <p>
-              Fuel Crisis England exists to make fuel economics easier to understand. We believe people
-              should be able to see clearly how fuel prices are formed, how taxation affects what
-              motorists pay, how the energy industry performs financially, and what policy choices are
-              available to government.
-            </p>
-            <p>
-              We do not ask visitors to accept claims without evidence. We publish the numbers, identify
-              the sources, and explain the limitations. The purpose is simple:
-            </p>
-            <p className="text-lg font-bold text-navy-900">
-              Ask questions. Follow the money. Check the evidence. Make your voice heard.
-            </p>
-            <p>
-              This platform is independent. It is a civic information and campaigning website, not a
-              government service, and is not affiliated with HM Government, any political party, or any
-              fuel retailer.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            {principles.map((principle) => (
-              <div key={principle.title} className="rounded border border-slate-200 p-6">
-                <h2 className="text-base font-bold text-navy-900">{principle.title}</h2>
-                <p className="mt-2 text-sm leading-relaxed text-charcoal-700">{principle.body}</p>
+          <SectionHeading number="01" eyebrow="Our purpose" title="What this website is for" rule />
+          <div className="mt-8 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+            {purposes.map((p) => (
+              <div key={p} className="flex items-start gap-2.5 py-1.5">
+                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-petrol-500" aria-hidden="true" />
+                <p className="text-sm leading-relaxed text-charcoal-700">{p}</p>
               </div>
             ))}
           </div>
+          <p className="mt-8 max-w-2xl text-sm leading-relaxed text-charcoal-700">
+            The website is designed to help visitors ask informed questions and understand the evidence
+            behind the numbers.
+          </p>
+        </Container>
+      </section>
 
-          <div className="mt-12 rounded bg-navy-950 p-8 sm:p-10">
-            <div className="max-w-2xl space-y-4 text-sm leading-relaxed text-slate-300 sm:text-base">
-              <p>
-                Fuel costs affect far more than the price displayed at a petrol station. They affect how
-                people get to work, how businesses operate, how goods are delivered and how much families
-                have left at the end of the month.
-              </p>
-              <p>
-                At the same time, government receives significant revenue from fuel taxation and major
-                energy companies report substantial profits. That does not automatically prove that every
-                price increase is unlawful or that every profit is excessive. But it does create legitimate
-                questions about transparency, fairness, taxation, competition and public policy.
-              </p>
-              <p>
-                We believe the Government should explain what choices it has, why it makes those choices,
-                and whether Fuel Duty can be frozen while people are under pressure. We also believe that
-                regulators and policymakers should examine whether exceptional profits during an
-                exceptional crisis require exceptional measures.
-              </p>
-              <p className="text-lg font-bold text-white">
-                Save fuel. Save money. Follow the money. Ask questions. Demand accountability. Make your
-                voice heard lawfully and peacefully.
-              </p>
-            </div>
+      {/* 02 — INDEPENDENCE */}
+      <section className="bg-navy-950 py-16 sm:py-20">
+        <Container>
+          <SectionHeading tone="dark" number="02" eyebrow="Independence" title="Independent of political parties and government" rule />
+          <div className="mt-8 max-w-2xl space-y-4 text-sm leading-relaxed text-slate-300 sm:text-base">
+            <p className="text-lg font-bold text-white">
+              {siteConfig.name} is not affiliated with, owned by, operated by, or controlled by any
+              political party, political campaign, government department, elected representative or
+              government body.
+            </p>
+            <p>The website does not represent the views of any political party or government.</p>
+            <p>
+              Our aim is to provide information, data, explanations and tools that allow visitors to
+              examine the evidence for themselves.
+            </p>
           </div>
+        </Container>
+      </section>
 
-          <div className="mt-12">
+      {/* 03 — IMPARTIALITY */}
+      <section className="bg-white py-16 sm:py-20">
+        <Container>
+          <SectionHeading number="03" eyebrow="Impartiality" title="Our approach to impartiality" rule />
+          <ul className="mt-8 max-w-2xl divide-y divide-slate-200 border-t border-slate-200">
+            {impartialityPoints.map((point) => (
+              <li key={point} className="py-4 text-sm leading-relaxed text-charcoal-700 sm:text-base">
+                {point}
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
+      {/* 04 — OUR DATA */}
+      <section className="bg-slate-50 py-16 sm:py-20">
+        <Container>
+          <SectionHeading number="04" eyebrow="Our data" title="Where does the data come from?" rule />
+          <p className="mt-8 max-w-2xl text-sm leading-relaxed text-charcoal-700 sm:text-base">
+            The website uses publicly available information from sources such as:
+          </p>
+          <div className="mt-6 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+            {dataOrganisations.map((org) => (
+              <div key={org} className="flex items-start gap-2.5 py-1.5">
+                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-petrol-500" aria-hidden="true" />
+                <p className="text-sm leading-relaxed text-charcoal-700">{org}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 max-w-2xl border-l-2 border-petrol-500 py-1 pl-4">
+            <p className="text-sm font-semibold leading-relaxed text-navy-900">
+              Every important figure should have a source, date/period, unit and geographical scope where
+              applicable.
+            </p>
+          </div>
+          <div className="mt-6">
+            <Link href="/sources" className="group inline-flex items-center gap-1.5 text-sm font-semibold text-petrol-600 hover:text-petrol-700">
+              See our full Sources &amp; Methodology
+              <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* 05 — OUR TOOLS */}
+      <section className="bg-white py-16 sm:py-20">
+        <Container>
+          <SectionHeading number="05" eyebrow="Our tools" title="Explore the data" rule />
+          <div className="mt-10 grid gap-0 divide-y divide-slate-200 border-t border-slate-200 sm:grid-cols-2 sm:divide-y-0 sm:divide-x lg:grid-cols-3">
+            {tools.map((tool) => (
+              <Link key={tool.href} href={tool.href} className="group flex flex-col justify-between gap-3 p-6 transition-colors hover:bg-slate-50">
+                <div>
+                  <p className="text-base font-bold text-navy-900 group-hover:text-petrol-600">{tool.label}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-charcoal-700">{tool.description}</p>
+                </div>
+                <span
+                  aria-hidden="true"
+                  className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wide text-charcoal-400 transition-all duration-200 group-hover:translate-x-1 group-hover:text-petrol-500"
+                >
+                  Explore →
+                </span>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* 06 — A NOTE ON INTERPRETATION */}
+      <section className="bg-slate-50 py-16 sm:py-20">
+        <Container>
+          <SectionHeading number="06" eyebrow="A note on interpretation" title="Reading these figures carefully" rule />
+          <div className="mt-8 max-w-2xl space-y-4 text-sm leading-relaxed text-charcoal-700 sm:text-base">
+            <p>
+              Fuel prices are influenced by multiple factors, including crude oil prices, exchange rates,
+              refining, wholesale markets, distribution, retail costs and taxation.
+            </p>
+            <p>
+              Government policy is one part of the overall system, and the website does not claim that any
+              single organisation or factor determines the pump price.
+            </p>
+            <p>
+              Historical comparisons should be interpreted carefully because economic conditions, vehicle
+              efficiency, household composition, wages, taxes and statistical methodologies change over
+              time.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Who we are */}
+      <section className="bg-navy-950 py-16 sm:py-20">
+        <Container>
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-petrol-300">Who we are</p>
+          <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
+          <div className="max-w-2xl space-y-4 text-sm leading-relaxed text-slate-300 sm:text-base">
+            <p className="text-lg font-bold text-white">
+              {siteConfig.name} is an independent web project focused on fuel prices, economics, data and
+              public information.
+            </p>
+            <p>
+              Website created by{" "}
+              <a href="https://www.hkcreativeweb.com/" target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-2 hover:text-white">
+                HK Creative Web
+              </a>
+              .
+            </p>
+          </div>
+          <div className="mt-8 max-w-2xl">
             <Alert tone="info" title="This is a preview build.">
               Several features on this site — the live fuel price feed, the petition database, and public
               submission storage — are currently running in a clearly labelled demo mode while a
-              production backend and verified data sources are connected. Nothing on this site claims to
-              be more real or more official than it is.
+              production backend and further verified data sources are connected. Nothing on this site
+              claims to be more real or more official than it is.
             </Alert>
           </div>
         </Container>

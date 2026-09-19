@@ -20,8 +20,11 @@ export function Footer() {
               <Logo />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-400">
-              Practical information, transparent evidence and lawful civic action about fuel affordability
-              and the wider cost-of-living impact.
+              Independent information and education about fuel prices, taxation, costs and the evidence
+              behind them.
+            </p>
+            <p className="mt-2 max-w-sm text-sm font-semibold text-slate-300">
+              Independent of political parties and government.
             </p>
             <Link href={homeNavItem.href} className="mt-4 inline-block text-sm font-semibold text-slate-400 hover:text-white">
               Home
