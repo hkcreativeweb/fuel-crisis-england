@@ -8,7 +8,7 @@ function isDateOnly(value: string) {
 
 export function LiveIndicatorCard({ indicator }: { indicator: LiveIndicator }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6">
+    <div className="rounded border border-slate-200 bg-white p-6">
       <div className="flex items-start justify-between gap-3">
         <p className="text-sm font-semibold text-charcoal-600">{indicator.label}</p>
         <StatusBadge status={indicator.status} />

@@ -82,6 +82,15 @@ export const navCategories: NavCategory[] = [
     ],
   },
   {
+    label: "Europe",
+    href: "/europe-compared",
+    items: [
+      { label: "Europe Compared", href: "/europe-compared", description: "UK vs all 27 EU member states, litre for litre" },
+      { label: "Price Before Tax", href: "/europe-compared#price-breakdown", description: "What fuel costs before duty and VAT" },
+      { label: "50-Litre Comparison", href: "/europe-compared#fifty-litre-comparison", description: "What a full tank costs across borders" },
+    ],
+  },
+  {
     label: "Take Action",
     href: "/our-demands",
     items: [

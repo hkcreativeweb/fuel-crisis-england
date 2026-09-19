@@ -18,7 +18,7 @@ export function WageVsPump() {
   const dieselLitres = eligible && snapshot.dieselPencePerLitre ? (snapshot.minimumWagePerHour! * 100) / snapshot.dieselPencePerLitre : null;
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="flex flex-wrap gap-2">
         {availableYears.map((y) => {
           const isEligible = eligibleYears.includes(y);
@@ -44,7 +44,7 @@ export function WageVsPump() {
 
       {eligible && petrolLitres !== null ? (
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
-          <div className="rounded-2xl bg-slate-50 p-6 text-center">
+          <div className="rounded bg-slate-50 p-6 text-center">
             <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Petrol</p>
             <p className="mt-2 text-4xl font-extrabold tabular-nums text-navy-900">{petrolLitres.toFixed(1)}L</p>
             <p className="mt-2 text-sm text-charcoal-700">
@@ -53,7 +53,7 @@ export function WageVsPump() {
             </p>
           </div>
           {dieselLitres !== null ? (
-            <div className="rounded-2xl bg-slate-50 p-6 text-center">
+            <div className="rounded bg-slate-50 p-6 text-center">
               <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Diesel</p>
               <p className="mt-2 text-4xl font-extrabold tabular-nums text-navy-900">{dieselLitres.toFixed(1)}L</p>
               <p className="mt-2 text-sm text-charcoal-700">The same calculation for diesel.</p>

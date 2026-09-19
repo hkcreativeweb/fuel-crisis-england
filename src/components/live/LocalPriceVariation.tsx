@@ -3,7 +3,7 @@ import { Alert } from "@/components/ui/Alert";
 
 export function LocalPriceVariation() {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="flex flex-wrap items-center gap-3">
         <StatusBadge status="live" showDetail />
         <p className="text-xs font-semibold text-charcoal-600">Fuel Finder scheme operational since February 2026</p>
@@ -18,14 +18,14 @@ export function LocalPriceVariation() {
       </p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        <div className="rounded-xl bg-slate-50 p-4">
+        <div className="rounded-md bg-slate-50 p-4">
           <p className="text-xs font-bold uppercase tracking-wide text-navy-900">What the CMA has confirmed</p>
           <ul className="mt-2 space-y-2 text-sm text-charcoal-700">
             <li>Supermarkets have consistently lower average margins than non-supermarkets (see margins table above).</li>
             <li>Individual retailers vary — two unnamed non-supermarket retailers raised prices well beyond the market average in June 2026.</li>
           </ul>
         </div>
-        <div className="rounded-xl bg-slate-50 p-4">
+        <div className="rounded-md bg-slate-50 p-4">
           <p className="text-xs font-bold uppercase tracking-wide text-navy-900">Factors regulators say can matter</p>
           <ul className="mt-2 space-y-2 text-sm text-charcoal-700">
             <li>Local competition — how many other stations are nearby.</li>
@@ -35,7 +35,7 @@ export function LocalPriceVariation() {
         </div>
       </div>
 
-      <div className="mt-6 rounded-xl border border-slate-200 p-4">
+      <div className="mt-6 rounded-md border border-slate-200 p-4">
         <p className="text-xs font-bold uppercase tracking-wide text-navy-900">Fuel Finder — the official open data scheme</p>
         <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
           Under the Motor Fuel Price (Open Data) Regulations 2025, UK fuel retailers must report price

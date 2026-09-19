@@ -10,18 +10,20 @@ const labels: Record<ContentTagType, string> = {
   "public-opinion": "Public opinion",
 };
 
-const classes: Record<ContentTagType, string> = {
-  "verified-figure": "bg-emerald-100 text-emerald-800 ring-emerald-600/20",
-  "government-statistic": "bg-sky-100 text-sky-800 ring-sky-600/20",
-  "economic-analysis": "bg-violet-100 text-violet-800 ring-violet-600/20",
-  "campaign-commentary": "bg-petrol-100 text-petrol-600 ring-petrol-600/20",
-  "public-opinion": "bg-slate-100 text-slate-700 ring-slate-400/30",
+const dotClasses: Record<ContentTagType, string> = {
+  "verified-figure": "bg-emerald-600",
+  "government-statistic": "bg-sky-600",
+  "economic-analysis": "bg-violet-600",
+  "campaign-commentary": "bg-petrol-500",
+  "public-opinion": "bg-slate-400",
 };
 
+/** A typographic content-type label — dot + small caps text, not a filled pill. */
 export function ContentTag({ type, className }: { type: ContentTagType; className?: string }) {
   return (
-    <span className={cn("inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ring-1", classes[type], className)}>
-      {labels[type]}
+    <span className={cn("inline-flex items-center gap-1.5", className)}>
+      <span className={cn("h-[6px] w-[6px] rounded-full", dotClasses[type])} aria-hidden="true" />
+      <span className="text-[11px] font-bold uppercase tracking-[0.08em] text-charcoal-600">{labels[type]}</span>
     </span>
   );
 }
@@ -29,7 +31,7 @@ export function ContentTag({ type, className }: { type: ContentTagType; classNam
 export function ContentTagLegend() {
   const types: ContentTagType[] = ["verified-figure", "government-statistic", "economic-analysis", "campaign-commentary", "public-opinion"];
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-x-5 gap-y-2">
       {types.map((t) => (
         <ContentTag key={t} type={t} />
       ))}

@@ -19,14 +19,14 @@ const periodTypeStatus: Record<HMRCReceipt["periodType"], DataStatusLabel> = {
 export function HMRCReceiptCard({ receipt }: { receipt: HMRCReceipt }) {
   if (!receipt.verified || receipt.amountGBP === null) {
     return (
-      <div className="rounded-3xl border border-white/10 bg-white/5 p-8 text-center">
+      <div className="rounded border border-white/10 bg-white/5 p-8 text-center">
         <p className="text-sm font-semibold text-slate-300">Figures will be added once verified against HMRC.</p>
       </div>
     );
   }
 
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+    <div className="rounded border border-white/10 bg-white/5 p-8">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-400">{receipt.label}</p>
         <StatusBadge status={periodTypeStatus[receipt.periodType]} />

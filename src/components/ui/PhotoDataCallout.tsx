@@ -22,7 +22,7 @@ export function PhotoDataCallout({
 }) {
   const Wrapper = href ? "a" : "div";
   return (
-    <div className={cn("group relative overflow-hidden rounded-3xl", minHeight, className)}>
+    <div className={cn("group relative overflow-hidden rounded", minHeight, className)}>
       <Image src={credit.src} alt={credit.alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-navy-950/10" />
 

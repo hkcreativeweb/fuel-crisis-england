@@ -8,7 +8,7 @@ const questions = [
 
 export function CampaignStatement() {
   return (
-    <div className="rounded-3xl bg-navy-950 p-8 sm:p-12">
+    <div className="rounded bg-navy-950 p-8 sm:p-12">
       <p className="text-2xl font-extrabold leading-snug text-white sm:text-3xl">
         People have every right to ask questions when they see the price of fuel, the cost of living, and
         corporate profits changing at the same time.
@@ -20,7 +20,7 @@ export function CampaignStatement() {
 
       <ul className="mt-8 grid gap-3 sm:grid-cols-2">
         {questions.map((q) => (
-          <li key={q} className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-4 text-sm font-semibold text-white">
+          <li key={q} className="flex items-start gap-3 rounded-md border border-white/10 bg-white/5 p-4 text-sm font-semibold text-white">
             <span className="mt-0.5 text-petrol-400" aria-hidden="true">?</span>
             {q}
           </li>

@@ -19,7 +19,7 @@ export function ToolsSection() {
               {fuelSavingTools
                 .filter((t) => t.category === category)
                 .map((tool) => (
-                  <div key={tool.name} className="flex flex-col rounded-2xl border border-slate-200 p-5">
+                  <div key={tool.name} className="flex flex-col rounded border border-slate-200 p-5">
                     <h4 className="text-base font-bold text-navy-900">{tool.name}</h4>
                     <p className="mt-1.5 flex-1 text-sm leading-relaxed text-charcoal-700">{tool.whatItDoes}</p>
                     <dl className="mt-3 space-y-1 text-xs text-charcoal-600">

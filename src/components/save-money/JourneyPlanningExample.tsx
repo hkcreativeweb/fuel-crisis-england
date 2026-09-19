@@ -9,7 +9,7 @@ export function JourneyPlanningExample() {
   const [combined, setCombined] = useState(true);
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+    <div className="rounded border border-slate-200 bg-slate-50 p-6">
       <h3 className="text-base font-bold text-navy-900">A simple example</h3>
       <p className="mt-2 text-sm text-charcoal-700">
         Say you need to visit these five places this week. Compare making five separate round trips from

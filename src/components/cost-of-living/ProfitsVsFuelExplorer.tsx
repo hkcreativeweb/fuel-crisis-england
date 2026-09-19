@@ -81,7 +81,7 @@ export function ProfitsVsFuelExplorer() {
   }
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h3 className="text-lg font-bold text-navy-900">Corporate Profits vs Fuel Prices</h3>
         <DataStatusBadge status={hasData ? "historical" : "unavailable"} />
@@ -100,7 +100,7 @@ export function ProfitsVsFuelExplorer() {
           id="company-select"
           value={companySlug}
           onChange={(e) => setCompanySlug(e.target.value)}
-          className="mt-1.5 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
+          className="mt-1.5 rounded-md border border-slate-300 bg-white px-3.5 py-2 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
         >
           {companies.map((c) => (
             <option key={c.slug} value={c.slug}>

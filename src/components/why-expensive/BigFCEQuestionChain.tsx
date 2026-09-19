@@ -10,11 +10,11 @@ const chain = [
 
 export function BigFCEQuestionChain() {
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
+    <div className="rounded border border-white/10 bg-white/5 p-6 sm:p-8">
       <div className="flex flex-col items-stretch gap-2">
         {chain.map((step, i) => (
           <div key={step.label}>
-            <div className="flex items-center justify-between rounded-xl border border-petrol-500/30 bg-navy-900/60 px-5 py-3">
+            <div className="flex items-center justify-between rounded-md border border-petrol-500/30 bg-navy-900/60 px-5 py-3">
               <span className="text-sm font-bold text-white">{step.label}</span>
               <span className="text-xs text-slate-400">{step.detail}</span>
             </div>

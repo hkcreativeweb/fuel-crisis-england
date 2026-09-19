@@ -23,9 +23,8 @@ export default function ImpactPage() {
           <div className="absolute inset-0 bg-navy-950/78" />
         </div>
         <Container className="relative">
-          <p className="mb-4 inline-flex items-center rounded-full border border-accent-cost/40 bg-accent-cost/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-orange-300">
-            Real impact
-          </p>
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-accent-cost">Real impact</p>
+          <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
           <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">How fuel prices affect people</h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">
             Fuel costs aren&apos;t an abstract statistic — they shape household budgets, working hours, and
@@ -37,12 +36,16 @@ export default function ImpactPage() {
 
       <section className="bg-white py-14 sm:py-20">
         <Container>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {impactGroups.map((group) => (
-              <div key={group.title} className="rounded-2xl border border-slate-200 p-7">
+          <SectionHeading number="04" eyebrow="Who this affects" title="Eight groups, one shared exposure" rule />
+          <div className="mt-10 divide-y divide-slate-200 border-t border-slate-200">
+            {impactGroups.map((group, i) => (
+              <div key={group.title} className="grid gap-2 py-7 sm:grid-cols-[2.5rem_1fr_1.4fr] sm:gap-8">
+                <p className="text-sm font-bold tabular-nums text-charcoal-400">{String(i + 1).padStart(2, "0")}</p>
                 <h2 className="text-lg font-bold text-navy-900">{group.title}</h2>
-                <p className="mt-2 text-sm leading-relaxed text-charcoal-700">{group.summary}</p>
-                <p className="mt-3 text-sm leading-relaxed text-charcoal-600 italic">{group.example}</p>
+                <div>
+                  <p className="text-sm leading-relaxed text-charcoal-700">{group.summary}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-charcoal-500 italic">{group.example}</p>
+                </div>
               </div>
             ))}
           </div>

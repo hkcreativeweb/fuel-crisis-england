@@ -8,17 +8,25 @@ const labels: Record<PolicyStatus, string> = {
   proposed: "Proposed — not yet confirmed",
 };
 
-const classes: Record<PolicyStatus, string> = {
-  current: "bg-emerald-100 text-emerald-800 ring-emerald-600/20",
-  previous: "bg-slate-100 text-slate-600 ring-slate-400/30",
-  announced: "bg-sky-100 text-sky-800 ring-sky-600/20",
-  proposed: "bg-amber-100 text-amber-900 ring-amber-600/30",
+const dotClasses: Record<PolicyStatus, string> = {
+  current: "bg-emerald-600",
+  previous: "bg-slate-400",
+  announced: "bg-sky-600",
+  proposed: "bg-amber-500",
+};
+
+const textClasses: Record<PolicyStatus, string> = {
+  current: "text-emerald-700",
+  previous: "text-slate-600",
+  announced: "text-sky-700",
+  proposed: "text-amber-700",
 };
 
 export function PolicyStatusBadge({ status, className }: { status: PolicyStatus; className?: string }) {
   return (
-    <span className={cn("inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ring-1", classes[status], className)}>
-      {labels[status]}
+    <span className={cn("inline-flex items-center gap-1.5", className)}>
+      <span className={cn("h-[6px] w-[6px] rounded-full", dotClasses[status])} aria-hidden="true" />
+      <span className={cn("text-[11px] font-bold uppercase tracking-[0.08em]", textClasses[status])}>{labels[status]}</span>
     </span>
   );
 }

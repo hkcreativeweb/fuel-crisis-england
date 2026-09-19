@@ -47,20 +47,17 @@ export default async function FuelPricesPage() {
           </div>
 
           {snapshot ? (
-            <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              <FuelPriceCard fuel="petrol" pencePerLitre={snapshot.petrolPencePerLitre} />
-              <FuelPriceCard fuel="diesel" pencePerLitre={snapshot.dieselPencePerLitre} />
-              <div className="rounded-2xl border border-slate-200 bg-white p-6">
-                <p className="text-sm font-semibold text-charcoal-600">Date updated</p>
-                <p className="mt-3 text-lg font-bold text-navy-900">
-                  {snapshot.provenance.asOf ? formatDate(snapshot.provenance.asOf) : "—"}
-                </p>
+            <>
+              <div className="mt-6 grid gap-5 sm:grid-cols-2">
+                <FuelPriceCard fuel="petrol" pencePerLitre={snapshot.petrolPencePerLitre} />
+                <FuelPriceCard fuel="diesel" pencePerLitre={snapshot.dieselPencePerLitre} />
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-6">
-                <p className="text-sm font-semibold text-charcoal-600">Data source</p>
-                <p className="mt-3 text-lg font-bold text-navy-900">{snapshot.provenance.source}</p>
-              </div>
-            </div>
+              <p className="mt-4 text-xs text-charcoal-600">
+                {snapshot.provenance.asOf ? `Updated ${formatDate(snapshot.provenance.asOf)}` : null}
+                {snapshot.provenance.asOf && snapshot.provenance.source ? " — " : null}
+                {snapshot.provenance.source ? `Source: ${snapshot.provenance.source}` : null}
+              </p>
+            </>
           ) : (
             <div className="mt-6">
               <Alert tone="info" title="Fuel price data is currently being connected.">

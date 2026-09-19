@@ -17,19 +17,19 @@ export function TaxTransparentCalc() {
   ];
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="grid gap-3 sm:grid-cols-2">
-        <div className="rounded-2xl bg-slate-50 p-5">
+        <div className="rounded bg-slate-50 p-5">
           <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Fuel Duty</p>
           <p className="mt-1 text-2xl font-extrabold tabular-nums text-navy-900">{duty.toFixed(2)}p per litre</p>
         </div>
-        <div className="rounded-2xl bg-slate-50 p-5">
+        <div className="rounded bg-slate-50 p-5">
           <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">VAT</p>
           <p className="mt-1 text-2xl font-extrabold tabular-nums text-navy-900">{(vatRate * 100).toFixed(0)}%</p>
         </div>
       </div>
 
-      <div className="mt-6 divide-y divide-slate-100 rounded-2xl border border-slate-200">
+      <div className="mt-6 divide-y divide-slate-100 rounded border border-slate-200">
         {rows.map((row) => (
           <div key={row.label} className="flex items-center justify-between px-5 py-3">
             <span className="flex items-center gap-2 text-sm font-medium text-charcoal-700">

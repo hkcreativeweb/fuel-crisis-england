@@ -25,9 +25,8 @@ export default function GovernmentAccountabilityPage() {
           <div className="absolute inset-0 bg-navy-950/80" />
         </div>
         <Container className="relative">
-          <p className="mb-4 inline-flex items-center rounded-full border border-accent-gov/40 bg-accent-gov/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-red-300">
-            Hold government accountable
-          </p>
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-red-300">Hold government accountable</p>
+          <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
           <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Government Accountability</h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">
             Beyond a single email: ask for evidence, and share verified information lawfully and

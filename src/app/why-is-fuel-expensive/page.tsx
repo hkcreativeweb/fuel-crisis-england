@@ -54,9 +54,8 @@ export default function WhyIsFuelExpensivePage() {
     <>
       <section className="bg-navy-950 py-16 sm:py-20">
         <Container>
-          <p className="mb-4 inline-flex items-center rounded-full border border-accent-why/40 bg-accent-why/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-accent-why">
-            The price you see
-          </p>
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-accent-why">The price you see</p>
+          <div className="mb-6 h-px w-12 bg-white/20" aria-hidden="true" />
           <div className="flex flex-wrap items-end gap-6">
             <p className="text-6xl font-extrabold tabular-nums text-white sm:text-7xl">
               {now.petrolPencePerLitre?.toFixed(1)}p
@@ -201,7 +200,7 @@ export default function WhyIsFuelExpensivePage() {
             </div>
             <div>
               <h3 className="mb-4 text-base font-bold text-navy-900">Follow £50</h3>
-              <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+              <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
                 <FollowTheMoneyFlow defaultAmount={50} />
               </div>
             </div>

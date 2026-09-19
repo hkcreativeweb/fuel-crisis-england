@@ -3,7 +3,7 @@ import { Alert } from "@/components/ui/Alert";
 
 export function CompetitionMargins() {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <p className="text-sm leading-relaxed text-charcoal-700">
         The difference between the wholesale price and the retail price is{" "}
         <strong>not automatically the retailer&apos;s profit</strong> — it covers running costs including
@@ -38,11 +38,11 @@ export function CompetitionMargins() {
       </p>
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-xl bg-slate-50 p-4">
+        <div className="rounded-md bg-slate-50 p-4">
           <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Petrol — May to June 2026</p>
           <p className="mt-2 text-sm leading-relaxed text-charcoal-700">{cmaPassThroughFindings.petrol}</p>
         </div>
-        <div className="rounded-xl bg-slate-50 p-4">
+        <div className="rounded-md bg-slate-50 p-4">
           <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Diesel — May to June 2026</p>
           <p className="mt-2 text-sm leading-relaxed text-charcoal-700">{cmaPassThroughFindings.diesel}</p>
         </div>

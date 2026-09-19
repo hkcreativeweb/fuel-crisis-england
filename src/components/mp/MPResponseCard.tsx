@@ -9,7 +9,7 @@ const quoteTypeLabels: Record<ResponseQuoteType, string> = {
 
 export function MPResponseCard({ response }: { response: MPResponseSubmission }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6">
+    <div className="rounded border border-slate-200 bg-white p-6">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
           <p className="text-sm font-bold text-navy-900">{response.mpName}</p>

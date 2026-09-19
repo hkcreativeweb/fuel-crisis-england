@@ -7,7 +7,7 @@ export function FollowOneLitre() {
     <div>
       <ol className="grid gap-4 sm:grid-cols-2">
         {litreJourneySteps.map((step) => (
-          <li key={step.number} className="rounded-2xl border border-slate-200 p-5">
+          <li key={step.number} className="rounded border border-slate-200 p-5">
             <div className="flex items-center justify-between gap-2">
               <span className="flex items-center gap-2">
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-petrol-500 text-xs font-extrabold text-white">

@@ -20,7 +20,7 @@ export function BootChecklist() {
   }
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+    <div className="rounded border border-slate-200 bg-slate-50 p-6">
       <h3 className="text-base font-bold text-navy-900">What&apos;s in your boot?</h3>
       <p className="mt-2 text-sm text-charcoal-700">
         Tick anything you&apos;re currently carrying around that you don&apos;t actually need today.

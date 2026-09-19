@@ -9,7 +9,7 @@ export function TwoPathways() {
     <section className="bg-navy-950 py-16 sm:py-20">
       <Container>
         <div className="grid gap-6 lg:grid-cols-2">
-          <div className="rounded-3xl border border-petrol-500/30 bg-petrol-500/10 p-8">
+          <div className="rounded border border-petrol-500/30 bg-petrol-500/10 p-8">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-petrol-300">Pathway one</p>
             <h2 className="mt-2 text-2xl font-extrabold text-white sm:text-3xl">Save Money Now</h2>
             <ul className="mt-5 space-y-2 text-sm text-slate-200">
@@ -27,7 +27,7 @@ export function TwoPathways() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/15 bg-white/5 p-8">
+          <div className="rounded border border-white/15 bg-white/5 p-8">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-400">Pathway two</p>
             <h2 className="mt-2 text-2xl font-extrabold text-white sm:text-3xl">Make Change</h2>
             <ul className="mt-5 space-y-2 text-sm text-slate-200">

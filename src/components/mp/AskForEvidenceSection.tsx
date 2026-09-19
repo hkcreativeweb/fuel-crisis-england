@@ -22,7 +22,7 @@ const accountabilityTopics = [
 export function AskForEvidenceSection() {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
-      <div className="rounded-2xl border border-slate-200 p-6">
+      <div className="rounded border border-slate-200 p-6">
         <h3 className="text-base font-bold text-navy-900">Ask for answers on</h3>
         <ul className="mt-4 space-y-2">
           {accountabilityTopics.map((topic) => (
@@ -33,7 +33,7 @@ export function AskForEvidenceSection() {
           ))}
         </ul>
       </div>
-      <div className="rounded-2xl border border-slate-200 p-6">
+      <div className="rounded border border-slate-200 p-6">
         <h3 className="text-base font-bold text-navy-900">Ask for evidence</h3>
         <p className="mt-2 text-sm text-charcoal-700">Encourage your MP or the Government to publish or explain:</p>
         <ul className="mt-4 space-y-2">

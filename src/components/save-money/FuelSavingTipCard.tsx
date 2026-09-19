@@ -8,7 +8,7 @@ export function FuelSavingTipCard({ tip }: { tip: FuelSavingTip }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6">
+    <div className="rounded border border-slate-200 bg-white p-6">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}

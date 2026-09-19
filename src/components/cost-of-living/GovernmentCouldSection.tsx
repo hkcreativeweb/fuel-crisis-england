@@ -4,7 +4,7 @@ export function GovernmentCouldSection() {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
       {policyControlAreas.map((area) => (
-        <div key={area.title} className="rounded-2xl border border-slate-200 p-6">
+        <div key={area.title} className="rounded border border-slate-200 p-6">
           <h3 className="text-lg font-bold text-navy-900">{area.title}</h3>
           <dl className="mt-4 space-y-3 text-sm">
             <div>

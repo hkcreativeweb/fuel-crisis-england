@@ -59,7 +59,7 @@ function DesktopDropdown({ category, pathname }: { category: NavCategory; pathna
           open ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none -translate-y-1 opacity-0"
         )}
       >
-        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-[#F8F7F4] p-2 shadow-xl shadow-navy-950/20">
+        <div className="overflow-hidden rounded border border-slate-200 bg-[#F8F7F4] p-2 shadow-lg shadow-navy-950/10">
           {category.items.map((item) => {
             const itemActive = item.href.split("#")[0] === pathname;
             return (
@@ -68,7 +68,7 @@ function DesktopDropdown({ category, pathname }: { category: NavCategory; pathna
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  "block rounded-xl px-3.5 py-2.5 transition-colors",
+                  "block rounded-md px-3.5 py-2.5 transition-colors",
                   itemActive ? "bg-petrol-500/10" : "hover:bg-white"
                 )}
               >
@@ -182,7 +182,7 @@ export function Header() {
 
           <Link
             href={primaryCtaHref}
-            className="hidden rounded-full bg-petrol-500 px-4 py-2 text-[13px] font-bold text-white transition-colors hover:bg-petrol-600 xl:inline-block"
+            className="hidden rounded-md bg-petrol-500 px-4 py-2 text-[13px] font-bold text-white transition-colors hover:bg-petrol-600 xl:inline-block"
           >
             {primaryCtaLabel}
           </Link>
@@ -227,7 +227,7 @@ export function Header() {
           <Link
             href={primaryCtaHref}
             onClick={() => setMobileOpen(false)}
-            className="mt-5 block rounded-full bg-petrol-500 px-5 py-3 text-center text-sm font-bold text-white"
+            className="mt-5 block rounded-md bg-petrol-500 px-5 py-3 text-center text-sm font-bold text-white"
           >
             {primaryCtaLabel}
           </Link>

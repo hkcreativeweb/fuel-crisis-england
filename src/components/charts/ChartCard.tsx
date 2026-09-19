@@ -20,7 +20,7 @@ export function ChartCard({
   const periods = Array.from(new Set(series.flatMap((s) => s.points.map((p) => p.period)))).sort();
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6">
+    <div className="rounded border border-slate-200 bg-white p-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h3 className="text-lg font-bold text-navy-900">{title}</h3>

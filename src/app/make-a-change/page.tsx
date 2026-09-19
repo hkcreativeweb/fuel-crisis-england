@@ -32,7 +32,7 @@ export default function TakeActionPage() {
         <Container>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {takeActionOptions.map((option) => (
-              <div key={option.title} className="flex flex-col rounded-2xl border border-slate-200 p-6">
+              <div key={option.title} className="flex flex-col rounded border border-slate-200 p-6">
                 <h3 className="text-base font-bold text-navy-900">{option.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-charcoal-700">{option.description}</p>
                 <LinkButton href={option.href} variant="secondary" className="mt-4 self-start">

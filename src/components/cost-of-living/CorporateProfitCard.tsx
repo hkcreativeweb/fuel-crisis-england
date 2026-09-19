@@ -10,7 +10,7 @@ function formatFigure(figure: FinancialFigure | null): string {
 
 export function CorporateProfitCard({ company, year }: { company: Company; year: CompanyFinancialYear }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6">
+    <div className="rounded border border-slate-200 bg-white p-6">
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
           <h3 className="text-lg font-bold text-navy-900">{company.name}</h3>

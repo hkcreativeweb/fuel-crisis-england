@@ -68,14 +68,14 @@ export default function AboutPage() {
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             {principles.map((principle) => (
-              <div key={principle.title} className="rounded-2xl border border-slate-200 p-6">
+              <div key={principle.title} className="rounded border border-slate-200 p-6">
                 <h2 className="text-base font-bold text-navy-900">{principle.title}</h2>
                 <p className="mt-2 text-sm leading-relaxed text-charcoal-700">{principle.body}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-12 rounded-3xl bg-navy-950 p-8 sm:p-10">
+          <div className="mt-12 rounded bg-navy-950 p-8 sm:p-10">
             <div className="max-w-2xl space-y-4 text-sm leading-relaxed text-slate-300 sm:text-base">
               <p>
                 Fuel costs affect far more than the price displayed at a petrol station. They affect how

@@ -16,7 +16,7 @@ function Metric({
   prefix?: string;
 }) {
   return (
-    <div className="rounded-xl bg-white p-4">
+    <div className="rounded-md bg-white p-4">
       <p className="text-xs font-semibold uppercase tracking-wide text-charcoal-600">{label}</p>
       <p className="mt-1.5 text-xl font-extrabold tabular-nums text-navy-900">
         {value !== null ? (
@@ -39,7 +39,7 @@ export function FollowTheMoneyTimeline() {
   const snapshot = yearlySnapshots[year];
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-slate-50 p-6 sm:p-8">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="text-3xl font-extrabold tabular-nums text-navy-900">{year}</p>
         <DataStatusBadge status={snapshot.verified ? "historical" : "unavailable"} />

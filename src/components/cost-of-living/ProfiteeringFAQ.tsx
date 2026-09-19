@@ -22,7 +22,7 @@ const evidenceItems = [
 export function ProfiteeringFAQ() {
   return (
     <div>
-      <div className="rounded-2xl border border-slate-200 p-6">
+      <div className="rounded border border-slate-200 p-6">
         <h3 className="text-base font-bold text-navy-900">These words don&apos;t all mean the same thing</h3>
         <dl className="mt-4 space-y-3">
           {definitions.map((d) => (
@@ -34,7 +34,7 @@ export function ProfiteeringFAQ() {
         </dl>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-slate-200 p-6">
+      <div className="mt-6 rounded border border-slate-200 p-6">
         <h3 className="text-base font-bold text-navy-900">The evidence, honestly labelled</h3>
         <ul className="mt-4 divide-y divide-slate-100">
           {evidenceItems.map((item) => (
@@ -52,7 +52,7 @@ export function ProfiteeringFAQ() {
         </p>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-6">
+      <div className="mt-6 rounded border border-amber-200 bg-amber-50 p-6">
         <h3 className="text-base font-bold text-navy-900">The limits of comparing global companies to UK prices</h3>
         <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
           Shell, BP, ExxonMobil, Chevron and TotalEnergies are global businesses whose profit reflects
@@ -67,7 +67,7 @@ export function ProfiteeringFAQ() {
         <FAQAccordion items={profiteeringFaqs} />
       </div>
 
-      <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-6">
+      <div className="mt-6 rounded border border-slate-200 bg-slate-50 p-6">
         <h3 className="text-base font-bold text-navy-900">Relevant investigations and regulatory findings</h3>
         <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
           The Competition and Markets Authority has carried out monitoring and studies of the UK road fuel

@@ -10,7 +10,7 @@ export function WageGapExplorer() {
   const measure = wageGapMeasures.find((m) => m.id === selectedId) ?? wageGapMeasures[0];
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <p className="text-sm font-semibold text-navy-900">Choose a comparison:</p>
       <div className="mt-3 flex flex-wrap gap-2">
         {wageGapMeasures.map((m) => (

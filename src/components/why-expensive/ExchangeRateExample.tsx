@@ -9,8 +9,8 @@ const scenarios = [
 
 export function ExchangeRateExample() {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
-      <div className="rounded-xl bg-amber-50 p-3 text-center text-xs font-bold uppercase tracking-wide text-amber-900 ring-1 ring-amber-600/20">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
+      <div className="rounded-md bg-amber-50 p-3 text-center text-xs font-bold uppercase tracking-wide text-amber-900 ring-1 ring-amber-600/20">
         Illustrative example — not a forecast
       </div>
 
@@ -22,7 +22,7 @@ export function ExchangeRateExample() {
 
       <div className="mt-6 grid gap-3 sm:grid-cols-3">
         {scenarios.map((s) => (
-          <div key={s.label} className={`rounded-xl p-4 text-center ${s.rate === VERIFIED_RATE ? "bg-petrol-50" : "bg-slate-50"}`}>
+          <div key={s.label} className={`rounded-md p-4 text-center ${s.rate === VERIFIED_RATE ? "bg-petrol-50" : "bg-slate-50"}`}>
             <p className={`text-xs font-semibold ${s.rate === VERIFIED_RATE ? "text-petrol-700" : "text-charcoal-600"}`}>{s.label}</p>
             <p className="mt-1 text-xs text-charcoal-600">£1 = ${s.rate.toFixed(4)}</p>
             <p className={`mt-2 text-2xl font-extrabold tabular-nums ${s.rate === VERIFIED_RATE ? "text-petrol-700" : "text-navy-900"}`}>

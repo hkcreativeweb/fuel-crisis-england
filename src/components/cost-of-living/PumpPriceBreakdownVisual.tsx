@@ -82,7 +82,7 @@ export function PumpPriceBreakdownVisual() {
   const breakdown = fuel === "petrol" ? petrolPumpPriceBreakdown : dieselPumpPriceBreakdown;
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="flex rounded-full border border-slate-200 bg-slate-50 p-1 text-sm font-semibold">
         {(["petrol", "diesel"] as FuelType[]).map((f) => (
           <button

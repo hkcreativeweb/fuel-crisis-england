@@ -2,33 +2,43 @@ import { cn } from "@/lib/utils";
 import type { DataStatusLabel } from "@/lib/types";
 
 const labels: Record<DataStatusLabel, string> = {
-  live: "LIVE",
-  "latest-available": "LATEST AVAILABLE",
+  live: "Live",
+  "latest-available": "Latest available",
   ytd: "YTD",
-  historical: "HISTORICAL",
-  estimate: "ESTIMATE",
-  projection: "PROJECTION",
-  "not-yet-available": "NOT YET AVAILABLE",
+  historical: "Historical",
+  estimate: "Estimate",
+  projection: "Projection",
+  "not-yet-available": "Not yet available",
 };
 
 const dotClasses: Record<DataStatusLabel, string> = {
-  live: "bg-blue-600",
+  live: "bg-blue-500",
   "latest-available": "bg-slate-500",
-  ytd: "bg-violet-600",
-  historical: "bg-purple-700",
+  ytd: "bg-violet-500",
+  historical: "bg-purple-600",
   estimate: "bg-amber-500",
   projection: "bg-pink-500",
   "not-yet-available": "bg-slate-300",
 };
 
-const badgeClasses: Record<DataStatusLabel, string> = {
-  live: "bg-blue-100 text-blue-800 ring-blue-600/20",
-  "latest-available": "bg-blue-50 text-slate-700 ring-slate-400/30",
-  ytd: "bg-violet-100 text-violet-800 ring-violet-600/20",
-  historical: "bg-purple-100 text-purple-800 ring-purple-600/20",
-  estimate: "bg-amber-100 text-amber-900 ring-amber-600/30",
-  projection: "bg-pink-100 text-pink-800 ring-pink-600/20",
-  "not-yet-available": "bg-slate-50 text-slate-500 ring-slate-300/40",
+const textClassesLight: Record<DataStatusLabel, string> = {
+  live: "text-blue-700",
+  "latest-available": "text-slate-600",
+  ytd: "text-violet-700",
+  historical: "text-purple-700",
+  estimate: "text-amber-700",
+  projection: "text-pink-700",
+  "not-yet-available": "text-slate-500",
+};
+
+const textClassesDark: Record<DataStatusLabel, string> = {
+  live: "text-blue-300",
+  "latest-available": "text-slate-300",
+  ytd: "text-violet-300",
+  historical: "text-purple-300",
+  estimate: "text-amber-300",
+  projection: "text-pink-300",
+  "not-yet-available": "text-slate-400",
 };
 
 const detailText: Record<DataStatusLabel, string> = {
@@ -41,14 +51,32 @@ const detailText: Record<DataStatusLabel, string> = {
   "not-yet-available": "Not yet published",
 };
 
-export function StatusBadge({ status, showDetail = false, className }: { status: DataStatusLabel; showDetail?: boolean; className?: string }) {
+/**
+ * A typographic status indicator — a coloured dot plus an uppercase
+ * label, never a filled pill. Colour lives in the dot and the text,
+ * not a background fill, so this reads as metadata rather than a UI
+ * chrome element. Pass `tone="dark"` when placing this on a dark
+ * (navy) background so the text stays legible.
+ */
+export function StatusBadge({
+  status,
+  showDetail = false,
+  tone = "light",
+  className,
+}: {
+  status: DataStatusLabel;
+  showDetail?: boolean;
+  tone?: "light" | "dark";
+  className?: string;
+}) {
+  const textClasses = tone === "dark" ? textClassesDark : textClassesLight;
   return (
-    <span className={cn("inline-flex flex-col items-start gap-0.5", className)}>
-      <span className={cn("inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold tracking-wide ring-1", badgeClasses[status])}>
-        <span className={cn("h-1.5 w-1.5 rounded-full", dotClasses[status])} aria-hidden="true" />
-        {labels[status]}
+    <span className={cn("inline-flex flex-wrap items-baseline gap-x-1.5", className)}>
+      <span className="inline-flex items-center gap-1.5">
+        <span className={cn("h-[6px] w-[6px] rounded-full", dotClasses[status])} aria-hidden="true" />
+        <span className={cn("text-[11px] font-bold uppercase tracking-[0.08em]", textClasses[status])}>{labels[status]}</span>
       </span>
-      {showDetail ? <span className="text-[11px] text-charcoal-500">{detailText[status]}</span> : null}
+      {showDetail ? <span className={cn("text-[11px]", tone === "dark" ? "text-slate-400" : "text-charcoal-500")}>— {detailText[status]}</span> : null}
     </span>
   );
 }

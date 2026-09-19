@@ -12,7 +12,7 @@ const announcedDuty = fuelDutyTimeline.filter((e) => e.status === "announced");
 
 function FuelDutyDataCard() {
   return (
-    <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
+    <div className="mt-4 rounded-md border border-slate-200 bg-slate-50 p-4">
       <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">The current position, verified</p>
       <div className="mt-3 grid gap-3 sm:grid-cols-2">
         <div>
@@ -58,7 +58,7 @@ function FuelDutyDataCard() {
 function CompetitionDataCard() {
   const latest = cmaMarginPoints[cmaMarginPoints.length - 1];
   return (
-    <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
+    <div className="mt-4 rounded-md border border-slate-200 bg-slate-50 p-4">
       <div className="flex flex-wrap items-center gap-2">
         <StatusBadge status="latest-available" />
         <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Latest CMA margin data</p>
@@ -95,7 +95,7 @@ function CompetitionDataCard() {
 export function PolicyDemands() {
   return (
     <div>
-      <div className="rounded-2xl border border-petrol-200 bg-petrol-50 p-5">
+      <div className="rounded border border-petrol-200 bg-petrol-50 p-5">
         <ContentTag type="campaign-commentary" />
         <p className="mt-3 text-sm leading-relaxed text-charcoal-700">
           The items below are Fuel Crisis England&apos;s own campaign demands — clearly presented as{" "}
@@ -109,7 +109,7 @@ export function PolicyDemands() {
 
       <div className="mt-8 grid gap-6 lg:grid-cols-2">
         {policyDemands.map((demand) => (
-          <div key={demand.id} className="rounded-2xl border border-slate-200 p-6">
+          <div key={demand.id} className="rounded border border-slate-200 p-6">
             <p className="text-xs font-bold uppercase tracking-wide text-petrol-600">Demand {demand.number} — {demand.title}</p>
             <h3 className="mt-1 text-lg font-bold text-navy-900">{demand.tagline}</h3>
             <p className="mt-2 text-sm leading-relaxed text-charcoal-700">{demand.statement}</p>

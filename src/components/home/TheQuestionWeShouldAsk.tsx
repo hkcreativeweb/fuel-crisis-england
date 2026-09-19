@@ -28,7 +28,7 @@ export function TheQuestionWeShouldAsk() {
           <StatCard label="Bank Rate" value={now.bankRatePercent ? `${now.bankRatePercent}%` : "—"} caption="affects mortgage & borrowing costs" />
         </div>
 
-        <div className="mt-10 max-w-2xl rounded-2xl border border-white/10 bg-white/5 p-6">
+        <div className="mt-10 max-w-2xl rounded border border-white/10 bg-white/5 p-6">
           <p className="text-lg font-bold text-white">
             How much of the pressure at the pump is influenced by government taxation — and what policy
             choices could reduce that pressure?

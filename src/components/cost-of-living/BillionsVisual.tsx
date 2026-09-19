@@ -19,7 +19,7 @@ export function BillionsVisual() {
   const millions = billions * 1000;
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="flex flex-wrap gap-2">
         {PRESETS.map((p) => (
           <button
@@ -41,7 +41,7 @@ export function BillionsVisual() {
         <label htmlFor="billions-input" className="block text-sm font-semibold text-navy-900">
           Or enter an amount, in billions of pounds
         </label>
-        <div className="mt-1.5 flex items-center gap-2 rounded-xl border border-slate-300 px-3.5 py-2.5">
+        <div className="mt-1.5 flex items-center gap-2 rounded-md border border-slate-300 px-3.5 py-2.5">
           <span className="text-charcoal-600">£</span>
           <input
             id="billions-input"
@@ -57,19 +57,19 @@ export function BillionsVisual() {
       </div>
 
       <div className="mt-8 grid gap-5 sm:grid-cols-3">
-        <div className="rounded-2xl bg-navy-950 p-6 text-center">
+        <div className="rounded bg-navy-950 p-6 text-center">
           <p className="text-xs font-bold uppercase tracking-wide text-slate-400">In full</p>
           <p className="mt-2 break-all text-2xl font-extrabold tabular-nums text-white sm:text-3xl">
             £<AnimatedCounter value={raw} />
           </p>
         </div>
-        <div className="rounded-2xl bg-navy-950 p-6 text-center">
+        <div className="rounded bg-navy-950 p-6 text-center">
           <p className="text-xs font-bold uppercase tracking-wide text-slate-400">As billions</p>
           <p className="mt-2 text-2xl font-extrabold tabular-nums text-white sm:text-3xl">
             £<AnimatedCounter value={billions} formatter={(n) => n.toLocaleString("en-GB", { maximumFractionDigits: 2 })} /> billion
           </p>
         </div>
-        <div className="rounded-2xl bg-navy-950 p-6 text-center">
+        <div className="rounded bg-navy-950 p-6 text-center">
           <p className="text-xs font-bold uppercase tracking-wide text-slate-400">As millions</p>
           <p className="mt-2 text-2xl font-extrabold tabular-nums text-white sm:text-3xl">
             <AnimatedCounter value={millions} /> million

@@ -4,7 +4,7 @@ const shareItems = ["Official figures", "Source links", "Government announcement
 
 export function ShareVerifiedInfoSection() {
   return (
-    <div className="rounded-2xl border border-slate-200 p-6">
+    <div className="rounded border border-slate-200 p-6">
       <h3 className="text-base font-bold text-navy-900">Share verified information</h3>
       <p className="mt-2 text-sm text-charcoal-700">Encourage others to share:</p>
       <ul className="mt-4 flex flex-wrap gap-2">

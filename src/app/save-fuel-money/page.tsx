@@ -32,9 +32,8 @@ export default function SaveMoneyPage() {
           <div className="absolute inset-0 bg-navy-950/80" />
         </div>
         <Container className="relative">
-          <p className="mb-4 inline-flex items-center rounded-full border border-accent-save/40 bg-accent-save/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-teal-300">
-            Protect your household today
-          </p>
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-teal-300">Protect your household today</p>
+          <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
           <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Save Fuel. Save Money.</h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">
             Genuinely useful, practical guidance — not generic tips. Every suggestion explains what to do,

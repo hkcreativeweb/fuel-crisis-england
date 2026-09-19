@@ -2,7 +2,7 @@ import { Alert } from "@/components/ui/Alert";
 
 export function FuelAdditivesSection() {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <p className="text-sm leading-relaxed text-charcoal-700">
         Some motorists use petrol or diesel fuel-system cleaners, injector cleaners, or other deposit-cleaning
         fuel additives. These products are generally marketed to clean or maintain parts of the fuel system
@@ -16,14 +16,14 @@ export function FuelAdditivesSection() {
       </p>
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-xl bg-slate-50 p-4">
+        <div className="rounded-md bg-slate-50 p-4">
           <p className="text-sm font-bold text-navy-900">For petrol vehicles</p>
           <p className="mt-1.5 text-xs leading-relaxed text-charcoal-700">
             Products marketed as petrol fuel-system cleaners, injector cleaners, or deposit-cleaning
             additives are widely available. Check compatibility with your specific engine before use.
           </p>
         </div>
-        <div className="rounded-xl bg-slate-50 p-4">
+        <div className="rounded-md bg-slate-50 p-4">
           <p className="text-sm font-bold text-navy-900">For diesel vehicles</p>
           <p className="mt-1.5 text-xs leading-relaxed text-charcoal-700">
             You may encounter products marketed as diesel injector cleaner, diesel fuel-system cleaner, or

@@ -4,7 +4,7 @@ import { formatDate } from "@/lib/utils";
 
 export function PublicExperienceCard({ experience }: { experience: PublicExperience }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6">
+    <div className="rounded border border-slate-200 bg-white p-6">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <span className="text-sm font-bold text-navy-900">{experience.areaOrCounty}</span>
         {experience.moderationStatus === "example" ? (

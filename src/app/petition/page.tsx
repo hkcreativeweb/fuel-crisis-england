@@ -21,7 +21,7 @@ export default function PetitionPage() {
             title="Sign the petition and share your experience"
             description="Every verified submission helps show the real scale of fuel affordability across England."
           />
-          <div className="mt-8 max-w-md rounded-2xl bg-white/5 p-6">
+          <div className="mt-8 max-w-md rounded bg-white/5 p-6">
             <PetitionCounter tone="dark" />
           </div>
         </Container>

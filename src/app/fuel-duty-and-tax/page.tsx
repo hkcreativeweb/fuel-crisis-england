@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 function TaxFigureCard({ figure }: { figure: TaxFigure }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6">
+    <div className="rounded border border-slate-200 bg-white p-6">
       <p className="text-sm font-semibold text-charcoal-600">{figure.label}</p>
       {figure.verified && figure.value ? (
         <>
@@ -98,7 +98,7 @@ export default function FuelDutyAndTaxPage() {
             </div>
           </div>
 
-          <div className="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-7">
+          <div className="mt-10 rounded border border-slate-200 bg-slate-50 p-7">
             <h2 className="text-lg font-bold text-navy-900">Fixed tax vs percentage-based tax</h2>
             <div className="mt-4 grid gap-6 sm:grid-cols-2">
               <div>

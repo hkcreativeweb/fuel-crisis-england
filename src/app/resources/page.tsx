@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { LinkButton } from "@/components/ui/Button";
 import { FAQAccordion } from "@/components/faq/FAQAccordion";
 import { faqs } from "@/lib/data/faqs";
 
@@ -40,9 +40,9 @@ export default function ResourcesPage() {
               See our Sources page for links to GOV.UK, UK Parliament, ONS, the CMA, and more.
             </p>
           </div>
-          <Link href="/sources" className="rounded-full bg-navy-900 px-6 py-3 text-sm font-semibold text-white hover:bg-navy-800">
+          <LinkButton href="/sources" size="lg">
             View Sources
-          </Link>
+          </LinkButton>
         </Container>
       </section>
     </>

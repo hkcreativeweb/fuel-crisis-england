@@ -12,6 +12,7 @@ const routes = [
   "/follow-the-money",
   "/fuel-duty-and-tax",
   "/cost-of-living",
+  "/europe-compared",
   "/government-accountability",
   "/our-demands",
   "/make-a-change",

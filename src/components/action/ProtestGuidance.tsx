@@ -11,7 +11,7 @@ const guidance = [
 
 export function ProtestGuidance() {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <h3 className="text-lg font-bold text-navy-900">Lawful, peaceful protest</h3>
       <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
         People may participate in lawful, peaceful protest and civic action, subject to applicable UK

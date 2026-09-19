@@ -18,7 +18,7 @@ export function WhyPricesChange() {
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {preview.map((factor) => (
-            <div key={factor.slug} className="rounded-2xl border border-slate-200 p-6">
+            <div key={factor.slug} className="rounded border border-slate-200 p-6">
               <h3 className="text-lg font-bold text-navy-900">{factor.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-charcoal-700">{factor.summary}</p>
             </div>

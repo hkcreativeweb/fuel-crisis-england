@@ -8,7 +8,7 @@ const AMOUNT = 20;
 
 function Metric({ label, value, unit }: { label: string; value: string | null; unit?: string }) {
   return (
-    <div className="rounded-2xl bg-slate-50 p-5">
+    <div className="rounded bg-slate-50 p-5">
       <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">{label}</p>
       {value ? (
         <p className="mt-2 text-2xl font-extrabold tabular-nums text-navy-900">
@@ -31,7 +31,7 @@ export function WhatDid20Buy() {
   const wageHours = snapshot.minimumWageVerified && snapshot.minimumWagePerHour ? AMOUNT / snapshot.minimumWagePerHour : null;
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="flex flex-wrap gap-2">
         {availableYears.map((y) => (
           <button

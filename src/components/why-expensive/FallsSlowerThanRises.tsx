@@ -15,7 +15,7 @@ const reasons = [
 
 export function FallsSlowerThanRises() {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="flex flex-wrap items-center gap-3">
         <StatusBadge status="historical" />
         <p className="text-xs font-semibold uppercase tracking-wide text-charcoal-600">
@@ -31,7 +31,7 @@ export function FallsSlowerThanRises() {
       </p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        <div className="rounded-xl border border-slate-200 p-4">
+        <div className="rounded-md border border-slate-200 p-4">
           <p className="text-xs font-bold uppercase tracking-wide text-navy-900">RAC analysis, diesel &amp; petrol — Oct–Dec 2022</p>
           <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
             Petrol wholesale costs fell <strong>23p/litre</strong> over 9 weeks (mid-Oct to mid-Dec 2022) but
@@ -48,7 +48,7 @@ export function FallsSlowerThanRises() {
           </p>
         </div>
 
-        <div className="rounded-xl border border-slate-200 p-4">
+        <div className="rounded-md border border-slate-200 p-4">
           <p className="text-xs font-bold uppercase tracking-wide text-navy-900">CMA road fuel market study — final report, 2023</p>
           <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
             The CMA found evidence of a rocket-and-feather pattern <strong>specifically for diesel</strong>{" "}
@@ -59,7 +59,7 @@ export function FallsSlowerThanRises() {
         </div>
       </div>
 
-      <div className="mt-6 rounded-xl bg-slate-50 p-4">
+      <div className="mt-6 rounded-md bg-slate-50 p-4">
         <div className="flex flex-wrap items-center gap-2">
           <StatusBadge status="latest-available" />
           <p className="text-xs font-bold uppercase tracking-wide text-navy-900">CMA Enhanced Road Fuel Monitoring — August 2026 (data to end June 2026)</p>

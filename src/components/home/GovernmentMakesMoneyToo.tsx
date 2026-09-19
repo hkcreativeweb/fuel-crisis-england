@@ -14,10 +14,10 @@ export function GovernmentMakesMoneyToo() {
         />
 
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          <div className="rounded-3xl bg-navy-950 p-2">
+          <div className="rounded bg-navy-950 p-2">
             <HMRCReceiptCard receipt={fuelDutyReceiptsPartYear} />
           </div>
-          <div className="rounded-3xl bg-navy-950 p-2">
+          <div className="rounded bg-navy-950 p-2">
             <HMRCReceiptCard receipt={fuelDutyReceiptsFullYear} />
           </div>
         </div>

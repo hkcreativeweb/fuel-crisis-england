@@ -89,7 +89,7 @@ export function ThenVsNow() {
   ];
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="flex flex-wrap items-center gap-3">
         <span className="text-sm font-semibold text-navy-900">THEN:</span>
         {historicalYears.map((y) => (

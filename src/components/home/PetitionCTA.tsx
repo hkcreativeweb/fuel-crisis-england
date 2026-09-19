@@ -20,7 +20,7 @@ export function PetitionCTA() {
             </LinkButton>
           </div>
         </div>
-        <div className="rounded-2xl bg-navy-950/90 p-6 sm:p-8">
+        <div className="rounded bg-navy-950/90 p-6 sm:p-8">
           <PetitionCounter tone="dark" />
         </div>
       </Container>

@@ -7,7 +7,7 @@ export function MinimumWageTable() {
   const anyVerified = currentMinimumWage.rates.some((r) => r.verified);
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h3 className="text-lg font-bold text-navy-900">National Minimum Wage / National Living Wage</h3>
@@ -66,7 +66,7 @@ export function MinimumWageTable() {
         )}
       </p>
 
-      <div className="mt-6 rounded-xl bg-slate-50 p-5">
+      <div className="mt-6 rounded-md bg-slate-50 p-5">
         <p className="text-sm leading-relaxed text-charcoal-700">
           <strong>The minimum wage has increased substantially over time</strong> — it has not stood
           still. The more meaningful question is not whether it has risen, but whether those increases

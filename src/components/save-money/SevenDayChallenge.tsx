@@ -65,7 +65,7 @@ export function SevenDayChallenge() {
   const allComplete = completedCount === challengeItems.length;
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="text-sm font-semibold text-navy-900">
           {completedCount} of {challengeItems.length} complete
@@ -81,7 +81,7 @@ export function SevenDayChallenge() {
       <ul className="mt-6 space-y-2">
         {challengeItems.map((item) => (
           <li key={item}>
-            <label className="flex items-start gap-3 rounded-xl border border-slate-200 p-3 text-sm text-charcoal-700 hover:bg-slate-50">
+            <label className="flex items-start gap-3 rounded-md border border-slate-200 p-3 text-sm text-charcoal-700 hover:bg-slate-50">
               <input
                 type="checkbox"
                 checked={!!state[item]}
@@ -95,7 +95,7 @@ export function SevenDayChallenge() {
       </ul>
 
       {allComplete ? (
-        <div className="mt-6 rounded-2xl bg-petrol-50 p-5 text-center">
+        <div className="mt-6 rounded bg-petrol-50 p-5 text-center">
           <p className="text-base font-bold text-petrol-700">Your fuel-saving checklist is complete.</p>
           <p className="mt-1 text-xs text-charcoal-600">
             Well done — though completing this checklist doesn&apos;t guarantee a particular financial

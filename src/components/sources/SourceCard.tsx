@@ -6,7 +6,7 @@ export function SourceCard({ source }: { source: OfficialSource }) {
       href={source.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 transition-colors hover:border-petrol-400"
+      className="flex flex-col rounded border border-slate-200 bg-white p-6 transition-colors hover:border-petrol-400"
     >
       <span className="inline-flex w-fit items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-charcoal-700">
         {source.category}

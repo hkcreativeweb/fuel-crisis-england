@@ -10,7 +10,7 @@ export function FuelPriceCard({
   pencePerLitre: number | null;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6">
+    <div className="rounded border border-slate-200 bg-white p-6">
       <div className="flex items-center gap-2">
         <span
           className={cn(

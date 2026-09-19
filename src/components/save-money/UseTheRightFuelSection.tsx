@@ -7,7 +7,7 @@ const points = [
 
 export function UseTheRightFuelSection() {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <ul className="space-y-2.5">
         {points.map((point) => (
           <li key={point} className="flex items-start gap-2.5 text-sm text-charcoal-700">

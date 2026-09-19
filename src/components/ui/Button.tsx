@@ -5,21 +5,19 @@ type Variant = "primary" | "secondary" | "ghost" | "outline-light";
 type Size = "md" | "lg";
 
 const variantClasses: Record<Variant, string> = {
-  primary:
-    "bg-petrol-500 text-white hover:bg-petrol-600 focus-visible:outline-petrol-300 shadow-sm shadow-petrol-500/20",
-  secondary:
-    "bg-white text-navy-900 hover:bg-slate-100 border border-slate-200",
-  ghost: "bg-transparent text-navy-900 hover:bg-slate-100",
-  "outline-light": "bg-transparent text-white border border-white/40 hover:bg-white/10",
+  primary: "bg-petrol-500 text-white hover:bg-petrol-600 active:bg-petrol-600 focus-visible:outline-petrol-300",
+  secondary: "bg-white text-navy-900 border border-slate-300 hover:border-navy-900 active:bg-slate-50",
+  ghost: "bg-transparent text-navy-900 hover:bg-slate-100 active:bg-slate-200",
+  "outline-light": "bg-transparent text-white border border-white/35 hover:border-white/70 hover:bg-white/5 active:bg-white/10",
 };
 
 const sizeClasses: Record<Size, string> = {
-  md: "px-5 py-2.5 text-sm",
-  lg: "px-7 py-3.5 text-base",
+  md: "px-4 py-2 text-[13px]",
+  lg: "px-5 py-2.5 text-sm",
 };
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-colors duration-150 disabled:opacity-50 disabled:pointer-events-none";
+  "inline-flex items-center justify-center gap-2 rounded-md font-semibold tracking-tight transition-colors duration-150 disabled:opacity-50 disabled:pointer-events-none";
 
 type ButtonProps = {
   variant?: Variant;

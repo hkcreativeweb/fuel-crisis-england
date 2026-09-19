@@ -75,7 +75,7 @@ export default function SourcesPage() {
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {statusMeanings.map((s) => (
-              <div key={s.status} className="rounded-xl border border-slate-200 p-4">
+              <div key={s.status} className="rounded-md border border-slate-200 p-4">
                 <StatusBadge status={s.status} />
                 <p className="mt-2 text-sm leading-relaxed text-charcoal-700">{s.meaning}</p>
               </div>
@@ -89,7 +89,7 @@ export default function SourcesPage() {
           <h2 className="text-xl font-bold text-navy-900">How our calculations work</h2>
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
             {calculationNotes.map((c) => (
-              <div key={c.title} className="rounded-xl border border-slate-200 bg-white p-5">
+              <div key={c.title} className="rounded-md border border-slate-200 bg-white p-5">
                 <h3 className="text-sm font-bold text-navy-900">{c.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-charcoal-700">{c.body}</p>
               </div>
@@ -106,7 +106,7 @@ export default function SourcesPage() {
           </p>
           <ul className="mt-6 space-y-3">
             {cannotKnow.map((item) => (
-              <li key={item} className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-4 text-sm leading-relaxed text-slate-200">
+              <li key={item} className="flex items-start gap-3 rounded-md border border-white/10 bg-white/5 p-4 text-sm leading-relaxed text-slate-200">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-petrol-400" aria-hidden="true" />
                 {item}
               </li>

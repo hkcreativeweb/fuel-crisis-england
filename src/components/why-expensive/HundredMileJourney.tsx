@@ -16,13 +16,13 @@ export function HundredMileJourney() {
   const cost = snapshot.verified && snapshot.petrolPencePerLitre ? (litres * snapshot.petrolPencePerLitre) / 100 : null;
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="hmj-mpg" className="block text-sm font-semibold text-navy-900">
             Vehicle fuel economy
           </label>
-          <div className="mt-1.5 flex items-center gap-2 rounded-xl border border-slate-300 px-3.5 py-2.5">
+          <div className="mt-1.5 flex items-center gap-2 rounded-md border border-slate-300 px-3.5 py-2.5">
             <input
               id="hmj-mpg"
               type="number"
@@ -56,7 +56,7 @@ export function HundredMileJourney() {
         </div>
       </div>
 
-      <div className="mt-8 rounded-2xl bg-slate-50 p-6 text-center">
+      <div className="mt-8 rounded bg-slate-50 p-6 text-center">
         <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Cost of a 100-mile journey, {year}</p>
         {cost !== null ? (
           <p className="mt-2 text-4xl font-extrabold tabular-nums text-navy-900">{formatGBP(cost)}</p>

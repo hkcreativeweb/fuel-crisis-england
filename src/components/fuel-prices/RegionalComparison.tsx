@@ -13,7 +13,7 @@ export function RegionalComparison({ realData }: { realData: RegionalPrice[] }) 
   const hasData = data.length > 0;
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6">
+    <div className="rounded border border-slate-200 bg-white p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h3 className="text-lg font-bold text-navy-900">Regional comparison</h3>
         <DataStatusBadge status={hasData ? (showDemo ? "demo" : "live") : "unavailable"} />

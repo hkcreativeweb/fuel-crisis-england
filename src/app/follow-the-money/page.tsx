@@ -55,9 +55,8 @@ export default function FollowTheMoneyPage() {
     <>
       <section className="bg-navy-950 py-16 sm:py-20">
         <Container>
-          <p className="mb-4 inline-flex items-center rounded-full border border-petrol-500/40 bg-petrol-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-petrol-300">
-            The full investigation
-          </p>
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-petrol-300">The full investigation</p>
+          <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
           <h1 className="max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
             Follow the money.
           </h1>
@@ -67,7 +66,7 @@ export default function FollowTheMoneyPage() {
             sourcing, and evidence rather than assumptions.
           </p>
 
-          <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-5">
+          <div className="mt-8 rounded border border-white/10 bg-white/5 p-5">
             <p className="text-xs font-bold uppercase tracking-wide text-slate-400">How to read this page</p>
             <div className="mt-3">
               <ContentTagLegend />
@@ -103,7 +102,7 @@ export default function FollowTheMoneyPage() {
               prompt="Where does it go?"
               minHeight="min-h-[240px] lg:min-h-full"
             />
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
+            <div className="rounded border border-white/10 bg-white/5 p-6 sm:p-8">
               <FollowTheMoneyFlow defaultAmount={50} />
             </div>
           </div>

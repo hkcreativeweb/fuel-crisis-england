@@ -136,7 +136,7 @@ export function PetitionForm() {
             aria-describedby={errors.fullName ? `${formId}-name-error` : undefined}
             value={values.fullName}
             onChange={(e) => update("fullName", e.target.value)}
-            className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
+            className="mt-1.5 w-full rounded-md border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
           />
           <FieldError id={`${formId}-name-error`} message={errors.fullName} />
         </div>
@@ -154,7 +154,7 @@ export function PetitionForm() {
             aria-describedby={errors.email ? `${formId}-email-error` : undefined}
             value={values.email}
             onChange={(e) => update("email", e.target.value)}
-            className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
+            className="mt-1.5 w-full rounded-md border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
           />
           <FieldError id={`${formId}-email-error`} message={errors.email} />
         </div>
@@ -169,7 +169,7 @@ export function PetitionForm() {
             autoComplete="postal-code"
             value={values.postcode}
             onChange={(e) => update("postcode", e.target.value)}
-            className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
+            className="mt-1.5 w-full rounded-md border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
           />
         </div>
 
@@ -186,7 +186,7 @@ export function PetitionForm() {
             aria-describedby={errors.areaOrCounty ? `${formId}-area-error` : undefined}
             value={values.areaOrCounty}
             onChange={(e) => update("areaOrCounty", e.target.value)}
-            className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
+            className="mt-1.5 w-full rounded-md border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
           />
           <FieldError id={`${formId}-area-error`} message={errors.areaOrCounty} />
         </div>
@@ -203,7 +203,7 @@ export function PetitionForm() {
           aria-describedby={errors.category ? `${formId}-category-error` : undefined}
           value={values.category}
           onChange={(e) => update("category", e.target.value as DriverCategory)}
-          className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
+          className="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
         >
           <option value="" disabled>
             Select an option
@@ -229,7 +229,7 @@ export function PetitionForm() {
           aria-describedby={errors.impactSummary ? `${formId}-impact-error` : undefined}
           value={values.impactSummary}
           onChange={(e) => update("impactSummary", e.target.value)}
-          className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
+          className="mt-1.5 w-full rounded-md border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
         />
         <FieldError id={`${formId}-impact-error`} message={errors.impactSummary} />
       </div>
@@ -243,7 +243,7 @@ export function PetitionForm() {
           rows={3}
           value={values.desiredChanges}
           onChange={(e) => update("desiredChanges", e.target.value)}
-          className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
+          className="mt-1.5 w-full rounded-md border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
         />
       </div>
 
@@ -260,7 +260,7 @@ export function PetitionForm() {
         />
       </div>
 
-      <div className="space-y-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
+      <div className="space-y-3 rounded-md border border-slate-200 bg-slate-50 p-4">
         <label className="flex items-start gap-3 text-sm text-charcoal-700">
           <input
             type="checkbox"

@@ -30,7 +30,7 @@ export function MaintenanceChecklist() {
   }
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="text-sm font-semibold text-navy-900">
           {doneCount} of {checklistItems.length} checked
@@ -45,7 +45,7 @@ export function MaintenanceChecklist() {
           <li key={item}>
             <label
               className={cn(
-                "flex cursor-pointer items-start gap-3 rounded-xl border px-4 py-3 text-sm font-medium transition-colors",
+                "flex cursor-pointer items-start gap-3 rounded-md border px-4 py-3 text-sm font-medium transition-colors",
                 checked[item] ? "border-accent-save bg-accent-save/5 text-charcoal-500 line-through" : "border-slate-200 text-charcoal-700 hover:bg-slate-50"
               )}
             >
@@ -62,7 +62,7 @@ export function MaintenanceChecklist() {
       </ul>
 
       {allDone ? (
-        <div className="mt-6 rounded-2xl bg-accent-save/10 p-5 text-center ring-1 ring-accent-save/30">
+        <div className="mt-6 rounded bg-accent-save/10 p-5 text-center ring-1 ring-accent-save/30">
           <p className="text-lg font-extrabold uppercase tracking-wide text-accent-save">Your car is ready for more efficient driving</p>
           <p className="mt-1.5 text-xs text-charcoal-600">
             This checklist doesn&apos;t guarantee a specific fuel saving — it&apos;s a reminder of the

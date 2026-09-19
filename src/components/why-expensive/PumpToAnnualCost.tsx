@@ -37,7 +37,7 @@ export function PumpToAnnualCost() {
   const hoursOfMinimumWageWork = figures.weeklyCost / hourlyMinimumWage;
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <p className="inline-flex items-center rounded-full bg-accent-why/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-accent-why">
         Illustrative example — not a national average
       </p>
@@ -71,7 +71,7 @@ export function PumpToAnnualCost() {
           <label htmlFor="ptc-mpg" className="block text-sm font-semibold text-navy-900">
             Vehicle fuel economy
           </label>
-          <div className="mt-1.5 flex items-center gap-2 rounded-xl border border-slate-300 px-3.5 py-2.5">
+          <div className="mt-1.5 flex items-center gap-2 rounded-md border border-slate-300 px-3.5 py-2.5">
             <input
               id="ptc-mpg"
               type="number"
@@ -88,7 +88,7 @@ export function PumpToAnnualCost() {
           <label htmlFor="ptc-days" className="block text-sm font-semibold text-navy-900">
             Driving days per week
           </label>
-          <div className="mt-1.5 flex items-center gap-2 rounded-xl border border-slate-300 px-3.5 py-2.5">
+          <div className="mt-1.5 flex items-center gap-2 rounded-md border border-slate-300 px-3.5 py-2.5">
             <input
               id="ptc-days"
               type="number"
@@ -104,25 +104,25 @@ export function PumpToAnnualCost() {
       </div>
 
       <div className="mt-8 grid gap-3 sm:grid-cols-4">
-        <div className="rounded-xl bg-slate-50 p-4 text-center">
+        <div className="rounded-md bg-slate-50 p-4 text-center">
           <p className="text-[10px] font-bold uppercase tracking-wide text-charcoal-600">Per day</p>
           <p className="mt-1 text-xl font-extrabold tabular-nums text-navy-900">{formatGBP(figures.dailyCost)}</p>
         </div>
-        <div className="rounded-xl bg-slate-50 p-4 text-center">
+        <div className="rounded-md bg-slate-50 p-4 text-center">
           <p className="text-[10px] font-bold uppercase tracking-wide text-charcoal-600">Per week</p>
           <p className="mt-1 text-xl font-extrabold tabular-nums text-navy-900">{formatGBP(figures.weeklyCost)}</p>
         </div>
-        <div className="rounded-xl bg-slate-50 p-4 text-center">
+        <div className="rounded-md bg-slate-50 p-4 text-center">
           <p className="text-[10px] font-bold uppercase tracking-wide text-charcoal-600">Per month</p>
           <p className="mt-1 text-xl font-extrabold tabular-nums text-navy-900">{formatGBP(figures.monthlyCost)}</p>
         </div>
-        <div className="rounded-xl bg-accent-why/10 p-4 text-center ring-1 ring-accent-why/30">
+        <div className="rounded-md bg-accent-why/10 p-4 text-center ring-1 ring-accent-why/30">
           <p className="text-[10px] font-bold uppercase tracking-wide text-accent-why">Per year</p>
           <p className="mt-1 text-xl font-extrabold tabular-nums text-navy-900">{formatGBP(figures.annualCost)}</p>
         </div>
       </div>
 
-      <div className="mt-6 rounded-xl border border-slate-200 p-4">
+      <div className="mt-6 rounded-md border border-slate-200 p-4">
         <p className="text-xs font-bold uppercase tracking-wide text-navy-900">In terms of pay</p>
         <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
           This weekly fuel cost is approximately <strong>{percentOfWeeklyEarnings.toFixed(1)}%</strong> of

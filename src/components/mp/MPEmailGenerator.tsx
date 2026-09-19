@@ -118,14 +118,14 @@ export function MPEmailGenerator() {
   }
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <p className="text-sm font-semibold text-navy-900">Choose which topics to raise:</p>
       <div className="mt-3 grid gap-2 sm:grid-cols-2">
         {masterEmailQuestionBlocks.map((block) => (
           <label
             key={block.id}
             className={cn(
-              "flex cursor-pointer items-start gap-3 rounded-xl border px-4 py-3 text-sm font-medium transition-colors",
+              "flex cursor-pointer items-start gap-3 rounded-md border px-4 py-3 text-sm font-medium transition-colors",
               selectedTopics.includes(block.id) ? "border-petrol-500 bg-petrol-50 text-petrol-700" : "border-slate-300 text-charcoal-700 hover:bg-slate-50"
             )}
           >
@@ -159,7 +159,7 @@ export function MPEmailGenerator() {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
+            className="mt-1.5 w-full rounded-md border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
           />
         </div>
         <div>
@@ -171,7 +171,7 @@ export function MPEmailGenerator() {
             type="text"
             value={postcode}
             onChange={(e) => setPostcode(e.target.value)}
-            className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
+            className="mt-1.5 w-full rounded-md border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
           />
         </div>
         <div>
@@ -183,7 +183,7 @@ export function MPEmailGenerator() {
             type="text"
             value={constituency}
             onChange={(e) => setConstituency(e.target.value)}
-            className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
+            className="mt-1.5 w-full rounded-md border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
           />
         </div>
         <div>
@@ -196,7 +196,7 @@ export function MPEmailGenerator() {
             placeholder="e.g. a self-employed electrician"
             value={occupation}
             onChange={(e) => setOccupation(e.target.value)}
-            className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
+            className="mt-1.5 w-full rounded-md border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
           />
         </div>
         <div>
@@ -209,7 +209,7 @@ export function MPEmailGenerator() {
             min={0}
             value={monthlyMileage}
             onChange={(e) => setMonthlyMileage(e.target.value)}
-            className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
+            className="mt-1.5 w-full rounded-md border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
           />
         </div>
         <div>
@@ -222,7 +222,7 @@ export function MPEmailGenerator() {
             min={0}
             value={fuelCost}
             onChange={(e) => setFuelCost(e.target.value)}
-            className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
+            className="mt-1.5 w-full rounded-md border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
           />
         </div>
       </div>
@@ -236,11 +236,11 @@ export function MPEmailGenerator() {
           rows={3}
           value={experience}
           onChange={(e) => setExperience(e.target.value)}
-          className="mt-1.5 w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
+          className="mt-1.5 w-full rounded-md border border-slate-300 px-3.5 py-2.5 text-sm text-navy-900 focus:border-petrol-500 focus:outline-none"
         />
       </div>
 
-      <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-4">
+      <div className="mt-6 rounded-md border border-slate-200 bg-slate-50 p-4">
         <p className="text-sm font-semibold text-navy-900">Include verified statistics</p>
         <div className="mt-2 space-y-2">
           {autoStats.map((stat) => (
@@ -263,7 +263,7 @@ export function MPEmailGenerator() {
           readOnly
           value={generatedEmail}
           rows={20}
-          className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 p-4 font-mono text-xs text-navy-900 focus:border-petrol-500 focus:outline-none"
+          className="mt-2 w-full rounded-md border border-slate-300 bg-slate-50 p-4 font-mono text-xs text-navy-900 focus:border-petrol-500 focus:outline-none"
         />
       </div>
 

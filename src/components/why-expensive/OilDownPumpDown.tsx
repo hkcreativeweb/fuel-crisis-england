@@ -31,7 +31,7 @@ export function OilDownPumpDown() {
   }, [fuelSeries, activeWindow]);
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h3 className="text-lg font-bold text-navy-900">Crude oil vs UK pump prices, over time</h3>
         <StatusBadge status="historical" />

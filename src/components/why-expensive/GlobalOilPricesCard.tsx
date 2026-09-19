@@ -12,7 +12,7 @@ const influences = [
 
 export function GlobalOilPricesCard() {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6">
+    <div className="rounded border border-slate-200 bg-white p-6">
       <h3 className="text-base font-bold text-navy-900">Global oil prices</h3>
       <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
         The UK does not control the global price of crude oil. Global prices can be influenced by many

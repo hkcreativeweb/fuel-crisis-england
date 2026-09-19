@@ -2,11 +2,11 @@ const steps = ["Crude oil", "Refinery", "Petrol / Diesel", "Wholesale market", "
 
 export function CrudeOilNotPetrol() {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3">
         {steps.map((step, i) => (
           <div key={step} className="flex items-center gap-2 sm:gap-3">
-            <div className="rounded-xl border border-petrol-200 bg-petrol-50 px-5 py-3 text-center text-sm font-bold text-navy-900 sm:w-40">
+            <div className="rounded-md border border-petrol-200 bg-petrol-50 px-5 py-3 text-center text-sm font-bold text-navy-900 sm:w-40">
               {step}
             </div>
             {i < steps.length - 1 ? (

@@ -44,12 +44,12 @@ export function FuelIsNotJustAFuelProblem() {
           ))}
         </div>
 
-        <div className="mt-10 rounded-3xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
+        <div className="mt-10 rounded border border-slate-200 bg-slate-50 p-6 sm:p-8">
           <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">The knock-on effect</p>
           <div className="mt-4 flex flex-col items-stretch gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
             {chain.map((step, i) => (
               <div key={step} className="flex items-center gap-2 sm:gap-3">
-                <div className="rounded-xl border border-petrol-200 bg-white px-4 py-3 text-center text-sm font-semibold text-navy-900 sm:w-44">
+                <div className="rounded-md border border-petrol-200 bg-white px-4 py-3 text-center text-sm font-semibold text-navy-900 sm:w-44">
                   {step}
                 </div>
                 {i < chain.length - 1 ? (

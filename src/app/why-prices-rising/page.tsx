@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Alert } from "@/components/ui/Alert";
+import { LinkButton } from "@/components/ui/Button";
 import { priceFactors } from "@/lib/data/price-factors";
 
 export const metadata: Metadata = {
@@ -45,7 +46,7 @@ export default function WhyPricesRisingPage() {
         <Container>
           <div className="grid gap-6 lg:grid-cols-2">
             {priceFactors.map((factor) => (
-              <div key={factor.slug} id={factor.slug} className="scroll-mt-24 rounded-2xl border border-slate-200 p-7">
+              <div key={factor.slug} id={factor.slug} className="scroll-mt-24 rounded border border-slate-200 p-7">
                 <h2 className="text-xl font-bold text-navy-900">{factor.title}</h2>
                 <p className="mt-3 text-sm leading-relaxed text-charcoal-700">{factor.detail}</p>
               </div>
@@ -62,12 +63,9 @@ export default function WhyPricesRisingPage() {
               Fuel duty and VAT are two of the biggest single factors in what you pay per litre. See the dedicated page for verified figures.
             </p>
           </div>
-          <Link
-            href="/fuel-duty-and-tax"
-            className="inline-flex items-center justify-center rounded-full bg-petrol-500 px-6 py-3 text-sm font-semibold text-white hover:bg-petrol-600"
-          >
+          <LinkButton href="/fuel-duty-and-tax" size="lg">
             Fuel Duty &amp; Tax page
-          </Link>
+          </LinkButton>
         </Container>
       </section>
     </>

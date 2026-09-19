@@ -17,24 +17,24 @@ const explainerPoints = [
 
 export function CanGovernmentFreezeDuty() {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="grid gap-4 sm:grid-cols-4">
-        <div className="rounded-xl bg-slate-50 p-4">
+        <div className="rounded-md bg-slate-50 p-4">
           <PolicyStatusBadge status="previous" />
           <p className="mt-2 text-xl font-extrabold tabular-nums text-navy-900">{previous?.ratePencePerLitre?.toFixed(2)}p</p>
           <p className="text-xs text-charcoal-600">Pre-2022 base rate</p>
         </div>
-        <div className="rounded-xl bg-emerald-50 p-4">
+        <div className="rounded-md bg-emerald-50 p-4">
           <PolicyStatusBadge status="current" />
           <p className="mt-2 text-xl font-extrabold tabular-nums text-navy-900">{current?.ratePencePerLitre?.toFixed(2)}p</p>
           <p className="text-xs text-charcoal-600">Current rate</p>
         </div>
-        <div className="rounded-xl bg-sky-50 p-4">
+        <div className="rounded-md bg-sky-50 p-4">
           <PolicyStatusBadge status="announced" />
           <p className="mt-2 text-xl font-extrabold tabular-nums text-navy-900">{announced?.ratePencePerLitre?.toFixed(2)}p</p>
           <p className="text-xs text-charcoal-600">From 1 January 2027</p>
         </div>
-        <div className="rounded-xl bg-petrol-50 p-4">
+        <div className="rounded-md bg-petrol-50 p-4">
           <ContentTag type="campaign-commentary" />
           <p className="mt-2 text-xl font-extrabold text-petrol-700">Freeze</p>
           <p className="text-xs text-charcoal-600">Our campaign demand — not government policy</p>

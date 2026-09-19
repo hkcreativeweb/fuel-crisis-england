@@ -36,7 +36,7 @@ function Field({
       <label htmlFor={id} className="block text-sm font-semibold text-navy-900">
         {label}
       </label>
-      <div className="mt-1.5 flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-3 py-2 focus-within:border-petrol-500">
+      <div className="mt-1.5 flex items-center gap-2 rounded-md border border-slate-300 bg-white px-3 py-2 focus-within:border-petrol-500">
         <input
           id={id}
           type="number"
@@ -89,7 +89,7 @@ export function FuelCostCalculator() {
           <p className="text-xs font-semibold uppercase tracking-wide text-charcoal-600">Monthly estimate</p>
           <p className="mt-1 text-xl font-extrabold tabular-nums text-navy-900">{result ? formatGBP(result.monthlyCost) : "—"}</p>
         </div>
-        <div className="rounded-xl bg-petrol-50 p-3 sm:bg-transparent sm:p-0">
+        <div className="rounded-md bg-petrol-50 p-3 sm:bg-transparent sm:p-0">
           <p className="text-xs font-semibold uppercase tracking-wide text-charcoal-600">Annual estimate</p>
           <p className="mt-1 text-xl font-extrabold tabular-nums text-petrol-600">{result ? formatGBP(result.annualCost) : "—"}</p>
         </div>

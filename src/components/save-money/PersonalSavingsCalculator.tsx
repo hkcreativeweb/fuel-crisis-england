@@ -37,7 +37,7 @@ function Field({
       <label htmlFor={id} className="block text-sm font-semibold text-navy-900">
         {label}
       </label>
-      <div className="mt-1.5 flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-3 py-2 focus-within:border-petrol-500">
+      <div className="mt-1.5 flex items-center gap-2 rounded-md border border-slate-300 bg-white px-3 py-2 focus-within:border-petrol-500">
         <input
           id={id}
           type="number"
@@ -69,7 +69,7 @@ export function PersonalSavingsCalculator() {
   );
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="flex rounded-full border border-slate-200 bg-slate-50 p-1 text-sm font-semibold">
         {(["petrol", "diesel"] as FuelType[]).map((f) => (
           <button
@@ -117,7 +117,7 @@ export function PersonalSavingsCalculator() {
 
       {result ? (
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
-          <div className="rounded-2xl bg-slate-50 p-5">
+          <div className="rounded bg-slate-50 p-5">
             <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Current driving</p>
             <dl className="mt-3 space-y-2 text-sm">
               <div className="flex justify-between">
@@ -143,7 +143,7 @@ export function PersonalSavingsCalculator() {
             </dl>
           </div>
 
-          <div className="rounded-2xl bg-petrol-50 p-5">
+          <div className="rounded bg-petrol-50 p-5">
             <p className="text-xs font-bold uppercase tracking-wide text-petrol-700">More efficient driving</p>
             <dl className="mt-3 space-y-2 text-sm">
               <div className="flex justify-between">

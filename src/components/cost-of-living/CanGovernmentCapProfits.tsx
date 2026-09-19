@@ -9,7 +9,7 @@ export function CanGovernmentCapProfits() {
   const option = profitCapOptions[selected];
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
       <div className="flex flex-wrap gap-2">
         {profitCapOptions.map((o, i) => (
           <button
@@ -43,11 +43,11 @@ export function CanGovernmentCapProfits() {
             <dd className="mt-0.5 text-charcoal-700">{option.legalProcess}</dd>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-xl bg-emerald-50 p-4">
+            <div className="rounded-md bg-emerald-50 p-4">
               <dt className="font-semibold text-emerald-800">Possible benefits</dt>
               <dd className="mt-0.5 text-emerald-900">{option.possibleBenefits}</dd>
             </div>
-            <div className="rounded-xl bg-amber-50 p-4">
+            <div className="rounded-md bg-amber-50 p-4">
               <dt className="font-semibold text-amber-900">Possible risks</dt>
               <dd className="mt-0.5 text-amber-900">{option.possibleRisks}</dd>
             </div>
@@ -59,7 +59,7 @@ export function CanGovernmentCapProfits() {
         </dl>
       </div>
 
-      <div className="mt-6 rounded-xl bg-slate-50 p-4 text-sm font-semibold text-navy-900">
+      <div className="mt-6 rounded-md bg-slate-50 p-4 text-sm font-semibold text-navy-900">
         A company&apos;s total global profit is not the same as the profit it makes on every litre of fuel
         sold in England.
       </div>

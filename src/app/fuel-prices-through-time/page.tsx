@@ -24,9 +24,10 @@ export default function FuelPricesThroughTimePage() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
             <div>
-              <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent-then/40 bg-accent-then/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-accent-then">
-                <span className="h-2 w-2 rounded-full bg-accent-then" aria-hidden="true" /> THEN
+              <p className="mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-accent-then">
+                <span className="h-[6px] w-[6px] rounded-full bg-accent-then" aria-hidden="true" /> Then
               </p>
+              <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
               <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Fuel Prices Through Time</h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
                 What happened before — completed historical periods only, each clearly dated and sourced.
@@ -38,7 +39,7 @@ export default function FuelPricesThroughTimePage() {
               </p>
             </div>
             <div>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
+              <div className="relative aspect-[4/3] overflow-hidden rounded border border-white/10">
                 <Image src={credit.src} alt={credit.alt} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
               </div>
               <PhotoCredit credit={credit} className="mt-3" />

@@ -61,8 +61,8 @@ export function BuildThePumpPrice() {
   }
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
-      <div className="rounded-xl bg-amber-50 p-3 text-center text-xs font-bold uppercase tracking-wide text-amber-900 ring-1 ring-amber-600/20">
+    <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
+      <div className="rounded-md bg-amber-50 p-3 text-center text-xs font-bold uppercase tracking-wide text-amber-900 ring-1 ring-amber-600/20">
         A model, not a live pricing prediction
       </div>
 
@@ -73,7 +73,7 @@ export function BuildThePumpPrice() {
         <SliderRow label="VAT rate" value={vatPercent} onChange={setVatPercent} min={0} max={30} step={0.5} unit="%" />
       </div>
 
-      <div className="mt-8 rounded-2xl bg-navy-950 p-6 text-center">
+      <div className="mt-8 rounded bg-navy-950 p-6 text-center">
         <p className="text-xs font-bold uppercase tracking-wide text-slate-400">Hypothetical pump price</p>
         <p className="mt-2 text-4xl font-extrabold tabular-nums text-white">{formatPencePerLitre(result.total)}</p>
         <p className="mt-1 text-xs text-slate-400">

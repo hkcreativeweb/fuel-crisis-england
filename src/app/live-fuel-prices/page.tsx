@@ -19,9 +19,10 @@ export default function LiveFuelPricesPage() {
     <>
       <section className="bg-navy-950 py-16 sm:py-20">
         <Container>
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent-live/40 bg-accent-live/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-accent-live">
-            <span className="h-2 w-2 rounded-full bg-accent-live" aria-hidden="true" /> NOW
+          <p className="mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-accent-live">
+            <span className="h-[6px] w-[6px] rounded-full bg-accent-live" aria-hidden="true" /> Now
           </p>
+          <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
           <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Live Fuel Prices</h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
             What is happening right now — not an annual average, not a historical figure. Every number
@@ -65,7 +66,7 @@ export default function LiveFuelPricesPage() {
       <section className="bg-white py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="Where does your money go today?" title="Live Follow the Money" description="Uses today's verified pump price and current tax rates." />
-          <div className="mt-10 max-w-2xl rounded-3xl border border-slate-200 bg-navy-950 p-6 sm:p-8">
+          <div className="mt-10 max-w-2xl border border-white/10 bg-navy-950 p-6 sm:p-8">
             <FollowTheMoneyFlow defaultAmount={50} />
           </div>
         </Container>

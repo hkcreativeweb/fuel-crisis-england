@@ -3,12 +3,24 @@ import { cn } from "@/lib/utils";
 type Tone = "info" | "warning" | "success" | "error";
 
 const toneClasses: Record<Tone, string> = {
-  info: "bg-sky-50 border-sky-200 text-sky-900",
-  warning: "bg-amber-50 border-amber-200 text-amber-900",
-  success: "bg-emerald-50 border-emerald-200 text-emerald-900",
-  error: "bg-red-50 border-red-200 text-red-900",
+  info: "border-sky-500 text-charcoal-700",
+  warning: "border-amber-500 text-charcoal-700",
+  success: "border-emerald-600 text-charcoal-700",
+  error: "border-red-600 text-charcoal-700",
 };
 
+const titleClasses: Record<Tone, string> = {
+  info: "text-sky-800",
+  warning: "text-amber-800",
+  success: "text-emerald-800",
+  error: "text-red-800",
+};
+
+/**
+ * An editorial notice: a thin coloured left rule against a plain
+ * background, not a filled coloured box. Reserve `tone="error"` for
+ * genuine failures — most factual caveats should use "info"/"warning".
+ */
 export function Alert({
   tone = "info",
   title,
@@ -21,8 +33,8 @@ export function Alert({
   className?: string;
 }) {
   return (
-    <div role={tone === "error" ? "alert" : "status"} className={cn("rounded-xl border p-4 text-sm leading-relaxed", toneClasses[tone], className)}>
-      {title ? <p className="mb-1 font-semibold">{title}</p> : null}
+    <div role={tone === "error" ? "alert" : "status"} className={cn("border-l-2 py-1 pl-4 text-sm leading-relaxed", toneClasses[tone], className)}>
+      {title ? <p className={cn("mb-1 font-semibold", titleClasses[tone])}>{title}</p> : null}
       <div>{children}</div>
     </div>
   );

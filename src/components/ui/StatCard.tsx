@@ -16,7 +16,7 @@ export function StatCard({
   return (
     <div
       className={cn(
-        "rounded-2xl border p-6",
+        "rounded border p-6",
         tone === "dark" ? "border-white/10 bg-navy-800/60" : "border-slate-200 bg-white",
         className
       )}

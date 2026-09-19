@@ -11,11 +11,11 @@ const steps = [
 
 export function BiggerPictureFlow() {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8">
+    <div className="rounded border border-white/10 bg-white/5 p-6 sm:p-8">
       <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3">
         {steps.map((step, i) => (
           <div key={step} className="flex items-center gap-2 sm:flex-col sm:gap-2">
-            <div className="flex-1 rounded-xl border border-petrol-500/40 bg-navy-900/60 px-4 py-3 text-center text-sm font-semibold text-white sm:w-40">
+            <div className="flex-1 rounded-md border border-petrol-500/40 bg-navy-900/60 px-4 py-3 text-center text-sm font-semibold text-white sm:w-40">
               {step}
             </div>
             {i < steps.length - 1 ? (

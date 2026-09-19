@@ -17,7 +17,7 @@ export function CorporateProfitsGrid() {
           Each card cites the company&apos;s own SEC filing or press release directly. Any company or year
           we cannot verify shows &quot;Not yet verified&quot; rather than a guessed number.
         </Alert>
-        <div className="flex items-start gap-3 rounded-xl bg-slate-50 p-4">
+        <div className="flex items-start gap-3 rounded-md bg-slate-50 p-4">
           <ContentTag type="economic-analysis" className="mt-0.5 shrink-0" />
           <p className="text-xs leading-relaxed text-charcoal-600">
             All five companies report in US dollars. Figures above are converted to pounds sterling at
@@ -28,7 +28,7 @@ export function CorporateProfitsGrid() {
         </div>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-6">
+      <div className="mt-6 rounded border border-amber-200 bg-amber-50 p-6">
         <ContentTag type="economic-analysis" />
         <h3 className="mt-3 text-base font-bold text-navy-900">Corporate profit is not the same as UK forecourt profit</h3>
         <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
@@ -40,7 +40,7 @@ export function CorporateProfitsGrid() {
         </p>
       </div>
 
-      <div className="mt-6 rounded-2xl border-2 border-navy-900 bg-navy-950 p-6">
+      <div className="mt-6 rounded border-2 border-navy-900 bg-navy-950 p-6">
         <p className="text-xs font-bold uppercase tracking-[0.18em] text-petrol-300">The question this data can&apos;t answer</p>
         <h3 className="mt-3 text-lg font-bold text-white">How much of that is UK petrol?</h3>
         <p className="mt-3 text-sm leading-relaxed text-slate-300">
