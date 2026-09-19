@@ -24,7 +24,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <StopAndThink>A current price isn&apos;t an annual average.</StopAndThink>
+      <StopAndThink id="explore-evidence">A current price isn&apos;t an annual average.</StopAndThink>
       <FuelIsNotJustAFuelProblem />
       <TheBigQuestion />
       <GovernmentMakesMoneyToo />
