@@ -256,14 +256,42 @@ export type YearlySnapshot = {
   pricesAsOf: string | null;
   fuelDutyPencePerLitre: number | null;
   vatRatePercent: number | null;
+
   minimumWagePerHour: number | null;
   minimumWageVerified: boolean;
+  /** Age band / rate label, e.g. "22 and over", "25 and over (National Living Wage)". Null when no rate applies (see minimumWageNote). */
+  minimumWageLabel: string | null;
+  /** The rate's effective period, e.g. "1 October 2004 – 30 September 2005". */
+  minimumWagePeriod: string | null;
+  /** Explanatory note — used for the pre-1999 "no statutory minimum wage" case and for age-threshold context. */
+  minimumWageNote: string | null;
+
+  /** ONS CPI index, D7BT, 2015 = 100, annual average. */
   cpiIndex: number | null;
+  cpiPeriod: string | null;
+
+  /** ONS AWE regular pay, whole economy, seasonally adjusted, £/week, annual average (series KAI7). */
   averageWeeklyEarnings: number | null;
+  averageWeeklyEarningsPeriod: string | null;
+
+  /** Bank of England Bank Rate in force on this snapshot's reference date. */
   bankRatePercent: number | null;
+  bankRatePeriod: string | null;
+
+  /** ONS real households' disposable income per head, £, chained volume measure, reference year 2023 (series CRXX). */
+  realHouseholdDisposableIncomePerHead: number | null;
+  realHouseholdDisposableIncomePeriod: string | null;
+
   verified: boolean;
   source: string;
   sourceUrl: string | null;
   /** True only for a completed calendar year; false for the year in progress. */
   isCompletedYear: boolean;
+};
+
+/** One line item in the site-wide "Data sources" panel. */
+export type DataSourceEntry = {
+  category: string;
+  name: string;
+  url: string;
 };

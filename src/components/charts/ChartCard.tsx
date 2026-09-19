@@ -9,11 +9,13 @@ export function ChartCard({
   description,
   series,
   emptyStateNote,
+  indexed = false,
 }: {
   title: string;
   description?: string;
   series: EconomicSeries[];
   emptyStateNote?: string;
+  indexed?: boolean;
 }) {
   const hasData = series.some((s) => s.points.some((p) => p.value !== null));
   const overallStatus = hasData ? series[0]?.status ?? "unavailable" : "unavailable";
@@ -32,7 +34,7 @@ export function ChartCard({
       {hasData ? (
         <>
           <div className="mt-5">
-            <LineChartSVG series={series} periods={periods} />
+            <LineChartSVG series={series} periods={periods} indexed={indexed} />
           </div>
           <dl className="mt-5 grid gap-2 border-t border-slate-100 pt-4 text-xs text-charcoal-600 sm:grid-cols-2">
             {series.map((s) => (

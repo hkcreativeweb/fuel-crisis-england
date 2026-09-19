@@ -27,3 +27,11 @@ export function formatDate(iso: string): string {
     year: "numeric",
   }).format(new Date(iso));
 }
+
+export function formatDateShort(iso: string): string {
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }).format(new Date(iso));
+}

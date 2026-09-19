@@ -5,9 +5,11 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
 import { PhotoCredit } from "@/components/ui/PhotoCredit";
 import { ThenVsNow } from "@/components/live/ThenVsNow";
-import { FollowTheMoneyTimeline } from "@/components/cost-of-living/FollowTheMoneyTimeline";
+import { HistoricalExplorer } from "@/components/cost-of-living/HistoricalExplorer";
+import { CostOfLivingContext } from "@/components/cost-of-living/CostOfLivingContext";
 import { WageVsPump } from "@/components/cost-of-living/WageVsPump";
 import { WhatDid20Buy } from "@/components/cost-of-living/WhatDid20Buy";
+import { DataSourcePanel } from "@/components/cost-of-living/DataSourcePanel";
 import { imageCredits } from "@/lib/data/image-credits";
 
 const credit = imageCredits["vintage-pumps"];
@@ -57,16 +59,31 @@ export default function FuelPricesThroughTimePage() {
         </Container>
       </section>
 
-      <section className="bg-slate-50 py-16 sm:py-20">
+      <section id="explore-any-year" className="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Explore any year" title="Fuel prices, tax, wages & inflation over time" />
+          <SectionHeading
+            number="01"
+            eyebrow="Explore any year"
+            title="Cost of living through the years"
+            description="Fuel, pay and the wider cost of living for each year — with the affordability comparisons calculated transparently, not just raw numbers."
+            rule
+          />
           <div className="mt-10">
-            <FollowTheMoneyTimeline />
+            <HistoricalExplorer />
           </div>
         </Container>
       </section>
 
       <section className="bg-white py-16 sm:py-20">
+        <Container>
+          <SectionHeading number="02" eyebrow="What did life cost then?" title="Fuel is one part of the cost of living" rule />
+          <div className="mt-10">
+            <CostOfLivingContext />
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-slate-50 py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="Historical affordability" title="Litres of petrol bought with one hour of pay" description="A transparent calculation — not an 'affordability score' — showing the relationship between wages and fuel prices in each year." />
           <div className="mt-10 max-w-2xl">
@@ -75,11 +92,20 @@ export default function FuelPricesThroughTimePage() {
         </Container>
       </section>
 
-      <section className="bg-slate-50 py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="A historical comparison" title="What £20 buys" />
           <div className="mt-10 max-w-2xl">
             <WhatDid20Buy />
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-slate-50 py-16 sm:py-20">
+        <Container>
+          <SectionHeading eyebrow="Data sources" title="Where this data comes from" />
+          <div className="mt-10">
+            <DataSourcePanel />
           </div>
         </Container>
       </section>

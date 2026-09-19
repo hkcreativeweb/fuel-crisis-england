@@ -2,11 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { PhotoCredit } from "@/components/ui/PhotoCredit";
-import { liveIndicators } from "@/lib/data/live-snapshot";
+import { HeroFuelDataStrip } from "@/components/home/HeroFuelDataStrip";
 import { imageCredits } from "@/lib/data/image-credits";
-import { formatDate } from "@/lib/utils";
 
-const petrol = liveIndicators.find((i) => i.id === "petrol-price")!;
 const credit = imageCredits["forecourt-close"];
 
 const manifestoLines: { lead: string; rest: string }[] = [
@@ -41,17 +39,7 @@ export function Hero() {
             budget — with every figure traced to its source.
           </p>
 
-          <div className="mt-8 border-t border-slate-200 pt-5">
-            <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-accent-live">
-              <span className="mr-1.5 inline-block h-[6px] w-[6px] rounded-full bg-accent-live align-middle" aria-hidden="true" />
-              Latest UK petrol
-            </p>
-            <p className="mt-1.5 text-5xl font-extrabold tabular-nums text-navy-900">
-              {petrol.value}
-              <span className="text-2xl font-bold text-charcoal-500">p/L</span>
-            </p>
-            <p className="mt-1 text-sm text-charcoal-500">Updated {formatDate(petrol.lastUpdated)}</p>
-          </div>
+          <HeroFuelDataStrip />
 
           <div className="relative mt-8 aspect-[16/10] max-w-lg overflow-hidden">
             <Image src={credit.src} alt={credit.alt} fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />

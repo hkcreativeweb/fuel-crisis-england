@@ -176,7 +176,7 @@ export function Header() {
             className="hidden items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-accent-live sm:inline-flex"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-accent-live" aria-hidden="true" />
-            Live
+            Weekly
             {petrol ? <span className="text-slate-400">&middot; {petrol.value}p</span> : null}
           </Link>
 
