@@ -11,7 +11,7 @@ import { liveIndicators } from "@/lib/data/live-snapshot";
 
 export const metadata: Metadata = {
   title: "Live Fuel Prices",
-  description: "What is happening now: live and latest-available UK fuel prices, tax rates, wages, and economic indicators — each clearly labelled with its exact data period, geography and source.",
+  description: "What is happening now: live and latest-available UK fuel prices, tax rates, wages, and economic indicators, each clearly labelled with its exact data period, geography and source.",
 };
 
 export default function LiveFuelPricesPage() {
@@ -25,13 +25,13 @@ export default function LiveFuelPricesPage() {
           <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
           <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Live Fuel Prices</h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
-            What is happening right now — not an annual average, not a historical figure. Every number
+            What is happening right now, not an annual average, not a historical figure. Every number
             below is either a genuine live snapshot or explicitly the latest published figure, labelled
             accordingly.
           </p>
           <div className="mt-8">
             <Alert tone="warning" title="A live figure is not a yearly figure.">
-              A current petrol price tells you the price today — it does not tell you what 2026 will
+              A current petrol price tells you the price today. It does not tell you what 2026 will
               average across the whole year. For completed years and long-run trends, see{" "}
               <a href="/fuel-prices-through-time" className="font-semibold underline underline-offset-2">
                 Fuel Prices Through Time

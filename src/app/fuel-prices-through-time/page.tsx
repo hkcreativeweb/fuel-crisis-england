@@ -16,7 +16,7 @@ const credit = imageCredits["vintage-pumps"];
 
 export const metadata: Metadata = {
   title: "Fuel Prices Through Time",
-  description: "How UK fuel prices, taxes, wages and purchasing power have changed across completed historical years — kept strictly separate from live, current-day figures.",
+  description: "How UK fuel prices, taxes, wages and purchasing power have changed across completed historical years, kept strictly separate from live, current-day figures.",
 };
 
 export default function FuelPricesThroughTimePage() {
@@ -32,7 +32,7 @@ export default function FuelPricesThroughTimePage() {
               <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
               <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Fuel Prices Through Time</h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
-                What happened before — completed historical periods only, each clearly dated and sourced.
+                What happened before: completed historical periods only, each clearly dated and sourced.
                 For what&apos;s happening today, see{" "}
                 <a href="/live-fuel-prices" className="font-semibold underline underline-offset-2">
                   Live Fuel Prices
@@ -52,7 +52,7 @@ export default function FuelPricesThroughTimePage() {
 
       <section id="compare" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="The signature comparison tool" title="Then vs Now" description="Choose a historical year and compare it directly against today — with every figure's period made explicit." />
+          <SectionHeading eyebrow="The signature comparison tool" title="Then vs Now" description="Choose a historical year and compare it directly against today, with every figure's period made explicit." />
           <div className="mt-10">
             <ThenVsNow />
           </div>
@@ -65,7 +65,7 @@ export default function FuelPricesThroughTimePage() {
             number="01"
             eyebrow="Explore any year"
             title="Cost of living through the years"
-            description="Fuel, pay and the wider cost of living for each year — with the affordability comparisons calculated transparently, not just raw numbers."
+            description="Fuel, pay and the wider cost of living for each year, with the affordability comparisons calculated transparently, not just raw numbers."
             rule
           />
           <div className="mt-10">
@@ -85,7 +85,7 @@ export default function FuelPricesThroughTimePage() {
 
       <section className="bg-slate-50 py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Historical affordability" title="Litres of petrol bought with one hour of pay" description="A transparent calculation — not an 'affordability score' — showing the relationship between wages and fuel prices in each year." />
+          <SectionHeading eyebrow="Historical affordability" title="Litres of petrol bought with one hour of pay" description="A transparent calculation, not an 'affordability score', showing the relationship between wages and fuel prices in each year." />
           <div className="mt-10 max-w-2xl">
             <WageVsPump />
           </div>

@@ -9,7 +9,7 @@ import { GovernmentCouldSection } from "@/components/cost-of-living/GovernmentCo
 
 export const metadata: Metadata = {
   title: "Our Demands",
-  description: "Fuel Crisis England's public policy demands on Fuel Duty, fuel taxation, energy-company profits, and support for essential drivers — with clear explainers on what government can actually change.",
+  description: "Fuel Crisis England's public policy demands on Fuel Duty, fuel taxation, energy-company profits, and support for essential drivers, with clear explainers on what government can actually change.",
 };
 
 export default function OurDemandsPage() {
@@ -21,7 +21,7 @@ export default function OurDemandsPage() {
             tone="dark"
             eyebrow="What we are asking for"
             title="Our Public Policy Demands"
-            description="These are campaign demands — our position, not established fact or government policy. We've tried to be explicit about what each demand would actually require."
+            description="These are campaign demands: our position, not established fact or government policy. We've tried to be explicit about what each demand would actually require."
           />
           <div className="mt-6">
             <LinkButton href="/ask-your-mp" size="lg">
@@ -48,7 +48,7 @@ export default function OurDemandsPage() {
 
       <section id="cap-profits" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Another explainer" title="Can Government Cap Profits During a Crisis?" description="Neutral, evidence-based options — we don't claim any one will definitely work." />
+          <SectionHeading eyebrow="Another explainer" title="Can Government Cap Profits During a Crisis?" description="Neutral, evidence-based options. We don't claim any one will definitely work." />
           <div className="mt-10 max-w-3xl">
             <CanGovernmentCapProfits />
           </div>
@@ -57,7 +57,7 @@ export default function OurDemandsPage() {
 
       <section id="government-could" className="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="A neutral policy-options guide" title="What Can Government Actually Change?" description="Documented areas where government has policy control — and the real constraints on changing them." />
+          <SectionHeading eyebrow="A neutral policy-options guide" title="What Can Government Actually Change?" description="Documented areas where government has policy control, and the real constraints on changing them." />
           <div className="mt-10">
             <GovernmentCouldSection />
           </div>

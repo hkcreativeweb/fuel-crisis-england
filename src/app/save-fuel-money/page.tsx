@@ -36,7 +36,7 @@ export default function SaveMoneyPage() {
           <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
           <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Save Fuel. Save Money.</h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">
-            Genuinely useful, practical guidance — not generic tips. Every suggestion explains what to do,
+            Genuinely useful, practical guidance, not generic tips. Every suggestion explains what to do,
             why it works, how much it may help, and what assumptions apply.
           </p>
           <PhotoCredit credit={credit} className="mt-10" />
@@ -45,7 +45,7 @@ export default function SaveMoneyPage() {
 
       <section className="bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Fuel-saving driving tips" title="What actually helps — and why" className="mb-10" />
+          <SectionHeading eyebrow="Fuel-saving driving tips" title="What actually helps, and why" className="mb-10" />
           <FuelSavingTipsGrid />
           <div className="mt-6 grid gap-5 sm:grid-cols-2">
             <BootChecklist />
@@ -63,7 +63,7 @@ export default function SaveMoneyPage() {
 
       <section id="fuel-additives" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="A common question" title="What about fuel additives?" description="Petrol and diesel fuel-system cleaners, injector cleaners, and other additives — what they're for, honestly explained." className="mb-10" />
+          <SectionHeading eyebrow="A common question" title="What about fuel additives?" description="Petrol and diesel fuel-system cleaners, injector cleaners, and other additives: what they're for, honestly explained." className="mb-10" />
           <FuelAdditivesSection />
         </Container>
       </section>

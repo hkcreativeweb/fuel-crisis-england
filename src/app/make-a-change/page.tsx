@@ -57,7 +57,7 @@ export default function TakeActionPage() {
           <p className="max-w-2xl text-sm leading-relaxed text-charcoal-700">
             Lawfully organised public meetings and community discussions are a valuable way to raise fuel
             affordability with local representatives and neighbours. We do not currently have specific
-            meetings to list — check with your local council, community groups, or MP&apos;s office for
+            meetings to list. Check with your local council, community groups, or MP&apos;s office for
             upcoming events in your area.
           </p>
         </Container>

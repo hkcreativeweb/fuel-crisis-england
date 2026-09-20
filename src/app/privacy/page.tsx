@@ -54,8 +54,8 @@ export default function PrivacyPage() {
                 Our Ask Your MP tool builds an editable email template entirely in your browser. It does
                 not submit anything to our servers, does not require an account or sign-in, and we do not
                 log which MP you contact, what you wrote, or whether you sent anything. Nothing you type
-                there — your name, postcode, occupation, or personal experience — is stored or transmitted
-                anywhere; it exists only in your browser tab until you copy it or close the page.
+                there, your name, postcode, occupation, or personal experience, is stored or transmitted
+                anywhere. It exists only in your browser tab until you copy it or close the page.
               </p>
             </div>
 
@@ -64,7 +64,7 @@ export default function PrivacyPage() {
               <p className="mt-2">
                 We only display a submitted experience publicly if you explicitly consent to this, and
                 only after moderation. Public experience cards never show your name, email address, or
-                postcode — only your general area/county, category, and message.
+                postcode. Only your general area and county, category, and message.
               </p>
             </div>
 

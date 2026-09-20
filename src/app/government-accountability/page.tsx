@@ -13,7 +13,7 @@ const credit = imageCredits.parliament;
 
 export const metadata: Metadata = {
   title: "Hold Government Accountable",
-  description: "Ask for evidence and share verified information about fuel affordability, Fuel Duty and energy-company profits — lawfully and respectfully.",
+  description: "Ask for evidence and share verified information about fuel affordability, Fuel Duty and energy-company profits, lawfully and respectfully.",
 };
 
 export default function GovernmentAccountabilityPage() {
@@ -30,7 +30,7 @@ export default function GovernmentAccountabilityPage() {
           <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Government Accountability</h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">
             Beyond a single email: ask for evidence, and share verified information lawfully and
-            respectfully. We don&apos;t log who you contact — see our{" "}
+            respectfully. We don&apos;t log who you contact. See our{" "}
             <a href="/privacy" className="font-semibold underline underline-offset-2">
               privacy approach
             </a>
