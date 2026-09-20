@@ -10,6 +10,7 @@ import { QuestionIsNotJustPrice } from "@/components/home/QuestionIsNotJustPrice
 import { TwoPathways } from "@/components/home/TwoPathways";
 import { ImpactSection } from "@/components/home/ImpactSection";
 import { TakeActionSection } from "@/components/home/TakeActionSection";
+import { AboutHomeSection } from "@/components/home/AboutHomeSection";
 import { FinalMessage } from "@/components/home/FinalMessage";
 import { siteConfig } from "@/lib/site-config";
 
@@ -34,6 +35,7 @@ export default function HomePage() {
       <TwoPathways />
       <ImpactSection />
       <TakeActionSection />
+      <AboutHomeSection />
       <FinalMessage />
     </>
   );
