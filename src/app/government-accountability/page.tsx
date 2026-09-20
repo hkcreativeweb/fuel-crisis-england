@@ -6,7 +6,6 @@ import { LinkButton } from "@/components/ui/Button";
 import { PhotoCredit } from "@/components/ui/PhotoCredit";
 import { AskForEvidenceSection } from "@/components/mp/AskForEvidenceSection";
 import { ShareVerifiedInfoSection } from "@/components/mp/ShareVerifiedInfoSection";
-import { PublicResponseWall } from "@/components/mp/PublicResponseWall";
 import { imageCredits } from "@/lib/data/image-credits";
 
 const credit = imageCredits.parliament;
@@ -55,13 +54,6 @@ export default function GovernmentAccountabilityPage() {
       <section className="bg-white py-16 sm:py-20">
         <Container>
           <ShareVerifiedInfoSection />
-        </Container>
-      </section>
-
-      <section className="bg-slate-50 py-16 sm:py-20">
-        <Container>
-          <SectionHeading eyebrow="Shared publicly, only if you choose" title="What Are MPs Saying?" className="mb-10" />
-          <PublicResponseWall />
         </Container>
       </section>
     </>
