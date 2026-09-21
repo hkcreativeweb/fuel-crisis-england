@@ -34,7 +34,7 @@ function NavLink({ item, pathname, variant, onNavigate }: { item: NavItem; pathn
     <Link
       href={item.href}
       className={cn(
-        "whitespace-nowrap rounded-md px-3.5 py-2 text-[13px] font-semibold tracking-wide transition-colors",
+        "whitespace-nowrap rounded-md px-4.5 py-2.5 text-[13px] font-semibold tracking-wide transition-colors",
         active ? "bg-petrol-500 text-white" : "text-slate-300 hover:text-petrol-400"
       )}
     >
@@ -63,7 +63,7 @@ function DesktopDropdown({ category, pathname }: { category: NavCategory; pathna
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         className={cn(
-          "flex items-center gap-1 whitespace-nowrap rounded-md px-3.5 py-2 text-[13px] font-semibold tracking-wide transition-colors",
+          "flex items-center gap-1 whitespace-nowrap rounded-md px-4.5 py-2.5 text-[13px] font-semibold tracking-wide transition-colors",
           active ? "bg-petrol-500 text-white" : "text-slate-300 hover:text-petrol-400"
         )}
       >
@@ -187,7 +187,7 @@ export function Header() {
           </a>
         </div>
 
-        <nav aria-label="Primary" className="hidden 2xl:flex 2xl:items-center 2xl:gap-1.5">
+        <nav aria-label="Primary" className="hidden 2xl:flex 2xl:items-center 2xl:gap-3">
           <NavLink item={homeNavItem} pathname={pathname} variant="desktop" />
           {navCategories.map((category) => (
             <DesktopDropdown key={category.label} category={category} pathname={pathname} />
