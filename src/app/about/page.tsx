@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Alert } from "@/components/ui/Alert";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -221,14 +220,6 @@ export default function AboutPage() {
               </a>
               .
             </p>
-          </div>
-          <div className="mt-8 max-w-2xl">
-            <Alert tone="info" title="This is a preview build.">
-              Several features on this site, including the live fuel price feed, the petition database, and
-              public submission storage, are currently running in a clearly labelled demo mode while a
-              production backend and further verified data sources are connected. Nothing on this site
-              claims to be more real or more official than it is.
-            </Alert>
           </div>
         </Container>
       </section>
