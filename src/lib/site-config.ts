@@ -33,8 +33,12 @@ export const homeNavItem: NavItem = { label: "Home", href: "/" };
 /** Standalone top-level nav item (not a dropdown category) for the EV comparison page. */
 export const evNavItem: NavItem = { label: "Fuel vs Electric", href: "/fuel-vs-electric" };
 
-/** Standalone top-level nav item for the public discussion/feedback page. */
-export const haveYourSayNavItem: NavItem = { label: "Have Your Say", href: "/have-your-say" };
+/** Top-level dropdown category for the public discussion/feedback page, with Our Demands nested underneath. */
+export const haveYourSayCategory: NavCategory = {
+  label: "Have Your Say",
+  href: "/have-your-say",
+  items: [{ label: "Our Demands", href: "/our-demands", description: "What we're asking Government to do" }],
+};
 
 /**
  * The main navbar's structure: a handful of short category labels, each
