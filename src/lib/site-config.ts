@@ -30,6 +30,9 @@ export type NavCategory = {
 
 export const homeNavItem: NavItem = { label: "Home", href: "/" };
 
+/** Standalone top-level nav item (not a dropdown category) for the EV comparison page. */
+export const evNavItem: NavItem = { label: "Is an electric car actually cheaper to run?", href: "/fuel-vs-electric" };
+
 /**
  * The main navbar's structure: a handful of short category labels, each
  * revealing a dropdown of the real pages and page sections underneath.
@@ -57,7 +60,6 @@ export const navCategories: NavCategory[] = [
       { label: "Wholesale vs Pump Prices", href: "/why-is-fuel-expensive#tools", description: "How closely pump prices track wholesale costs" },
       { label: "Tax & VAT", href: "/fuel-duty-and-tax", description: "Fuel Duty and VAT, explained" },
       { label: "Competition & Retail Margins", href: "/why-is-fuel-expensive#competition", description: "What the CMA's own monitoring shows" },
-      { label: "Fuel vs Electric", href: "/fuel-vs-electric", description: "An interactive ownership-cost calculator" },
     ],
   },
   {

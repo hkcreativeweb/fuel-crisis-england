@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/ui/Logo";
-import { homeNavItem, navCategories, primaryCtaHref, primaryCtaLabel, type NavCategory } from "@/lib/site-config";
+import { homeNavItem, evNavItem, navCategories, primaryCtaHref, primaryCtaLabel, type NavCategory } from "@/lib/site-config";
 import { liveIndicators } from "@/lib/data/live-snapshot";
 import { cn } from "@/lib/utils";
 
@@ -34,8 +34,8 @@ function DesktopDropdown({ category, pathname }: { category: NavCategory; pathna
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         className={cn(
-          "flex items-center gap-1 px-3.5 py-2 text-[13px] font-semibold tracking-wide transition-colors",
-          active ? "text-white" : "text-slate-300 hover:text-white"
+          "flex items-center gap-1 rounded-md px-3.5 py-2 text-[13px] font-semibold tracking-wide transition-colors",
+          active ? "bg-petrol-500 text-white" : "text-slate-300 hover:text-white"
         )}
       >
         <span className="relative">
@@ -93,7 +93,10 @@ function MobileCategory({ category, pathname, onNavigate }: { category: NavCateg
         type="button"
         onClick={() => setExpanded((v) => !v)}
         aria-expanded={expanded}
-        className={cn("flex w-full items-center justify-between px-1 py-4 text-left text-base font-semibold", active ? "text-white" : "text-slate-200")}
+        className={cn(
+          "flex w-full items-center justify-between rounded-md px-3 py-3 text-left text-base font-semibold transition-colors",
+          active ? "bg-petrol-500 text-white" : "text-slate-200 hover:text-white"
+        )}
       >
         {category.label}
         <svg viewBox="0 0 12 8" className={cn("h-3 w-3 shrink-0 text-slate-400 transition-transform duration-150", expanded && "rotate-180")} fill="none" aria-hidden="true">
@@ -159,8 +162,8 @@ export function Header() {
           <Link
             href={homeNavItem.href}
             className={cn(
-              "px-3.5 py-2 text-[13px] font-semibold tracking-wide transition-colors",
-              pathname === "/" ? "text-white" : "text-slate-300 hover:text-white"
+              "rounded-md px-3.5 py-2 text-[13px] font-semibold tracking-wide transition-colors",
+              pathname === "/" ? "bg-petrol-500 text-white" : "text-slate-300 hover:text-white"
             )}
           >
             {homeNavItem.label}
@@ -168,6 +171,15 @@ export function Header() {
           {navCategories.map((category) => (
             <DesktopDropdown key={category.label} category={category} pathname={pathname} />
           ))}
+          <Link
+            href={evNavItem.href}
+            className={cn(
+              "whitespace-nowrap rounded-md px-3.5 py-2 text-[13px] font-semibold tracking-wide transition-colors",
+              pathname === evNavItem.href ? "bg-petrol-500 text-white" : "text-slate-300 hover:text-white"
+            )}
+          >
+            {evNavItem.label}
+          </Link>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -215,7 +227,10 @@ export function Header() {
               <Link
                 href={homeNavItem.href}
                 onClick={() => setMobileOpen(false)}
-                className={cn("block px-1 py-4 text-base font-semibold", pathname === "/" ? "text-white" : "text-slate-200")}
+                className={cn(
+                  "block rounded-md px-3 py-3 text-base font-semibold transition-colors",
+                  pathname === "/" ? "bg-petrol-500 text-white" : "text-slate-200 hover:text-white"
+                )}
               >
                 {homeNavItem.label}
               </Link>
@@ -223,6 +238,18 @@ export function Header() {
             {navCategories.map((category) => (
               <MobileCategory key={category.label} category={category} pathname={pathname} onNavigate={() => setMobileOpen(false)} />
             ))}
+            <li className="border-b border-white/10">
+              <Link
+                href={evNavItem.href}
+                onClick={() => setMobileOpen(false)}
+                className={cn(
+                  "block rounded-md px-3 py-3 text-base font-semibold transition-colors",
+                  pathname === evNavItem.href ? "bg-petrol-500 text-white" : "text-slate-200 hover:text-white"
+                )}
+              >
+                {evNavItem.label}
+              </Link>
+            </li>
           </ul>
           <Link
             href={primaryCtaHref}
