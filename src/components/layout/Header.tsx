@@ -25,7 +25,7 @@ function NavLink({ item, pathname, variant, onNavigate }: { item: NavItem; pathn
           onClick={onNavigate}
           className={cn(
             "block rounded-md px-3 py-3 text-base font-semibold transition-colors",
-            active ? "bg-petrol-500 text-white" : "text-slate-200 hover:text-white"
+            active ? "bg-petrol-500 text-white" : "text-slate-200 hover:text-petrol-400"
           )}
         >
           {item.label}
@@ -37,8 +37,8 @@ function NavLink({ item, pathname, variant, onNavigate }: { item: NavItem; pathn
     <Link
       href={item.href}
       className={cn(
-        "whitespace-nowrap rounded-md px-3 py-2 text-[13px] font-semibold tracking-wide transition-colors",
-        active ? "bg-petrol-500 text-white" : "text-slate-300 hover:text-white"
+        "whitespace-nowrap rounded-md px-3.5 py-2 text-[13px] font-semibold tracking-wide transition-colors",
+        active ? "bg-petrol-500 text-white" : "text-slate-300 hover:text-petrol-400"
       )}
     >
       {item.label}
@@ -66,8 +66,8 @@ function DesktopDropdown({ category, pathname }: { category: NavCategory; pathna
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         className={cn(
-          "flex items-center gap-1 whitespace-nowrap rounded-md px-3 py-2 text-[13px] font-semibold tracking-wide transition-colors",
-          active ? "bg-petrol-500 text-white" : "text-slate-300 hover:text-white"
+          "flex items-center gap-1 whitespace-nowrap rounded-md px-3.5 py-2 text-[13px] font-semibold tracking-wide transition-colors",
+          active ? "bg-petrol-500 text-white" : "text-slate-300 hover:text-petrol-400"
         )}
       >
         <span className="relative">
@@ -127,7 +127,7 @@ function MobileCategory({ category, pathname, onNavigate }: { category: NavCateg
         aria-expanded={expanded}
         className={cn(
           "flex w-full items-center justify-between rounded-md px-3 py-3 text-left text-base font-semibold transition-colors",
-          active ? "bg-petrol-500 text-white" : "text-slate-200 hover:text-white"
+          active ? "bg-petrol-500 text-white" : "text-slate-200 hover:text-petrol-400"
         )}
       >
         {category.label}
@@ -190,7 +190,7 @@ export function Header() {
           </a>
         </div>
 
-        <nav aria-label="Primary" className="hidden 2xl:flex 2xl:items-center 2xl:gap-0.5">
+        <nav aria-label="Primary" className="hidden 2xl:flex 2xl:items-center 2xl:gap-1.5">
           <NavLink item={homeNavItem} pathname={pathname} variant="desktop" />
           {navCategories.map((category) => (
             <DesktopDropdown key={category.label} category={category} pathname={pathname} />
