@@ -57,6 +57,7 @@ export const navCategories: NavCategory[] = [
       { label: "Wholesale vs Pump Prices", href: "/why-is-fuel-expensive#tools", description: "How closely pump prices track wholesale costs" },
       { label: "Tax & VAT", href: "/fuel-duty-and-tax", description: "Fuel Duty and VAT, explained" },
       { label: "Competition & Retail Margins", href: "/why-is-fuel-expensive#competition", description: "What the CMA's own monitoring shows" },
+      { label: "Fuel vs Electric", href: "/fuel-vs-electric", description: "An interactive ownership-cost calculator" },
     ],
   },
   {
