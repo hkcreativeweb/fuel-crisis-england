@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/ui/Logo";
-import { homeNavItem, evNavItem, europeNavItem, haveYourSayCategory, navCategories, primaryCtaHref, primaryCtaLabel, type NavCategory, type NavItem } from "@/lib/site-config";
+import { homeNavItem, evNavItem, europeNavItem, haveYourSayCategory, navCategories, type NavCategory, type NavItem } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 function isCategoryActive(category: NavCategory, pathname: string): boolean {
@@ -206,13 +206,6 @@ export function Header() {
             Weekly
           </Link>
 
-          <Link
-            href={primaryCtaHref}
-            className="hidden rounded-md bg-petrol-500 px-4 py-2 text-[13px] font-bold text-white transition-colors hover:bg-petrol-600 2xl:inline-block"
-          >
-            {primaryCtaLabel}
-          </Link>
-
           <button
             type="button"
             onClick={() => setMobileOpen((v) => !v)}
@@ -245,13 +238,6 @@ export function Header() {
             <NavLink item={evNavItem} pathname={pathname} variant="mobile" onNavigate={() => setMobileOpen(false)} />
             <MobileCategory category={haveYourSayCategory} pathname={pathname} onNavigate={() => setMobileOpen(false)} />
           </ul>
-          <Link
-            href={primaryCtaHref}
-            onClick={() => setMobileOpen(false)}
-            className="mt-5 block rounded-md bg-petrol-500 px-5 py-3 text-center text-sm font-bold text-white"
-          >
-            {primaryCtaLabel}
-          </Link>
         </nav>
       ) : null}
     </header>
