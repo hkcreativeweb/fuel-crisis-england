@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/ui/Logo";
-import { homeNavItem, evNavItem, navCategories, primaryCtaHref, primaryCtaLabel, type NavCategory } from "@/lib/site-config";
+import { homeNavItem, evNavItem, haveYourSayNavItem, navCategories, primaryCtaHref, primaryCtaLabel, type NavCategory, type NavItem } from "@/lib/site-config";
 import { liveIndicators } from "@/lib/data/live-snapshot";
 import { cn } from "@/lib/utils";
 
@@ -12,6 +12,38 @@ const petrol = liveIndicators.find((i) => i.id === "petrol-price");
 
 function isCategoryActive(category: NavCategory, pathname: string): boolean {
   return category.href === pathname || category.items.some((item) => item.href.split("#")[0] === pathname);
+}
+
+/** A standalone top-level nav link (not a dropdown), used for both the desktop row and the mobile list. */
+function NavLink({ item, pathname, variant, onNavigate }: { item: NavItem; pathname: string; variant: "desktop" | "mobile"; onNavigate?: () => void }) {
+  const active = pathname === item.href;
+  if (variant === "mobile") {
+    return (
+      <li className="border-b border-white/10">
+        <Link
+          href={item.href}
+          onClick={onNavigate}
+          className={cn(
+            "block rounded-md px-3 py-3 text-base font-semibold transition-colors",
+            active ? "bg-petrol-500 text-white" : "text-slate-200 hover:text-white"
+          )}
+        >
+          {item.label}
+        </Link>
+      </li>
+    );
+  }
+  return (
+    <Link
+      href={item.href}
+      className={cn(
+        "whitespace-nowrap rounded-md px-3 py-2 text-[13px] font-semibold tracking-wide transition-colors",
+        active ? "bg-petrol-500 text-white" : "text-slate-300 hover:text-white"
+      )}
+    >
+      {item.label}
+    </Link>
+  );
 }
 
 function DesktopDropdown({ category, pathname }: { category: NavCategory; pathname: string }) {
@@ -34,7 +66,7 @@ function DesktopDropdown({ category, pathname }: { category: NavCategory; pathna
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         className={cn(
-          "flex items-center gap-1 rounded-md px-3.5 py-2 text-[13px] font-semibold tracking-wide transition-colors",
+          "flex items-center gap-1 whitespace-nowrap rounded-md px-3 py-2 text-[13px] font-semibold tracking-wide transition-colors",
           active ? "bg-petrol-500 text-white" : "text-slate-300 hover:text-white"
         )}
       >
@@ -152,34 +184,19 @@ export function Header() {
             href="https://www.hkcreativeweb.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden whitespace-nowrap border-l border-white/15 pl-3 text-[11px] font-medium text-slate-400 hover:text-slate-200 xl:inline-block"
+            className="hidden whitespace-nowrap border-l border-white/15 pl-3 text-[11px] font-medium text-slate-400 hover:text-slate-200 2xl:inline-block"
           >
             Created by HK Creative
           </a>
         </div>
 
-        <nav aria-label="Primary" className="hidden xl:flex xl:items-center">
-          <Link
-            href={homeNavItem.href}
-            className={cn(
-              "rounded-md px-3.5 py-2 text-[13px] font-semibold tracking-wide transition-colors",
-              pathname === "/" ? "bg-petrol-500 text-white" : "text-slate-300 hover:text-white"
-            )}
-          >
-            {homeNavItem.label}
-          </Link>
+        <nav aria-label="Primary" className="hidden 2xl:flex 2xl:items-center 2xl:gap-0.5">
+          <NavLink item={homeNavItem} pathname={pathname} variant="desktop" />
           {navCategories.map((category) => (
             <DesktopDropdown key={category.label} category={category} pathname={pathname} />
           ))}
-          <Link
-            href={evNavItem.href}
-            className={cn(
-              "whitespace-nowrap rounded-md px-3.5 py-2 text-[13px] font-semibold tracking-wide transition-colors",
-              pathname === evNavItem.href ? "bg-petrol-500 text-white" : "text-slate-300 hover:text-white"
-            )}
-          >
-            {evNavItem.label}
-          </Link>
+          <NavLink item={evNavItem} pathname={pathname} variant="desktop" />
+          <NavLink item={haveYourSayNavItem} pathname={pathname} variant="desktop" />
         </nav>
 
         <div className="flex items-center gap-3">
@@ -194,7 +211,7 @@ export function Header() {
 
           <Link
             href={primaryCtaHref}
-            className="hidden rounded-md bg-petrol-500 px-4 py-2 text-[13px] font-bold text-white transition-colors hover:bg-petrol-600 xl:inline-block"
+            className="hidden rounded-md bg-petrol-500 px-4 py-2 text-[13px] font-bold text-white transition-colors hover:bg-petrol-600 2xl:inline-block"
           >
             {primaryCtaLabel}
           </Link>
@@ -204,7 +221,7 @@ export function Header() {
             onClick={() => setMobileOpen((v) => !v)}
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
-            className="inline-flex items-center justify-center rounded-md p-2 text-white xl:hidden"
+            className="inline-flex items-center justify-center rounded-md p-2 text-white 2xl:hidden"
           >
             <span className="sr-only">{mobileOpen ? "Close menu" : "Open menu"}</span>
             {mobileOpen ? (
@@ -221,35 +238,14 @@ export function Header() {
       </div>
 
       {mobileOpen ? (
-        <nav id="mobile-menu" aria-label="Mobile" className="max-h-[calc(100vh-68px)] overflow-y-auto border-t border-white/10 bg-navy-950 px-4 pb-6 xl:hidden">
+        <nav id="mobile-menu" aria-label="Mobile" className="max-h-[calc(100vh-68px)] overflow-y-auto border-t border-white/10 bg-navy-950 px-4 pb-6 2xl:hidden">
           <ul>
-            <li className="border-b border-white/10">
-              <Link
-                href={homeNavItem.href}
-                onClick={() => setMobileOpen(false)}
-                className={cn(
-                  "block rounded-md px-3 py-3 text-base font-semibold transition-colors",
-                  pathname === "/" ? "bg-petrol-500 text-white" : "text-slate-200 hover:text-white"
-                )}
-              >
-                {homeNavItem.label}
-              </Link>
-            </li>
+            <NavLink item={homeNavItem} pathname={pathname} variant="mobile" onNavigate={() => setMobileOpen(false)} />
             {navCategories.map((category) => (
               <MobileCategory key={category.label} category={category} pathname={pathname} onNavigate={() => setMobileOpen(false)} />
             ))}
-            <li className="border-b border-white/10">
-              <Link
-                href={evNavItem.href}
-                onClick={() => setMobileOpen(false)}
-                className={cn(
-                  "block rounded-md px-3 py-3 text-base font-semibold transition-colors",
-                  pathname === evNavItem.href ? "bg-petrol-500 text-white" : "text-slate-200 hover:text-white"
-                )}
-              >
-                {evNavItem.label}
-              </Link>
-            </li>
+            <NavLink item={evNavItem} pathname={pathname} variant="mobile" onNavigate={() => setMobileOpen(false)} />
+            <NavLink item={haveYourSayNavItem} pathname={pathname} variant="mobile" onNavigate={() => setMobileOpen(false)} />
           </ul>
           <Link
             href={primaryCtaHref}

@@ -10,6 +10,7 @@ const routes = [
   "/why-is-fuel-expensive",
   "/why-prices-rising",
   "/fuel-vs-electric",
+  "/have-your-say",
   "/follow-the-money",
   "/fuel-duty-and-tax",
   "/cost-of-living",

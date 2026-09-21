@@ -31,7 +31,10 @@ export type NavCategory = {
 export const homeNavItem: NavItem = { label: "Home", href: "/" };
 
 /** Standalone top-level nav item (not a dropdown category) for the EV comparison page. */
-export const evNavItem: NavItem = { label: "Is an electric car actually cheaper to run?", href: "/fuel-vs-electric" };
+export const evNavItem: NavItem = { label: "Fuel vs Electric", href: "/fuel-vs-electric" };
+
+/** Standalone top-level nav item for the public discussion/feedback page. */
+export const haveYourSayNavItem: NavItem = { label: "Have Your Say", href: "/have-your-say" };
 
 /**
  * The main navbar's structure: a handful of short category labels, each

@@ -1,32 +1,16 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 export function LogoMark({ className }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 40 40"
+    <Image
+      src="/images/fuel-pump-icon.png"
+      alt=""
       aria-hidden="true"
-      className={cn("h-8 w-8 shrink-0", className)}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="40" height="40" rx="10" fill="#d62828" />
-      <path
-        d="M13 30V13a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v17"
-        stroke="#f8f7f4"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path d="M13 30h10" stroke="#f8f7f4" strokeWidth="2.2" strokeLinecap="round" />
-      <path
-        d="M23 17h2.2a1.8 1.8 0 0 1 1.8 1.8v6.7a1.5 1.5 0 0 0 3 0v-6a3 3 0 0 0-.9-2.14L27 15.3"
-        stroke="#f8f7f4"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path d="M16 17h4" stroke="#f8f7f4" strokeWidth="2.2" strokeLinecap="round" />
-    </svg>
+      width={40}
+      height={40}
+      className={cn("h-8 w-8 shrink-0 rounded-[10px] object-cover", className)}
+    />
   );
 }
 
