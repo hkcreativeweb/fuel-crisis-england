@@ -5,10 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/ui/Logo";
 import { homeNavItem, evNavItem, haveYourSayNavItem, navCategories, primaryCtaHref, primaryCtaLabel, type NavCategory, type NavItem } from "@/lib/site-config";
-import { liveIndicators } from "@/lib/data/live-snapshot";
 import { cn } from "@/lib/utils";
-
-const petrol = liveIndicators.find((i) => i.id === "petrol-price");
 
 function isCategoryActive(category: NavCategory, pathname: string): boolean {
   return category.href === pathname || category.items.some((item) => item.href.split("#")[0] === pathname);
@@ -206,7 +203,6 @@ export function Header() {
           >
             <span className="h-1.5 w-1.5 rounded-full bg-accent-live" aria-hidden="true" />
             Weekly
-            {petrol ? <span className="text-slate-400">&middot; {petrol.value}p</span> : null}
           </Link>
 
           <Link
