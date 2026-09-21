@@ -33,11 +33,22 @@ export const homeNavItem: NavItem = { label: "Home", href: "/" };
 /** Standalone top-level nav item (not a dropdown category) for the EV comparison page. */
 export const evNavItem: NavItem = { label: "Fuel vs Electric", href: "/fuel-vs-electric" };
 
-/** Top-level dropdown category for the public discussion/feedback page, with Our Demands nested underneath. */
+/** Standalone top-level nav item for the Europe comparison page. */
+export const europeNavItem: NavItem = { label: "Europe", href: "/europe-compared" };
+
+/** Top-level dropdown category for the public discussion/feedback and civic-action pages. */
 export const haveYourSayCategory: NavCategory = {
   label: "Have Your Say",
   href: "/have-your-say",
-  items: [{ label: "Our Demands", href: "/our-demands", description: "What we're asking Government to do" }],
+  items: [
+    { label: "Have Your Say", href: "/have-your-say", description: "Share your view on fuel prices and motoring costs" },
+    { label: "Our Demands", href: "/our-demands", description: "What we're asking Government to do" },
+    { label: "Ask Your MP", href: "/ask-your-mp", description: "A copyable, evidence-based email template" },
+    { label: "Government Accountability", href: "/government-accountability", description: "Ask for evidence, lawfully and respectfully" },
+    { label: "Make a Change", href: "/make-a-change", description: "Lawful, peaceful ways to make your voice heard" },
+    { label: "Save Fuel & Money", href: "/save-fuel-money", description: "Practical ways to cut your own costs" },
+    { label: "Sources & Evidence", href: "/sources", description: "Where every figure on this site comes from" },
+  ],
 };
 
 /**
@@ -89,27 +100,6 @@ export const navCategories: NavCategory[] = [
       { label: "One Hour of Work", href: "/follow-the-money#wage-vs-pump", description: "Wages measured against the pump price" },
       { label: "100-Mile Journey", href: "/why-is-fuel-expensive#tools", description: "What a typical journey costs today" },
       { label: "Fuel Affordability", href: "/cost-of-living#calculator", description: "Work out your own fuel costs" },
-    ],
-  },
-  {
-    label: "Europe",
-    href: "/europe-compared",
-    items: [
-      { label: "Europe Compared", href: "/europe-compared", description: "UK vs all 27 EU member states, litre for litre" },
-      { label: "Price Before Tax", href: "/europe-compared#price-breakdown", description: "What fuel costs before duty and VAT" },
-      { label: "50-Litre Comparison", href: "/europe-compared#fifty-litre-comparison", description: "What a full tank costs across borders" },
-    ],
-  },
-  {
-    label: "Take Action",
-    href: "/our-demands",
-    items: [
-      { label: "Our Demands", href: "/our-demands", description: "What we're asking Government to do" },
-      { label: "Ask Your MP", href: "/ask-your-mp", description: "A copyable, evidence-based email template" },
-      { label: "Government Accountability", href: "/government-accountability", description: "Ask for evidence, lawfully and respectfully" },
-      { label: "Save Fuel & Money", href: "/save-fuel-money", description: "Practical ways to cut your own costs" },
-      { label: "Make a Change", href: "/make-a-change", description: "Lawful, peaceful ways to make your voice heard" },
-      { label: "Sources & Evidence", href: "/sources", description: "Where every figure on this site comes from" },
     ],
   },
 ];
