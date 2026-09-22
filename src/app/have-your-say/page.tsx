@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
-import { CommentForm } from "@/components/have-your-say/CommentForm";
-import { ExampleComments } from "@/components/have-your-say/ExampleComments";
+import { HaveYourSaySection } from "@/components/have-your-say/HaveYourSaySection";
 
 const CONTACT_EMAIL = "contact.fuelcrisisengland@gmail.com";
 
@@ -23,11 +22,7 @@ export default function HaveYourSayPage() {
         />
 
         <div className="mt-10 max-w-2xl">
-          <CommentForm />
-        </div>
-
-        <div className="mt-14 max-w-2xl">
-          <ExampleComments />
+          <HaveYourSaySection />
         </div>
       </Container>
 
