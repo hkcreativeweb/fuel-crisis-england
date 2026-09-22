@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import { calculateScenario } from "@/lib/calculator/fuel-policy-simulator";
 import { calculateFuelCost } from "@/lib/calculator/fuel-cost";
 import { currentDutyPencePerLitre, currentVatPercent, fiscalBaselineMeta } from "@/lib/data/fiscal-baseline";
-import { Alert } from "@/components/ui/Alert";
 import { formatGBP, formatDate, cn } from "@/lib/utils";
 
 const DUTY_PRESETS = [
@@ -70,31 +69,79 @@ function NumberField({
 
 const FLOW_STEPS = [
   "Lower fuel costs",
-  "Households and businesses retain more money",
-  "Potential changes in spending and operating costs",
+  "More money retained by households/businesses",
+  "Potential spending & operating-cost changes",
   "Potential wider economic effects",
-  "Possible effects on other economic activity and tax receipts",
+  "Possible effects on economic activity & tax receipts",
 ];
 
 function WiderEconomyFlow() {
   return (
-    <ol className="mt-4 space-y-2">
-      {FLOW_STEPS.map((step, i) => (
-        <li key={step}>
-          <div className="flex items-center gap-3 rounded-md border border-slate-200 bg-slate-50 px-4 py-2.5">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-navy-900 text-xs font-extrabold text-white">
-              {i + 1}
-            </span>
-            <span className="text-sm text-charcoal-700">{step}</span>
-          </div>
-          {i < FLOW_STEPS.length - 1 ? (
-            <div className="py-1 pl-[1.9rem] text-slate-400" aria-hidden="true">
-              ↓
+    <>
+      {/* Mobile: vertical */}
+      <ol className="mt-4 space-y-2 lg:hidden">
+        {FLOW_STEPS.map((step, i) => (
+          <li key={step}>
+            <div className="flex items-center gap-3 rounded-md border border-slate-200 bg-slate-50 px-4 py-2.5">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-navy-900 text-xs font-extrabold text-white">{i + 1}</span>
+              <span className="text-sm text-charcoal-700">{step}</span>
             </div>
-          ) : null}
-        </li>
+            {i < FLOW_STEPS.length - 1 ? (
+              <div className="py-1 pl-[1.9rem] text-slate-400" aria-hidden="true">
+                ↓
+              </div>
+            ) : null}
+          </li>
+        ))}
+      </ol>
+      {/* Desktop: horizontal */}
+      <ol className="mt-4 hidden items-stretch gap-2 lg:flex">
+        {FLOW_STEPS.map((step, i) => (
+          <li key={step} className="flex flex-1 items-center gap-2">
+            <div className="flex flex-1 flex-col gap-1.5 rounded-md border border-slate-200 bg-slate-50 p-3">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-navy-900 text-xs font-extrabold text-white">{i + 1}</span>
+              <span className="text-xs leading-snug text-charcoal-700">{step}</span>
+            </div>
+            {i < FLOW_STEPS.length - 1 ? (
+              <span className="shrink-0 text-slate-400" aria-hidden="true">
+                →
+              </span>
+            ) : null}
+          </li>
+        ))}
+      </ol>
+    </>
+  );
+}
+
+function PresetButtons<T>({
+  options,
+  isActive,
+  onSelect,
+  labelOf,
+}: {
+  options: T[];
+  isActive: (o: T) => boolean;
+  onSelect: (o: T) => void;
+  labelOf: (o: T) => string;
+}) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {options.map((o) => (
+        <button
+          key={labelOf(o)}
+          type="button"
+          onClick={() => onSelect(o)}
+          aria-pressed={isActive(o)}
+          className={cn(
+            "border px-3 py-1.5 text-xs font-bold transition-colors",
+            isActive(o) ? "border-petrol-500 bg-petrol-500 text-white" : "border-slate-300 text-charcoal-700 hover:bg-slate-50"
+          )}
+        >
+          {labelOf(o)}
+        </button>
       ))}
-    </ol>
+    </div>
   );
 }
 
@@ -143,281 +190,285 @@ export function FuelPolicySimulator() {
     };
   }, [fleetMileage, fleetMpg, fleetVehicles, scenario]);
 
+  const directFiscalEffect = scenario.dutyRevenueDeltaGBPBillion + scenario.vatRevenueDeltaGBPBillion;
+
   return (
     <div className="border border-slate-200 bg-white p-6 sm:p-8">
-      <p className="text-sm leading-relaxed text-charcoal-700">
-        Explore illustrative scenarios by changing Fuel Duty and VAT. See the mechanical effect on fuel
-        prices, motorists and government revenue.
-      </p>
-
-      {/* Controls */}
-      <div className="mt-6 grid gap-6 sm:grid-cols-2">
-        <div>
-          <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Fuel Duty</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {DUTY_PRESETS.map((p) => (
-              <button
-                key={p.label}
-                type="button"
-                onClick={() => {
+      {/* Controls + results, side by side on desktop */}
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
+        {/* Controls */}
+        <div className="space-y-6">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Fuel Duty</p>
+            <div className="mt-3">
+              <PresetButtons
+                options={DUTY_PRESETS}
+                labelOf={(p) => p.label}
+                isActive={(p) => dutyMode === "preset" && dutyPreset === p.deltaPence}
+                onSelect={(p) => {
                   setDutyMode("preset");
                   setDutyPreset(p.deltaPence);
                 }}
-                aria-pressed={dutyMode === "preset" && dutyPreset === p.deltaPence}
-                className={cn(
-                  "border px-3 py-1.5 text-xs font-bold transition-colors",
-                  dutyMode === "preset" && dutyPreset === p.deltaPence
-                    ? "border-petrol-500 bg-petrol-500 text-white"
-                    : "border-slate-300 text-charcoal-700 hover:bg-slate-50"
-                )}
-              >
-                {p.label}
-              </button>
-            ))}
+              />
+            </div>
             <button
               type="button"
               onClick={() => setDutyMode("custom")}
               aria-pressed={dutyMode === "custom"}
               className={cn(
-                "border px-3 py-1.5 text-xs font-bold transition-colors",
+                "mt-2 border px-3 py-1.5 text-xs font-bold transition-colors",
                 dutyMode === "custom" ? "border-petrol-500 bg-petrol-500 text-white" : "border-slate-300 text-charcoal-700 hover:bg-slate-50"
               )}
             >
               Custom
             </button>
+            {dutyMode === "custom" ? (
+              <div className="mt-3 max-w-[220px]">
+                <NumberField id="custom-duty" label="Fuel Duty rate" suffix="pence/litre" value={customDuty} onChange={setCustomDuty} min={0} max={100} step={0.1} />
+              </div>
+            ) : (
+              <p className="mt-2 text-xs text-charcoal-500">
+                Current verified rate: {currentDutyPencePerLitre.toFixed(2)}p/litre. Scenario rate: {dutyPencePerLitre.toFixed(2)}p/litre.
+              </p>
+            )}
           </div>
-          {dutyMode === "custom" ? (
-            <div className="mt-3 max-w-[220px]">
-              <NumberField id="custom-duty" label="Fuel Duty rate" suffix="pence/litre" value={customDuty} onChange={setCustomDuty} min={0} max={100} step={0.1} />
-            </div>
-          ) : (
-            <p className="mt-2 text-xs text-charcoal-500">
-              Current verified rate: {currentDutyPencePerLitre.toFixed(2)}p/litre. Scenario rate: {dutyPencePerLitre.toFixed(2)}p/litre.
-            </p>
-          )}
-        </div>
 
-        <div>
-          <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">VAT</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {VAT_PRESETS.map((v) => (
-              <button
-                key={v}
-                type="button"
-                onClick={() => {
+          <div>
+            <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">VAT</p>
+            <div className="mt-3">
+              <PresetButtons
+                options={VAT_PRESETS}
+                labelOf={(v) => `${v}%`}
+                isActive={(v) => vatMode === "preset" && vatPreset === v}
+                onSelect={(v) => {
                   setVatMode("preset");
                   setVatPreset(v);
                 }}
-                aria-pressed={vatMode === "preset" && vatPreset === v}
-                className={cn(
-                  "border px-3 py-1.5 text-xs font-bold transition-colors",
-                  vatMode === "preset" && vatPreset === v ? "border-petrol-500 bg-petrol-500 text-white" : "border-slate-300 text-charcoal-700 hover:bg-slate-50"
-                )}
-              >
-                {v}%
-              </button>
-            ))}
+              />
+            </div>
             <button
               type="button"
               onClick={() => setVatMode("custom")}
               aria-pressed={vatMode === "custom"}
               className={cn(
-                "border px-3 py-1.5 text-xs font-bold transition-colors",
+                "mt-2 border px-3 py-1.5 text-xs font-bold transition-colors",
                 vatMode === "custom" ? "border-petrol-500 bg-petrol-500 text-white" : "border-slate-300 text-charcoal-700 hover:bg-slate-50"
               )}
             >
               Custom
             </button>
+            {vatMode === "custom" ? (
+              <div className="mt-3 max-w-[220px]">
+                <NumberField id="custom-vat" label="VAT rate" suffix="%" value={customVat} onChange={setCustomVat} min={0} max={25} step={0.5} />
+              </div>
+            ) : (
+              <p className="mt-2 text-xs text-charcoal-500">Current verified rate: {currentVatPercent}%. Scenario rate: {vatPercent}%.</p>
+            )}
           </div>
-          {vatMode === "custom" ? (
-            <div className="mt-3 max-w-[220px]">
-              <NumberField id="custom-vat" label="VAT rate" suffix="%" value={customVat} onChange={setCustomVat} min={0} max={25} step={0.5} />
+        </div>
+
+        {/* Results */}
+        <div>
+          <div className="grid gap-3 sm:grid-cols-3">
+            <div className="border border-slate-200 p-4">
+              <p className="text-xs font-semibold text-charcoal-600">Current pump price</p>
+              <p className="mt-1.5 text-xl font-extrabold tabular-nums text-navy-900">
+                £{(scenario.baselinePencePerLitre / 100).toFixed(2)}
+                <span className="text-xs">/L</span>
+              </p>
             </div>
-          ) : (
-            <p className="mt-2 text-xs text-charcoal-500">Current verified rate: {currentVatPercent}%. Scenario rate: {vatPercent}%.</p>
-          )}
+            <div className="border-2 border-petrol-500 bg-petrol-50 p-4">
+              <p className="text-xs font-semibold text-petrol-700">Scenario pump price</p>
+              <p className="mt-1.5 text-2xl font-extrabold tabular-nums text-petrol-700">
+                £{(scenario.scenarioPencePerLitre / 100).toFixed(2)}
+                <span className="text-sm">/L</span>
+              </p>
+            </div>
+            <div className="border border-slate-200 p-4">
+              <p className="text-xs font-semibold text-charcoal-600">Change per litre</p>
+              <p className={cn("mt-1.5 text-xl font-extrabold tabular-nums", scenario.changePencePerLitre <= 0 ? "text-emerald-700" : "text-red-700")}>
+                {scenario.changePencePerLitre > 0 ? "+" : ""}
+                {scenario.changePencePerLitre.toFixed(1)}p/L
+              </p>
+            </div>
+          </div>
+
+          {/* Mechanical effect mini-flow */}
+          <div className="mt-4 flex flex-wrap items-center gap-2 rounded-md bg-slate-50 p-3 text-xs font-semibold text-charcoal-600">
+            <span>Tax change</span>
+            <span aria-hidden="true">→</span>
+            <span>Tax component changes</span>
+            <span aria-hidden="true">→</span>
+            <span>Illustrative pump-price effect</span>
+          </div>
+          <p className="mt-2 text-xs font-bold text-navy-900">This is a mechanical illustration, not a forecast.</p>
+
+          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            <div className="rounded-md bg-slate-50 p-3 text-sm">
+              <p className="font-semibold text-charcoal-700">20-litre fill</p>
+              <p className="mt-1 font-bold tabular-nums text-navy-900">{formatGBP(scenario.fill20LSaving)}</p>
+            </div>
+            <div className="rounded-md bg-slate-50 p-3 text-sm">
+              <p className="font-semibold text-charcoal-700">50-litre tank</p>
+              <p className="mt-1 font-bold tabular-nums text-navy-900">{formatGBP(scenario.fill50LSaving)}</p>
+            </div>
+            <div className="rounded-md bg-slate-50 p-3 text-sm">
+              <p className="font-semibold text-charcoal-700">1,000 litres/year</p>
+              <p className="mt-1 font-bold tabular-nums text-navy-900">{formatGBP(scenario.yearly1000LSaving)}</p>
+            </div>
+          </div>
+          <p className="mt-3 text-xs leading-relaxed text-charcoal-500">
+            This does not assume the saving (or cost) is guaranteed to be passed through to motorists in
+            full — wholesale prices, retailer margins, distribution costs and competition also affect the
+            pump price.
+          </p>
         </div>
       </div>
 
-      {/* Pump price result */}
-      <div className="mt-8 border-t border-slate-200 pt-8">
-        <p className="text-xs font-bold uppercase tracking-wide text-charcoal-500">What could different tax policies mean at the pump?</p>
-        <div className="mt-4 grid gap-4 sm:grid-cols-3">
-          <div className="border border-slate-200 p-5">
-            <p className="text-xs font-semibold text-charcoal-600">Current illustrative pump price</p>
-            <p className="mt-1.5 text-2xl font-extrabold tabular-nums text-navy-900">£{(scenario.baselinePencePerLitre / 100).toFixed(2)}<span className="text-sm">/L</span></p>
-          </div>
-          <div className="border border-petrol-200 bg-petrol-50 p-5">
-            <p className="text-xs font-semibold text-petrol-700">Scenario pump price</p>
-            <p className="mt-1.5 text-2xl font-extrabold tabular-nums text-petrol-700">£{(scenario.scenarioPencePerLitre / 100).toFixed(2)}<span className="text-sm">/L</span></p>
-          </div>
-          <div className="border border-slate-200 p-5">
-            <p className="text-xs font-semibold text-charcoal-600">Illustrative change</p>
-            <p className={cn("mt-1.5 text-2xl font-extrabold tabular-nums", scenario.changePencePerLitre <= 0 ? "text-emerald-700" : "text-red-700")}>
-              {scenario.changePencePerLitre > 0 ? "+" : ""}
-              {scenario.changePencePerLitre.toFixed(1)}p/L
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-4 grid gap-4 sm:grid-cols-3">
-          <div className="rounded-md bg-slate-50 p-4 text-sm">
-            <p className="font-semibold text-charcoal-700">20-litre fill</p>
-            <p className="mt-1 font-bold tabular-nums text-navy-900">{formatGBP(scenario.fill20LSaving)} saving</p>
-          </div>
-          <div className="rounded-md bg-slate-50 p-4 text-sm">
-            <p className="font-semibold text-charcoal-700">50-litre tank</p>
-            <p className="mt-1 font-bold tabular-nums text-navy-900">{formatGBP(scenario.fill50LSaving)} saving</p>
-          </div>
-          <div className="rounded-md bg-slate-50 p-4 text-sm">
-            <p className="font-semibold text-charcoal-700">1,000 litres/year</p>
-            <p className="mt-1 font-bold tabular-nums text-navy-900">{formatGBP(scenario.yearly1000LSaving)} saving</p>
-          </div>
-        </div>
-        <p className="mt-3 text-xs leading-relaxed text-charcoal-500">
-          This is a mechanical illustration of the tax change only. It does not assume the saving (or cost)
-          is guaranteed to be passed through to motorists in full — wholesale prices, retailer margins and
-          competition also affect the pump price.
-        </p>
-      </div>
-
-      {/* Household calculator */}
-      <div className="mt-8 border-t border-slate-200 pt-8">
-        <p className="text-xs font-bold uppercase tracking-wide text-charcoal-500">Personal / household calculator</p>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {HOUSEHOLD_PRESETS.map((p) => (
-            <button
-              key={p.label}
-              type="button"
-              onClick={() => {
+      {/* Household + business calculators, side by side on desktop */}
+      <div className="mt-10 grid gap-8 border-t border-slate-200 pt-8 lg:grid-cols-2">
+        <div>
+          <p className="text-sm font-bold text-navy-900">What could this mean for your vehicle?</p>
+          <div className="mt-3">
+            <PresetButtons
+              options={HOUSEHOLD_PRESETS}
+              labelOf={(p) => p.label}
+              isActive={(p) => presetLabel === p.label}
+              onSelect={(p) => {
                 setAnnualMileage(p.annualMileage);
                 setMpg(p.mpg);
                 setVehicles(p.vehicles);
                 setPresetLabel(p.label);
               }}
-              aria-pressed={presetLabel === p.label}
-              className={cn(
-                "border px-3 py-1.5 text-xs font-bold transition-colors",
-                presetLabel === p.label ? "border-petrol-500 bg-petrol-500 text-white" : "border-slate-300 text-charcoal-700 hover:bg-slate-50"
-              )}
-            >
-              {p.label}
-            </button>
-          ))}
-        </div>
-        <p className="mt-2 text-xs text-charcoal-500">Presets are illustrative assumptions, not claims about a &quot;typical&quot; driver.</p>
-
-        <div className="mt-4 grid gap-4 sm:grid-cols-3">
-          <NumberField
-            id="hh-mileage"
-            label="Annual mileage"
-            suffix="miles/yr"
-            value={annualMileage}
-            onChange={(v) => {
-              setAnnualMileage(v);
-              setPresetLabel(null);
-            }}
-            min={0}
-            max={100000}
-            step={500}
-          />
-          <NumberField
-            id="hh-mpg"
-            label="Vehicle MPG"
-            suffix="UK mpg"
-            value={mpg}
-            onChange={(v) => {
-              setMpg(v);
-              setPresetLabel(null);
-            }}
-            min={5}
-            max={150}
-            step={1}
-          />
-          <NumberField
-            id="hh-vehicles"
-            label="Number of vehicles"
-            suffix="vehicles"
-            value={vehicles}
-            onChange={(v) => {
-              setVehicles(v);
-              setPresetLabel(null);
-            }}
-            min={1}
-            max={10}
-            step={1}
-          />
-        </div>
-
-        {householdResult ? (
-          <div className="mt-4 grid gap-4 sm:grid-cols-3">
-            <div className="rounded-md bg-slate-50 p-4 text-sm">
-              <p className="font-semibold text-charcoal-700">Estimated annual fuel use</p>
-              <p className="mt-1 font-bold tabular-nums text-navy-900">{Math.round(householdResult.annualFuelUse).toLocaleString("en-GB")} litres</p>
-            </div>
-            <div className="rounded-md bg-slate-50 p-4 text-sm">
-              <p className="font-semibold text-charcoal-700">Estimated annual saving</p>
-              <p className="mt-1 font-bold tabular-nums text-navy-900">{formatGBP(householdResult.annualSaving)}</p>
-            </div>
-            <div className="rounded-md bg-slate-50 p-4 text-sm">
-              <p className="font-semibold text-charcoal-700">Estimated monthly saving</p>
-              <p className="mt-1 font-bold tabular-nums text-navy-900">{formatGBP(householdResult.monthlySaving)}</p>
-            </div>
+            />
           </div>
-        ) : null}
-      </div>
+          <p className="mt-2 text-xs text-charcoal-500">Presets are illustrative assumptions, not claims about a &quot;typical&quot; driver.</p>
 
-      {/* Business / fleet */}
-      <div className="mt-8 border-t border-slate-200 pt-8">
-        <p className="text-xs font-bold uppercase tracking-wide text-charcoal-500">Business / fleet scenario</p>
-        <p className="mt-1 text-xs text-charcoal-500">An illustrative calculation, not an economic forecast.</p>
-        <div className="mt-4 grid gap-4 sm:grid-cols-3">
-          <NumberField id="fleet-vehicles" label="Number of vehicles" suffix="vehicles" value={fleetVehicles} onChange={setFleetVehicles} min={1} max={1000} step={1} />
-          <NumberField id="fleet-mileage" label="Annual mileage per vehicle" suffix="miles/yr" value={fleetMileage} onChange={setFleetMileage} min={0} max={100000} step={500} />
-          <NumberField id="fleet-mpg" label="Average MPG" suffix="UK mpg" value={fleetMpg} onChange={setFleetMpg} min={5} max={150} step={1} />
-        </div>
-        {fleetResult ? (
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            <div className="rounded-md bg-slate-50 p-4 text-sm">
-              <p className="font-semibold text-charcoal-700">Estimated annual fuel use</p>
-              <p className="mt-1 font-bold tabular-nums text-navy-900">{Math.round(fleetResult.annualFuelUse).toLocaleString("en-GB")} litres</p>
-            </div>
-            <div className="rounded-md bg-slate-50 p-4 text-sm">
-              <p className="font-semibold text-charcoal-700">Estimated annual fuel-cost saving</p>
-              <p className="mt-1 font-bold tabular-nums text-navy-900">{formatGBP(fleetResult.annualSaving)}</p>
-            </div>
+          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            <NumberField
+              id="hh-mileage"
+              label="Annual mileage"
+              suffix="miles/yr"
+              value={annualMileage}
+              onChange={(v) => {
+                setAnnualMileage(v);
+                setPresetLabel(null);
+              }}
+              min={0}
+              max={100000}
+              step={500}
+            />
+            <NumberField
+              id="hh-mpg"
+              label="Vehicle MPG"
+              suffix="UK mpg"
+              value={mpg}
+              onChange={(v) => {
+                setMpg(v);
+                setPresetLabel(null);
+              }}
+              min={5}
+              max={150}
+              step={1}
+            />
+            <NumberField
+              id="hh-vehicles"
+              label="Number of vehicles"
+              suffix="vehicles"
+              value={vehicles}
+              onChange={(v) => {
+                setVehicles(v);
+                setPresetLabel(null);
+              }}
+              min={1}
+              max={10}
+              step={1}
+            />
           </div>
-        ) : null}
+
+          {householdResult ? (
+            <div className="mt-4 grid gap-3 sm:grid-cols-3">
+              <div className="rounded-md bg-slate-50 p-3 text-sm">
+                <p className="font-semibold text-charcoal-700">Annual fuel use</p>
+                <p className="mt-1 font-bold tabular-nums text-navy-900">{Math.round(householdResult.annualFuelUse).toLocaleString("en-GB")}L</p>
+              </div>
+              <div className="rounded-md bg-slate-50 p-3 text-sm">
+                <p className="font-semibold text-charcoal-700">Annual saving</p>
+                <p className="mt-1 font-bold tabular-nums text-navy-900">{formatGBP(householdResult.annualSaving)}</p>
+              </div>
+              <div className="rounded-md bg-slate-50 p-3 text-sm">
+                <p className="font-semibold text-charcoal-700">Monthly saving</p>
+                <p className="mt-1 font-bold tabular-nums text-navy-900">{formatGBP(householdResult.monthlySaving)}</p>
+              </div>
+            </div>
+          ) : null}
+        </div>
+
+        <div>
+          <p className="text-sm font-bold text-navy-900">What could this mean for a business?</p>
+          <p className="mt-1 text-xs text-charcoal-500">Illustrative calculation — not an economic forecast.</p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            <NumberField id="fleet-vehicles" label="Number of vehicles" suffix="vehicles" value={fleetVehicles} onChange={setFleetVehicles} min={1} max={1000} step={1} />
+            <NumberField id="fleet-mileage" label="Mileage per vehicle" suffix="miles/yr" value={fleetMileage} onChange={setFleetMileage} min={0} max={100000} step={500} />
+            <NumberField id="fleet-mpg" label="Average MPG" suffix="UK mpg" value={fleetMpg} onChange={setFleetMpg} min={5} max={150} step={1} />
+          </div>
+          {fleetResult ? (
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-md bg-slate-50 p-3 text-sm">
+                <p className="font-semibold text-charcoal-700">Annual fuel use</p>
+                <p className="mt-1 font-bold tabular-nums text-navy-900">{Math.round(fleetResult.annualFuelUse).toLocaleString("en-GB")} litres</p>
+              </div>
+              <div className="rounded-md bg-slate-50 p-3 text-sm">
+                <p className="font-semibold text-charcoal-700">Annual fuel-cost saving</p>
+                <p className="mt-1 font-bold tabular-nums text-navy-900">{formatGBP(fleetResult.annualSaving)}</p>
+              </div>
+            </div>
+          ) : null}
+        </div>
       </div>
 
       {/* Government revenue effect */}
-      <div className="mt-8 border-t border-slate-200 pt-8">
+      <div className="mt-10 border-t border-slate-200 pt-8">
         <p className="text-xs font-bold uppercase tracking-wide text-charcoal-500">Government Revenue Effect</p>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <div className="mt-4 grid gap-4 sm:grid-cols-3">
           <div className="border border-slate-200 p-5">
-            <p className="text-xs font-semibold text-charcoal-600">Estimated direct Fuel Duty revenue change</p>
+            <p className="text-xs font-semibold text-charcoal-600">Fuel Duty revenue</p>
             <p className={cn("mt-1.5 text-xl font-extrabold tabular-nums", scenario.dutyRevenueDeltaGBPBillion < 0 ? "text-red-700" : "text-emerald-700")}>
               {scenario.dutyRevenueDeltaGBPBillion >= 0 ? "+" : ""}
               {scenario.dutyRevenueDeltaGBPBillion.toFixed(2)}bn/year
             </p>
           </div>
           <div className="border border-slate-200 p-5">
-            <p className="text-xs font-semibold text-charcoal-600">Estimated direct VAT-on-fuel revenue change</p>
+            <p className="text-xs font-semibold text-charcoal-600">VAT-on-fuel revenue</p>
             <p className={cn("mt-1.5 text-xl font-extrabold tabular-nums", scenario.vatRevenueDeltaGBPBillion < 0 ? "text-red-700" : "text-emerald-700")}>
               {scenario.vatRevenueDeltaGBPBillion >= 0 ? "+" : ""}
               {scenario.vatRevenueDeltaGBPBillion.toFixed(2)}bn/year
             </p>
           </div>
+          <div className="border-2 border-navy-900 p-5">
+            <p className="text-xs font-semibold text-charcoal-600">Direct fiscal effect</p>
+            <p className={cn("mt-1.5 text-xl font-extrabold tabular-nums", directFiscalEffect < 0 ? "text-red-700" : "text-emerald-700")}>
+              {directFiscalEffect >= 0 ? "+" : ""}
+              {directFiscalEffect.toFixed(2)}bn/year
+            </p>
+          </div>
         </div>
-        <p className="mt-3 text-xs leading-relaxed text-charcoal-500">
-          Based on {fiscalBaselineMeta.receiptsAmountGBPBillion.toFixed(2)}bn in published Fuel Duty receipts
-          ({fiscalBaselineMeta.receiptsPeriodLabel}), divided by the current {currentDutyPencePerLitre.toFixed(2)}p/litre rate to
-          imply the annual litres taxed, then multiplied by the rate change. This direct arithmetic
-          illustration does not claim a tax reduction pays for itself, and does not assume the wider economy
-          will generate enough additional revenue to offset it.
-        </p>
 
-        <div className="mt-6">
+        <details className="group mt-4">
+          <summary className="cursor-pointer list-none text-sm font-semibold text-petrol-600">
+            <span className="group-open:hidden">How is this calculated? →</span>
+            <span className="hidden group-open:inline">Hide calculation detail</span>
+          </summary>
+          <p className="mt-2 text-xs leading-relaxed text-charcoal-500">
+            Based on {fiscalBaselineMeta.receiptsAmountGBPBillion.toFixed(2)}bn in published Fuel Duty receipts
+            ({fiscalBaselineMeta.receiptsPeriodLabel}), divided by the current {currentDutyPencePerLitre.toFixed(2)}p/litre rate to
+            imply the annual litres taxed, then multiplied by the rate change. This direct arithmetic
+            illustration does not claim a tax reduction pays for itself, and does not assume the wider economy
+            will generate enough additional revenue to offset it.
+          </p>
+        </details>
+
+        <div className="mt-8">
           <p className="text-sm font-bold text-navy-900">Could lower fuel costs help the wider economy?</p>
           <p className="mt-1 text-xs font-bold uppercase tracking-wide text-charcoal-500">Illustrative economic scenario — not a forecast</p>
           <WiderEconomyFlow />
@@ -429,18 +480,29 @@ export function FuelPolicySimulator() {
       </div>
 
       {/* Assumptions */}
-      <div className="mt-8">
-        <Alert tone="info" title="Assumptions and limitations">
-          These calculations illustrate the mechanical effect of changing tax rates. They do not assume that
-          every penny of a tax reduction is passed through to motorists, and they do not forecast the wider
-          economic response. Actual pump prices also depend on wholesale prices, retailer margins,
-          distribution costs, competition, demand and other factors. The government revenue calculation is a
-          direct arithmetic illustration, not a full fiscal forecast.
-        </Alert>
-      </div>
+      <details className="group mt-10 border-t border-slate-200 pt-6">
+        <summary className="cursor-pointer list-none">
+          <span className="text-sm font-bold text-navy-900">Assumptions &amp; limitations</span>
+          <span className="ml-2 text-xs font-semibold text-petrol-600 group-open:hidden">Show →</span>
+          <span className="ml-2 hidden text-xs font-semibold text-petrol-600 group-open:inline">Hide</span>
+        </summary>
+        <div className="mt-3 border-l-2 border-sky-500 pl-4 text-sm leading-relaxed text-charcoal-700">
+          <p>
+            These calculations illustrate the mechanical effect of changing tax rates. They do not assume
+            that every penny of a tax reduction is passed through to motorists, and they do not forecast the
+            wider economic response. Actual pump prices also depend on wholesale prices, retailer margins,
+            distribution costs, competition, demand and other factors. The government revenue calculation is
+            a direct arithmetic illustration, not a full fiscal forecast.
+          </p>
+          <p className="mt-3 font-semibold text-navy-900">
+            Why this matters: the calculator intentionally avoids presenting uncertain economic effects as
+            guaranteed savings, so the numbers above should be read as illustrations, not promises.
+          </p>
+        </div>
+      </details>
 
       <p className="mt-6 text-xs text-charcoal-500">
-        Baseline pump price and Fuel Duty rate as of {formatDate(fiscalBaselineMeta.pumpPriceAsOf)} — GOV.UK / DESNZ.
+        Baseline pump price and Fuel Duty rate — last verified {formatDate(fiscalBaselineMeta.pumpPriceAsOf)}, GOV.UK / DESNZ.
       </p>
     </div>
   );

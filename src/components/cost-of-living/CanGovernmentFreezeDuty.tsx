@@ -41,14 +41,20 @@ export function CanGovernmentFreezeDuty() {
         </div>
       </div>
 
-      <ul className="mt-8 space-y-3">
-        {explainerPoints.map((point) => (
-          <li key={point} className="flex items-start gap-3 text-sm text-charcoal-700">
-            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" aria-hidden="true" />
-            {point}
-          </li>
-        ))}
-      </ul>
+      <details className="group mt-8">
+        <summary className="cursor-pointer list-none text-sm font-semibold text-petrol-600">
+          <span className="group-open:hidden">Who controls Fuel Duty, and how does a freeze work? →</span>
+          <span className="hidden group-open:inline">Hide detail</span>
+        </summary>
+        <ul className="mt-4 space-y-3">
+          {explainerPoints.map((point) => (
+            <li key={point} className="flex items-start gap-3 text-sm text-charcoal-700">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" aria-hidden="true" />
+              {point}
+            </li>
+          ))}
+        </ul>
+      </details>
     </div>
   );
 }
