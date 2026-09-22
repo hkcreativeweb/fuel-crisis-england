@@ -21,7 +21,7 @@ function NavLink({ item, pathname, variant, onNavigate }: { item: NavItem; pathn
           href={item.href}
           onClick={onNavigate}
           aria-current={active ? "page" : undefined}
-          className="block rounded-md px-3 py-3 text-base font-semibold text-slate-200 transition-colors hover:text-petrol-400"
+          className="block rounded-md px-3 py-3 text-base font-semibold text-slate-200 transition-colors hover:text-accent-orange"
         >
           {item.label}
         </Link>
@@ -32,7 +32,7 @@ function NavLink({ item, pathname, variant, onNavigate }: { item: NavItem; pathn
     <Link
       href={item.href}
       aria-current={active ? "page" : undefined}
-      className="whitespace-nowrap rounded-md px-4.5 py-2.5 text-[13px] font-semibold tracking-wide text-slate-300 transition-colors hover:text-petrol-400"
+      className="whitespace-nowrap rounded-md px-4.5 py-2.5 text-[13px] font-semibold tracking-wide text-slate-300 transition-colors hover:text-accent-orange"
     >
       {item.label}
     </Link>
@@ -59,7 +59,7 @@ function DesktopDropdown({ category, pathname }: { category: NavCategory; pathna
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-current={active ? "page" : undefined}
-        className="flex items-center gap-1 whitespace-nowrap rounded-md px-4.5 py-2.5 text-[13px] font-semibold tracking-wide text-slate-300 transition-colors hover:text-petrol-400"
+        className="flex items-center gap-1 whitespace-nowrap rounded-md px-4.5 py-2.5 text-[13px] font-semibold tracking-wide text-slate-300 transition-colors hover:text-accent-orange"
       >
         <span className="relative">
           {category.label}
@@ -117,7 +117,7 @@ function MobileCategory({ category, pathname, onNavigate }: { category: NavCateg
         onClick={() => setExpanded((v) => !v)}
         aria-expanded={expanded}
         aria-current={active ? "page" : undefined}
-        className="flex w-full items-center justify-between rounded-md px-3 py-3 text-left text-base font-semibold text-slate-200 transition-colors hover:text-petrol-400"
+        className="flex w-full items-center justify-between rounded-md px-3 py-3 text-left text-base font-semibold text-slate-200 transition-colors hover:text-accent-orange"
       >
         {category.label}
         <svg viewBox="0 0 12 8" className={cn("h-3 w-3 shrink-0 text-slate-400 transition-transform duration-150", expanded && "rotate-180")} fill="none" aria-hidden="true">

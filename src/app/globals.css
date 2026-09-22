@@ -2,17 +2,17 @@
 
 :root {
   /* Warm White — main page background */
-  --background: #f8f7f4;
+  --background: #fafaf7;
   /* Charcoal — main text */
   --foreground: #1f2937;
 
   /* Deep Navy scale — navbar, footer, headings, dark/investigative sections.
-     --color-navy-900 is the exact FCE "Deep Navy" (#111827). */
-  --color-navy-950: #0a0e16;
-  --color-navy-900: #111827;
-  --color-navy-800: #1a2333;
-  --color-navy-700: #232d40;
-  --color-navy-600: #2d3a52;
+     --color-navy-900 is the exact FCE "Deep Navy" (#172033). */
+  --color-navy-950: #0e1420;
+  --color-navy-900: #172033;
+  --color-navy-800: #202b42;
+  --color-navy-700: #2b3852;
+  --color-navy-600: #384868;
 
   /* Charcoal / Slate scale — body text (700), secondary/metadata text
      (600, the exact FCE "Slate" #64748B), and darker alternate section
@@ -23,16 +23,31 @@
   --color-charcoal-600: #64748b;
 
   /* FCE Red scale — logo accent, key CTAs, important statistics,
-     fuel-price highlights, warning/attention elements.
-     --color-petrol-500 is the exact FCE Red (#D62828).
-     --color-petrol-400 is the exact FCE Bright Red (#EF4444), used
-     sparingly for alerts and high-price indicators. */
-  --color-petrol-600: #ae2020;
-  --color-petrol-500: #d62828;
-  --color-petrol-400: #ef4444;
+     fuel-price highlights, warning/attention elements, selected emphasis.
+     --color-petrol-500 is the exact FCE Red (#C62828). */
+  --color-petrol-600: #a02020;
+  --color-petrol-500: #c62828;
+  --color-petrol-400: #e14343;
   --color-petrol-300: #f08585;
   --color-petrol-100: #fbd5d5;
   --color-petrol-50: #fdecec;
+
+  /* Amber Orange — interaction/hover accent only (navbar hover, button
+     hover, small highlights). Not used for permanent/active-page state. */
+  --color-accent-orange: #e67e22;
+  --color-accent-orange-dark: #c8690f;
+
+  /* Teal — neutral information/data accent: calculators, data tools,
+     source/methodology elements, "how this works" indicators. */
+  --color-accent-teal: #159a9c;
+  --color-accent-teal-dark: #0f7577;
+
+  /* Soft Border — borders, dividers, subtle UI separation. Overrides
+     Tailwind's default slate-200/slate-50 so every existing
+     border-slate-200 / bg-slate-50 usage site-wide picks up the new
+     palette automatically. */
+  --color-slate-50: #f1f3f5;
+  --color-slate-200: #d9dde2;
 
   /* Section accent colours — each major area of the site carries its own
      accent while staying within the same Navy + Red + Warm White base
@@ -72,6 +87,14 @@
   --color-petrol-100: var(--color-petrol-100);
   --color-petrol-50: var(--color-petrol-50);
 
+  --color-accent-orange: var(--color-accent-orange);
+  --color-accent-orange-dark: var(--color-accent-orange-dark);
+  --color-accent-teal: var(--color-accent-teal);
+  --color-accent-teal-dark: var(--color-accent-teal-dark);
+
+  --color-slate-50: var(--color-slate-50);
+  --color-slate-200: var(--color-slate-200);
+
   --color-accent-live: var(--color-accent-live);
   --color-accent-then: var(--color-accent-then);
   --color-accent-why: var(--color-accent-why);
@@ -107,7 +130,7 @@ body {
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-petrol-400);
+  outline: 3px solid var(--color-accent-orange);
   outline-offset: 2px;
 }
 
