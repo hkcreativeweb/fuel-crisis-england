@@ -28,7 +28,32 @@ export default function TakeActionPage() {
         </Container>
       </section>
 
-      <section className="bg-white py-14 sm:py-16">
+      <section className="bg-white py-8 sm:py-10">
+        <Container>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-bold uppercase tracking-wide text-charcoal-500 sm:text-sm">
+            <a href="/our-demands" className="text-petrol-600 hover:underline">
+              Our Demands
+            </a>
+            <span aria-hidden="true" className="text-slate-300">
+              →
+            </span>
+            <a href="/sources" className="text-petrol-600 hover:underline">
+              The Evidence
+            </a>
+            <span aria-hidden="true" className="text-slate-300">
+              →
+            </span>
+            <span className="text-navy-900">Ways to Engage</span>
+          </div>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-charcoal-700">
+            The options below are lawful, peaceful ways to engage on the evidence and demands set out
+            elsewhere on this site. FCE provides information and civic-engagement options — it does not
+            direct people towards any political party or candidate.
+          </p>
+        </Container>
+      </section>
+
+      <section className="bg-white py-6 sm:py-8">
         <Container>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {takeActionOptions.map((option) => (
@@ -67,10 +92,13 @@ export default function TakeActionPage() {
         <Container className="flex flex-wrap items-center justify-between gap-6">
           <div>
             <h2 className="text-2xl font-extrabold text-white">Ready to add your name?</h2>
-            <p className="mt-2 max-w-xl text-sm text-orange-50">Sign the petition and share your experience with fuel costs.</p>
+            <p className="mt-2 max-w-xl text-sm text-orange-50">
+              Sign FCE&apos;s own public petition and share your experience with fuel costs. This is an FCE
+              resource, not an official UK Parliament petition.
+            </p>
           </div>
           <LinkButton href="/petition" variant="secondary" size="lg">
-            Sign the Petition
+            Sign FCE&apos;s Petition
           </LinkButton>
         </Container>
       </section>

@@ -1,6 +1,6 @@
 const NAV_ITEMS = [
   { href: "#simulator", label: "Policy Simulator" },
-  { href: "#demands", label: "Our 6 Demands" },
+  { href: "#demands", label: "Our 7 Demands" },
   { href: "#freeze-duty", label: "Can Government Freeze Fuel Duty?" },
   { href: "#cap-profits", label: "Crisis Profit & Margin Options" },
   { href: "#government-could", label: "What Government Can Change" },

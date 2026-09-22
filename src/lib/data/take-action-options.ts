@@ -13,10 +13,16 @@ export const takeActionOptions: TakeActionOption[] = [
     linkLabel: "Write to your MP",
   },
   {
-    title: "Sign the public petition",
-    description: "Add your name to call for transparency and answers on fuel affordability.",
+    title: "Sign FCE's public petition",
+    description: "Add your name to call for transparency and answers on fuel affordability. This is FCE's own petition, not an official UK Parliament petition.",
     href: "/petition",
-    linkLabel: "Sign the petition",
+    linkLabel: "Sign FCE's petition",
+  },
+  {
+    title: "Sign an official UK Parliament petition",
+    description: "View and sign currently open, official UK Parliament petitions relating to fuel duty and VAT. Signing happens directly on the official Parliament website.",
+    href: "/have-your-say#uk-petitions",
+    linkLabel: "View UK Parliament petitions",
   },
   {
     title: "Share your fuel cost experience",

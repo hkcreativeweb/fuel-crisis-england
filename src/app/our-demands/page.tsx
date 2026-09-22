@@ -29,11 +29,16 @@ export default function OurDemandsPage() {
         <Container>
           <SectionHeading
             tone="dark"
-            eyebrow="What we are asking for"
-            title="Our Public Policy Demands"
-            description="These are campaign demands: our position, not established fact or government policy. We explain what each proposal would require and use published evidence and transparent calculations to show the potential effects."
+            eyebrow="Our Demands"
+            title="Our Demands"
+            description="Evidence-based requests for greater fuel affordability, transparency and accountability."
           />
-          <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-petrol-300">6 policy demands · Evidence-led · Illustrative modelling</p>
+          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
+            Fuel Crisis England does not tell people how to vote or which political party to support. We
+            set out specific policy questions and requests based on publicly available evidence. Governments
+            and regulators can choose how to respond, and visitors can make up their own minds.
+          </p>
+          <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-petrol-300">7 policy demands · Evidence-led · Illustrative modelling</p>
           <div className="mt-6">
             <LinkButton href="/ask-your-mp" size="lg">
               Ask your MP about these demands
@@ -63,7 +68,7 @@ export default function OurDemandsPage() {
 
       <section id="demands" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Our six public policy demands" title="What We're Calling For" />
+          <SectionHeading eyebrow="Our seven public policy demands" title="What We're Calling For" />
           <div className="mt-8">
             <PolicyDemands />
           </div>

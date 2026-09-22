@@ -7,7 +7,7 @@ import { PublicExperiencesList } from "@/components/petition/PublicExperiencesLi
 
 export const metadata: Metadata = {
   title: "Petition & Share Your Experience",
-  description: "Sign the public petition on fuel affordability and share how rising petrol and diesel prices are affecting you.",
+  description: "Sign FCE's own petition on fuel affordability (not an official UK Parliament petition) and share how rising petrol and diesel prices are affecting you.",
 };
 
 export default function PetitionPage() {
@@ -17,10 +17,18 @@ export default function PetitionPage() {
         <Container>
           <SectionHeading
             tone="dark"
-            eyebrow="Add your voice"
-            title="Sign the petition and share your experience"
+            eyebrow="FCE information/resource — not an official Parliament petition"
+            title="Sign FCE's petition and share your experience"
             description="Every verified submission helps show the real scale of fuel affordability across England."
           />
+          <p className="mt-4 max-w-2xl text-sm text-slate-300">
+            This is Fuel Crisis England&apos;s own petition and evidence-gathering resource, not an official UK
+            Parliament petition.{" "}
+            <a href="/have-your-say#uk-petitions" className="font-semibold text-petrol-300 underline underline-offset-2">
+              View official UK Parliament petitions on fuel duty and VAT
+            </a>
+            .
+          </p>
           <div className="mt-8 max-w-md rounded bg-white/5 p-6">
             <PetitionCounter tone="dark" />
           </div>

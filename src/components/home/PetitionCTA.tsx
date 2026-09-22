@@ -11,12 +11,13 @@ export function PetitionCTA() {
             People deserve a voice on fuel affordability.
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-orange-50">
-            Add your name to the public petition calling for transparency on fuel pricing, fuel duty,
-            and support for drivers across England.
+            Add your name to FCE&apos;s own petition calling for transparency on fuel pricing, fuel duty,
+            and support for drivers across England. This is an FCE resource, not an official UK Parliament
+            petition.
           </p>
           <div className="mt-7">
             <LinkButton href="/petition" variant="secondary" size="lg">
-              Sign the Petition
+              Sign FCE&apos;s Petition
             </LinkButton>
           </div>
         </div>

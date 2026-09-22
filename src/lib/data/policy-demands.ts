@@ -1,91 +1,113 @@
+export type DemandStatusTagType = "current-policy" | "fce-proposal" | "future-announced" | "evidence";
+
 export type PolicyDemand = {
   id: string;
   number: number;
   title: string;
-  tagline: string;
-  statement: string;
-  explanationPoints: string[];
+  description: string;
+  supportingPoints: string[];
+  /** A small status tag shown directly on the card, only when factually relevant (e.g. flagging a genuine policy proposal). */
+  statusTag?: DemandStatusTagType;
+  evidenceHref?: string;
+  evidenceLabel?: string;
 };
 
 export const policyDemands: PolicyDemand[] = [
   {
     id: "fuel-duty",
     number: 1,
-    title: "Affordable & Predictable Fuel Duty",
-    tagline: "Keep Fuel Duty Predictable Under Pressure",
-    statement:
-      "FCE is calling for a predictable and affordable Fuel Duty regime during periods of exceptional fuel-price pressure, with temporary reductions or freezes considered when pump prices rise sharply.",
-    explanationPoints: [
-      "Fuel Duty is a fixed government tax charged per litre. Because it is charged before VAT, a change in the rate mechanically changes the pre-tax price and, via VAT, the final pump price too.",
-      "The current rate, previous rate, and any officially confirmed future changes are shown below, sourced directly to GOV.UK and legislation.gov.uk.",
-      "A freeze or reduction would lower the mechanical floor under the pump price, but retailers are not obliged to pass through the full amount, and other cost components can move independently.",
-      "We do not state that a reduction pays for itself. It has a direct cost to Fuel Duty revenue, shown in the simulator above, which would need to be weighed against public finances and other spending priorities.",
+    title: "Keep Fuel Duty Affordable",
+    description:
+      "Maintain Fuel Duty at a level that recognises the financial pressure placed on motorists, households and businesses, particularly during periods of exceptionally high fuel prices.",
+    supportingPoints: [
+      "The current rate is 52.95 pence per litre, in force since 15 June 2026 and confirmed to run to 31 December 2026.",
+      "Two future rate changes are already confirmed in legislation: 55.95p from 1 January 2027, then 57.95p from 1 March 2027 — these are officially confirmed, not FCE estimates.",
+      "Fuel Duty is a fixed tax set by government, charged per litre before VAT is applied, so a rate change also has a knock-on effect via VAT.",
+      "This does not claim Fuel Duty is the only reason fuel is expensive — wholesale costs, VAT and retailer margins also affect the pump price.",
     ],
+    evidenceHref: "/fuel-duty-and-tax",
+    evidenceLabel: "Fuel Duty history & evidence",
+  },
+  {
+    id: "vat",
+    number: 2,
+    title: "Review VAT on Petrol & Diesel",
+    description:
+      "Assess whether VAT on road fuel could be reduced during periods of exceptional fuel-price pressure, and publish the estimated effect on motorists, households and businesses.",
+    supportingPoints: [
+      "VAT on road fuel is currently charged at the standard rate of 20%.",
+      "VAT is charged on the fuel price including Fuel Duty, not on the pre-tax price alone — so a change to Fuel Duty also changes the amount of VAT charged.",
+      "Illustrative example only: on a petrol pump price of 168.1p/litre, the 20% VAT charge is approximately 28.0p/litre (GOV.UK/CMA-sourced breakdown). A lower VAT rate would reduce this proportionally, but we are not publishing our own estimate of the exact pump-price effect.",
+      "Reducing VAT is a policy choice with a direct cost to government revenue — this is a question for government to assess and answer, not a claim that it should definitely happen.",
+    ],
+    evidenceHref: "/follow-the-money#signature",
+    evidenceLabel: "How VAT and Fuel Duty stack up",
   },
   {
     id: "competition-margins",
-    number: 2,
-    title: "Stronger Competition & Margin Monitoring",
-    tagline: "Strengthen Monitoring Where Margins Stay High",
-    statement:
-      "FCE is calling on Government to strengthen monitoring and enforcement where fuel margins remain persistently high, and to investigate evidence of anti-competitive behaviour or unjustified margin increases.",
-    explanationPoints: [
-      "A retailer margin is the difference between wholesale and pump price, covering real operating costs (staff, rent, card fees, business rates); it is not automatically profit.",
-      "Wholesale costs, distribution costs, competition and margins can all move independently of one another, and a high margin in one period does not by itself prove unfair pricing.",
-      "The CMA's own Enhanced Road Fuel Monitoring findings are shown below, not FCE's own claims.",
-      "We are calling for stronger, ongoing scrutiny where the evidence shows a persistent pattern, not asserting wrongdoing without evidence.",
+    number: 3,
+    title: "Strengthen Competition",
+    description: "Ensure that the fuel market remains competitive and that motorists can benefit when wholesale costs fall.",
+    supportingPoints: [
+      "The CMA already monitors UK road fuel margins through its Enhanced Road Fuel Monitoring programme — this is existing, independent regulatory oversight, not something FCE is proposing from scratch.",
+      "Competition between fuel retailers is one of the mechanisms that can pass falling wholesale costs on to motorists at the pump.",
+      "Monitoring margins and price movements over time helps show whether that pass-through is happening, without assuming the answer in advance.",
+      "We do not accuse any individual company or the industry generally of wrongdoing — the CMA's own published findings are the evidence base, not FCE's opinion.",
     ],
+    evidenceHref: "/why-is-fuel-expensive#competition",
+    evidenceLabel: "CMA margin monitoring data",
   },
   {
     id: "transparency",
-    number: 3,
-    title: "Better Fuel-Price Transparency",
-    tagline: "Make Fuel Finder Work Well For Everyone",
-    statement:
-      "FCE is calling for comprehensive, timely and accessible reporting of forecourt prices so motorists can compare prices easily and identify significant local price differences.",
-    explanationPoints: [
-      "The Government's Fuel Finder open-data scheme, requiring forecourts to report price changes within 30 minutes, already exists and is a step in the right direction.",
-      "Our demand is about effective implementation: accuracy, full coverage of forecourts, enforcement of reporting duties, and making the data genuinely accessible to ordinary motorists, not just developers.",
-      "See our Live Fuel Prices page for more detail on how Fuel Finder currently works and where coverage gaps remain.",
-    ],
+    number: 4,
+    title: "Make Fuel Pricing Transparent",
+    description: "Give motorists clearer information about how changes in wholesale costs, taxes and retailer margins affect the price they pay at the pump.",
+    supportingPoints: ["Wholesale costs", "Fuel Duty", "VAT", "Retailer margins", "Regional and local price differences", "Pump-price movements over time"],
+    evidenceHref: "/why-is-fuel-expensive",
+    evidenceLabel: "Why is fuel so expensive?",
   },
   {
     id: "crisis-oversight",
-    number: 4,
-    title: "Crisis Fuel-Market Oversight",
-    tagline: "Track Prices Through the Whole Supply Chain",
-    statement:
-      "FCE is calling for stronger oversight during periods of exceptional fuel-price disruption, with transparent monitoring across the supply chain from crude oil to the pump.",
-    explanationPoints: [
-      "Fuel prices pass through several stages, each of which can move independently: crude oil, refining, wholesale, distribution, and the forecourt.",
-      "During major disruption (for example a sharp oil-price spike), being able to see where in that chain a price change originates would help identify where further scrutiny may be warranted.",
-      "This is a transparency and monitoring demand, not an accusation. We are not claiming any specific company has acted improperly.",
+    number: 5,
+    title: "Protect Against Extreme Fuel-Price Shocks",
+    description: "Establish a clear mechanism for reviewing fuel taxation and other government measures when pump prices rise exceptionally quickly or reach an objectively defined level.",
+    supportingPoints: [
+      "This is a policy proposal from FCE. No such review mechanism currently exists in government policy — we are not claiming otherwise.",
+      "The mechanism could use predefined criteria, for example: a significant percentage price increase over a defined period, or pump prices reaching a defined threshold.",
+      "Any specific percentage or price threshold shown on this site is an illustrative example only, not a proposed official figure.",
+      "The aim is a transparent, predictable trigger for review, rather than ad-hoc decisions made without published criteria.",
     ],
+    statusTag: "fce-proposal",
+    evidenceHref: "/why-is-fuel-expensive#refining",
+    evidenceLabel: "How prices move through the supply chain",
   },
   {
     id: "protect-essential-motorists",
-    number: 5,
-    title: "Protect Fuel-Dependent Households & Businesses",
-    tagline: "Assess The Impact On People With No Alternative",
-    statement:
-      "FCE is calling on Government to assess the impact of fuel-price shocks and fuel taxation on households, workers and small businesses that depend heavily on road transport, particularly where practical alternatives are limited.",
-    explanationPoints: [
-      "Examples include small businesses, tradespeople, delivery drivers, taxi and private-hire drivers, care workers, rural workers, and small fleets.",
-      "These groups are not affected identically. Mileage, vehicle running costs, and access to alternatives vary significantly, so any support would need proper targeting rather than a single blanket assumption.",
-      "This is a call for an evidence-based assessment, not a specific costed scheme.",
+    number: 6,
+    title: "Recognise High Fuel Costs for Working Drivers",
+    description: "Review the impact of fuel costs on people and businesses that depend heavily on road travel for their work.",
+    supportingPoints: [
+      "Delivery drivers",
+      "Taxi and private-hire drivers",
+      "Tradespeople",
+      "Small businesses",
+      "Carers and other mobile workers",
+      "Commuters, where practical alternatives are limited",
     ],
+    evidenceHref: "/cost-of-living",
+    evidenceLabel: "Cost-of-living impact by group",
   },
   {
     id: "transport-strategy",
-    number: 6,
-    title: "Long-Term Transport Affordability Strategy",
-    tagline: "Plan Ahead As Vehicle Technology Changes",
-    statement:
-      "FCE is calling on Government to publish a long-term strategy for keeping transport affordable as the UK transitions towards lower-emission vehicles.",
-    explanationPoints: [
-      "As petrol and diesel consumption declines, Fuel Duty revenue (currently a multi-billion-pound annual receipt) will decline with it, raising a genuine long-term fiscal question.",
-      "That question covers Fuel Duty, EV taxation, road taxation, and public charging costs, and how those pieces fit together for both government revenue and driver affordability.",
-      "We are not proposing a specific replacement tax. We are asking for a published, predictable strategy so motorists and businesses can plan ahead, rather than piecemeal, short-notice changes.",
+    number: 7,
+    title: "Publish the Evidence",
+    description: "Require clear, accessible impact assessments before major changes to Fuel Duty, VAT or other policies affecting road-fuel costs.",
+    supportingPoints: [
+      "Any such assessment should, where appropriate, explain potential effects on motorists, households, businesses, transport costs and government revenue.",
+      "This reflects FCE's existing principle across the whole site: check the evidence, ask the questions.",
+      "We are asking for published methodology and figures, not for a specific policy outcome.",
     ],
+    evidenceHref: "/sources",
+    evidenceLabel: "Sources & methodology",
   },
 ];
