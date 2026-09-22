@@ -1,10 +1,14 @@
 import { policyDemands } from "@/lib/data/policy-demands";
 import { fuelDutyTimeline } from "@/lib/data/fuel-duty-timeline";
 import { cmaMarginPoints, cmaMarginSource } from "@/lib/data/cma-margins";
+import { litreJourneySteps } from "@/lib/data/litre-journey";
+import { impactGroups } from "@/lib/data/impact-groups";
 import { ContentTag } from "@/components/ui/ContentTag";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { PolicyStatusBadge } from "@/components/ui/PolicyStatusBadge";
 import { formatDate } from "@/lib/utils";
+
+const supplyChainSteps = litreJourneySteps.filter((s) => s.category === "market");
 
 const currentDuty = fuelDutyTimeline.find((e) => e.status === "current");
 const previousDuty = fuelDutyTimeline.find((e) => e.id === "pre-2022-base-rate");
@@ -92,6 +96,45 @@ function CompetitionDataCard() {
   );
 }
 
+function SupplyChainChainCard() {
+  return (
+    <div className="mt-4 rounded-md border border-slate-200 bg-slate-50 p-4">
+      <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Where a price change could originate</p>
+      <div className="mt-3 flex flex-wrap items-center gap-x-1.5 gap-y-2">
+        {supplyChainSteps.map((step, i) => (
+          <span key={step.number} className="flex items-center gap-1.5">
+            <span className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-navy-900 ring-1 ring-slate-200">{step.title}</span>
+            {i < supplyChainSteps.length - 1 ? (
+              <span className="text-slate-400" aria-hidden="true">
+                →
+              </span>
+            ) : null}
+          </span>
+        ))}
+      </div>
+      <p className="mt-3 text-xs text-charcoal-600">
+        Full detail on our{" "}
+        <a href="/why-is-fuel-expensive#refining" className="font-semibold text-petrol-600 underline underline-offset-2">
+          Why Is Fuel So Expensive?
+        </a>{" "}
+        page.
+      </p>
+    </div>
+  );
+}
+
+function EssentialMotoristsTagList() {
+  return (
+    <div className="mt-4 flex flex-wrap gap-2">
+      {impactGroups.map((g) => (
+        <span key={g.title} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-charcoal-700">
+          {g.title}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export function PolicyDemands() {
   return (
     <div>
@@ -123,6 +166,8 @@ export function PolicyDemands() {
             </ul>
             {demand.id === "fuel-duty" ? <FuelDutyDataCard /> : null}
             {demand.id === "competition-margins" ? <CompetitionDataCard /> : null}
+            {demand.id === "crisis-oversight" ? <SupplyChainChainCard /> : null}
+            {demand.id === "protect-essential-motorists" ? <EssentialMotoristsTagList /> : null}
           </div>
         ))}
       </div>

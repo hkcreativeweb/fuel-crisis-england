@@ -44,6 +44,18 @@ export const officialSources: OfficialSource[] = [
     category: "Government",
   },
   {
+    name: "HM Revenue & Customs (HMRC)",
+    description: "Publishes Fuel Duty receipts and the Hydrocarbon Oils Bulletin, the source for government fuel-tax revenue figures.",
+    url: "https://www.gov.uk/government/statistics/hydrocarbon-oils-bulletin",
+    category: "Government",
+  },
+  {
+    name: "Office for Budget Responsibility (OBR)",
+    description: "The UK's independent fiscal watchdog, which publishes economic and fiscal forecasts, including the assumptions behind tax-policy costings.",
+    url: "https://obr.uk/",
+    category: "Government",
+  },
+  {
     name: "RAC Fuel Watch",
     description: "Motoring organisation tracking average UK petrol and diesel prices.",
     url: "https://www.rac.co.uk/drive/advice/fuel-watch/",
