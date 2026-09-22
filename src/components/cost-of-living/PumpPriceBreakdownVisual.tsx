@@ -5,6 +5,8 @@ import type { PumpPriceBreakdown, FuelType } from "@/lib/types";
 import { petrolPumpPriceBreakdown, dieselPumpPriceBreakdown } from "@/lib/data/pump-price-breakdown";
 import { DataStatusBadge } from "@/components/ui/DataStatusBadge";
 import { Alert } from "@/components/ui/Alert";
+import { GlossaryTerm } from "@/components/ui/GlossaryTerm";
+import { findGlossaryTerm } from "@/lib/data/glossary";
 import { formatDate } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
@@ -40,6 +42,7 @@ function Breakdown({ breakdown }: { breakdown: PumpPriceBreakdown }) {
                 <span className="inline-flex items-center gap-2 text-charcoal-700">
                   <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
                   {c.label}
+                  {findGlossaryTerm(c.label) ? <GlossaryTerm definition={findGlossaryTerm(c.label)!.definition} /> : null}
                 </span>
                 <span className="font-semibold tabular-nums text-navy-900">
                   {c.approxPencePerLitre !== null ? `${c.approxPencePerLitre.toFixed(1)}p` : ""} ({c.approxPercent}%)

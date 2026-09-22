@@ -119,6 +119,10 @@ export function FollowTheMoneyFlow({ defaultAmount = 50 }: { defaultAmount?: num
         split varies with the fuel price, wholesale costs, retailer margins, and VAT at any given time —
         this is not a fixed formula.
       </p>
+      <p className="mt-2 text-xs font-semibold leading-relaxed text-slate-300">
+        The &quot;Oil &amp; energy industry&quot; and &quot;Retail&quot; amounts include costs and margins
+        across the fuel supply chain. They are not the same thing as industry profit.
+      </p>
     </div>
   );
 }

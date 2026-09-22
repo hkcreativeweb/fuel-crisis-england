@@ -14,6 +14,7 @@ import {
   type WeeklyFigure,
 } from "@/lib/data/hero-fuel-snapshot";
 import { formatDateShort, cn } from "@/lib/utils";
+import { CopyFigure } from "@/components/ui/CopyFigure";
 
 function UkTrend({ figure }: { figure: WeeklyFigure }) {
   if (figure.previous === null) return <p className="mt-1.5 text-xs text-charcoal-500">vs previous week: n/a</p>;
@@ -80,6 +81,9 @@ export function HeroFuelDataStrip() {
           >
             Source: GOV.UK / DESNZ
           </a>
+          <div className="mt-1">
+            <CopyFigure text={`Average UK petrol price: ${ukWeeklyAverage.petrol.current.toFixed(1)}p/L`} />
+          </div>
         </div>
 
         <div className="pt-5 sm:pt-0 sm:px-5">
