@@ -20,10 +20,8 @@ function NavLink({ item, pathname, variant, onNavigate }: { item: NavItem; pathn
         <Link
           href={item.href}
           onClick={onNavigate}
-          className={cn(
-            "block rounded-md px-3 py-3 text-base font-semibold transition-colors",
-            active ? "bg-petrol-500 text-white" : "text-slate-200 hover:text-petrol-400"
-          )}
+          aria-current={active ? "page" : undefined}
+          className="block rounded-md px-3 py-3 text-base font-semibold text-slate-200 transition-colors hover:text-petrol-400"
         >
           {item.label}
         </Link>
@@ -33,10 +31,8 @@ function NavLink({ item, pathname, variant, onNavigate }: { item: NavItem; pathn
   return (
     <Link
       href={item.href}
-      className={cn(
-        "whitespace-nowrap rounded-md px-4.5 py-2.5 text-[13px] font-semibold tracking-wide transition-colors",
-        active ? "bg-petrol-500 text-white" : "text-slate-300 hover:text-petrol-400"
-      )}
+      aria-current={active ? "page" : undefined}
+      className="whitespace-nowrap rounded-md px-4.5 py-2.5 text-[13px] font-semibold tracking-wide text-slate-300 transition-colors hover:text-petrol-400"
     >
       {item.label}
     </Link>
@@ -62,17 +58,15 @@ function DesktopDropdown({ category, pathname }: { category: NavCategory; pathna
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className={cn(
-          "flex items-center gap-1 whitespace-nowrap rounded-md px-4.5 py-2.5 text-[13px] font-semibold tracking-wide transition-colors",
-          active ? "bg-petrol-500 text-white" : "text-slate-300 hover:text-petrol-400"
-        )}
+        aria-current={active ? "page" : undefined}
+        className="flex items-center gap-1 whitespace-nowrap rounded-md px-4.5 py-2.5 text-[13px] font-semibold tracking-wide text-slate-300 transition-colors hover:text-petrol-400"
       >
         <span className="relative">
           {category.label}
           <span
             className={cn(
               "absolute -bottom-1.5 left-0 h-[2px] w-full origin-left scale-x-0 bg-petrol-500 transition-transform duration-200",
-              (active || open) && "scale-x-100"
+              open && "scale-x-100"
             )}
             aria-hidden="true"
           />
@@ -122,10 +116,8 @@ function MobileCategory({ category, pathname, onNavigate }: { category: NavCateg
         type="button"
         onClick={() => setExpanded((v) => !v)}
         aria-expanded={expanded}
-        className={cn(
-          "flex w-full items-center justify-between rounded-md px-3 py-3 text-left text-base font-semibold transition-colors",
-          active ? "bg-petrol-500 text-white" : "text-slate-200 hover:text-petrol-400"
-        )}
+        aria-current={active ? "page" : undefined}
+        className="flex w-full items-center justify-between rounded-md px-3 py-3 text-left text-base font-semibold text-slate-200 transition-colors hover:text-petrol-400"
       >
         {category.label}
         <svg viewBox="0 0 12 8" className={cn("h-3 w-3 shrink-0 text-slate-400 transition-transform duration-150", expanded && "rotate-180")} fill="none" aria-hidden="true">
