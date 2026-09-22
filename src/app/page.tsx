@@ -12,6 +12,7 @@ import { ImpactSection } from "@/components/home/ImpactSection";
 import { TakeActionSection } from "@/components/home/TakeActionSection";
 import { AboutHomeSection } from "@/components/home/AboutHomeSection";
 import { FinalMessage } from "@/components/home/FinalMessage";
+import { VisitCounter } from "@/components/home/VisitCounter";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -37,6 +38,7 @@ export default function HomePage() {
       <TakeActionSection />
       <AboutHomeSection />
       <FinalMessage />
+      <VisitCounter />
     </>
   );
 }
