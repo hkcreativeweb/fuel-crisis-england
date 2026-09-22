@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
 import { HaveYourSaySection } from "@/components/have-your-say/HaveYourSaySection";
+import { PetitionsSection } from "@/components/have-your-say/PetitionsSection";
 
 const CONTACT_EMAIL = "contact.fuelcrisisengland@gmail.com";
 
@@ -23,6 +24,10 @@ export default function HaveYourSayPage() {
 
         <div className="mt-10 max-w-2xl">
           <HaveYourSaySection />
+        </div>
+
+        <div className="mt-14 max-w-3xl border-t border-slate-200 pt-10">
+          <PetitionsSection />
         </div>
       </Container>
 
