@@ -36,6 +36,9 @@ export const evNavItem: NavItem = { label: "Fuel vs Electric", href: "/fuel-vs-e
 /** Standalone top-level nav item for the Europe comparison page. */
 export const europeNavItem: NavItem = { label: "Europe", href: "/europe-compared" };
 
+/** Standalone top-level nav item for the About page, shown last in the navbar. */
+export const aboutNavItem: NavItem = { label: "About Us", href: "/about" };
+
 /** Top-level dropdown category for the public discussion/feedback and civic-action pages. */
 export const haveYourSayCategory: NavCategory = {
   label: "Have Your Say",

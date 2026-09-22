@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/ui/Logo";
-import { homeNavItem, evNavItem, europeNavItem, haveYourSayCategory, navCategories, type NavCategory, type NavItem } from "@/lib/site-config";
+import { homeNavItem, evNavItem, europeNavItem, aboutNavItem, haveYourSayCategory, navCategories, type NavCategory, type NavItem } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 function isCategoryActive(category: NavCategory, pathname: string): boolean {
@@ -195,6 +195,7 @@ export function Header() {
           <NavLink item={europeNavItem} pathname={pathname} variant="desktop" />
           <NavLink item={evNavItem} pathname={pathname} variant="desktop" />
           <DesktopDropdown category={haveYourSayCategory} pathname={pathname} />
+          <NavLink item={aboutNavItem} pathname={pathname} variant="desktop" />
         </nav>
 
         <div className="flex items-center gap-3">
@@ -237,6 +238,7 @@ export function Header() {
             <NavLink item={europeNavItem} pathname={pathname} variant="mobile" onNavigate={() => setMobileOpen(false)} />
             <NavLink item={evNavItem} pathname={pathname} variant="mobile" onNavigate={() => setMobileOpen(false)} />
             <MobileCategory category={haveYourSayCategory} pathname={pathname} onNavigate={() => setMobileOpen(false)} />
+            <NavLink item={aboutNavItem} pathname={pathname} variant="mobile" onNavigate={() => setMobileOpen(false)} />
           </ul>
         </nav>
       ) : null}
