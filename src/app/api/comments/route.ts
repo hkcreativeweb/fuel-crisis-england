@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getApprovedComments, submitComment } from "@/lib/server/comment-store";
+import { notifyNewComment } from "@/lib/server/notify";
 
 const DEFAULT_LIMIT = 10;
 const MAX_LIMIT = 30;
@@ -50,6 +51,12 @@ export async function POST(request: Request) {
     }
     return NextResponse.json({ success: false, errors: { form: result.error } }, { status: result.status });
   }
+
+  // Awaited (not fire-and-forget) because a serverless function can be
+  // frozen right after the response is sent, which would abort a
+  // detached fetch before the email actually goes out. notifyNewComment
+  // never throws, so this can't turn an email failure into a 500.
+  await notifyNewComment(result.comment);
 
   return NextResponse.json({ success: true });
 }
