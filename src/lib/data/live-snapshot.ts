@@ -1,4 +1,5 @@
-import type { DataStatusLabel } from "@/lib/types";
+import type { DataStatusLabel, FuelType } from "@/lib/types";
+import type { WeeklyFigure } from "@/lib/data/hero-fuel-snapshot";
 
 export type LiveIndicator = {
   id: string;
@@ -25,11 +26,11 @@ export const liveIndicators: LiveIndicator[] = [
   {
     id: "petrol-price",
     label: "Average petrol price",
-    value: "168.1",
+    value: "172.0",
     unit: "pence/litre",
     status: "latest-available",
-    lastUpdated: "2026-09-14",
-    dataPeriod: "Week commencing 14 September 2026",
+    lastUpdated: "2026-09-21",
+    dataPeriod: "Week commencing 21 September 2026",
     geography: "UK",
     source: "GOV.UK / DESNZ: Weekly road fuel prices",
     sourceUrl: "https://www.gov.uk/government/statistics/weekly-road-fuel-prices",
@@ -37,11 +38,11 @@ export const liveIndicators: LiveIndicator[] = [
   {
     id: "diesel-price",
     label: "Average diesel price",
-    value: "190.7",
+    value: "195.5",
     unit: "pence/litre",
     status: "latest-available",
-    lastUpdated: "2026-09-14",
-    dataPeriod: "Week commencing 14 September 2026",
+    lastUpdated: "2026-09-21",
+    dataPeriod: "Week commencing 21 September 2026",
     geography: "UK",
     source: "GOV.UK / DESNZ: Weekly road fuel prices",
     sourceUrl: "https://www.gov.uk/government/statistics/weekly-road-fuel-prices",
@@ -158,16 +159,43 @@ export const liveIndicators: LiveIndicator[] = [
   {
     id: "hundred-mile-journey",
     label: "Cost of a 100-mile journey (40mpg petrol car)",
-    value: "19.09",
+    value: "19.55",
     unit: "£",
     status: "live",
-    lastUpdated: "2026-09-14",
+    lastUpdated: "2026-09-21",
     dataPeriod: "Calculated from today's petrol price",
     geography: "UK",
     source: "Calculated: 100 miles ÷ 40mpg × 4.54609 litres/gallon × current petrol price",
     sourceUrl: null,
   },
 ];
+
+/** Litres in an imperial gallon, used for the 100-mile journey figure. */
+const LITRES_PER_GALLON = 4.54609;
+
+/**
+ * Returns a copy of `indicators` with the petrol, diesel and 100-mile
+ * journey figures replaced by a newer DESNZ weekly average fetched from
+ * GOV.UK (see desnz-weekly-prices.ts). Every other indicator is unchanged.
+ */
+export function withLatestFuelPrices(
+  indicators: LiveIndicator[],
+  figures: Record<FuelType, WeeklyFigure>
+): LiveIndicator[] {
+  return indicators.map((indicator) => {
+    const fuel: FuelType | null =
+      indicator.id === "petrol-price" ? "petrol" : indicator.id === "diesel-price" ? "diesel" : null;
+    if (fuel) {
+      const figure = figures[fuel];
+      return { ...indicator, value: figure.current.toFixed(1), lastUpdated: figure.lastUpdated, dataPeriod: figure.dataPeriod };
+    }
+    if (indicator.id === "hundred-mile-journey") {
+      const pounds = (100 / 40) * LITRES_PER_GALLON * (figures.petrol.current / 100);
+      return { ...indicator, value: pounds.toFixed(2), lastUpdated: figures.petrol.lastUpdated };
+    }
+    return indicator;
+  });
+}
 
 /**
  * Latest available major company financial results: the most recent

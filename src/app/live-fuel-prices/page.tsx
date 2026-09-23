@@ -7,14 +7,18 @@ import { LiveIndicatorCard } from "@/components/live/LiveIndicatorCard";
 import { YearInProgressCard } from "@/components/live/YearInProgressCard";
 import { LocalPriceVariation } from "@/components/live/LocalPriceVariation";
 import { FollowTheMoneyFlow } from "@/components/money-flow/FollowTheMoneyFlow";
-import { liveIndicators } from "@/lib/data/live-snapshot";
+import { liveIndicators, withLatestFuelPrices } from "@/lib/data/live-snapshot";
+import { getLatestUkWeeklyAverage } from "@/lib/data/desnz-weekly-prices";
 
 export const metadata: Metadata = {
   title: "Live Fuel Prices",
   description: "What is happening now: live and latest-available UK fuel prices, tax rates, wages, and economic indicators, each clearly labelled with its exact data period, geography and source.",
 };
 
-export default function LiveFuelPricesPage() {
+export default async function LiveFuelPricesPage() {
+  const { figures, fromLiveSource } = await getLatestUkWeeklyAverage();
+  const indicators = fromLiveSource ? withLatestFuelPrices(liveIndicators, figures) : liveIndicators;
+
   return (
     <>
       <section className="bg-navy-950 py-16 sm:py-20">
@@ -46,7 +50,7 @@ export default function LiveFuelPricesPage() {
         <Container>
           <SectionHeading eyebrow="What is happening now" title="Live and latest-available indicators" />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {liveIndicators.map((indicator) => (
+            {indicators.map((indicator) => (
               <LiveIndicatorCard key={indicator.id} indicator={indicator} />
             ))}
           </div>

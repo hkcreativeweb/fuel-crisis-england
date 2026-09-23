@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import type { FuelType } from "@/lib/types";
 import {
-  ukWeeklyAverage,
   ukWeeklyAverageSource,
   internationalBenchmark,
   internationalBenchmarkMeta,
@@ -47,7 +46,8 @@ const columnLabelClasses =
 const columnValueClasses =
   "mt-1.5 text-3xl font-extrabold tabular-nums text-navy-900 transition-colors group-hover:text-petrol-600";
 
-export function HeroFuelDataStrip() {
+/** `ukWeekly` is fetched server-side from GOV.UK / DESNZ (see desnz-weekly-prices.ts). */
+export function HeroFuelDataStrip({ ukWeekly }: { ukWeekly: Record<FuelType, WeeklyFigure> }) {
   const [benchmarkFuel, setBenchmarkFuel] = useState<FuelType>("petrol");
   const benchmarkFigure = internationalBenchmark[benchmarkFuel];
   const benchmarkMeta = internationalBenchmarkMeta[benchmarkFuel];
@@ -67,12 +67,12 @@ export function HeroFuelDataStrip() {
           <Link href="/live-fuel-prices" className={columnLinkClasses}>
             <p className={columnLabelClasses}>UK petrol</p>
             <p className={columnValueClasses}>
-              {ukWeeklyAverage.petrol.current.toFixed(1)}
+              {ukWeekly.petrol.current.toFixed(1)}
               <span className="text-base font-bold text-charcoal-500">p/L</span>
             </p>
           </Link>
-          <UkTrend figure={ukWeeklyAverage.petrol} />
-          <p className="mt-3 text-[11px] text-charcoal-500">{formatDateShort(ukWeeklyAverage.petrol.lastUpdated)}</p>
+          <UkTrend figure={ukWeekly.petrol} />
+          <p className="mt-3 text-[11px] text-charcoal-500">{formatDateShort(ukWeekly.petrol.lastUpdated)}</p>
           <a
             href={ukWeeklyAverageSource.url}
             target="_blank"
@@ -82,7 +82,7 @@ export function HeroFuelDataStrip() {
             Source: GOV.UK / DESNZ
           </a>
           <div className="mt-1">
-            <CopyFigure text={`Average UK petrol price: ${ukWeeklyAverage.petrol.current.toFixed(1)}p/L`} />
+            <CopyFigure text={`Average UK petrol price: ${ukWeekly.petrol.current.toFixed(1)}p/L`} />
           </div>
         </div>
 
@@ -90,12 +90,12 @@ export function HeroFuelDataStrip() {
           <Link href="/live-fuel-prices" className={columnLinkClasses}>
             <p className={columnLabelClasses}>UK diesel</p>
             <p className={columnValueClasses}>
-              {ukWeeklyAverage.diesel.current.toFixed(1)}
+              {ukWeekly.diesel.current.toFixed(1)}
               <span className="text-base font-bold text-charcoal-500">p/L</span>
             </p>
           </Link>
-          <UkTrend figure={ukWeeklyAverage.diesel} />
-          <p className="mt-3 text-[11px] text-charcoal-500">{formatDateShort(ukWeeklyAverage.diesel.lastUpdated)}</p>
+          <UkTrend figure={ukWeekly.diesel} />
+          <p className="mt-3 text-[11px] text-charcoal-500">{formatDateShort(ukWeekly.diesel.lastUpdated)}</p>
           <a
             href={ukWeeklyAverageSource.url}
             target="_blank"

@@ -308,4 +308,5 @@ export const pumpPriceHistoryMonthly: PumpPriceHistoryPoint[] = [
   { date: "2026-08-03", petrol: 159.89, diesel: 179.19, dutyPence: 52.95, vatPercent: 20 },
   { date: "2026-09-07", petrol: 164.4, diesel: 186.36, dutyPence: 52.95, vatPercent: 20 },
   { date: "2026-09-14", petrol: 168.14, diesel: 190.72, dutyPence: 52.95, vatPercent: 20 },
+  { date: "2026-09-21", petrol: 172.01, diesel: 195.53, dutyPence: 52.95, vatPercent: 20 },
 ];

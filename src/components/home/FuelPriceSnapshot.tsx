@@ -1,4 +1,4 @@
-import { getCurrentFuelPriceSnapshot } from "@/lib/data/fuel-prices";
+import { getCurrentFuelPriceSnapshot } from "@/lib/data/desnz-weekly-prices";
 import { Container } from "@/components/ui/Container";
 import { StatCard } from "@/components/ui/StatCard";
 import { DataStatusBadge } from "@/components/ui/DataStatusBadge";
@@ -17,7 +17,7 @@ export async function FuelPriceSnapshot() {
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-petrol-300">Fuel price snapshot</p>
             <h2 className="mt-2 text-2xl font-extrabold text-white sm:text-3xl">England average pump prices</h2>
           </div>
-          <DataStatusBadge status={snapshot ? "live" : "unavailable"} />
+          <DataStatusBadge status={snapshot ? snapshot.provenance.status : "unavailable"} />
         </div>
 
         {snapshot ? (

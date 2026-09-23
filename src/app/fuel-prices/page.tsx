@@ -7,11 +7,8 @@ import { FuelPriceCard } from "@/components/fuel-prices/FuelPriceCard";
 import { FuelPriceChart } from "@/components/fuel-prices/FuelPriceChart";
 import { RegionalComparison } from "@/components/fuel-prices/RegionalComparison";
 import { FuelCostCalculator } from "@/components/calculator/FuelCostCalculator";
-import {
-  getCurrentFuelPriceSnapshot,
-  getHistoricalFuelPrices,
-  getRegionalFuelPrices,
-} from "@/lib/data/fuel-prices";
+import { getRegionalFuelPrices } from "@/lib/data/fuel-prices";
+import { getCurrentFuelPriceSnapshot, getHistoricalFuelPrices } from "@/lib/data/desnz-weekly-prices";
 import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -43,7 +40,7 @@ export default async function FuelPricesPage() {
         <Container>
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h2 className="text-xl font-bold text-navy-900">Current snapshot</h2>
-            <DataStatusBadge status={snapshot ? "live" : "unavailable"} />
+            <DataStatusBadge status={snapshot ? snapshot.provenance.status : "unavailable"} />
           </div>
 
           {snapshot ? (

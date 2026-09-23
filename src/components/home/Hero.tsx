@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { PhotoCredit } from "@/components/ui/PhotoCredit";
 import { HeroFuelDataStrip } from "@/components/home/HeroFuelDataStrip";
+import { getLatestUkWeeklyAverage } from "@/lib/data/desnz-weekly-prices";
 import { imageCredits } from "@/lib/data/image-credits";
 
 const credit = imageCredits["forecourt-close"];
@@ -24,7 +25,8 @@ const exploreLinks: { label: string; href: string }[] = [
   { label: "Ask the questions.", href: "/ask-your-mp" },
 ];
 
-export function Hero() {
+export async function Hero() {
+  const { figures: ukWeekly } = await getLatestUkWeeklyAverage();
   return (
     <section className="border-b border-slate-200 bg-background">
       <Container className="grid gap-12 py-14 sm:py-20 lg:grid-cols-2 lg:items-start lg:gap-16">
@@ -39,7 +41,7 @@ export function Hero() {
             money goes, and how fuel costs affect households and businesses.
           </p>
 
-          <HeroFuelDataStrip />
+          <HeroFuelDataStrip ukWeekly={ukWeekly} />
 
           <div className="relative mt-8 aspect-[16/10] max-w-lg overflow-hidden">
             <Image src={credit.src} alt={credit.alt} fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />

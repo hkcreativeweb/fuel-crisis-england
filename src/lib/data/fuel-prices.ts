@@ -1,26 +1,14 @@
-import type { FuelPricePoint, FuelPriceSnapshot, RegionalPrice } from "@/lib/types";
+import type { FuelPricePoint, RegionalPrice } from "@/lib/types";
 
 /**
- * Fuel price data adapter.
+ * Fuel price data that is safe to import from client components.
  *
- * This module is the single integration point for real fuel price data.
- * No live feed is connected yet, so every export here returns `null` /
- * empty results with an "unavailable" provenance. To connect a real
- * source (e.g. GOV.UK weekly road fuel prices, RAC Fuel Watch, or a
- * commercial pricing API), implement the fetch inside these functions
- * and update the returned `provenance.status` to "live".
+ * Current and historical UK prices are fetched server-side from the
+ * official GOV.UK / DESNZ weekly statistics: see
+ * getCurrentFuelPriceSnapshot / getHistoricalFuelPrices in
+ * desnz-weekly-prices.ts. DESNZ publishes no official regional
+ * breakdown, so regional prices remain unconnected.
  */
-
-export async function getCurrentFuelPriceSnapshot(): Promise<FuelPriceSnapshot | null> {
-  // No live data source is connected. Returning null signals the UI to
-  // show the "data is currently being connected" empty state.
-  return null;
-}
-
-export async function getHistoricalFuelPrices(): Promise<FuelPricePoint[]> {
-  // No verified historical data source is connected yet.
-  return [];
-}
 
 export async function getRegionalFuelPrices(): Promise<RegionalPrice[]> {
   // No verified regional data source is connected yet.

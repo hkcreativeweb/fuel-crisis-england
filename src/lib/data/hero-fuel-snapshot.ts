@@ -9,9 +9,9 @@ import type { FuelType } from "@/lib/types";
  *    price, so it is deliberately never labelled "live" anywhere it is
  *    displayed. Source: GOV.UK "Weekly road fuel prices" CSV
  *    (https://www.gov.uk/government/statistics/weekly-road-fuel-prices),
- *    downloaded and verified directly. Week commencing 14 September 2026
- *    (petrol 168.14p/L, diesel 190.72p/L) vs the prior week commencing
- *    7 September 2026 (petrol 164.40p/L, diesel 186.36p/L).
+ *    downloaded and verified directly. Week commencing 21 September 2026
+ *    (petrol 172.01p/L, diesel 195.53p/L) vs the prior week commencing
+ *    14 September 2026 (petrol 168.14p/L, diesel 190.72p/L).
  *
  * 2. `internationalBenchmark`: the US EIA's "Weekly Retail Gasoline and
  *    Diesel Prices" series (national average, retail, including taxes).
@@ -22,9 +22,9 @@ import type { FuelType } from "@/lib/types";
  *    Source: U.S. Energy Information Administration
  *    (https://www.eia.gov/petroleum/gasdiesel/), series "Regular" for
  *    gasoline (EMM_EPMR_PTE_NUS_DPG) and "Diesel (On-Highway) - All
- *    Types" (EMD_EPD2D_PTE_NUS_DPG). Week of 14 September 2026
- *    (gasoline $4.319/gal, diesel $6.285/gal) vs the prior week of
- *    7 September 2026 (gasoline $4.157/gal, diesel $5.967/gal).
+ *    Types" (EMD_EPD2D_PTE_NUS_DPG). Week of 21 September 2026
+ *    (gasoline $4.478/gal, diesel $6.529/gal) vs the prior week of
+ *    14 September 2026 (gasoline $4.319/gal, diesel $6.285/gal).
  *
  * Neither figure is hard-coded as a "permanent" truth. Both blocks are
  * shaped so the current/previous pair can be replaced wholesale the next
@@ -56,18 +56,18 @@ export function trendArrow(direction: TrendDirection): string {
 
 export const ukWeeklyAverage: Record<FuelType, WeeklyFigure> = {
   petrol: {
-    current: 168.14,
-    previous: 164.4,
-    dataPeriod: "Week commencing 14 September 2026",
-    previousDataPeriod: "Week commencing 7 September 2026",
-    lastUpdated: "2026-09-14",
+    current: 172.01,
+    previous: 168.14,
+    dataPeriod: "Week commencing 21 September 2026",
+    previousDataPeriod: "Week commencing 14 September 2026",
+    lastUpdated: "2026-09-21",
   },
   diesel: {
-    current: 190.72,
-    previous: 186.36,
-    dataPeriod: "Week commencing 14 September 2026",
-    previousDataPeriod: "Week commencing 7 September 2026",
-    lastUpdated: "2026-09-14",
+    current: 195.53,
+    previous: 190.72,
+    dataPeriod: "Week commencing 21 September 2026",
+    previousDataPeriod: "Week commencing 14 September 2026",
+    lastUpdated: "2026-09-21",
   },
 };
 
@@ -79,18 +79,18 @@ export const ukWeeklyAverageSource = {
 /** US EIA national-average RETAIL gasoline/diesel price, $/US gallon, including taxes. */
 export const internationalBenchmark: Record<FuelType, WeeklyFigure> = {
   petrol: {
-    current: 4.319,
-    previous: 4.157,
-    dataPeriod: "Week of 14 September 2026",
-    previousDataPeriod: "Week of 7 September 2026",
-    lastUpdated: "2026-09-15",
+    current: 4.478,
+    previous: 4.319,
+    dataPeriod: "Week of 21 September 2026",
+    previousDataPeriod: "Week of 14 September 2026",
+    lastUpdated: "2026-09-22",
   },
   diesel: {
-    current: 6.285,
-    previous: 5.967,
-    dataPeriod: "Week of 14 September 2026",
-    previousDataPeriod: "Week of 7 September 2026",
-    lastUpdated: "2026-09-15",
+    current: 6.529,
+    previous: 6.285,
+    dataPeriod: "Week of 21 September 2026",
+    previousDataPeriod: "Week of 14 September 2026",
+    lastUpdated: "2026-09-22",
   },
 };
 
