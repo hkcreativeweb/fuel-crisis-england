@@ -37,7 +37,7 @@ export const policyDemands: PolicyDemand[] = [
     supportingPoints: [
       "VAT on road fuel is currently charged at the standard rate of 20%.",
       "VAT is charged on the fuel price including Fuel Duty, not on the pre-tax price alone — so a change to Fuel Duty also changes the amount of VAT charged.",
-      "Illustrative example only: on a petrol pump price of 168.1p/litre, the 20% VAT charge is approximately 28.0p/litre (GOV.UK/CMA-sourced breakdown). A lower VAT rate would reduce this proportionally, but we are not publishing our own estimate of the exact pump-price effect.",
+      "Illustrative example only: on a petrol pump price of 172.0p/litre, the 20% VAT charge is approximately 28.7p/litre (GOV.UK/CMA-sourced breakdown). A lower VAT rate would reduce this proportionally, but we are not publishing our own estimate of the exact pump-price effect.",
       "Reducing VAT is a policy choice with a direct cost to government revenue — this is a question for government to assess and answer, not a claim that it should definitely happen.",
     ],
     evidenceHref: "/follow-the-money#signature",

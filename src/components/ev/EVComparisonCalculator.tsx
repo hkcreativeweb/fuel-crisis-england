@@ -100,7 +100,7 @@ export function EVComparisonCalculator() {
   const [icePurchasePrice, setIcePurchasePrice] = useState(d.icePurchasePrice);
   const [evPurchasePrice, setEvPurchasePrice] = useState(d.evPurchasePrice);
   const [mpg, setMpg] = useState(d.mpg);
-  const [fuelPricePerLitre, setFuelPricePerLitre] = useState(Number(petrolLive.value) || 168.1);
+  const [fuelPricePerLitre, setFuelPricePerLitre] = useState(Number(petrolLive.value) || 172.0);
   const [kwhPer100Miles, setKwhPer100Miles] = useState(d.kwhPer100Miles);
   const [homeElecPricePerKwh, setHomeElecPricePerKwh] = useState(d.homeElecPricePerKwh);
   const [publicElecPricePerKwh, setPublicElecPricePerKwh] = useState(d.publicElecPricePerKwh);

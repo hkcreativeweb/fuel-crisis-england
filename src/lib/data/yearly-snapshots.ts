@@ -249,8 +249,8 @@ export const yearlySnapshots: Record<string, YearlySnapshot> = {
     return s;
   })(),
   "2026": (() => {
-    let s = withFuel("2026", "14 September 2026", 168.14, 190.72, 52.95, 20);
-    s.pricesAsOf = "Week commencing 14 September 2026, a live snapshot rather than a 2026 annual average, since 2026 is still in progress";
+    let s = withFuel("2026", "21 September 2026", 172.01, 195.53, 52.95, 20);
+    s.pricesAsOf = "Week commencing 21 September 2026, a live snapshot rather than a 2026 annual average, since 2026 is still in progress";
     s = withMinimumWage(s, 12.71, "21 and over (National Living Wage)", "From 1 April 2026");
     s.minimumWageNote = NMW_THRESHOLD_NOTE;
     s = withBankRate(s, 3.75, "18 December 2025");

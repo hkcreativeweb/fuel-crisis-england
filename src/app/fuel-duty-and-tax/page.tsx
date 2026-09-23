@@ -123,8 +123,8 @@ export default function FuelDutyAndTaxPage() {
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-charcoal-700">
               Using the verified rates above: fuel duty is a flat 52.95 pence on every litre. VAT is then
               charged at 20% on the fuel price <em>including</em> that duty. For example, on a litre
-              priced at 168.1p (petrol, 14 September 2026): the pre-VAT price is 168.1p ÷ 1.2 ≈ 140.1p, so
-              VAT is roughly 28.0p. Added to the 52.95p duty, tax makes up around 81p of that litre,
+              priced at 172.0p (petrol, 21 September 2026): the pre-VAT price is 172.0p ÷ 1.2 ≈ 143.3p, so
+              VAT is roughly 28.7p. Added to the 52.95p duty, tax makes up around 82p of that litre,
               close to half the total pump price. See our{" "}
               <Link href="/follow-the-money#pump-price-breakdown" className="font-semibold text-petrol-600 underline underline-offset-2">
                 full pump price breakdown
