@@ -28,102 +28,86 @@ export type NavCategory = {
   items: NavItem[];
 };
 
-export const homeNavItem: NavItem = { label: "Home", href: "/" };
-
-/** Standalone top-level nav item (not a dropdown category) for the EV comparison page. */
-export const evNavItem: NavItem = { label: "Fuel vs Electric", href: "/fuel-vs-electric" };
-
-/** Standalone top-level nav item for the Europe comparison page. */
-export const europeNavItem: NavItem = { label: "Europe", href: "/europe-compared" };
-
-/** Standalone top-level nav item for the About page, shown last in the navbar. */
-export const aboutNavItem: NavItem = { label: "About Us", href: "/about" };
-
-/** Top-level dropdown category for the public discussion/feedback and civic-action pages. */
-export const haveYourSayCategory: NavCategory = {
-  label: "Have Your Say",
-  href: "/have-your-say",
-  items: [
-    { label: "Have Your Say", href: "/have-your-say", description: "Share your view on fuel prices and motoring costs" },
-    { label: "Our Demands", href: "/our-demands", description: "What we're asking Government to do" },
-    { label: "Ask Your MP", href: "/ask-your-mp", description: "A copyable, evidence-based email template" },
-    { label: "Government Accountability", href: "/government-accountability", description: "Ask for evidence, lawfully and respectfully" },
-    { label: "Make a Change", href: "/make-a-change", description: "Lawful, peaceful ways to make your voice heard" },
-    { label: "Save Fuel & Money", href: "/save-fuel-money", description: "Practical ways to cut your own costs" },
-    { label: "Sources & Evidence", href: "/sources", description: "Where every figure on this site comes from" },
-  ],
-};
-
 /**
- * The main navbar's structure: a handful of short category labels, each
- * revealing a dropdown of the real pages and page sections underneath.
- * This is deliberately a taxonomy, not a flat list. Every page that used
- * to be a top-level link now lives inside the category it belongs to, so
- * the navbar itself only ever shows six short words.
+ * The main navigation: six topic categories, each opening a short list of
+ * the pages and page sections underneath. Every destination appears once.
+ * The FCE logo links to the homepage, so there is no separate "Home" item.
+ * `align: "right"` opens a dropdown towards the left, for the last items in
+ * the bar, so the panel never runs off the right edge of the screen.
  */
-export const navCategories: NavCategory[] = [
+export const navCategories: (NavCategory & { align?: "left" | "right" })[] = [
   {
     label: "Prices",
     href: "/live-fuel-prices",
     items: [
-      { label: "Live Fuel Prices", href: "/live-fuel-prices", description: "Current, latest-available fuel-price information" },
-      { label: "Fuel Prices Through Time", href: "/fuel-prices-through-time", description: "Historical fuel-price data, year by year" },
-      { label: "Compare Prices", href: "/fuel-prices-through-time#compare", description: "Compare a historical year directly against today" },
-      { label: "Fuel Price Data", href: "/fuel-prices", description: "A clean dashboard of current and historical prices" },
+      { label: "Live Fuel Prices", href: "/live-fuel-prices", description: "This week's UK prices, tax rates and what changed" },
+      { label: "Fuel Prices", href: "/fuel-prices", description: "UK averages, a 12-month chart and a data download" },
+      { label: "Fuel Prices Through Time", href: "/fuel-prices-through-time", description: "Prices, wages and tax compared year by year" },
+      { label: "Europe Compared", href: "/europe-compared", description: "UK prices and taxes against the 27 EU countries" },
     ],
   },
   {
-    label: "Why?",
+    label: "Why fuel costs so much",
     href: "/why-is-fuel-expensive",
     items: [
-      { label: "Why Is Fuel So Expensive?", href: "/why-is-fuel-expensive", description: "The full investigation, from crude oil to the pump" },
+      { label: "Why Is Fuel So Expensive?", href: "/why-is-fuel-expensive", description: "Each part of the pump price, from crude oil to VAT" },
+      { label: "Why Prices Are Rising", href: "/why-prices-rising", description: "The main factors behind recent price changes" },
+      { label: "Follow One Litre", href: "/why-is-fuel-expensive#one-litre", description: "The journey of a litre, stage by stage" },
       { label: "Crude Oil & Refining", href: "/why-is-fuel-expensive#refining", description: "Why crude oil isn't the same as petrol" },
-      { label: "Wholesale vs Pump Prices", href: "/why-is-fuel-expensive#tools", description: "How closely pump prices track wholesale costs" },
-      { label: "Tax & VAT", href: "/fuel-duty-and-tax", description: "Fuel Duty and VAT, explained" },
-      { label: "Competition & Retail Margins", href: "/why-is-fuel-expensive#competition", description: "What the CMA's own monitoring shows" },
+      { label: "Wholesale vs Pump Prices", href: "/why-is-fuel-expensive#falls-slower", description: "Do pump prices rise faster than they fall?" },
+      { label: "Competition & Retail Margins", href: "/why-is-fuel-expensive#competition", description: "What the CMA's monitoring shows" },
     ],
   },
   {
     label: "Money",
     href: "/follow-the-money",
     items: [
-      { label: "Follow the Money", href: "/follow-the-money", description: "The full money-trail investigation" },
-      { label: "Where Does Your Money Go?", href: "/follow-the-money#signature", description: "Follow a £50 fuel purchase through the system" },
-      { label: "Company Data", href: "/follow-the-money#corporate-profits", description: "Verified financial results for major energy companies" },
-      { label: "Government Fuel-Tax Revenue", href: "/follow-the-money#government-collects", description: "What government actually collects" },
-      { label: "Fuel Duty & VAT", href: "/fuel-duty-and-tax", description: "The two taxes built into every litre" },
+      { label: "Follow the Money", href: "/follow-the-money", description: "Where the money from fuel sales goes" },
+      { label: "Where Does Your £50 Go?", href: "/follow-the-money#signature", description: "One fuel purchase, split into its parts" },
+      { label: "Company Data", href: "/follow-the-money#corporate-profits", description: "Reported results for major energy companies" },
+      { label: "Government Fuel-Tax Revenue", href: "/follow-the-money#government-collects", description: "Fuel Duty and VAT receipts, from HMRC" },
+      { label: "Fuel Duty & VAT", href: "/fuel-duty-and-tax", description: "The two taxes on every litre, and their history" },
     ],
   },
   {
     label: "Impact",
     href: "/cost-of-living",
     items: [
-      { label: "Cost-of-Living Impact", href: "/cost-of-living", description: "How fuel prices affect households and businesses" },
-      { label: "What £20 Buys", href: "/fuel-prices-through-time#what-20-buys", description: "A historical comparison of purchasing power" },
-      { label: "One Hour of Work", href: "/fuel-prices-through-time#wage-vs-pump", description: "Wages measured against the pump price" },
-      { label: "100-Mile Journey", href: "/why-is-fuel-expensive#tools", description: "What a typical journey costs today" },
-      { label: "Fuel Affordability", href: "/cost-of-living#calculator", description: "Work out your own fuel costs" },
+      { label: "Cost-of-Living Impact", href: "/cost-of-living", description: "How fuel costs affect different households and work" },
+      { label: "What £20 Buys", href: "/fuel-prices-through-time#what-20-buys", description: "The same £20 at the pump in different years" },
+      { label: "One Hour of Work", href: "/fuel-prices-through-time#wage-vs-pump", description: "Litres of fuel from an hour's minimum wage" },
+      { label: "100-Mile Journey", href: "/why-is-fuel-expensive#tools", description: "What a 100-mile trip costs at today's price" },
+    ],
+  },
+  {
+    label: "Save money",
+    href: "/save-fuel-money",
+    align: "right",
+    items: [
+      { label: "Save Fuel & Money", href: "/save-fuel-money", description: "Driving, maintenance and buying tips, with the evidence" },
+      { label: "Fuel Cost Calculator", href: "/cost-of-living#calculator", description: "Your weekly, monthly and yearly fuel cost" },
+      { label: "Fuel vs Electric", href: "/fuel-vs-electric", description: "Compare running costs using your own numbers" },
+    ],
+  },
+  {
+    label: "Take part",
+    href: "/have-your-say",
+    align: "right",
+    items: [
+      { label: "Have Your Say", href: "/have-your-say", description: "Read and post moderated comments" },
+      { label: "Petition", href: "/petition", description: "Sign FCE's petition and share your experience" },
+      { label: "Ask Your MP", href: "/ask-your-mp", description: "Draft a message to your MP using official figures" },
+      { label: "Our Demands (campaign)", href: "/our-demands", description: "FCE campaign proposals on fuel affordability and policy" },
+      { label: "Government Accountability", href: "/government-accountability", description: "How to ask for evidence and follow up" },
+      { label: "Make a Change", href: "/make-a-change", description: "Lawful, peaceful ways to take part" },
     ],
   },
 ];
 
-/** The single primary call-to-action shown distinctly on the right of the navbar. */
-export const primaryCtaHref = "/our-demands";
-export const primaryCtaLabel = "Our Demands";
-
-export const secondaryNav: NavItem[] = [
-  { label: "Fuel Prices (dashboard)", href: "/fuel-prices" },
-  { label: "Why Prices Are Rising", href: "/why-prices-rising" },
-  { label: "Government Accountability", href: "/government-accountability" },
-  { label: "Our Demands", href: "/our-demands" },
-  { label: "Sources", href: "/sources" },
-  { label: "Resources & FAQs", href: "/resources" },
-  { label: "About FCE", href: "/about" },
+/** Site-wide reference pages: shown in the mobile menu and the footer rather than the main bar. */
+export const utilityNav: NavItem[] = [
+  { label: "About", href: "/about" },
+  { label: "Sources & methodology", href: "/sources" },
+  { label: "Resources & claim checker", href: "/resources" },
   { label: "Contact", href: "/contact" },
-  { label: "Fuel Duty & Tax", href: "/fuel-duty-and-tax" },
-  { label: "Accessibility", href: "/accessibility" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms and Conditions", href: "/terms" },
 ];
-
-export const petitionHref = "/petition";

@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
-import { homeNavItem, navCategories, siteConfig } from "@/lib/site-config";
+import { navCategories, siteConfig, utilityNav } from "@/lib/site-config";
 
+// Reference pages from the header's utility list, plus the legal pages.
 const moreLinks = [
-  { label: "About FCE", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  ...utilityNav,
   { label: "Privacy", href: "/privacy" },
   { label: "Accessibility", href: "/accessibility" },
   { label: "Terms", href: "/terms" },
@@ -16,7 +16,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_2.4fr_1fr]">
           <div>
-            <Link href="/" className="inline-block">
+            <Link href="/" aria-label="Fuel Crisis England — Home" className="inline-block">
               <Logo />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-400">
@@ -26,12 +26,9 @@ export function Footer() {
             <p className="mt-2 max-w-sm text-sm font-semibold text-slate-300">
               Independent of political parties and government.
             </p>
-            <Link href={homeNavItem.href} className="mt-4 inline-block text-sm font-semibold text-slate-400 hover:text-white">
-              Home
-            </Link>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             {navCategories.map((category) => (
               <div key={category.label}>
                 <h3 className="text-sm font-bold uppercase tracking-wide text-white">{category.label}</h3>
