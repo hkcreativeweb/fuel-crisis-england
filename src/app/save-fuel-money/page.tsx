@@ -36,8 +36,8 @@ export default function SaveMoneyPage() {
           <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
           <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Save Fuel. Save Money.</h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">
-            Genuinely useful, practical guidance, not generic tips. Every suggestion explains what to do,
-            why it works, how much it may help, and what assumptions apply.
+            Small habits, honest numbers. Every suggestion explains what to do, why it works, how much it
+            may help, and what it assumes.
           </p>
           <PhotoCredit credit={credit} className="mt-10" />
         </Container>

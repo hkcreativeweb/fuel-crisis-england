@@ -29,9 +29,9 @@ export default function OurDemandsPage() {
         <Container>
           <SectionHeading
             tone="dark"
-            eyebrow="Our Demands"
+            eyebrow="Campaign position"
             title="Our Demands"
-            description="Evidence-based requests for greater fuel affordability, transparency and accountability."
+            description="What FCE is calling for on fuel affordability, transparency and accountability. These are campaign proposals, linked to the evidence behind them, not established facts."
           />
           <p className="mt-6 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
             Fuel Crisis England does not tell people how to vote or which political party to support. We

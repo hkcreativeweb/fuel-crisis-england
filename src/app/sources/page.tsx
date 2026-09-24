@@ -58,9 +58,9 @@ export default function SourcesPage() {
         <Container>
           <SectionHeading
             tone="dark"
-            eyebrow="Fact-checked, always"
-            title="Sources & Methodology"
-            description="We never invent statistics, quotes, or news articles. Every claim on this site is either clearly sourced or clearly marked as a campaign view."
+            eyebrow="Sources & methodology"
+            title="Evidence before opinion."
+            description="The sources, dates, calculations and limitations behind the figures on this site. Every claim is either sourced or clearly marked as a campaign view."
           />
           <p className="mt-4 text-xs text-slate-400">Page last reviewed {formatDate(publishedOn)}.</p>
         </Container>

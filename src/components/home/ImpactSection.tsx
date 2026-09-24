@@ -12,7 +12,7 @@ export function ImpactSection() {
         <SectionHeading
           tone="dark"
           eyebrow="Real people, real journeys"
-          title="Rising fuel costs affect ordinary life"
+          title="The same price lands differently on every journey"
           description="This isn't abstract. It's the school run, the commute, the trade van, the delivery round."
         />
 

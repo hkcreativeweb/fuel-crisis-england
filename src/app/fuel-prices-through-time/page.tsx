@@ -52,7 +52,7 @@ export default function FuelPricesThroughTimePage() {
 
       <section id="compare" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="The signature comparison tool" title="Then vs Now" description="Choose a historical year and compare it directly against today, with every figure's period made explicit." />
+          <SectionHeading eyebrow="Same £20, different years" title="Then vs Now" description="Choose a historical year and compare it directly against today, with every figure's period made explicit." />
           <div className="mt-10">
             <ThenVsNow />
           </div>

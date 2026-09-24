@@ -8,8 +8,8 @@ export function GovernmentMakesMoneyToo() {
     <section className="bg-white py-16 sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="The government is also in the fuel price"
-          title="Government makes money from fuel too"
+          eyebrow="Fuel Duty and VAT"
+          title="Part of every litre is tax"
           description="Fuel Duty is a government tax on petrol and diesel, and the government sets the rate through taxation policy. VAT is also charged on most road fuel."
         />
 

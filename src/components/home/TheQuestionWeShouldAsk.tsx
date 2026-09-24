@@ -13,7 +13,7 @@ export function TheQuestionWeShouldAsk() {
         <SectionHeading
           tone="dark"
           eyebrow="Look at the evidence"
-          title="If Government Can Change Fuel Duty, What Should It Do About Fuel Affordability?"
+          title="So what should government do about fuel affordability?"
           description="We won't answer this for you. Here's the evidence, and you decide what it suggests."
         />
 

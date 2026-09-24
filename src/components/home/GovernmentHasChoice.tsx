@@ -9,8 +9,8 @@ export function GovernmentHasChoice() {
       <Container>
         <SectionHeading
           tone="dark"
-          eyebrow="One of the most important sections on this site"
-          title="The Government Has Policy Choices"
+          eyebrow="Policy choices"
+          title="What can policy change, and what are its limits?"
           description="Fuel Duty is not a fixed natural law. It is a tax rate determined by government policy — and that policy has changed repeatedly."
         />
 

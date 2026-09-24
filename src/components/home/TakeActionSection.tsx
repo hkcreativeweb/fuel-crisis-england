@@ -9,8 +9,8 @@ export function TakeActionSection() {
       <Container>
         <SectionHeading
           tone="dark"
-          eyebrow="Make your voice heard"
-          title="Ways to take action"
+          eyebrow="Take part"
+          title="Understand the issue. Ask questions. Take part."
           description="Every option below is lawful, peaceful, and focused on getting real answers on fuel affordability."
         />
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

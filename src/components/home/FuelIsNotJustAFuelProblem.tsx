@@ -31,8 +31,8 @@ export function FuelIsNotJustAFuelProblem() {
     <section className="bg-white py-16 sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="It doesn't stop at the forecourt"
-          title="Fuel Is Not Just a Fuel Problem"
+          eyebrow="Beyond the forecourt"
+          title="When fuel costs rise, the impact travels further"
           description="When petrol and diesel become more expensive, the impact does not stop at the pump. Higher transport costs can ripple outward into daily life."
         />
 

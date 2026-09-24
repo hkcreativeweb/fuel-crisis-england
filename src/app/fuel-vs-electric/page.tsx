@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
 import { EVComparisonCalculator } from "@/components/ev/EVComparisonCalculator";
+import { PhotoCredit } from "@/components/ui/PhotoCredit";
+import { imageCredits } from "@/lib/data/image-credits";
 
 export const metadata: Metadata = {
   title: "Traditional Fuel vs Electric",
   description: "Is an electric car actually cheaper to run? An interactive calculator comparing petrol/diesel and electric ownership costs, based on your own assumptions.",
 };
+
+const credit = imageCredits["ev-charging-hub"];
 
 const iceMaintenance = ["Engine oil & oil filter", "Air filters", "Spark plugs (petrol)", "Exhaust & emissions components", "Timing belt/chain", "Gearbox servicing", "Brakes", "Tyres"];
 const evMaintenance = ["Tyres", "Brakes (often lower wear, regenerative braking)", "Suspension", "Cabin filter", "Coolant/service items", "Battery health & warranty checks"];
@@ -15,8 +20,12 @@ const evMaintenance = ["Tyres", "Brakes (often lower wear, regenerative braking)
 export default function FuelVsElectricPage() {
   return (
     <>
-      <section className="bg-navy-950 py-16 sm:py-20">
-        <Container>
+      <section className="relative overflow-hidden bg-navy-950 py-16 sm:py-20">
+        <div className="absolute inset-0">
+          <Image src={credit.src} alt={credit.alt} fill priority sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-navy-950/80" />
+        </div>
+        <Container className="relative">
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-petrol-300">Traditional Fuel vs Electric</p>
           <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
           <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Is an electric car actually cheaper to run?</h1>
@@ -24,6 +33,10 @@ export default function FuelVsElectricPage() {
             We don&apos;t answer that for you. Enter your own numbers below and see the difference for
             yourself, purchase price included, not just fuel versus charging.
           </p>
+          <p className="mt-4 max-w-2xl text-sm font-semibold text-slate-200">
+            Different drivers, different answers. The result depends on your mileage, tariff and car.
+          </p>
+          <PhotoCredit credit={credit} className="mt-10" />
         </Container>
       </section>
 
@@ -35,7 +48,7 @@ export default function FuelVsElectricPage() {
 
       <section className="bg-white py-14 sm:py-16">
         <Container>
-          <SectionHeading eyebrow="It's not zero vs everything" title="Maintenance" description="Maintenance requirements differ by vehicle, mileage and manufacturer. Neither list is exhaustive, and EVs are not maintenance-free." rule number="01" />
+          <SectionHeading eyebrow="Running costs beyond fuel" title="Maintenance" description="Maintenance requirements differ by vehicle, mileage and manufacturer. Neither list is exhaustive, and EVs are not maintenance-free." rule number="01" />
           <div className="mt-8 grid gap-8 sm:grid-cols-2">
             <div>
               <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Petrol / diesel, typically includes</p>

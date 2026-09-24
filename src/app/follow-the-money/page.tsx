@@ -93,7 +93,7 @@ export default function FollowTheMoneyPage() {
 
       <section id="signature" className="scroll-mt-24 bg-charcoal-900 py-16 sm:py-20">
         <Container>
-          <SectionHeading tone="dark" eyebrow="The signature feature" title="Follow the £50" description="Enter an amount, then watch it move through the system: tax, industry, and retail." />
+          <SectionHeading tone="dark" eyebrow="One payment, traced" title="Follow the £50" description="Enter an amount, then watch it move through the system: tax, industry, and retail." />
           <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_1.2fr] lg:items-start">
             <PhotoDataCallout
               credit={imageCredits["forecourt-close"]}

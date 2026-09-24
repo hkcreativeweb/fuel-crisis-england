@@ -77,6 +77,16 @@ export const imageCredits: Record<string, ImageCredit> = {
     license: "CC BY-SA 2.0",
     licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
   },
+  "ev-charging-hub": {
+    id: "ev-charging-hub",
+    src: "/images/ev-charging-hub.jpg",
+    alt: "A row of rapid electric vehicle chargers in a UK car park, with several cars and a van plugged in.",
+    photographer: "Trevor Littlewood",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Electric_vehicle_charging_point_-_geograph.org.uk_-_7446487.jpg",
+    license: "CC BY-SA 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
+  },
   parliament: {
     id: "parliament",
     src: "/images/parliament.jpg",
