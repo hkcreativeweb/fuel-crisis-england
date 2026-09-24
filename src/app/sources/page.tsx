@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SourceCard } from "@/components/sources/SourceCard";
 import { NewsEmptyState } from "@/components/sources/NewsEmptyState";
+import { DataFreshness } from "@/components/sources/DataFreshness";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { officialSources } from "@/lib/data/sources";
 import { formatDate } from "@/lib/utils";
@@ -64,6 +65,18 @@ export default function SourcesPage() {
             description="The sources, dates, calculations and limitations behind the figures on this site. Every claim is either sourced or clearly marked as a campaign view."
           />
           <p className="mt-4 text-xs text-slate-400">Page last reviewed {formatDate(publishedOn)}.</p>
+        </Container>
+      </section>
+
+      <section id="data-freshness" className="scroll-mt-24 bg-slate-50 py-14 sm:py-16">
+        <Container>
+          <h2 className="text-xl font-bold text-navy-900">How current is each dataset?</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-charcoal-700">
+            Every dataset the site uses, how it is kept up to date, and the date of the figure we are showing.
+          </p>
+          <div className="mt-6">
+            <DataFreshness />
+          </div>
         </Container>
       </section>
 

@@ -7,6 +7,7 @@ import { CanGovernmentFreezeDuty } from "@/components/cost-of-living/CanGovernme
 import { CanGovernmentCapProfits } from "@/components/cost-of-living/CanGovernmentCapProfits";
 import { GovernmentCouldSection } from "@/components/cost-of-living/GovernmentCouldSection";
 import { FuelPolicySimulator } from "@/components/our-demands/FuelPolicySimulator";
+import { ContentTag } from "@/components/ui/ContentTag";
 import { PageNav } from "@/components/our-demands/PageNav";
 import { SourceCard } from "@/components/sources/SourceCard";
 import { officialSources } from "@/lib/data/sources";
@@ -60,7 +61,8 @@ export default function OurDemandsPage() {
             title="What Could Different Tax Policies Mean at the Pump?"
             description="Explore illustrative scenarios by changing Fuel Duty and VAT. See the mechanical effect on fuel prices, motorists and government revenue."
           />
-          <div className="mt-8">
+          <ContentTag type="illustrative-scenario" className="mt-4" />
+          <div className="mt-6">
             <FuelPolicySimulator />
           </div>
         </Container>
@@ -69,7 +71,8 @@ export default function OurDemandsPage() {
       <section id="demands" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="Our seven public policy demands" title="What We're Calling For" />
-          <div className="mt-8">
+          <ContentTag type="campaign-proposal" className="mt-4" />
+          <div className="mt-6">
             <PolicyDemands />
           </div>
         </Container>

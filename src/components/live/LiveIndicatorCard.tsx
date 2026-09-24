@@ -36,7 +36,7 @@ export function LiveIndicatorCard({ indicator }: { indicator: LiveIndicator }) {
         </div>
         {indicator.lastUpdated ? (
           <div className="flex justify-between gap-2">
-            <dt>Last updated</dt>
+            <dt>{indicator.status === "current" ? "Last checked" : indicator.status === "latest-available" || indicator.status === "ytd" ? "Latest figure dated" : indicator.status === "estimate" ? "Calculated from data dated" : "Last updated"}</dt>
             <dd className="font-medium text-charcoal-700">
               {isDateOnly(indicator.lastUpdated) ? formatDate(indicator.lastUpdated) : indicator.lastUpdated}
             </dd>
