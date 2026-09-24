@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getApprovedComments, submitComment } from "@/lib/server/comment-store";
 import { notifyNewComment } from "@/lib/server/notify";
+import { isCommentTopic } from "@/lib/data/comment-topics";
 
 const DEFAULT_LIMIT = 10;
 const MAX_LIMIT = 30;
@@ -16,7 +17,10 @@ export async function GET(request: Request) {
   const offset = Math.max(0, Number(searchParams.get("offset")) || 0);
   const limit = Math.min(MAX_LIMIT, Math.max(1, Number(searchParams.get("limit")) || DEFAULT_LIMIT));
 
-  const result = await getApprovedComments(offset, limit);
+  const topicParam = searchParams.get("topic");
+  const topic = isCommentTopic(topicParam) ? topicParam : undefined;
+
+  const result = await getApprovedComments(offset, limit, topic);
   if (result === null) {
     return NextResponse.json({ comments: [], hasMore: false, available: false });
   }

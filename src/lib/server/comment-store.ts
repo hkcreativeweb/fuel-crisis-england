@@ -1,6 +1,7 @@
 import "server-only";
 import { createHash, randomUUID } from "crypto";
 import { redis, redisWithStatus } from "@/lib/server/redis";
+import { isCommentTopic } from "@/lib/data/comment-topics";
 
 export type CommentStatus = "pending" | "approved" | "rejected";
 
@@ -17,7 +18,6 @@ export type StoredComment = {
 export type PublicComment = Pick<StoredComment, "id" | "name" | "topic" | "comment" | "submittedAt">;
 
 const MAX_NAME = 80;
-const MAX_TOPIC = 80;
 const MAX_COMMENT = 2000;
 const MAX_EMAIL = 254;
 const RATE_LIMIT_MAX = 5;
@@ -62,13 +62,13 @@ export type SubmitResult =
 export async function submitComment(input: SubmitInput): Promise<SubmitResult> {
   const name = typeof input.name === "string" ? stripTags(input.name).trim().slice(0, MAX_NAME) : "";
   const emailRaw = typeof input.email === "string" ? stripTags(input.email).trim().slice(0, MAX_EMAIL) : "";
-  const topic = typeof input.topic === "string" ? stripTags(input.topic).trim().slice(0, MAX_TOPIC) : "";
+  const topic = isCommentTopic(input.topic) ? input.topic : "";
   const comment = typeof input.comment === "string" ? stripTags(input.comment).trim().slice(0, MAX_COMMENT) : "";
 
   const errors: Record<string, string> = {};
   if (!name || name.length < 2) errors.name = "Enter your name.";
   if (emailRaw && !EMAIL_RE.test(emailRaw)) errors.email = "Enter a valid email address, or leave it blank.";
-  if (!topic) errors.topic = "Enter a topic.";
+  if (!topic) errors.topic = "Choose a topic.";
   if (!comment || comment.length < 5) errors.comment = "Enter a comment (at least 5 characters).";
 
   const linkCount = (comment.match(/https?:\/\//gi) || []).length;
@@ -119,8 +119,26 @@ export async function submitComment(input: SubmitInput): Promise<SubmitResult> {
   return { ok: true, comment: record };
 }
 
-/** Newest-first page of approved comments, public fields only. Returns null on storage failure. */
-export async function getApprovedComments(offset: number, limit: number): Promise<{ comments: PublicComment[]; hasMore: boolean } | null> {
+/** Newest-first page of approved comments, public fields only, optionally for one topic. Returns null on storage failure. */
+export async function getApprovedComments(
+  offset: number,
+  limit: number,
+  topic?: string
+): Promise<{ comments: PublicComment[]; hasMore: boolean } | null> {
+  if (topic) {
+    // Approved comments are few, so filter the whole set rather than keep a per-topic index.
+    const ids = await redis<string[]>(["ZRANGE", statusSetKey("approved"), 0, -1, "REV"]);
+    if (ids === null) return null;
+    if (ids.length === 0) return { comments: [], hasMore: false };
+    const raw = await redis<(string | null)[]>(["MGET", ...ids.map(commentKey)]);
+    if (raw === null) return null;
+    const matching = raw
+      .filter((v): v is string => typeof v === "string")
+      .map((v) => JSON.parse(v) as StoredComment)
+      .filter((c) => c.topic === topic)
+      .map(({ id, name, topic: t, comment, submittedAt }) => ({ id, name, topic: t, comment, submittedAt }));
+    return { comments: matching.slice(offset, offset + limit), hasMore: offset + limit < matching.length };
+  }
   const ids = await redis<string[]>(["ZRANGE", statusSetKey("approved"), offset, offset + limit - 1, "REV"]);
   if (ids === null) return null;
   if (ids.length === 0) return { comments: [], hasMore: false };

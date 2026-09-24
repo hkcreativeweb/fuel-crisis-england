@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { Alert } from "@/components/ui/Alert";
+import { COMMENT_TOPICS } from "@/lib/data/comment-topics";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -93,14 +94,22 @@ export function CommentForm({ onPosted }: { onPosted?: () => void }) {
           <label htmlFor="hys-topic" className="mb-1 block text-sm font-semibold text-navy-900">
             Topic
           </label>
-          <input
+          <select
             id="hys-topic"
             name="topic"
-            type="text"
             required
-            maxLength={80}
-            className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-charcoal-700 focus:border-petrol-500 focus:outline-none"
-          />
+            defaultValue=""
+            className="min-h-11 w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-base text-charcoal-700 focus:border-petrol-500 focus:outline-none"
+          >
+            <option value="" disabled>
+              Choose a topic
+            </option>
+            {COMMENT_TOPICS.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
           {errors.topic ? <p className="mt-1 text-xs font-semibold text-red-700">{errors.topic}</p> : null}
         </div>
         <div className="sm:col-span-2">
