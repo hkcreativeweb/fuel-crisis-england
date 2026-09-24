@@ -103,8 +103,9 @@ export function PetitionForm() {
       <Alert tone="success" title="Thank you — your submission has been received.">
         <p>
           {signatureCount !== null ? `You're signature number ${signatureCount}. ` : ""}
-          Your experience has been saved privately. If you agreed to public display, it may be shown on
-          this site after review, without your name, email or postcode.
+          Your experience has been saved privately. We don&apos;t currently publish experiences on the site. If
+          you agreed to public display and we start doing so, it would only be shown after review, without
+          your name, email or postcode.
         </p>
       </Alert>
     );
@@ -268,7 +269,8 @@ export function PetitionForm() {
             className="mt-0.5 h-4 w-4 rounded border-slate-400 text-petrol-500 focus:ring-petrol-400"
           />
           I consent to my anonymised experience (area, category, and message only — never my name or
-          email) being displayed publicly after moderation.
+          email) being displayed publicly after moderation. We don&apos;t currently publish experiences on the
+          site.
         </label>
         <label className="flex items-start gap-3 text-sm text-charcoal-700">
           <input

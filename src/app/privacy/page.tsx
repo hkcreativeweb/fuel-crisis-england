@@ -62,7 +62,8 @@ export default function PrivacyPage() {
             <div>
               <h2 className="text-lg font-bold text-navy-900">Public display of experiences</h2>
               <p className="mt-2">
-                We only display a submitted experience publicly if you explicitly consent to this, and
+                We don&apos;t currently publish submitted experiences on the site. If we do in future, we
+                will only display a submitted experience publicly if you explicitly consent to this, and
                 only after moderation. Public experience cards never show your name, email address, or
                 postcode. Only your general area and county, category, and message.
               </p>

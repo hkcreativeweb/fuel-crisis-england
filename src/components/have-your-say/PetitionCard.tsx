@@ -18,7 +18,7 @@ export function PetitionCard({ petition }: { petition: UkPetition }) {
 
       <div className="mt-5">
         <LinkButton href={petition.url} size="md">
-          Sign Petition →
+          View on UK Parliament site →
         </LinkButton>
       </div>
 

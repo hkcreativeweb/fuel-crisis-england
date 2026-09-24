@@ -21,7 +21,7 @@ export const takeActionOptions: TakeActionOption[] = [
   {
     title: "Sign an official UK Parliament petition",
     description: "View and sign currently open, official UK Parliament petitions relating to fuel duty and VAT. Signing happens directly on the official Parliament website.",
-    href: "/have-your-say#uk-petitions",
+    href: "/petition#uk-parliament-petitions",
     linkLabel: "View UK Parliament petitions",
   },
   {
