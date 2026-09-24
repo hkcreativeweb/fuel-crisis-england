@@ -11,9 +11,9 @@ export function ImpactSection() {
       <Container>
         <SectionHeading
           tone="dark"
-          eyebrow="Real people, real journeys"
-          title="The same price lands differently on every journey"
-          description="This isn't abstract. It's the school run, the commute, the trade van, the delivery round."
+          eyebrow="The same price doesn't affect everyone equally"
+          title="The pump isn't where the cost ends"
+          description="Fuel affects the journeys people make, the work they do and the businesses that depend on driving. How much depends on each situation."
         />
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -27,7 +27,7 @@ export function ImpactSection() {
 
         <div className="mt-8">
           <LinkButton href="/cost-of-living" variant="outline-light">
-            See how it affects you
+            See who feels the impact
           </LinkButton>
         </div>
       </Container>

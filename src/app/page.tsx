@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/home/Hero";
-import { StopAndThink } from "@/components/ui/StopAndThink";
-import { FuelIsNotJustAFuelProblem } from "@/components/home/FuelIsNotJustAFuelProblem";
+import { QuestionIsNotJustPrice } from "@/components/home/QuestionIsNotJustPrice";
+import { FollowOneLitreTeaser } from "@/components/home/FollowOneLitreTeaser";
 import { TheBigQuestion } from "@/components/home/TheBigQuestion";
 import { GovernmentMakesMoneyToo } from "@/components/home/GovernmentMakesMoneyToo";
+import { TwentyPoundsSection } from "@/components/home/TwentyPoundsSection";
+import { ImpactSection } from "@/components/home/ImpactSection";
+import { FuelIsNotJustAFuelProblem } from "@/components/home/FuelIsNotJustAFuelProblem";
+import { CalculatorSection } from "@/components/home/CalculatorSection";
 import { GovernmentHasChoice } from "@/components/home/GovernmentHasChoice";
 import { TheQuestionWeShouldAsk } from "@/components/home/TheQuestionWeShouldAsk";
-import { QuestionIsNotJustPrice } from "@/components/home/QuestionIsNotJustPrice";
-import { TwoPathways } from "@/components/home/TwoPathways";
-import { ImpactSection } from "@/components/home/ImpactSection";
+import { SourcesTeaser } from "@/components/home/SourcesTeaser";
 import { TakeActionSection } from "@/components/home/TakeActionSection";
 import { AboutHomeSection } from "@/components/home/AboutHomeSection";
 import { FinalMessage } from "@/components/home/FinalMessage";
@@ -22,19 +24,26 @@ export const metadata: Metadata = {
   description: siteConfig.description,
 };
 
+/**
+ * The homepage reads as one investigation: the hook, how a litre is priced,
+ * where the money goes, what £20 buys, who feels it, what a price change
+ * means for you, what policy could change, the evidence, then what you can do.
+ */
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <StopAndThink id="explore-evidence">A current price isn&apos;t an annual average.</StopAndThink>
-      <FuelIsNotJustAFuelProblem />
+      <QuestionIsNotJustPrice />
+      <FollowOneLitreTeaser />
       <TheBigQuestion />
       <GovernmentMakesMoneyToo />
+      <TwentyPoundsSection />
+      <ImpactSection />
+      <FuelIsNotJustAFuelProblem />
+      <CalculatorSection />
       <GovernmentHasChoice />
       <TheQuestionWeShouldAsk />
-      <QuestionIsNotJustPrice />
-      <TwoPathways />
-      <ImpactSection />
+      <SourcesTeaser />
       <TakeActionSection />
       <AboutHomeSection />
       <FinalMessage />

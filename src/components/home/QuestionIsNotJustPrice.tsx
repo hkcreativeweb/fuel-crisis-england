@@ -1,32 +1,27 @@
 import { Container } from "@/components/ui/Container";
 
-const flow = ["Motorist", "Fuel price", "Wholesale / energy market", "Retailer", "Fuel Duty", "VAT", "Government"];
-
+/** The homepage hook: the first section after the hero. */
 export function QuestionIsNotJustPrice() {
   return (
-    <section className="bg-white py-16 sm:py-20">
+    <section id="explore-evidence" className="scroll-mt-24 border-b border-slate-200 bg-white py-20 sm:py-28">
       <Container className="text-center">
-        <p className="mx-auto max-w-2xl text-2xl font-extrabold leading-snug text-navy-900 sm:text-3xl">
-          The question isn&apos;t only &ldquo;Why is petrol expensive?&rdquo;
+        <h2 className="mx-auto max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight text-navy-900 sm:text-6xl">
+          What are you really paying for?
+        </h2>
+        <p className="mx-auto mt-5 max-w-xl text-xl font-semibold text-petrol-600 sm:text-2xl">
+          The number on the pump is only the beginning.
         </p>
-        <p className="mx-auto mt-3 max-w-2xl text-2xl font-extrabold leading-snug text-petrol-600 sm:text-3xl">
-          It&apos;s where does the money go, who receives it, and what choices can be made?
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-charcoal-700 sm:text-lg">
+          Behind every litre are oil markets, exchange rates, refining, delivery, retail margins, Fuel
+          Duty and VAT. This site follows each one, using official figures, so you can see how the price
+          is built and decide for yourself what it means.
         </p>
-
-        <div className="mt-12 flex flex-col items-center gap-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-3">
-          {flow.map((step, i) => (
-            <div key={step} className="flex items-center gap-2 sm:gap-3">
-              <div className="rounded-full border-2 border-navy-900 bg-white px-5 py-2.5 text-sm font-bold text-navy-900">
-                {step}
-              </div>
-              {i < flow.length - 1 ? (
-                <span aria-hidden="true" className="rotate-90 text-xl font-bold text-petrol-500 sm:rotate-0">
-                  &rarr;
-                </span>
-              ) : null}
-            </div>
-          ))}
-        </div>
+        <a
+          href="#one-litre"
+          className="mt-8 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-navy-900 underline decoration-petrol-500 decoration-2 underline-offset-8 hover:text-petrol-600"
+        >
+          Start with one litre <span aria-hidden="true">&darr;</span>
+        </a>
       </Container>
     </section>
   );

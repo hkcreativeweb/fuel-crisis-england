@@ -37,8 +37,8 @@ export async function Hero() {
             Fuel isn&apos;t just a number on a pump.
           </h1>
           <p className="mt-5 max-w-md text-lg leading-relaxed text-charcoal-700">
-            Follow the money from crude oil to the forecourt. See what you&apos;re paying for, where the
-            money goes, and how fuel costs affect households and businesses.
+            Every litre has a story. Follow the oil, costs, taxes and decisions behind the price you
+            pay, and check the figures for yourself.
           </p>
 
           <HeroFuelDataStrip ukWeekly={ukWeekly} />

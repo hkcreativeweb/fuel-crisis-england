@@ -5,30 +5,31 @@ import { FollowTheMoneyFlow } from "@/components/money-flow/FollowTheMoneyFlow";
 
 export function TheBigQuestion() {
   return (
-    <section className="bg-navy-950 py-16 sm:py-20">
+    <section className="relative overflow-hidden border-y-4 border-petrol-500 bg-navy-950 py-20 sm:py-28">
       <Container>
-        <SectionHeading
-          tone="dark"
-          eyebrow="The big question"
-          title="If fuel costs so much, where does the money go?"
-          description="Choose an amount and see the breakdown, built from official UK tax rates and verified pump price data."
-        />
-
-        <div className="mt-10 max-w-2xl rounded border border-white/10 bg-white/5 p-6 sm:p-8">
-          <FollowTheMoneyFlow defaultAmount={50} />
-        </div>
-
-        <div className="mt-8 max-w-2xl rounded bg-white/5 p-5 text-sm leading-relaxed text-slate-300">
-          <strong className="text-white">Fuel Duty</strong> is a specific tax charged per litre, fixed
-          regardless of the pump price. <strong className="text-white">VAT</strong> is charged at the
-          standard rate (20%) on the fuel price including duty — so the amount of VAT you pay changes as
-          the underlying fuel price changes. Figures are drawn from GOV.UK and HMRC.
-        </div>
-
-        <div className="mt-8">
-          <LinkButton href="/why-is-fuel-expensive" variant="outline-light" size="lg">
-            Why Is Fuel So Expensive? Full Investigation
-          </LinkButton>
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
+          <div>
+            <SectionHeading
+              tone="dark"
+              eyebrow="Follow the money"
+              title="You pay for a litre. Where does the money go?"
+              description="Oil. Refining. Distribution. Retail. Tax. One pump price, several moving parts."
+            />
+            <div className="mt-8 max-w-xl text-sm leading-relaxed text-slate-300">
+              <strong className="text-white">Fuel Duty</strong> is a fixed amount per litre, whatever the pump
+              price. <strong className="text-white">VAT</strong> is 20% of the price including duty, so it rises
+              and falls with the price. Figures are drawn from GOV.UK and HMRC.
+            </div>
+            <div className="mt-8">
+              <LinkButton href="/follow-the-money" size="lg">
+                Break down the price &rarr;
+              </LinkButton>
+            </div>
+          </div>
+          <div className="rounded border border-white/10 bg-white/5 p-6 sm:p-8">
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-petrol-300">Where does your £50 go?</p>
+            <FollowTheMoneyFlow defaultAmount={50} />
+          </div>
         </div>
       </Container>
     </section>

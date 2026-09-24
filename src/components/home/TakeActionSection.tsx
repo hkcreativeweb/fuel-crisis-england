@@ -3,18 +3,41 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import Link from "next/link";
 import { takeActionOptions } from "@/lib/data/take-action-options";
 
+// A focused set for the homepage; the full list lives on /make-a-change.
+const HOMEPAGE_ACTIONS = ["/ask-your-mp", "/petition", "/have-your-say#uk-petitions", "/make-a-change#peaceful-protest"];
+
+const extraActions = [
+  {
+    title: "Have your say",
+    description: "Leave a comment for others to read. Every comment is reviewed before it appears.",
+    href: "/have-your-say",
+    linkLabel: "Have your say",
+  },
+  {
+    title: "Ask for evidence",
+    description: "How to request information and hold decision-makers to account through official channels.",
+    href: "/government-accountability",
+    linkLabel: "See how accountability works",
+  },
+];
+
 export function TakeActionSection() {
+  const actions = [
+    ...HOMEPAGE_ACTIONS.map((href) => takeActionOptions.find((o) => o.href === href)).filter((o) => o !== undefined),
+    ...extraActions,
+  ];
+
   return (
     <section className="bg-navy-950 py-16 sm:py-20">
       <Container>
         <SectionHeading
           tone="dark"
-          eyebrow="Take part"
-          title="Understand the issue. Ask questions. Take part."
-          description="Every option below is lawful, peaceful, and focused on getting real answers on fuel affordability."
+          eyebrow="Facts first. Questions next."
+          title="You've seen the numbers. What can you do with them?"
+          description="Explore the sources, ask questions, contact your representative and take part in the public discussion. Every option here is lawful and peaceful."
         />
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {takeActionOptions.map((option) => (
+          {actions.map((option) => (
             <Link
               key={option.title}
               href={option.href}

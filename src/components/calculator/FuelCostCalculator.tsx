@@ -102,7 +102,14 @@ function Result({ label, value, highlight = false }: { label: string; value: str
  * `defaultPencePerLitre` lets server pages pass the latest GOV.UK figure;
  * otherwise the last verified weekly average is used.
  */
-export function FuelCostCalculator({ defaultPencePerLitre }: { defaultPencePerLitre?: number }) {
+export function FuelCostCalculator({
+  defaultPencePerLitre,
+  showPriceChangeEffect = false,
+}: {
+  defaultPencePerLitre?: number;
+  /** Adds a line showing what a 10p/litre price change would mean for the annual cost. */
+  showPriceChangeEffect?: boolean;
+}) {
   const defaults = {
     milesPerWeek: 150,
     mpg: 45,
@@ -173,6 +180,15 @@ export function FuelCostCalculator({ defaultPencePerLitre }: { defaultPencePerLi
         <Result label="Monthly (average)" value={result ? formatGBP(result.monthlyCost) : "—"} />
         <Result label="Annual cost" value={result ? formatGBP(result.annualCost) : "—"} highlight />
       </div>
+
+      {showPriceChangeEffect && result ? (
+        <p className="mt-5 rounded-md border-l-4 border-petrol-500 bg-petrol-50 p-4 text-sm text-charcoal-700">
+          At your mileage, a <strong className="text-navy-900">10p per litre</strong> rise or fall would change
+          your annual fuel cost by about{" "}
+          <strong className="text-navy-900">{formatGBP(result.litresPerWeek * weeks * 0.1)}</strong>. Change the
+          fuel price above to try other amounts.
+        </p>
+      ) : null}
 
       {incomeShare !== null ? (
         <p className="mt-5 rounded-md bg-slate-50 p-4 text-sm text-charcoal-700">
