@@ -23,7 +23,7 @@ export function DataStatusBadge({ status, className }: { status: DataStatus; cla
   return (
     <span className={cn("inline-flex items-center gap-1.5", className)}>
       <span className={cn("h-[6px] w-[6px] rounded-full", dotClasses[status])} aria-hidden="true" />
-      <span className={cn("text-[11px] font-bold uppercase tracking-[0.08em]", textClasses[status])}>{labels[status]}</span>
+      <span className={cn("text-xs font-bold uppercase tracking-[0.08em]", textClasses[status])}>{labels[status]}</span>
     </span>
   );
 }

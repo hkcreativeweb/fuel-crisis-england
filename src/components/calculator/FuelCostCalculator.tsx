@@ -55,7 +55,7 @@ function Field({
       </label>
       <div
         className={
-          "mt-1.5 flex items-center gap-2 rounded-md border bg-white px-3 py-2 focus-within:border-petrol-500 " +
+          "mt-1.5 flex items-center gap-2 rounded-md border bg-white px-3 focus-within:border-petrol-500 " +
           (error ? "border-red-600" : "border-slate-300")
         }
       >
@@ -63,7 +63,7 @@ function Field({
           id={id}
           type="number"
           inputMode="decimal"
-          className="w-full min-w-0 border-0 bg-transparent p-0 text-base text-navy-900 focus:outline-none focus:ring-0"
+          className="w-full min-w-0 border-0 bg-transparent px-0 py-2.5 text-base text-navy-900 focus:outline-none focus:ring-0"
           value={isEmpty ? "" : value}
           min={spec.min}
           max={spec.max}

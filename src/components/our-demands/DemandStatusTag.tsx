@@ -27,7 +27,7 @@ export function DemandStatusTag({ type, className }: { type: DemandStatusTagType
   return (
     <span className={cn("inline-flex items-center gap-1.5", className)}>
       <span className={cn("h-[6px] w-[6px] rounded-full", dotClasses[type])} aria-hidden="true" />
-      <span className={cn("text-[11px] font-bold uppercase tracking-[0.08em]", textClasses[type])}>{labels[type]}</span>
+      <span className={cn("text-xs font-bold uppercase tracking-[0.08em]", textClasses[type])}>{labels[type]}</span>
     </span>
   );
 }

@@ -32,7 +32,7 @@ export function CompetitionMargins() {
           </tbody>
         </table>
       </div>
-      <p className="mt-2 text-[11px] text-charcoal-600">
+      <p className="mt-2 text-xs text-charcoal-600">
         Margins are averaged across 11 retailers covering roughly 40% of UK stations and 60% of fuel sales
         volume, and are not split by fuel type in the source report.
       </p>

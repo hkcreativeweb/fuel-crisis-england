@@ -148,3 +148,16 @@ html {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Touch screens: give real form controls a 44px minimum tap target. Only
+   applies to coarse pointers, so the desktop layout is unchanged. Inline
+   text links and glossary markers use their own enlarged hit areas. */
+@media (pointer: coarse) {
+  main button,
+  main select,
+  main input[type="number"],
+  main input[type="text"],
+  main input[type="email"] {
+    min-height: 44px;
+  }
+}

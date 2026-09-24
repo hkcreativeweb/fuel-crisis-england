@@ -118,7 +118,7 @@ export function LineChartSVG({ series, periods, indexed = false }: { series: Eco
         ))}
       </div>
       {indexed ? (
-        <p className="mt-2 text-[11px] text-charcoal-600">
+        <p className="mt-2 text-xs text-charcoal-600">
           Each line is indexed to its own starting value = 100, so series in different units (e.g.
           pence/litre vs US$/barrel) can be compared by % change rather than raw size.
         </p>

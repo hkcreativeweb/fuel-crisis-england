@@ -105,19 +105,19 @@ export function PumpToAnnualCost() {
 
       <div className="mt-8 grid gap-3 sm:grid-cols-4">
         <div className="rounded-md bg-slate-50 p-4 text-center">
-          <p className="text-[10px] font-bold uppercase tracking-wide text-charcoal-600">Per day</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Per day</p>
           <p className="mt-1 text-xl font-extrabold tabular-nums text-navy-900">{formatGBP(figures.dailyCost)}</p>
         </div>
         <div className="rounded-md bg-slate-50 p-4 text-center">
-          <p className="text-[10px] font-bold uppercase tracking-wide text-charcoal-600">Per week</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Per week</p>
           <p className="mt-1 text-xl font-extrabold tabular-nums text-navy-900">{formatGBP(figures.weeklyCost)}</p>
         </div>
         <div className="rounded-md bg-slate-50 p-4 text-center">
-          <p className="text-[10px] font-bold uppercase tracking-wide text-charcoal-600">Per month</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">Per month</p>
           <p className="mt-1 text-xl font-extrabold tabular-nums text-navy-900">{formatGBP(figures.monthlyCost)}</p>
         </div>
         <div className="rounded-md bg-accent-why/10 p-4 text-center ring-1 ring-accent-why/30">
-          <p className="text-[10px] font-bold uppercase tracking-wide text-accent-why">Per year</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-accent-why">Per year</p>
           <p className="mt-1 text-xl font-extrabold tabular-nums text-navy-900">{formatGBP(figures.annualCost)}</p>
         </div>
       </div>
@@ -130,7 +130,7 @@ export function PumpToAnnualCost() {
           the equivalent of <strong>{hoursOfMinimumWageWork.toFixed(1)} hours</strong> of work at the
           National Living Wage (£{hourlyMinimumWage}/hour).
         </p>
-        <p className="mt-2 text-[11px] text-charcoal-600">
+        <p className="mt-2 text-xs text-charcoal-600">
           Sources: {earnings.source}; {minimumWage.source}. Fuel figures calculated from today&apos;s
           verified petrol price ({petrol.dataPeriod}).
         </p>

@@ -49,7 +49,7 @@ export function LiveIndicatorCard({ indicator }: { indicator: LiveIndicator }) {
           href={indicator.sourceUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-3 inline-block text-xs font-semibold text-petrol-600 underline underline-offset-2"
+          className="mt-1 inline-block py-2.5 text-xs font-semibold text-petrol-600 underline underline-offset-2"
         >
           Source: {indicator.source}
         </a>

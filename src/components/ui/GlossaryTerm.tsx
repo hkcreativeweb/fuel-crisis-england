@@ -3,7 +3,7 @@ export function GlossaryTerm({ definition }: { definition: string }) {
   return (
     <details className="group relative inline-block align-middle">
       <summary
-        className="inline-flex h-4 w-4 cursor-pointer list-none items-center justify-center rounded-full bg-slate-200 text-[10px] font-bold leading-none text-charcoal-600 hover:bg-petrol-100 hover:text-petrol-700"
+        className="relative inline-flex h-4 w-4 cursor-pointer list-none items-center justify-center rounded-full bg-slate-200 text-[10px] font-bold after:absolute after:-inset-3 after:content-[''] leading-none text-charcoal-600 hover:bg-petrol-100 hover:text-petrol-700"
         aria-label="What does this mean?"
       >
         i

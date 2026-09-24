@@ -11,7 +11,7 @@ const DEFAULT_MPG = 40;
 function InfoNote({ text }: { text: string }) {
   return (
     <details className="group mt-1">
-      <summary className="inline-block cursor-pointer list-none text-[11px] font-semibold text-charcoal-400 underline decoration-dotted underline-offset-2 hover:text-petrol-600">
+      <summary className="inline-block cursor-pointer list-none text-xs font-semibold text-charcoal-400 underline decoration-dotted underline-offset-2 hover:text-petrol-600">
         Why?
       </summary>
       <p className="mt-1.5 max-w-sm text-xs leading-relaxed text-charcoal-600">{text}</p>
@@ -38,7 +38,7 @@ function DataCell({
 }) {
   return (
     <div className="py-4">
-      <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-charcoal-500">{label}</p>
+      <p className="text-xs font-bold uppercase tracking-[0.1em] text-charcoal-500">{label}</p>
       {value !== null ? (
         <>
           <p className="mt-1.5 text-2xl font-extrabold tabular-nums text-navy-900">
@@ -110,7 +110,7 @@ export function HistoricalExplorer() {
 
       {/* FUEL */}
       <div className="mt-8 border-t border-slate-200 pt-1">
-        <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.14em] text-accent-then">Fuel</p>
+        <p className="mt-4 text-xs font-bold uppercase tracking-[0.14em] text-accent-then">Fuel</p>
         <div className="grid gap-x-6 divide-y divide-slate-100 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4">
           <DataCell label="Petrol" value={s.petrolPencePerLitre !== null ? s.petrolPencePerLitre.toFixed(2) : null} unit="p/litre" meta={s.pricesAsOf} />
           <DataCell label="Diesel" value={s.dieselPencePerLitre !== null ? s.dieselPencePerLitre.toFixed(2) : null} unit="p/litre" meta={s.pricesAsOf} />
@@ -121,7 +121,7 @@ export function HistoricalExplorer() {
 
       {/* PAY */}
       <div className="mt-2 border-t border-slate-200 pt-1">
-        <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.14em] text-accent-money">Pay</p>
+        <p className="mt-4 text-xs font-bold uppercase tracking-[0.14em] text-accent-money">Pay</p>
         <div className="grid gap-x-6 divide-y divide-slate-100 sm:grid-cols-2 sm:divide-y-0">
           <DataCell
             label="Minimum / Living Wage"
@@ -144,7 +144,7 @@ export function HistoricalExplorer() {
 
       {/* COST OF LIVING */}
       <div className="mt-2 border-t border-slate-200 pt-1">
-        <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.14em] text-accent-cost">Cost of living</p>
+        <p className="mt-4 text-xs font-bold uppercase tracking-[0.14em] text-accent-cost">Cost of living</p>
         <div className="grid gap-x-6 divide-y divide-slate-100 sm:grid-cols-2 sm:divide-y-0">
           <DataCell label="CPI index" value={s.cpiIndex !== null ? s.cpiIndex.toFixed(1) : null} meta={s.cpiPeriod} />
           <DataCell
@@ -159,10 +159,10 @@ export function HistoricalExplorer() {
 
       {/* AFFORDABILITY */}
       <div className="mt-8 bg-slate-50 p-5 sm:p-7">
-        <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-charcoal-500">What could your pay buy?</p>
+        <p className="text-xs font-bold uppercase tracking-[0.14em] text-charcoal-500">What could your pay buy?</p>
         <div className="mt-4 grid gap-x-6 gap-y-5 divide-y divide-slate-200 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4">
           <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-charcoal-500">1 hour of minimum-wage work</p>
+            <p className="text-xs font-bold uppercase tracking-[0.1em] text-charcoal-500">1 hour of minimum-wage work</p>
             {oneHourLitres !== null ? (
               <p className="mt-1.5 text-2xl font-extrabold tabular-nums text-navy-900">
                 {oneHourLitres.toFixed(1)}
@@ -173,7 +173,7 @@ export function HistoricalExplorer() {
             )}
           </div>
           <div className="pt-5 sm:pt-0">
-            <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-charcoal-500">10 litres of petrol</p>
+            <p className="text-xs font-bold uppercase tracking-[0.1em] text-charcoal-500">10 litres of petrol</p>
             {tenLitreCost !== null ? (
               <p className="mt-1.5 text-2xl font-extrabold tabular-nums text-navy-900">£{tenLitreCost.toFixed(2)}</p>
             ) : (
@@ -181,7 +181,7 @@ export function HistoricalExplorer() {
             )}
           </div>
           <div className="pt-5 sm:pt-0">
-            <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-charcoal-500">50 litres of petrol</p>
+            <p className="text-xs font-bold uppercase tracking-[0.1em] text-charcoal-500">50 litres of petrol</p>
             {fiftyLitreCost !== null ? (
               <p className="mt-1.5 text-2xl font-extrabold tabular-nums text-navy-900">£{fiftyLitreCost.toFixed(2)}</p>
             ) : (
@@ -190,7 +190,7 @@ export function HistoricalExplorer() {
           </div>
           <div className="pt-5 sm:pt-0">
             <div className="flex items-center justify-between gap-2">
-              <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-charcoal-500">100-mile journey</p>
+              <p className="text-xs font-bold uppercase tracking-[0.1em] text-charcoal-500">100-mile journey</p>
             </div>
             {journey !== null ? (
               <p className="mt-1.5 text-2xl font-extrabold tabular-nums text-navy-900">£{journey.cost.toFixed(2)}</p>

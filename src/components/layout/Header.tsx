@@ -173,7 +173,7 @@ export function Header() {
             href="https://www.hkcreativeweb.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden whitespace-nowrap border-l border-white/15 pl-3 text-[11px] font-medium text-slate-400 hover:text-slate-200 2xl:inline-block"
+            className="hidden whitespace-nowrap border-l border-white/15 pl-3 text-xs font-medium text-slate-400 hover:text-slate-200 2xl:inline-block"
           >
             Created by HK Creative
           </a>
@@ -193,7 +193,7 @@ export function Header() {
         <div className="flex items-center gap-3">
           <Link
             href="/live-fuel-prices"
-            className="hidden items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-accent-live sm:inline-flex"
+            className="hidden items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-accent-live sm:inline-flex"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-accent-live" aria-hidden="true" />
             Weekly

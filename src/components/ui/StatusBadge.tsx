@@ -79,9 +79,9 @@ export function StatusBadge({
     <span className={cn("inline-flex flex-wrap items-baseline gap-x-1.5", className)}>
       <span className="inline-flex items-center gap-1.5">
         <span className={cn("h-[6px] w-[6px] rounded-full", dotClasses[status])} aria-hidden="true" />
-        <span className={cn("text-[11px] font-bold uppercase tracking-[0.08em]", textClasses[status])}>{labels[status]}</span>
+        <span className={cn("text-xs font-bold uppercase tracking-[0.08em]", textClasses[status])}>{labels[status]}</span>
       </span>
-      {showDetail ? <span className={cn("text-[11px]", tone === "dark" ? "text-slate-400" : "text-charcoal-500")}>— {detailText[status]}</span> : null}
+      {showDetail ? <span className={cn("text-xs", tone === "dark" ? "text-slate-400" : "text-charcoal-500")}>— {detailText[status]}</span> : null}
     </span>
   );
 }

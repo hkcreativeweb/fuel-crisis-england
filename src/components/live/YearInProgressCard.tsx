@@ -15,19 +15,19 @@ export function YearInProgressCard({ fuel }: { fuel: "petrol" | "diesel" }) {
           <p className="mt-2 text-xl font-extrabold tabular-nums text-navy-900">
             {liveValue !== null ? `${liveValue.toFixed(1)}p` : "—"}
           </p>
-          <p className="mt-1 text-[11px] text-charcoal-600">{now.pricesAsOf}</p>
+          <p className="mt-1 text-xs text-charcoal-600">{now.pricesAsOf}</p>
         </div>
         <div className="rounded-md bg-violet-50 p-4">
           <StatusBadge status="not-yet-available" />
           <p className="mt-2 text-xl font-extrabold text-charcoal-400">—</p>
-          <p className="mt-1 text-[11px] text-charcoal-600">
+          <p className="mt-1 text-xs text-charcoal-600">
             {currentYear} year-to-date average, not yet calculated from a verified data series
           </p>
         </div>
         <div className="rounded-md bg-slate-50 p-4">
           <StatusBadge status="not-yet-available" />
           <p className="mt-2 text-xl font-extrabold text-charcoal-400">—</p>
-          <p className="mt-1 text-[11px] text-charcoal-600">
+          <p className="mt-1 text-xs text-charcoal-600">
             {currentYear} full-year average, only available once the year is complete
           </p>
         </div>

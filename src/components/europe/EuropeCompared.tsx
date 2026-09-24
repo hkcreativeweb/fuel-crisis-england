@@ -112,7 +112,7 @@ export function EuropeCompared() {
                 <div className="flex items-baseline justify-between text-sm">
                   <span className="text-charcoal-700">
                     {row.label}
-                    {!row.known ? <span className="ml-1.5 text-[10px] font-bold uppercase tracking-wide text-amber-600">Est.</span> : null}
+                    {!row.known ? <span className="ml-1.5 text-xs font-bold uppercase tracking-wide text-amber-600">Est.</span> : null}
                   </span>
                   <span className="font-bold tabular-nums text-navy-900">€{row.value.toFixed(3)}</span>
                 </div>
@@ -162,7 +162,7 @@ export function EuropeCompared() {
                   <tr key={row.code} className={cn("border-b border-slate-100", isUK && "bg-petrol-50")}>
                     <td className="py-2 pr-4 font-semibold text-navy-900">
                       {row.country}
-                      {isUK ? <span className="ml-1.5 text-[10px] font-bold uppercase tracking-wide text-petrol-600">This site</span> : null}
+                      {isUK ? <span className="ml-1.5 text-xs font-bold uppercase tracking-wide text-petrol-600">This site</span> : null}
                     </td>
                     <td className="py-2 pr-4 text-right tabular-nums text-charcoal-700">€{row.b.beforeTaxEUR.toFixed(3)}</td>
                     <td className="py-2 pr-4 text-right tabular-nums text-charcoal-700">€{tax.toFixed(3)}</td>

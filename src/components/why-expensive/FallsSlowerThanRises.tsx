@@ -40,7 +40,7 @@ export function FallsSlowerThanRises() {
             Average retailer margin on petrol rose from 8.7p (2021) to 13.5p (2022); diesel margin rose from
             8.8p to 10.3p.
           </p>
-          <p className="mt-2 text-[11px] text-charcoal-600">
+          <p className="mt-2 text-xs text-charcoal-600">
             Source:{" "}
             <a href="https://media.rac.co.uk/rac-analysis-confirms-fuel-prices-fell-by-a-feather-and-didnt-fully-reflect-enormous-wholesale-price-drops-3230274" target="_blank" rel="noopener noreferrer" className="font-semibold text-petrol-600 underline underline-offset-2">
               RAC, 28 January 2023
@@ -55,7 +55,7 @@ export function FallsSlowerThanRises() {
             during 2022, with no equivalent evidence for diesel before that year. Treat this as diesel-specific
             evidence from a defined period, not a permanent or universal feature of the market.
           </p>
-          <p className="mt-2 text-[11px] text-charcoal-600">Source: CMA road fuel market study, final report, 3 July 2023 (secondary reporting cross-checked across independent outlets).</p>
+          <p className="mt-2 text-xs text-charcoal-600">Source: CMA road fuel market study, final report, 3 July 2023 (secondary reporting cross-checked across independent outlets).</p>
         </div>
       </div>
 
@@ -73,7 +73,7 @@ export function FallsSlowerThanRises() {
           &ldquo;passive pricing strategies&rdquo;, not to a deliberate change in strategy to exploit the
           situation.
         </p>
-        <p className="mt-2 text-[11px] text-charcoal-600">
+        <p className="mt-2 text-xs text-charcoal-600">
           Source:{" "}
           <a href="https://www.gov.uk/government/publications/enhanced-road-fuel-monitoring-report-august-2026" target="_blank" rel="noopener noreferrer" className="font-semibold text-petrol-600 underline underline-offset-2">
             CMA Enhanced Road Fuel Monitoring report, 18 August 2026

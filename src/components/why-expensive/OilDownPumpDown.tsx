@@ -85,7 +85,7 @@ export function OilDownPumpDown() {
         <LineChartSVG series={[fuelSeries, crudeOilSeries]} periods={periods} indexed />
       </div>
 
-      <div className="mt-4 grid gap-3 text-[11px] text-charcoal-600 sm:grid-cols-2">
+      <div className="mt-4 grid gap-3 text-xs text-charcoal-600 sm:grid-cols-2">
         <p>
           Pump prices:{" "}
           <a href={pumpPriceHistorySource.url} target="_blank" rel="noopener noreferrer" className="font-semibold text-petrol-600 underline underline-offset-2">

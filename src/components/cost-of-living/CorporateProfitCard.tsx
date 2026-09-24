@@ -18,7 +18,7 @@ export function CorporateProfitCard({ company, year }: { company: Company; year:
         </div>
         <div className="flex flex-col items-end gap-1.5">
           <StatusBadge status={year.verified ? "latest-available" : "not-yet-available"} />
-          <span className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-slate-600">
+          <span className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-xs font-bold uppercase tracking-wide text-slate-600">
             Global figures
           </span>
         </div>

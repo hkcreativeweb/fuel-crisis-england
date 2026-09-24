@@ -6,7 +6,7 @@ import type { UkPetition } from "@/lib/data/uk-petitions";
 export function PetitionCard({ petition }: { petition: UkPetition }) {
   return (
     <Card className="flex flex-col">
-      <p className="text-[11px] font-bold uppercase tracking-[0.08em] text-petrol-600">UK Parliament Petition</p>
+      <p className="text-xs font-bold uppercase tracking-[0.08em] text-petrol-600">UK Parliament Petition</p>
       <h3 className="mt-2 text-lg font-extrabold leading-snug text-navy-900">{petition.title}</h3>
       <p className="mt-2 text-sm leading-relaxed text-charcoal-700">{petition.summary}</p>
 
@@ -22,7 +22,7 @@ export function PetitionCard({ petition }: { petition: UkPetition }) {
         </LinkButton>
       </div>
 
-      <p className="mt-4 text-[11px] text-charcoal-400">Hosted by the UK Parliament</p>
+      <p className="mt-4 text-xs text-charcoal-400">Hosted by the UK Parliament</p>
     </Card>
   );
 }
