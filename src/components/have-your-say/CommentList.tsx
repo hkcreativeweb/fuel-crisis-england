@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { formatDate } from "@/lib/utils";
+import { formatDateTime } from "@/lib/utils";
 
 type PublicComment = {
   id: string;
@@ -67,7 +67,7 @@ export function CommentList({ refreshKey }: { refreshKey?: number }) {
             <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
               <span className="text-sm font-bold text-navy-900">{c.name}</span>
               <span className="text-xs font-semibold uppercase tracking-wide text-petrol-600">{c.topic}</span>
-              <span className="text-xs text-charcoal-400">{formatDate(c.submittedAt)}</span>
+              <span className="text-xs text-charcoal-400"><time dateTime={c.submittedAt}>{formatDateTime(c.submittedAt)}</time></span>
             </div>
             <p className="mt-2 text-sm leading-relaxed text-charcoal-700">&quot;{c.comment}&quot;</p>
           </li>

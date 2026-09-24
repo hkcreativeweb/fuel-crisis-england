@@ -28,6 +28,19 @@ export function formatDate(iso: string): string {
   }).format(new Date(iso));
 }
 
+/** e.g. "22 September 2026 at 4:15 pm", always in UK time so every visitor sees the same value. */
+export function formatDateTime(iso: string): string {
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+    timeZone: "Europe/London",
+  }).format(new Date(iso));
+}
+
 export function formatDateShort(iso: string): string {
   return new Intl.DateTimeFormat("en-GB", {
     day: "numeric",
