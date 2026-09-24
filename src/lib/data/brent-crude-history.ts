@@ -7,7 +7,9 @@
  *
  * Each point is the FIRST weekly value published for that month (EIA's
  * own weekly series, not a monthly average), a genuine, dated
- * single-week snapshot. Units: US dollars per barrel, FOB.
+ * single-week snapshot, followed by every week of the current month so
+ * the latest week is always present (it is also the fallback when the
+ * live EIA read in market-data.ts fails). Units: US dollars per barrel, FOB.
  *
  * This is a DIFFERENT primary source, in a different currency and unit,
  * from our UK pump-price series (pump-price-history.ts, GOV.UK/DESNZ,
@@ -312,4 +314,5 @@ export const brentCrudeHistoryMonthly: BrentCrudeHistoryPoint[] = [
   { date: "2026-08-07", usdPerBarrel: 87.86 },
   { date: "2026-09-04", usdPerBarrel: 99.09 },
   { date: "2026-09-11", usdPerBarrel: 111.83 },
+  { date: "2026-09-18", usdPerBarrel: 124.15 },
 ];

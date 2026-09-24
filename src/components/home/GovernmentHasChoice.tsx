@@ -11,8 +11,11 @@ import { formatDate } from "@/lib/utils";
  * campaign proposals.
  */
 export function GovernmentHasChoice() {
-  const current = fuelDutyTimeline.find((e) => e.status === "current");
-  const confirmed = fuelDutyTimeline.filter((e) => e.status === "announced");
+  // Chosen by date, not status label, so a confirmed change moves into "current policy" on the day it takes effect.
+  const today = new Date().toISOString().slice(0, 10);
+  const dated = fuelDutyTimeline.filter((e) => e.ratePencePerLitre !== null).sort((a, b) => a.date.localeCompare(b.date));
+  const current = [...dated].reverse().find((e) => e.date <= today);
+  const confirmed = dated.filter((e) => e.date > today);
   const intention = fuelDutyTimeline.find((e) => e.status === "proposed");
 
   const columns = [

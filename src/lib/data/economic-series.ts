@@ -6,6 +6,13 @@ function monthKey(isoDate: string): string {
   return isoDate.slice(0, 7); // "YYYY-MM"
 }
 
+/** One point per month: the latest dated row in each month wins, since the newest month can hold several weekly rows. */
+function perMonth<T extends { date: string }>(rows: T[], value: (row: T) => number): { period: string; value: number }[] {
+  const byMonth = new Map<string, number>();
+  for (const row of [...rows].sort((a, b) => a.date.localeCompare(b.date))) byMonth.set(monthKey(row.date), value(row));
+  return [...byMonth].map(([period, v]) => ({ period, value: v }));
+}
+
 export const cpiInflationSeries: EconomicSeries = {
   id: "cpi",
   label: "CPI inflation rate",
@@ -89,7 +96,7 @@ export const petrolPriceSeries: EconomicSeries = {
   label: "UK average petrol price",
   unit: "pence/litre",
   nominal: true,
-  points: pumpPriceHistoryMonthly.map((p) => ({ period: monthKey(p.date), value: p.petrol })),
+  points: perMonth(pumpPriceHistoryMonthly, (p) => p.petrol),
   source: pumpPriceHistorySource.name,
   sourceUrl: pumpPriceHistorySource.url,
   asOf: pumpPriceHistoryAsOf,
@@ -101,7 +108,7 @@ export const dieselPriceSeries: EconomicSeries = {
   label: "UK average diesel price",
   unit: "pence/litre",
   nominal: true,
-  points: pumpPriceHistoryMonthly.map((p) => ({ period: monthKey(p.date), value: p.diesel })),
+  points: perMonth(pumpPriceHistoryMonthly, (p) => p.diesel),
   source: pumpPriceHistorySource.name,
   sourceUrl: pumpPriceHistorySource.url,
   asOf: pumpPriceHistoryAsOf,
@@ -121,10 +128,10 @@ export const crudeOilSeries: EconomicSeries = {
   label: "Brent crude oil price",
   unit: "US$/barrel",
   nominal: true,
-  points: brentCrudeHistoryMonthly.map((p) => ({ period: monthKey(p.date), value: p.usdPerBarrel })),
+  points: perMonth(brentCrudeHistoryMonthly, (p) => p.usdPerBarrel),
   source: brentCrudeHistorySource.name,
   sourceUrl: brentCrudeHistorySource.url,
-  asOf: "2026-09-11",
+  asOf: brentCrudeHistoryMonthly[brentCrudeHistoryMonthly.length - 1].date,
   status: "historical",
 };
 

@@ -9,6 +9,10 @@ import { LocalPriceVariation } from "@/components/live/LocalPriceVariation";
 import { FollowTheMoneyFlow } from "@/components/money-flow/FollowTheMoneyFlow";
 import { liveIndicators, withLatestFuelPrices } from "@/lib/data/live-snapshot";
 import { getLatestUkWeeklyAverage } from "@/lib/data/desnz-weekly-prices";
+import { getBrentWeekly, getGbpUsdDaily } from "@/lib/data/market-data";
+import { WhatChangedThisWeek } from "@/components/live/WhatChangedThisWeek";
+import type { LiveIndicator } from "@/lib/data/live-snapshot";
+import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Live Fuel Prices",
@@ -16,8 +20,22 @@ export const metadata: Metadata = {
 };
 
 export default async function LiveFuelPricesPage() {
-  const { figures, fromLiveSource } = await getLatestUkWeeklyAverage();
-  const indicators = fromLiveSource ? withLatestFuelPrices(liveIndicators, figures) : liveIndicators;
+  const [{ figures, fromLiveSource }, brent, fx] = await Promise.all([getLatestUkWeeklyAverage(), getBrentWeekly(), getGbpUsdDaily()]);
+  const withFuel = fromLiveSource ? withLatestFuelPrices(liveIndicators, figures) : liveIndicators;
+
+  // Crude oil and the exchange rate come from their publishers (EIA, Bank of England) when they can be
+  // read; Bank Rate is left off this page because it doesn't help explain the pump price.
+  const indicators: LiveIndicator[] = withFuel
+    .filter((i) => i.id !== "bank-rate")
+    .map((i) => {
+      if (i.id === "crude-oil") {
+        return { ...i, value: brent.latest.value.toFixed(2), status: "latest-available", lastUpdated: brent.latest.date, dataPeriod: `Week ending ${formatDate(brent.latest.date)}`, source: brent.source.name, sourceUrl: brent.source.url };
+      }
+      if (i.id === "gbp-usd") {
+        return { ...i, value: fx.latest.value.toFixed(4), status: "latest-available", lastUpdated: fx.latest.date, dataPeriod: `Bank of England spot rate, ${formatDate(fx.latest.date)}${fx.fromLiveSource ? "" : " (last verified figure)"}`, source: fx.source.name, sourceUrl: fx.source.url };
+      }
+      return i;
+    });
 
   return (
     <>
@@ -46,7 +64,9 @@ export default async function LiveFuelPricesPage() {
         </Container>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
+      <WhatChangedThisWeek />
+
+      <section className="bg-slate-50 py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="What is happening now" title="Live and latest-available indicators" />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -57,7 +77,7 @@ export default async function LiveFuelPricesPage() {
         </Container>
       </section>
 
-      <section className="bg-slate-50 py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="2026 is not over yet" title="The year in progress" description="Three genuinely different things: today's price, the year-to-date average, and the full-year average. Only one of these exists right now." />
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
@@ -67,7 +87,7 @@ export default async function LiveFuelPricesPage() {
         </Container>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
+      <section className="bg-slate-50 py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="Where does your money go today?" title="Live Follow the Money" description="Uses today's verified pump price and current tax rates." />
           <div className="mt-10 max-w-2xl border border-white/10 bg-navy-950 p-6 sm:p-8">
@@ -76,7 +96,7 @@ export default async function LiveFuelPricesPage() {
         </Container>
       </section>
 
-      <section className="bg-slate-50 py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="An honest question" title="Why can two petrol stations charge different prices?" />
           <div className="mt-10">

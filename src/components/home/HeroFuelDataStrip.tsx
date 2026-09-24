@@ -56,10 +56,13 @@ export function HeroFuelDataStrip({ ukWeekly }: { ukWeekly: Record<FuelType, Wee
     <div className="mt-8 border-t border-slate-200 pt-6">
       <div className="flex items-center justify-between gap-3">
         <p className="text-xs font-bold uppercase tracking-[0.14em] text-charcoal-500">Latest fuel prices</p>
-        <p className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-accent-live">
+        <Link
+          href="/live-fuel-prices#this-week"
+          className="inline-flex min-h-11 items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-accent-live underline-offset-4 hover:underline"
+        >
           <span className="h-[6px] w-[6px] rounded-full bg-accent-live" aria-hidden="true" />
-          Updated weekly
-        </p>
+          What changed this week <span aria-hidden="true">&rarr;</span>
+        </Link>
       </div>
 
       <div className="mt-4 grid grid-cols-2 divide-x divide-slate-200 sm:grid-cols-3">
