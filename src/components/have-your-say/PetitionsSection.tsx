@@ -8,18 +8,23 @@ import { formatDate } from "@/lib/utils";
  * affiliation with, and does not collect signatures on behalf of,
  * Parliament. Signing always happens on the official site.
  */
-export function PetitionsSection() {
+export function PetitionsSection({
+  title = "UK Parliament Petitions",
+  intro = "Support or view current petitions relating to fuel prices and taxation. Signing takes place directly on the official UK Parliament website.",
+  headingLevel: Heading = "h3",
+}: {
+  title?: string;
+  intro?: string;
+  headingLevel?: "h2" | "h3";
+} = {}) {
   if (ukFuelPetitions.length === 0) return null;
 
   const mostRecentCheck = ukFuelPetitions.reduce((latest, p) => (p.verifiedOnIso > latest ? p.verifiedOnIso : latest), ukFuelPetitions[0].verifiedOnIso);
 
   return (
     <div>
-      <h3 className="text-xl font-extrabold text-navy-900 sm:text-2xl">UK Parliament Petitions</h3>
-      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-charcoal-700 sm:text-base">
-        Support or view current petitions relating to fuel prices and taxation. Signing takes place directly on the
-        official UK Parliament website.
-      </p>
+      <Heading className="text-xl font-extrabold text-navy-900 sm:text-2xl">{title}</Heading>
+      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-charcoal-700 sm:text-base">{intro}</p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         {ukFuelPetitions.map((petition) => (
