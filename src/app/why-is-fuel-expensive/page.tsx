@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
 import { yearlySnapshots } from "@/lib/data/yearly-snapshots";
 import { FollowOneLitre } from "@/components/why-expensive/FollowOneLitre";
+import { getLatestUkWeeklyAverage } from "@/lib/data/desnz-weekly-prices";
 import { GlobalOilPricesCard } from "@/components/why-expensive/GlobalOilPricesCard";
 import { ExchangeRateExample } from "@/components/why-expensive/ExchangeRateExample";
 import { CrudeOilNotPetrol } from "@/components/why-expensive/CrudeOilNotPetrol";
@@ -49,7 +50,8 @@ const tocLinks = [
   { href: "#who-responsible", label: "Who is responsible?" },
 ];
 
-export default function WhyIsFuelExpensivePage() {
+export default async function WhyIsFuelExpensivePage() {
+  const { figures } = await getLatestUkWeeklyAverage();
   return (
     <>
       <section className="bg-navy-950 py-16 sm:py-20">
@@ -87,7 +89,7 @@ export default function WhyIsFuelExpensivePage() {
         <Container>
           <SectionHeading eyebrow="Where does the money from one litre go?" title="Follow one litre" description="Eight stops between the oil field and your fuel tank, clearly split between market costs and tax." />
           <div className="mt-10">
-            <FollowOneLitre />
+            <FollowOneLitre pumpPricePence={figures.petrol.current} pumpPriceLabel={figures.petrol.dataPeriod.charAt(0).toLowerCase() + figures.petrol.dataPeriod.slice(1)} />
           </div>
         </Container>
       </section>
