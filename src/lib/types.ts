@@ -1,4 +1,4 @@
-export type DataStatus = "live" | "historical" | "demo" | "unavailable";
+export type DataStatus = "live" | "historical" | "unavailable";
 
 export type DataProvenance = {
   status: DataStatus;
@@ -181,40 +181,6 @@ export type PolicyControlArea = {
   currentPolicy: string;
   source: string;
   sourceUrl: string | null;
-};
-
-export type MPEmailTopic = "fuel-duty" | "fuel-prices-competition" | "cost-of-living";
-
-export type MPDemandTopicId =
-  | "freeze-duty"
-  | "review-duty-vat"
-  | "investigate-profits"
-  | "windfall-measures"
-  | "support-essential-drivers"
-  | "improve-transparency"
-  | "cost-of-living-knock-on";
-
-export type MPContactRecord = {
-  id: string;
-  mpName: string;
-  dateContacted: string;
-  topic: MPEmailTopic;
-  responseReceived: boolean;
-  responseDate: string | null;
-  summary: string;
-};
-
-export type ResponseQuoteType = "direct-quote" | "user-summary" | "editorial";
-
-export type MPResponseSubmission = {
-  id: string;
-  mpName: string;
-  constituency: string;
-  date: string;
-  text: string;
-  quoteType: ResponseQuoteType;
-  sourceDocument: string | null;
-  moderationStatus: "example" | "pending" | "approved";
 };
 
 /**

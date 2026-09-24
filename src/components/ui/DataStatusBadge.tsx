@@ -4,21 +4,18 @@ import type { DataStatus } from "@/lib/types";
 const labels: Record<DataStatus, string> = {
   live: "Live data",
   historical: "Historical data",
-  demo: "Demo data — not real",
   unavailable: "Data unavailable",
 };
 
 const dotClasses: Record<DataStatus, string> = {
   live: "bg-blue-600",
   historical: "bg-purple-700",
-  demo: "bg-amber-500",
   unavailable: "bg-slate-300",
 };
 
 const textClasses: Record<DataStatus, string> = {
   live: "text-blue-700",
   historical: "text-purple-700",
-  demo: "text-amber-700",
   unavailable: "text-slate-500",
 };
 
