@@ -99,8 +99,8 @@ export const navCategories: NavCategory[] = [
     href: "/cost-of-living",
     items: [
       { label: "Cost-of-Living Impact", href: "/cost-of-living", description: "How fuel prices affect households and businesses" },
-      { label: "What £20 Buys", href: "/follow-the-money#what-did-20-buy", description: "A historical comparison of purchasing power" },
-      { label: "One Hour of Work", href: "/follow-the-money#wage-vs-pump", description: "Wages measured against the pump price" },
+      { label: "What £20 Buys", href: "/fuel-prices-through-time#what-20-buys", description: "A historical comparison of purchasing power" },
+      { label: "One Hour of Work", href: "/fuel-prices-through-time#wage-vs-pump", description: "Wages measured against the pump price" },
       { label: "100-Mile Journey", href: "/why-is-fuel-expensive#tools", description: "What a typical journey costs today" },
       { label: "Fuel Affordability", href: "/cost-of-living#calculator", description: "Work out your own fuel costs" },
     ],

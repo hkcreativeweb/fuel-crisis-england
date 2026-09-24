@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Expandable } from "@/components/ui/Expandable";
 import { Alert } from "@/components/ui/Alert";
 import { ContentTagLegend } from "@/components/ui/ContentTag";
 import { CorporateProfitsGrid } from "@/components/cost-of-living/CorporateProfitsGrid";
@@ -9,8 +11,6 @@ import { BillionsVisual } from "@/components/cost-of-living/BillionsVisual";
 import { ProfitsVsFuelExplorer } from "@/components/cost-of-living/ProfitsVsFuelExplorer";
 import { PumpPriceBreakdownVisual } from "@/components/cost-of-living/PumpPriceBreakdownVisual";
 import { FollowTheMoneyTimeline } from "@/components/cost-of-living/FollowTheMoneyTimeline";
-import { WageVsPump } from "@/components/cost-of-living/WageVsPump";
-import { WhatDid20Buy } from "@/components/cost-of-living/WhatDid20Buy";
 import { GovernmentCollectsDashboard } from "@/components/cost-of-living/GovernmentCollectsDashboard";
 import { WagesVsCostOfLiving } from "@/components/cost-of-living/WagesVsCostOfLiving";
 import { WageGapExplorer } from "@/components/cost-of-living/WageGapExplorer";
@@ -38,14 +38,10 @@ const tocLinks = [
   { href: "#profits-vs-fuel", label: "Profits vs fuel prices" },
   { href: "#pump-price-breakdown", label: "Where the money goes" },
   { href: "#timeline", label: "1995 → today" },
-  { href: "#wage-vs-pump", label: "Your wage vs the pump" },
-  { href: "#what-did-20-buy", label: "What did £20 buy?" },
   { href: "#excessive-profits", label: "Excessive profits?" },
   { href: "#government-collects", label: "What government collects" },
   { href: "/our-demands", label: "Our demands" },
   { href: "#wages-vs-cost-of-living", label: "Are wages keeping up?" },
-  { href: "#wage-gap", label: "The wage gap" },
-  { href: "#interest-rates", label: "Interest rates" },
   { href: "#bigger-picture", label: "The bigger picture" },
   { href: "#profits-timeline", label: "Profits timeline" },
   { href: "#sources", label: "Our sources" },
@@ -83,7 +79,7 @@ export default function FollowTheMoneyPage() {
               <a
                 key={link.href}
                 href={link.href}
-                className="rounded-full border border-white/15 px-3.5 py-1.5 text-xs font-semibold text-slate-300 hover:border-petrol-400 hover:text-white"
+                className="inline-flex min-h-11 items-center rounded-full border border-white/15 px-3.5 text-xs font-semibold text-slate-300 hover:border-petrol-400 hover:text-white"
               >
                 {link.label}
               </a>
@@ -148,27 +144,9 @@ export default function FollowTheMoneyPage() {
 
       <section id="timeline" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="The site's signature interactive feature" title="Follow The Money: 1995 → Today" description="Move the slider to see how fuel prices, tax, wages and inflation have changed." />
+          <SectionHeading eyebrow="Then and now" title="Follow The Money: 1995 → Today" description="Move the slider to see how fuel prices, tax, wages and inflation have changed." />
           <div className="mt-10">
             <FollowTheMoneyTimeline />
-          </div>
-        </Container>
-      </section>
-
-      <section id="wage-vs-pump" className="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
-        <Container>
-          <SectionHeading eyebrow="How much of your working hour buys fuel?" title="Your Wage vs The Pump" description="Minimum hourly wage ÷ fuel price, using each rate's actual effective date." />
-          <div className="mt-10 max-w-2xl">
-            <WageVsPump />
-          </div>
-        </Container>
-      </section>
-
-      <section id="what-did-20-buy" className="scroll-mt-24 bg-white py-16 sm:py-20">
-        <Container>
-          <SectionHeading eyebrow="A historical comparison" title="What Did £20 Buy?" />
-          <div className="mt-10 max-w-2xl">
-            <WhatDid20Buy />
           </div>
         </Container>
       </section>
@@ -176,15 +154,15 @@ export default function FollowTheMoneyPage() {
       <section id="excessive-profits" className="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="An honest question" title="Are Energy Companies Making Excessive Profits?" description="We don't answer yes or no. Here's what 'excessive profit', 'profiteering' and 'windfall profits' actually mean, and the evidence available." />
-          <div className="mt-10 max-w-3xl">
+          <Expandable summary="Read the explainer" hint="Definitions, what the evidence shows, and what it can't show" className="mt-8 max-w-3xl">
             <ProfiteeringFAQ />
-          </div>
+          </Expandable>
         </Container>
       </section>
 
       <section id="government-collects" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="A large dashboard" title="What Does Government Collect?" />
+          <SectionHeading eyebrow="Fuel Duty and VAT receipts" title="What Does Government Collect?" />
           <div className="mt-10">
             <GovernmentCollectsDashboard />
           </div>
@@ -210,27 +188,24 @@ export default function FollowTheMoneyPage() {
       <section id="wages-vs-cost-of-living" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="Are wages keeping up?" title="Are Wages Keeping Up?" description="How wages, inflation, and the minimum wage compare over time." />
-          <div className="mt-10">
-            <WagesVsCostOfLiving />
+          <div className="mt-8 space-y-3">
+            <Expandable summary="Wages, inflation and the minimum wage over time" hint="Charts from 1995, with sources">
+              <WagesVsCostOfLiving />
+            </Expandable>
+            <Expandable summary="The wage gap" hint="'Wage gap' can mean several things. Choose a specific comparison.">
+              <WageGapExplorer />
+            </Expandable>
+            <Expandable summary="Interest rates and the cost of living" hint="Borrowing, saving and inflation: context, not a fuel cost">
+              <InterestRatesSection />
+            </Expandable>
           </div>
-        </Container>
-      </section>
-
-      <section id="wage-gap" className="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
-        <Container>
-          <SectionHeading eyebrow="What do we mean by this?" title="The Wage Gap" description="'Wage gap' can mean several different things. Choose a specific comparison below rather than one ambiguous measure." />
-          <div className="mt-10">
-            <WageGapExplorer />
-          </div>
-        </Container>
-      </section>
-
-      <section id="interest-rates" className="scroll-mt-24 bg-white py-16 sm:py-20">
-        <Container>
-          <SectionHeading eyebrow="Borrowing, saving, and inflation" title="Interest Rates & The Cost of Living" />
-          <div className="mt-10">
-            <InterestRatesSection />
-          </div>
+          <p className="mt-4 text-sm text-charcoal-700">
+            How much fuel an hour&apos;s pay buys, and what £20 bought in different years, are on{" "}
+            <Link href="/fuel-prices-through-time#wage-vs-pump" className="-my-3 inline-block py-3 font-semibold text-petrol-600 underline underline-offset-2">
+              Fuel Prices Through Time
+            </Link>
+            .
+          </p>
         </Container>
       </section>
 
@@ -246,9 +221,9 @@ export default function FollowTheMoneyPage() {
       <section id="profits-timeline" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="The full picture, not just the highlights" title="Corporate Profits Timeline" description="Shell and BP's annual results since 2015, including the weaker years, not just the strongest ones." />
-          <div className="mt-10">
+          <Expandable summary="Show year-by-year results" hint="Net income and revenue for each company, with context" className="mt-8">
             <CorporateProfitsTimeline />
-          </div>
+          </Expandable>
         </Container>
       </section>
 
@@ -260,10 +235,10 @@ export default function FollowTheMoneyPage() {
 
       <section id="sources" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Fact-checked, always" title="Our Sources" />
-          <div className="mt-10">
+          <SectionHeading eyebrow="Every figure, sourced" title="Our Sources" description="Every figure on this page links back to where it came from." />
+          <Expandable summary="Show all sources for this page" className="mt-8">
             <SourcesPanel />
-          </div>
+          </Expandable>
         </Container>
       </section>
 

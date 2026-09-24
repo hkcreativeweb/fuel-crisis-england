@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Expandable } from "@/components/ui/Expandable";
 import { LinkButton } from "@/components/ui/Button";
 import { PolicyDemands } from "@/components/cost-of-living/PolicyDemands";
 import { CanGovernmentFreezeDuty } from "@/components/cost-of-living/CanGovernmentFreezeDuty";
@@ -109,7 +110,8 @@ export default function OurDemandsPage() {
       <section id="sources" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="Evidence Behind Our Demands" title="Where This Page's Figures Come From" description="Every figure above is sourced and dated inline, next to the figure itself. These are the primary organisations we draw from." />
-          <div className="mt-8 space-y-8">
+          <Expandable summary="Show all sources for this page" className="mt-8">
+            <div className="space-y-8">
             {sourceGroups.map((group) =>
               group.sources.length > 0 ? (
                 <div key={group.label}>
@@ -122,7 +124,8 @@ export default function OurDemandsPage() {
                 </div>
               ) : null
             )}
-          </div>
+            </div>
+          </Expandable>
         </Container>
       </section>
     </>

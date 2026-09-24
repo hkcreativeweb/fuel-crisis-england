@@ -86,7 +86,7 @@ export default async function FuelPricesThroughTimePage() {
         </Container>
       </section>
 
-      <section className="bg-slate-50 py-16 sm:py-20">
+      <section id="wage-vs-pump" className="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="Historical affordability" title="Litres of petrol bought with one hour of pay" description="A transparent calculation, not an 'affordability score', showing the relationship between wages and fuel prices in each year." />
           <div className="mt-10 max-w-2xl">
@@ -95,7 +95,7 @@ export default async function FuelPricesThroughTimePage() {
         </Container>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
+      <section id="what-20-buys" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="A historical comparison" title="What £20 buys" />
           <div className="mt-10 max-w-2xl">

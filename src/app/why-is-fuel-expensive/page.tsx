@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Expandable } from "@/components/ui/Expandable";
 import { LinkButton } from "@/components/ui/Button";
-import { yearlySnapshots } from "@/lib/data/yearly-snapshots";
 import { FollowOneLitre } from "@/components/why-expensive/FollowOneLitre";
 import { getLatestUkWeeklyAverage } from "@/lib/data/desnz-weekly-prices";
 import { GlobalOilPricesCard } from "@/components/why-expensive/GlobalOilPricesCard";
@@ -12,14 +13,9 @@ import { CrudeOilNotPetrol } from "@/components/why-expensive/CrudeOilNotPetrol"
 import { FallsSlowerThanRises } from "@/components/why-expensive/FallsSlowerThanRises";
 import { CompetitionMargins } from "@/components/why-expensive/CompetitionMargins";
 import { TaxTransparentCalc } from "@/components/why-expensive/TaxTransparentCalc";
-import { FollowTheMoneyTimeline } from "@/components/cost-of-living/FollowTheMoneyTimeline";
 import { BuildThePumpPrice } from "@/components/why-expensive/BuildThePumpPrice";
 import { HundredMileJourney } from "@/components/why-expensive/HundredMileJourney";
-import { WageVsPump } from "@/components/cost-of-living/WageVsPump";
-import { FollowTheMoneyFlow } from "@/components/money-flow/FollowTheMoneyFlow";
 import { OilDownPumpDown } from "@/components/why-expensive/OilDownPumpDown";
-import { CorporateProfitsGrid } from "@/components/cost-of-living/CorporateProfitsGrid";
-import { GovernmentCollectsDashboard } from "@/components/cost-of-living/GovernmentCollectsDashboard";
 import { BigFCEQuestionChain } from "@/components/why-expensive/BigFCEQuestionChain";
 import { PumpToAnnualCost } from "@/components/why-expensive/PumpToAnnualCost";
 import { StopAndThink } from "@/components/ui/StopAndThink";
@@ -32,7 +28,6 @@ export const metadata: Metadata = pageMetadata("/why-is-fuel-expensive", {
   description: "An evidence-led investigation into every component of the UK pump price: crude oil, exchange rates, refining, wholesale, distribution, retailer margins, Fuel Duty and VAT.",
 });
 
-const now = yearlySnapshots["2026"];
 
 const tocLinks = [
   { href: "#one-litre", label: "Follow one litre" },
@@ -42,12 +37,9 @@ const tocLinks = [
   { href: "#falls-slower", label: "Rocket and feather?" },
   { href: "#competition", label: "Competition & retail margins" },
   { href: "#tax-question", label: "The tax question" },
-  { href: "#timeline", label: "Historical comparison" },
-  { href: "#human-cost", label: "From the pump to the year" },
   { href: "#build-it", label: "Build the pump price" },
-  { href: "#tools", label: "More tools" },
-  { href: "#profits", label: "The profit question" },
-  { href: "#government-revenue", label: "Government revenue" },
+  { href: "#tools", label: "From the pump to your year" },
+  { href: "#money-and-profits", label: "Profits and revenue" },
   { href: "#who-responsible", label: "Who is responsible?" },
 ];
 
@@ -61,9 +53,9 @@ export default async function WhyIsFuelExpensivePage() {
           <div className="mb-6 h-px w-12 bg-white/20" aria-hidden="true" />
           <div className="flex flex-wrap items-end gap-6">
             <p className="text-6xl font-extrabold tabular-nums text-white sm:text-7xl">
-              {now.petrolPencePerLitre?.toFixed(1)}p
+              {figures.petrol.current.toFixed(1)}p
             </p>
-            <p className="mb-2 text-lg text-slate-300">per litre, petrol, {now.year}</p>
+            <p className="mb-2 text-lg text-slate-300">per litre, UK average petrol, {figures.petrol.dataPeriod.charAt(0).toLowerCase() + figures.petrol.dataPeriod.slice(1)}</p>
           </div>
           <h1 className="mt-6 max-w-2xl text-3xl font-extrabold leading-tight text-white sm:text-4xl">
             Why is fuel so expensive?
@@ -77,7 +69,7 @@ export default async function WhyIsFuelExpensivePage() {
               <a
                 key={link.href}
                 href={link.href}
-                className="rounded-full border border-white/15 px-3.5 py-1.5 text-xs font-semibold text-slate-300 hover:border-petrol-400 hover:text-white"
+                className="inline-flex min-h-11 items-center rounded-full border border-white/15 px-3.5 text-xs font-semibold text-slate-300 hover:border-petrol-400 hover:text-white"
               >
                 {link.label}
               </a>
@@ -156,16 +148,7 @@ export default async function WhyIsFuelExpensivePage() {
         </Container>
       </section>
 
-      <section id="timeline" className="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
-        <Container>
-          <SectionHeading eyebrow="Why is fuel more expensive than it used to be?" title="Price vs purchasing power" description="Not just what the price was, but what it meant relative to income at the time." />
-          <div className="mt-10">
-            <FollowTheMoneyTimeline />
-          </div>
-        </Container>
-      </section>
-
-      <section id="build-it" className="scroll-mt-24 bg-white py-16 sm:py-20">
+      <section id="build-it" className="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="Make it interactive" title="Build the Pump Price" description="Drag the sliders to explore a hypothetical price." />
           <div className="mt-10 max-w-2xl">
@@ -176,64 +159,48 @@ export default async function WhyIsFuelExpensivePage() {
 
       <StopAndThink>A litre is small. The bill isn&apos;t.</StopAndThink>
 
-      <section id="human-cost" className="scroll-mt-24 bg-white py-16 sm:py-20">
+      <section id="tools" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
           <SectionHeading
-            eyebrow="The number on the pump is only one part of the story"
-            title="From the pump to the year"
-            description="A small per-litre number becomes a much larger annual one, shown against real earnings figures."
+            eyebrow="More ways to explore"
+            title="From the pump to your year"
+            description="A few pence a litre becomes a much larger yearly figure. These tools show how, using the same official prices."
           />
-          <div className="mt-10">
-            <PumpToAnnualCost />
-          </div>
-        </Container>
-      </section>
-
-      <section id="tools" className="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
-        <Container>
-          <SectionHeading eyebrow="More ways to explore" title="More tools" />
-          <div className="mt-10 grid gap-8 lg:grid-cols-2">
-            <div>
-              <h3 className="mb-4 text-base font-bold text-navy-900">100-Mile Journey</h3>
+          <div className="mt-8 space-y-3">
+            <Expandable summary="From the pump to the year" hint="A year of fuel against real earnings figures">
+              <PumpToAnnualCost />
+            </Expandable>
+            <Expandable summary="The cost of a 100-mile journey" hint="In a petrol or diesel car, at today's price">
               <HundredMileJourney />
-            </div>
-            <div>
-              <h3 className="mb-4 text-base font-bold text-navy-900">One Hour of Work</h3>
-              <WageVsPump />
-            </div>
-            <div>
-              <h3 className="mb-4 text-base font-bold text-navy-900">Follow £50</h3>
-              <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
-                <FollowTheMoneyFlow defaultAmount={50} />
-              </div>
-            </div>
-            <div>
-              <h3 className="mb-4 text-base font-bold text-navy-900">Oil Down, Pump Down?</h3>
+            </Expandable>
+            <Expandable summary="Oil down, pump down?" hint="What happens at the pump when crude oil falls">
               <OilDownPumpDown />
-            </div>
+            </Expandable>
           </div>
         </Container>
       </section>
 
-      <StopAndThink>Global profit isn&apos;t UK pump profit.</StopAndThink>
-
-      <section id="profits" className="scroll-mt-24 bg-white py-16 sm:py-20">
+      <section id="money-and-profits" className="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="And then there's the profit question" title="Billions, but from what?" />
-          <div className="mt-10">
-            <CorporateProfitsGrid />
-          </div>
-        </Container>
-      </section>
-
-      <StopAndThink>Revenue isn&apos;t profit.</StopAndThink>
-
-      <section id="government-revenue" className="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
-        <Container>
-          <SectionHeading eyebrow="What does government collect?" title="Government revenue, not government profit" description="Tax receipts form part of public revenue and help fund public spending, a different thing from company profit." />
-          <div className="mt-10">
-            <GovernmentCollectsDashboard />
-          </div>
+          <SectionHeading
+            eyebrow="And then there's the profit question"
+            title="Where the money goes next"
+            description="Company profits, government revenue and how prices compare with earnings over time each have their own page, with the full figures and sources."
+          />
+          <ul className="mt-8 grid gap-3 sm:grid-cols-3">
+            {[
+              { href: "/follow-the-money#corporate-profits", title: "Company profits", text: "What the major oil companies report, and why global profit isn't UK pump profit." },
+              { href: "/follow-the-money#government-collects", title: "Government revenue", text: "What Fuel Duty and VAT raise. Revenue isn't profit: it funds public spending." },
+              { href: "/fuel-prices-through-time", title: "Prices and earnings over time", text: "What a litre, an hour's pay and £20 bought in different years." },
+            ].map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="group flex h-full flex-col rounded border border-slate-200 bg-white p-5 hover:border-navy-900">
+                  <span className="text-base font-bold text-navy-900 group-hover:text-petrol-600">{item.title} &rarr;</span>
+                  <span className="mt-1 text-sm text-charcoal-700">{item.text}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </Container>
       </section>
 

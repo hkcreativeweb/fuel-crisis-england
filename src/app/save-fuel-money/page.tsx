@@ -3,6 +3,7 @@ import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Expandable } from "@/components/ui/Expandable";
 import { PhotoCredit } from "@/components/ui/PhotoCredit";
 import { FuelSavingTipsGrid } from "@/components/save-money/FuelSavingTipsGrid";
 import { BootChecklist } from "@/components/save-money/BootChecklist";
@@ -64,8 +65,10 @@ export default function SaveMoneyPage() {
 
       <section id="fuel-additives" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="A common question" title="What about fuel additives?" description="Petrol and diesel fuel-system cleaners, injector cleaners, and other additives: what they're for, honestly explained." className="mb-10" />
-          <FuelAdditivesSection />
+          <SectionHeading eyebrow="A common question" title="What about fuel additives?" description="Petrol and diesel fuel-system cleaners, injector cleaners, and other additives: what they're for, honestly explained." />
+          <Expandable summary="Read the additives explainer" hint="What they claim, what the evidence shows, and when they might matter" className="mt-8">
+            <FuelAdditivesSection />
+          </Expandable>
         </Container>
       </section>
 
@@ -92,8 +95,10 @@ export default function SaveMoneyPage() {
 
       <section id="checklist" className="scroll-mt-24 bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Put it into practice" title="Practical maintenance checklist" className="mb-10" />
-          <MaintenanceChecklist />
+          <SectionHeading eyebrow="Put it into practice" title="Practical maintenance checklist" />
+          <Expandable summary="Open the checklist" hint="Tyres, servicing, weight and more, to tick off at your own pace" className="mt-8">
+            <MaintenanceChecklist />
+          </Expandable>
         </Container>
       </section>
 
@@ -108,8 +113,10 @@ export default function SaveMoneyPage() {
 
       <section className="bg-white py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Tools that can help you save" title="Apps and tools worth knowing about" className="mb-10" />
-          <ToolsSection />
+          <SectionHeading eyebrow="Tools that can help you save" title="Apps and tools worth knowing about" description="Price-comparison apps, route planners and official tools. Listed for convenience; we don't earn anything from them." />
+          <Expandable summary="See the apps and tools" className="mt-8">
+            <ToolsSection />
+          </Expandable>
         </Container>
       </section>
     </>
