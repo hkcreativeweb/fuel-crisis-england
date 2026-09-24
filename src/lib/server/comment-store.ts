@@ -33,7 +33,7 @@ function statusSetKey(status: CommentStatus): string {
   return `fce:comments:${status}`;
 }
 function rateLimitKey(ip: string): string {
-  return `fce:comments:rl:${ip}`;
+  return `fce:comments:rl:${createHash("sha256").update(ip).digest("hex")}`;
 }
 function dedupeKey(ip: string, name: string, comment: string): string {
   const hash = createHash("sha256").update(`${ip}:${name}:${comment}`).digest("hex");

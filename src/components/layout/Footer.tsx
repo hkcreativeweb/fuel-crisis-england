@@ -64,7 +64,7 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} {siteConfig.fullBrand}. An independent civic information campaign. Not affiliated with HM Government.</p>
-          <p>All figures are clearly marked as live, historical, or demo data. See our Sources page for citations.</p>
+          <p>Figures are labelled as live, historical, provisional or estimated. See our Sources page for citations.</p>
         </div>
 
         <div className="mt-6 border-t border-white/10 pt-6 text-xs text-slate-500">

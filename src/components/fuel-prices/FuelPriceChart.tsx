@@ -1,8 +1,7 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId } from "react";
 import type { FuelPricePoint } from "@/lib/types";
-import { demoHistoricalFuelPrices } from "@/lib/data/fuel-prices";
 import { DataStatusBadge } from "@/components/ui/DataStatusBadge";
 import { Alert } from "@/components/ui/Alert";
 
@@ -25,10 +24,9 @@ function buildPath(points: FuelPricePoint[], key: "petrolPencePerLitre" | "diese
 }
 
 export function FuelPriceChart({ realData }: { realData: FuelPricePoint[] }) {
-  const [showDemo, setShowDemo] = useState(false);
   const gradientId = useId();
 
-  const data = showDemo ? demoHistoricalFuelPrices : realData;
+  const data = realData;
   const hasData = data.length > 0;
 
   const allValues = hasData ? data.flatMap((p) => [p.petrolPencePerLitre, p.dieselPencePerLitre]) : [];
@@ -39,7 +37,7 @@ export function FuelPriceChart({ realData }: { realData: FuelPricePoint[] }) {
     <div className="rounded border border-slate-200 bg-white p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h3 className="text-lg font-bold text-navy-900">Historical fuel prices</h3>
-        <DataStatusBadge status={hasData ? (showDemo ? "demo" : "historical") : "unavailable"} />
+        <DataStatusBadge status={hasData ? "historical" : "unavailable"} />
       </div>
 
       {hasData ? (
@@ -88,29 +86,21 @@ export function FuelPriceChart({ realData }: { realData: FuelPricePoint[] }) {
               <span className="h-2.5 w-4 border-t-2 border-dashed border-navy-900" /> Diesel
             </span>
           </div>
-
-          {showDemo ? (
-            <p className="mt-3 text-xs font-semibold text-amber-700">
-              This chart is showing labelled demo data for interface preview only. It is not real price data.
-            </p>
-          ) : null}
+          <p className="mt-3 text-xs leading-relaxed text-charcoal-600">
+            UK weekly average pump prices, pence per litre, one point per month (latest week in each month).
+            Source: GOV.UK / DESNZ weekly road fuel prices.{" "}
+            <a href="/api/fuel-prices/csv" className="font-semibold text-petrol-600 underline underline-offset-2">
+              Download the full weekly series (CSV)
+            </a>
+          </p>
         </>
       ) : (
         <div className="mt-4">
-          <Alert tone="info" title="Historical price data will appear here once a verified data source is connected.">
-            No fabricated or estimated data is shown. You can preview how this chart will look with clearly
-            labelled demo data below.
+          <Alert tone="warning" title="Historical prices could not be loaded from GOV.UK right now.">
+            Please try again later. We do not show estimated figures in their place.
           </Alert>
         </div>
       )}
-
-      <button
-        type="button"
-        onClick={() => setShowDemo((v) => !v)}
-        className="mt-5 rounded-full border border-slate-300 px-4 py-2 text-xs font-semibold text-navy-900 hover:bg-slate-50"
-      >
-        {showDemo ? "Hide demo preview" : "Preview interface with demo data"}
-      </button>
     </div>
   );
 }

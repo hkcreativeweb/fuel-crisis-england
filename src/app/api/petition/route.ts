@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { recordPetitionSubmission, getPetitionStats } from "@/lib/server/petition-store";
+import { recordPetitionSubmission } from "@/lib/server/petition-store";
 import type { DriverCategory } from "@/lib/types";
 
 const VALID_CATEGORIES: DriverCategory[] = [
@@ -34,8 +34,7 @@ export async function POST(request: Request) {
   // Honeypot: a hidden field real users never fill in. If populated, silently
   // report success to the bot without recording anything.
   if (typeof body.companyWebsite === "string" && body.companyWebsite.trim() !== "") {
-    const stats = getPetitionStats();
-    return NextResponse.json({ success: true, signatureCount: stats.signatureCount });
+    return NextResponse.json({ success: true, signatureCount: null });
   }
 
   const fullName = sanitize(body.fullName, MAX_SHORT);
@@ -60,22 +59,26 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: false, errors }, { status: 400 });
   }
 
-  recordPetitionSubmission({
+  // Full name and postcode are validated but deliberately never stored, and
+  // the email is only kept as a one-way hash to block duplicate signatures
+  // (see petition-store.ts).
+  void fullName;
+  void postcode;
+
+  const forwarded = request.headers.get("x-forwarded-for");
+  const result = await recordPetitionSubmission({
+    email,
+    ip: forwarded ? forwarded.split(",")[0].trim() : "unknown",
     areaOrCounty,
     category,
     impactSummary,
+    desiredChanges,
     displayPublicly,
   });
 
-  const stats = getPetitionStats();
+  if (!result.ok) {
+    return NextResponse.json({ success: false, errors: { form: result.error } }, { status: result.status });
+  }
 
-  // In this preview build there is no email service or database connected,
-  // so full name, email, postcode, and desired changes are validated but
-  // intentionally not persisted anywhere beyond this request/response cycle.
-  void fullName;
-  void email;
-  void postcode;
-  void desiredChanges;
-
-  return NextResponse.json({ success: true, signatureCount: stats.signatureCount });
+  return NextResponse.json({ success: true, signatureCount: result.signatureCount });
 }

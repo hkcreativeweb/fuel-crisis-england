@@ -1,27 +1,15 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import { redis } from "@/lib/server/redis";
 
 const VISITED_COOKIE = "fce_visited";
 const VISIT_KEY = "fce:homepage-visits";
 const SESSION_MAX_AGE_SECONDS = 60 * 30; // 30 minutes: avoid re-counting reloads within one browsing session
 
 async function redisCommand(command: string[]): Promise<number | null> {
-  const url = process.env.KV_REST_API_URL;
-  const token = process.env.KV_REST_API_TOKEN;
-  if (!url || !token) return null;
-
-  try {
-    const res = await fetch(`${url}/${command.map(encodeURIComponent).join("/")}`, {
-      headers: { Authorization: `Bearer ${token}` },
-      cache: "no-store",
-    });
-    if (!res.ok) return null;
-    const data = (await res.json()) as { result: number | string | null };
-    const value = typeof data.result === "string" ? Number(data.result) : data.result;
-    return typeof value === "number" && Number.isFinite(value) ? value : null;
-  } catch {
-    return null;
-  }
+  const result = await redis<number | string>(command);
+  const value = typeof result === "string" ? Number(result) : result;
+  return typeof value === "number" && Number.isFinite(value) ? value : null;
 }
 
 /**

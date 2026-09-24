@@ -13,7 +13,7 @@ import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Fuel Prices",
-  description: "A clean dashboard of petrol and diesel prices in England: current snapshot, historical chart, and regional comparison.",
+  description: "UK average petrol and diesel prices from official GOV.UK weekly statistics: current figures, a 12-month chart and a CSV download.",
 };
 
 export default async function FuelPricesPage() {
@@ -30,8 +30,8 @@ export default async function FuelPricesPage() {
           <SectionHeading
             tone="dark"
             eyebrow="Fuel price dashboard"
-            title="Petrol and diesel prices in England"
-            description="A clean, honest view of current and historical fuel prices, built to connect to a verified live data source."
+            title="UK petrol and diesel prices"
+            description="Official UK weekly average pump prices from GOV.UK, checked for updates every few hours. These are national averages, not the price at any single station."
           />
         </Container>
       </section>
@@ -59,8 +59,6 @@ export default async function FuelPricesPage() {
             <div className="mt-6">
               <Alert tone="info" title="Fuel price data is currently being connected.">
                 Prices will be displayed once verified. We do not show estimated or fabricated prices.
-                See the demo preview in the chart and table below to explore how this dashboard will look
-                once a live source is connected.
               </Alert>
               <div className="mt-6 grid gap-5 sm:grid-cols-2">
                 <FuelPriceCard fuel="petrol" pencePerLitre={null} />
@@ -88,7 +86,7 @@ export default async function FuelPricesPage() {
             description="Use your own mileage and fuel economy to estimate what you're actually spending."
           />
           <div className="mt-8 max-w-3xl">
-            <FuelCostCalculator />
+            <FuelCostCalculator defaultPencePerLitre={snapshot?.petrolPencePerLitre} />
           </div>
         </Container>
       </section>

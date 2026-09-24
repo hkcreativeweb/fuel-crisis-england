@@ -102,10 +102,9 @@ export function PetitionForm() {
     return (
       <Alert tone="success" title="Thank you — your submission has been received.">
         <p>
-          {signatureCount !== null ? `You're signature #${signatureCount} in this demo session. ` : ""}
-          If you agreed to display your experience publicly, it will appear on our Public Experiences
-          pages once reviewed. This is a demo-mode submission: no persistent database is connected yet,
-          so figures reset when the server restarts.
+          {signatureCount !== null ? `You're signature number ${signatureCount}. ` : ""}
+          Your experience has been saved privately. If you agreed to public display, it may be shown on
+          this site after review, without your name, email or postcode.
         </p>
       </Alert>
     );
@@ -113,11 +112,11 @@ export function PetitionForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-6">
-      <Alert tone="info" title="Demo mode">
-        This form validates and processes your submission on our server for this preview session, but no
-        persistent database is connected. Your name and email are never stored — only an anonymised
-        summary (area, category, and your message) is kept in memory for this session and is not
-        published without moderation.
+      <Alert tone="info" title="How your details are handled">
+        Your name, email and postcode are checked but not stored. We keep only a scrambled (hashed) copy of
+        your email so the same address can&apos;t sign twice, plus your area, category and message. Nothing
+        is published without review. See our{" "}
+        <a href="/privacy" className="font-semibold underline underline-offset-2">privacy policy</a>.
       </Alert>
 
       {errors.form ? <Alert tone="error">{errors.form}</Alert> : null}

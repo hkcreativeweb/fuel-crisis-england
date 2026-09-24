@@ -8,7 +8,8 @@ export const metadata: Metadata = {
   description: `Privacy Policy for ${siteConfig.name}: what data we collect, how it is used, and your rights.`,
 };
 
-const LAST_UPDATED = "2026-09-19";
+const LAST_UPDATED = "2026-09-24";
+const CONTACT_EMAIL = "contact.fuelcrisisengland@gmail.com";
 
 export default function PrivacyPage() {
   return (
@@ -27,24 +28,22 @@ export default function PrivacyPage() {
 
             <div>
               <h2 className="text-lg font-bold text-navy-900">What we collect</h2>
-              <p className="mt-2">When you use the petition and public experience form, we ask for:</p>
+              <p className="mt-2">When you sign the petition, we ask for:</p>
               <ul className="mt-2 list-disc space-y-1 pl-5">
-                <li>Full name and email address, used only to validate your submission.</li>
-                <li>An optional postcode and your general area or county.</li>
-                <li>Your driver/business category and your written experience of fuel prices.</li>
-                <li>Your consent choices for public display and for this privacy policy.</li>
+                <li>Your full name, email address and an optional postcode. These are checked but <strong>not stored</strong>. We keep only a one-way scrambled (hashed) copy of your email, so the same address cannot sign twice.</li>
+                <li>Your general area or county, driver/business category, your written experience, the changes you would like to see, and your public-display choice. These are stored.</li>
               </ul>
+              <p className="mt-2">When you post a comment on Have Your Say, we store your name, topic, comment and, if you give it, your email address. Your email is never shown publicly. Comments are held for review and only published once approved.</p>
+              <p className="mt-2">To prevent spam, we briefly keep a scrambled (hashed) form of your connection&apos;s IP address, which expires automatically within an hour.</p>
             </div>
 
             <div>
-              <h2 className="text-lg font-bold text-navy-900">Demo mode notice</h2>
+              <h2 className="text-lg font-bold text-navy-900">Where your data is kept</h2>
               <p className="mt-2">
-                This site currently runs in demo mode: there is no persistent database connected. Your
-                full name and email address are validated on our server but are never stored beyond
-                processing your request. Only an anonymised summary (general area, category, and your
-                written experience) may be held temporarily in server memory for the current session, and
-                is cleared when the server restarts. Once a production backend is connected, this notice
-                will be updated to describe exactly what is stored and for how long.
+                Stored petition and comment data is kept in a secure hosted database (Upstash Redis, via
+                our hosting provider Vercel). When a comment is submitted, the site owner receives an email
+                alert containing the comment, sent through Resend. We do not sell or share your data with
+                anyone else.
               </p>
             </div>
 
@@ -71,8 +70,9 @@ export default function PrivacyPage() {
             <div>
               <h2 className="text-lg font-bold text-navy-900">Cookies and tracking</h2>
               <p className="mt-2">
-                We do not use advertising or unnecessary tracking cookies. Any cookies strictly required
-                for the site to function are used only for that purpose.
+                We do not use advertising or tracking cookies. We use one short-lived cookie (30 minutes)
+                so a single visit is not counted twice by our homepage visitor counter; it does not
+                identify you. Site administrators also get a login cookie.
               </p>
             </div>
 
@@ -80,9 +80,12 @@ export default function PrivacyPage() {
               <h2 className="text-lg font-bold text-navy-900">Your rights</h2>
               <p className="mt-2">
                 You can ask us what information we hold about you, ask us to correct it, or ask us to
-                delete it. Because this preview build does not persistently store personal data, most
-                requests will already be satisfied by design. Contact details for the production version
-                of this site will be added here once available.
+                delete it. Email{" "}
+                <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold text-petrol-600 underline underline-offset-2">
+                  {CONTACT_EMAIL}
+                </a>
+                . Because we do not store petition signers&apos; names or emails, we may need details
+                such as your area and when you signed to find your entry.
               </p>
             </div>
 

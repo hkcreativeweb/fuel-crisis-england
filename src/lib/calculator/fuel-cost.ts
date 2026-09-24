@@ -9,6 +9,7 @@ export type FuelCostInputs = {
 
 export type FuelCostResult = {
   litresPerWeek: number;
+  costPerMilePence: number;
   weeklyCost: number;
   monthlyCost: number;
   annualCost: number;
@@ -39,8 +40,11 @@ export function calculateFuelCost({
   const monthlyCost = weeklyCost * (52 / 12);
   const annualCost = weeklyCost * weeks;
 
+  const costPerMilePence = (LITRES_PER_UK_GALLON / mpg) * pencePerLitre;
+
   return {
     litresPerWeek,
+    costPerMilePence,
     weeklyCost,
     monthlyCost,
     annualCost,
