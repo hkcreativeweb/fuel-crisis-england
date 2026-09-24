@@ -4,6 +4,7 @@ import { QuestionIsNotJustPrice } from "@/components/home/QuestionIsNotJustPrice
 import { FollowOneLitreTeaser } from "@/components/home/FollowOneLitreTeaser";
 import { TheBigQuestion } from "@/components/home/TheBigQuestion";
 import { GovernmentMakesMoneyToo } from "@/components/home/GovernmentMakesMoneyToo";
+import { FuelQuiz } from "@/components/home/FuelQuiz";
 import { TwentyPoundsSection } from "@/components/home/TwentyPoundsSection";
 import { ImpactSection } from "@/components/home/ImpactSection";
 import { FuelIsNotJustAFuelProblem } from "@/components/home/FuelIsNotJustAFuelProblem";
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
 
 /**
  * The homepage reads as one investigation: the hook, how a litre is priced,
- * where the money goes, what £20 buys, who feels it, what a price change
+ * where the money goes, a quick quiz, what £20 buys, who feels it, what a price change
  * means for you, what policy could change, the evidence, then what you can do.
  */
 export default function HomePage() {
@@ -37,6 +38,7 @@ export default function HomePage() {
       <FollowOneLitreTeaser />
       <TheBigQuestion />
       <GovernmentMakesMoneyToo />
+      <FuelQuiz />
       <TwentyPoundsSection />
       <ImpactSection />
       <FuelIsNotJustAFuelProblem />
