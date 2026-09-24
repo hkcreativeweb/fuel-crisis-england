@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -15,10 +16,10 @@ import { imageCredits } from "@/lib/data/image-credits";
 
 const credit = imageCredits["vintage-pumps"];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/fuel-prices-through-time", {
   title: "Fuel Prices Through Time",
   description: "How UK fuel prices, taxes, wages and purchasing power have changed across completed historical years, kept strictly separate from live, current-day figures.",
-};
+});
 
 export default async function FuelPricesThroughTimePage() {
   const { figures } = await getLatestUkWeeklyAverage();

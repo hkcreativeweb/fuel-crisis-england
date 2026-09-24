@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
@@ -26,10 +27,10 @@ import { PhotoDataCallout } from "@/components/ui/PhotoDataCallout";
 import { imageCredits } from "@/lib/data/image-credits";
 import { FCEClosingMessage } from "@/components/why-expensive/FCEClosingMessage";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/why-is-fuel-expensive", {
   title: "Why Is Fuel So Expensive?",
   description: "An evidence-led investigation into every component of the UK pump price: crude oil, exchange rates, refining, wholesale, distribution, retailer margins, Fuel Duty and VAT.",
-};
+});
 
 const now = yearlySnapshots["2026"];
 

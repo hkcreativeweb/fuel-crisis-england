@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
@@ -7,10 +8,10 @@ import { PetitionsSection } from "@/components/have-your-say/PetitionsSection";
 
 const CONTACT_EMAIL = "contact.fuelcrisisengland@gmail.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/have-your-say", {
   title: "Have Your Say",
   description: "Share your view on fuel prices and affordability in England.",
-};
+});
 
 export default function HaveYourSayPage() {
   return (

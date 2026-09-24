@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
@@ -7,10 +8,10 @@ import { faqs } from "@/lib/data/faqs";
 import { ClaimChecker } from "@/components/faq/ClaimChecker";
 import { getClaimEvidence } from "@/lib/data/claim-evidence";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/resources", {
   title: "Resources & FAQs",
   description: "Frequently asked questions about fuel prices, Fuel Duty and saving on fuel, plus a tool to check common fuel-price claims against official figures.",
-};
+});
 
 export default async function ResourcesPage() {
   const claims = await getClaimEvidence();

@@ -85,7 +85,10 @@ export function HeroFuelDataStrip({ ukWeekly }: { ukWeekly: Record<FuelType, Wee
             Source: GOV.UK / DESNZ
           </a>
           <div>
-            <CopyFigure className="inline-flex min-h-11 items-center" text={`Average UK petrol price: ${ukWeekly.petrol.current.toFixed(1)}p/L`} />
+            <CopyFigure
+              path="/live-fuel-prices#this-week"
+              text={`${ukWeekly.petrol.current.toFixed(1)}p/L: average UK petrol price, ${ukWeekly.petrol.dataPeriod.replace(/^Week commencing/, "week of")}. Source: GOV.UK / DESNZ`}
+            />
           </div>
         </div>
 
@@ -107,6 +110,12 @@ export function HeroFuelDataStrip({ ukWeekly }: { ukWeekly: Record<FuelType, Wee
           >
             Source: GOV.UK / DESNZ
           </a>
+          <div>
+            <CopyFigure
+              path="/live-fuel-prices#this-week"
+              text={`${ukWeekly.diesel.current.toFixed(1)}p/L: average UK diesel price, ${ukWeekly.diesel.dataPeriod.replace(/^Week commencing/, "week of")}. Source: GOV.UK / DESNZ`}
+            />
+          </div>
         </div>
 
         <div className="hidden sm:block sm:pl-5">

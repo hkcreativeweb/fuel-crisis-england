@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
@@ -18,10 +19,10 @@ const sourceGroups = [
   { label: "Parliament", names: ["UK Parliament"] },
 ].map((g) => ({ label: g.label, sources: officialSources.filter((s) => g.names.includes(s.name)) }));
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/our-demands", {
   title: "Our Demands",
   description: "Fuel Crisis England's public policy demands on Fuel Duty, fuel taxation, energy-company profits, and support for essential drivers, with clear explainers on what government can actually change.",
-};
+});
 
 export default function OurDemandsPage() {
   return (

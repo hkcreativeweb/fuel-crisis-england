@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -7,10 +8,10 @@ import { EVComparisonCalculator } from "@/components/ev/EVComparisonCalculator";
 import { PhotoCredit } from "@/components/ui/PhotoCredit";
 import { imageCredits } from "@/lib/data/image-credits";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/fuel-vs-electric", {
   title: "Traditional Fuel vs Electric",
   description: "Is an electric car actually cheaper to run? An interactive calculator comparing petrol/diesel and electric ownership costs, based on your own assumptions.",
-};
+});
 
 const credit = imageCredits["ev-charging-hub"];
 

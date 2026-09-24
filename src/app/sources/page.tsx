@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SourceCard } from "@/components/sources/SourceCard";
@@ -9,10 +10,10 @@ import { officialSources } from "@/lib/data/sources";
 import { formatDate } from "@/lib/utils";
 import type { DataStatusLabel } from "@/lib/types";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/sources", {
   title: "Sources & Methodology",
   description: "Where our data comes from, how our calculations work, what counts as live vs historical vs estimated, and what we cannot know exactly.",
-};
+});
 
 const publishedOn = "2026-09-19";
 

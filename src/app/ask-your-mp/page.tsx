@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
 import { MPEmailGenerator } from "@/components/mp/MPEmailGenerator";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/ask-your-mp", {
   title: "Ask Your MP",
   description: "Contact your MP about fuel prices, Fuel Duty and energy-company profits with an evidence-based, editable email template.",
-};
+});
 
 export default function AskYourMPPage() {
   return (

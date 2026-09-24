@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { LegalPageHeader } from "@/components/ui/LegalPageHeader";
 import { siteConfig } from "@/lib/site-config";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/contact", {
   title: "Contact",
   description: `How to get in touch with ${siteConfig.fullBrand}.`,
-};
+});
 
 const LAST_UPDATED = "2026-09-18";
 

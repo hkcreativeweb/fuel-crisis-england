@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -6,10 +7,10 @@ import { Alert } from "@/components/ui/Alert";
 import { LinkButton } from "@/components/ui/Button";
 import { priceFactors } from "@/lib/data/price-factors";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/why-prices-rising", {
   title: "Why Are Prices Rising?",
   description: "A plain-English, fact-based explanation of the factors behind petrol and diesel prices: crude oil, refining, duty, VAT, exchange rates, and more.",
-};
+});
 
 export default function WhyPricesRisingPage() {
   return (

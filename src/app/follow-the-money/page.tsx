@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Alert } from "@/components/ui/Alert";
@@ -24,11 +25,11 @@ import { LinkButton } from "@/components/ui/Button";
 import { PhotoDataCallout } from "@/components/ui/PhotoDataCallout";
 import { imageCredits } from "@/lib/data/image-credits";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/follow-the-money", {
   title: "Follow The Money",
   description:
     "The full investigation: what motorists pay, what government collects through Fuel Duty and VAT, what energy companies report, and what policy choices exist, with verified figures and sources throughout.",
-};
+});
 
 const tocLinks = [
   { href: "#signature", label: "Follow the £50" },

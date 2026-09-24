@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { LegalPageHeader } from "@/components/ui/LegalPageHeader";
 import { siteConfig } from "@/lib/site-config";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/terms", {
   title: "Terms and Conditions",
   description: `Terms and Conditions for using ${siteConfig.name}.`,
-};
+});
 
 const LAST_UPDATED = "2026-09-24";
 

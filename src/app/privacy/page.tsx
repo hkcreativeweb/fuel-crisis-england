@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { LegalPageHeader } from "@/components/ui/LegalPageHeader";
 import { siteConfig } from "@/lib/site-config";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/privacy", {
   title: "Privacy Policy",
   description: `Privacy Policy for ${siteConfig.name}: what data we collect, how it is used, and your rights.`,
-};
+});
 
 const LAST_UPDATED = "2026-09-24";
 const CONTACT_EMAIL = "contact.fuelcrisisengland@gmail.com";

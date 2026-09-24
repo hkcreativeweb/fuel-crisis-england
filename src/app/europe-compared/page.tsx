@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { EuropeCompared } from "@/components/europe/EuropeCompared";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/europe-compared", {
   title: "Europe Compared",
   description: "How UK petrol and diesel prices compare with all 27 EU member states: price before tax, duty, VAT and total pump price, sourced from the European Commission's Weekly Oil Bulletin.",
-};
+});
 
 export default function EuropeComparedPage() {
   return (

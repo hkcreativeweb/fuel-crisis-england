@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -7,10 +8,10 @@ import { siteConfig } from "@/lib/site-config";
 
 const CONTACT_EMAIL = "contact.fuelcrisisengland@gmail.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/about", {
   title: "About",
   description: `About ${siteConfig.fullBrand}: an independent information site explaining UK fuel prices, their wider impact and the policy debate around them, with clearly labelled ways to take part.`,
-};
+});
 
 const purposes = [
   "Educate",

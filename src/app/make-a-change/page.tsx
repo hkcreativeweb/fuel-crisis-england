@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
 import { ProtestGuidance } from "@/components/action/ProtestGuidance";
 import { takeActionOptions } from "@/lib/data/take-action-options";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/make-a-change", {
   title: "We Can Make A Change",
   description: "Lawful, peaceful ways to take civic action on fuel affordability: sign the petition, contact your MP, and learn about peaceful protest.",
-};
+});
 
 export default function TakeActionPage() {
   return (

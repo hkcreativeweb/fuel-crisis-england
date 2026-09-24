@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -10,10 +11,10 @@ import { imageCredits } from "@/lib/data/image-credits";
 
 const credit = imageCredits.parliament;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/government-accountability", {
   title: "Hold Government Accountable",
   description: "Ask for evidence and share verified information about fuel affordability, Fuel Duty and energy-company profits, lawfully and respectfully.",
-};
+});
 
 export default function GovernmentAccountabilityPage() {
   return (

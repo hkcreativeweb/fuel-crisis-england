@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { DataStatusBadge } from "@/components/ui/DataStatusBadge";
@@ -11,10 +12,10 @@ import { getRegionalFuelPrices } from "@/lib/data/fuel-prices";
 import { getCurrentFuelPriceSnapshot, getHistoricalFuelPrices, getLatestUkWeeklyAverage } from "@/lib/data/desnz-weekly-prices";
 import { formatDate } from "@/lib/utils";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/fuel-prices", {
   title: "Fuel Prices",
   description: "UK average petrol and diesel prices from official GOV.UK weekly statistics: current figures, a 12-month chart and a CSV download.",
-};
+});
 
 export default async function FuelPricesPage() {
   const [snapshot, historical, regional, { figures: weekly }] = await Promise.all([

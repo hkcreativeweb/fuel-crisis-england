@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Alert } from "@/components/ui/Alert";
@@ -14,10 +15,10 @@ import { WhatChangedThisWeek } from "@/components/live/WhatChangedThisWeek";
 import type { LiveIndicator } from "@/lib/data/live-snapshot";
 import { formatDate } from "@/lib/utils";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/live-fuel-prices", {
   title: "Live Fuel Prices",
   description: "What is happening now: live and latest-available UK fuel prices, tax rates, wages, and economic indicators, each clearly labelled with its exact data period, geography and source.",
-};
+});
 
 export default async function LiveFuelPricesPage() {
   const [{ figures, fromLiveSource }, brent, fx] = await Promise.all([getLatestUkWeeklyAverage(), getBrentWeekly(), getGbpUsdDaily()]);

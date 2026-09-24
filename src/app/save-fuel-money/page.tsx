@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -16,10 +17,10 @@ import { DontPayMoreSection } from "@/components/save-money/DontPayMoreSection";
 import { MaintenanceChecklist } from "@/components/save-money/MaintenanceChecklist";
 import { imageCredits } from "@/lib/data/image-credits";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/save-fuel-money", {
   title: "Save Fuel. Save Money.",
   description: "Practical, honestly-explained fuel-saving tips, a personal savings calculator, a 7-day challenge, and tools to help you save money on petrol and diesel.",
-};
+});
 
 const credit = imageCredits["hero-petrol-station"];
 

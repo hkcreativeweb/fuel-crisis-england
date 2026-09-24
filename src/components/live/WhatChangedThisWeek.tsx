@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatusBadge } from "@/components/ui/StatusBadge";
+import { CopyFigure } from "@/components/ui/CopyFigure";
 import { getLatestUkWeeklyAverage, desnzWeeklySource } from "@/lib/data/desnz-weekly-prices";
 import { getBrentWeekly, getGbpUsdDaily, type MarketSeries } from "@/lib/data/market-data";
 import { fuelDutyTimeline } from "@/lib/data/fuel-duty-timeline";
@@ -138,6 +139,7 @@ export async function WhatChangedThisWeek() {
                       Source
                     </a>
                   </p>
+                  <CopyFigure path="/live-fuel-prices#this-week" text={`${row.value}: ${row.label}, ${row.date}. Source: ${row.source.name}`} />
                 </div>
               </li>
             ))}

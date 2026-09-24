@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -8,10 +9,10 @@ import { impactGroups } from "@/lib/data/impact-groups";
 import { imageCredits } from "@/lib/data/image-credits";
 import { getLatestUkWeeklyAverage } from "@/lib/data/desnz-weekly-prices";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/cost-of-living", {
   title: "Cost-of-Living Impact",
   description: "How rising petrol and diesel prices affect families, commuters, delivery drivers, tradespeople, small businesses, and rural communities across England.",
-};
+});
 
 const credit = imageCredits["commute-traffic"];
 

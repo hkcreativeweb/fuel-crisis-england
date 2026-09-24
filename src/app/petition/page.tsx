@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PetitionForm } from "@/components/petition/PetitionForm";
 import { PetitionCounter } from "@/components/petition/PetitionCounter";
 import { PublicExperiencesList } from "@/components/petition/PublicExperiencesList";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/petition", {
   title: "Petition & Share Your Experience",
   description: "Sign FCE's own petition on fuel affordability (not an official UK Parliament petition) and share how rising petrol and diesel prices are affecting you.",
-};
+});
 
 export default function PetitionPage() {
   return (

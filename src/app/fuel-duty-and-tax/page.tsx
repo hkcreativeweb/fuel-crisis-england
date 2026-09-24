@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -7,10 +8,10 @@ import { fuelDutyFigure, vatOnFuelFigure, type TaxFigure } from "@/lib/data/tax-
 import { PolicyTimeline } from "@/components/money-flow/PolicyTimeline";
 import { FuelDutyHistoryTable } from "@/components/money-flow/FuelDutyHistoryTable";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/fuel-duty-and-tax", {
   title: "Fuel Duty & Tax",
   description: "What fuel duty and VAT are, how they affect the price per litre, and the difference between a fixed tax and a percentage-based tax.",
-};
+});
 
 function TaxFigureCard({ figure }: { figure: TaxFigure }) {
   return (
