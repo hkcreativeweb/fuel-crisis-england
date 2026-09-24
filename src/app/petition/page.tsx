@@ -4,7 +4,6 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PetitionForm } from "@/components/petition/PetitionForm";
 import { PetitionCounter } from "@/components/petition/PetitionCounter";
-import { PublicExperiencesList } from "@/components/petition/PublicExperiencesList";
 
 export const metadata: Metadata = pageMetadata("/petition", {
   title: "Petition & Share Your Experience",
@@ -40,19 +39,6 @@ export default function PetitionPage() {
         <Container>
           <div className="mx-auto max-w-2xl">
             <PetitionForm />
-          </div>
-        </Container>
-      </section>
-
-      <section className="bg-slate-50 py-14 sm:py-16">
-        <Container>
-          <SectionHeading
-            eyebrow="In people's own words"
-            title="Public experiences"
-            description="Anonymised, moderated experiences shared by drivers across England. The cards below are clearly marked examples of the format."
-          />
-          <div className="mt-8">
-            <PublicExperiencesList />
           </div>
         </Container>
       </section>
