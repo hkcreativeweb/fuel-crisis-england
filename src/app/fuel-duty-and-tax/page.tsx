@@ -40,7 +40,7 @@ export default function FuelDutyAndTaxPage() {
     <>
       <section className="bg-navy-950 py-14 sm:py-16">
         <Container>
-          <SectionHeading
+          <SectionHeading as="h1"
             tone="dark"
             eyebrow="Tax and duty"
             title="Fuel duty and VAT, explained"

@@ -30,8 +30,8 @@ export default async function LiveFuelPricesPage() {
           <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Live Fuel Prices</h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
             What is happening right now, not an annual average, not a historical figure. Every number
-            below is either a genuine live snapshot or explicitly the latest published figure, labelled
-            accordingly.
+            below is labelled as live (fetched automatically), a current official rate, the latest published
+            figure or our own calculation.
           </p>
           <div className="mt-8">
             <Alert tone="warning" title="A live figure is not a yearly figure.">

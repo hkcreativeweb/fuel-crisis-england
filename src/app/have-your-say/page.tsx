@@ -16,7 +16,7 @@ export default function HaveYourSayPage() {
   return (
     <section className="bg-white py-16 sm:py-20">
       <Container>
-        <SectionHeading
+        <SectionHeading as="h1"
           eyebrow="Have Your Say"
           title="Have Your Say"
           description="Share your thoughts on fuel prices, motoring costs, electric vehicles and the future of transport."

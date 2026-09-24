@@ -27,7 +27,7 @@ export default function OurDemandsPage() {
     <>
       <section className="bg-navy-950 py-16 sm:py-20">
         <Container>
-          <SectionHeading
+          <SectionHeading as="h1"
             tone="dark"
             eyebrow="Campaign position"
             title="Our Demands"

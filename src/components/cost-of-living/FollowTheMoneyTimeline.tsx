@@ -56,8 +56,12 @@ export function FollowTheMoneyTimeline() {
         className="mt-6 h-2 w-full accent-petrol-500"
       />
       <div className="mt-2 flex justify-between text-xs font-semibold text-charcoal-600">
-        {availableYears.map((y) => (
-          <span key={y}>{y}</span>
+        {availableYears.map((y, i) => (
+          // Twelve labels don't fit a phone-width row, so phones show only the first and last year;
+          // the selected year is always shown in full above the slider.
+          <span key={y} className={i === 0 || i === availableYears.length - 1 ? undefined : "hidden sm:inline"}>
+            {y}
+          </span>
         ))}
       </div>
 

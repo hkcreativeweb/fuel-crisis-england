@@ -16,7 +16,8 @@ export const metadata: Metadata = {
 const publishedOn = "2026-09-19";
 
 const statusMeanings: { status: DataStatusLabel; meaning: string }[] = [
-  { status: "live", meaning: "A genuine current-day figure: today's petrol price, the current Fuel Duty rate, today's exchange rate." },
+  { status: "live", meaning: "A figure fetched automatically from its official source and refreshed regularly, such as the GOV.UK weekly petrol and diesel averages." },
+  { status: "current", meaning: "An official rate currently in force, such as Fuel Duty, VAT, Bank Rate or the National Living Wage. It is checked and entered by us when it changes, not a live data feed." },
   { status: "latest-available", meaning: "The most recently published figure for something that isn't measured daily, e.g. CPI inflation, average earnings, a CMA monitoring report." },
   { status: "ytd", meaning: "A year-to-date figure covering part of the current year only, not a full-year total, and not directly comparable to a completed year's average." },
   { status: "historical", meaning: "A figure from a completed period (a full year, or a specific dated event), never a live or in-progress figure." },
@@ -56,7 +57,7 @@ export default function SourcesPage() {
     <>
       <section className="bg-navy-950 py-14 sm:py-16">
         <Container>
-          <SectionHeading
+          <SectionHeading as="h1"
             tone="dark"
             eyebrow="Sources & methodology"
             title="Evidence before opinion."

@@ -223,7 +223,7 @@ export type MPResponseSubmission = {
  * be presented as if it were a "historical" full-year average, and vice
  * versa.
  */
-export type DataStatusLabel = "live" | "latest-available" | "ytd" | "historical" | "estimate" | "projection" | "not-yet-available";
+export type DataStatusLabel = "live" | "current" | "latest-available" | "ytd" | "historical" | "estimate" | "projection" | "not-yet-available";
 
 /**
  * A fully-specified figure: not just a value, but exactly what period

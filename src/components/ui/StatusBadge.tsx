@@ -3,6 +3,7 @@ import type { DataStatusLabel } from "@/lib/types";
 
 const labels: Record<DataStatusLabel, string> = {
   live: "Live",
+  current: "Current rate",
   "latest-available": "Latest available",
   ytd: "YTD",
   historical: "Historical",
@@ -13,6 +14,7 @@ const labels: Record<DataStatusLabel, string> = {
 
 const dotClasses: Record<DataStatusLabel, string> = {
   live: "bg-blue-500",
+  current: "bg-emerald-600",
   "latest-available": "bg-slate-500",
   ytd: "bg-violet-500",
   historical: "bg-purple-600",
@@ -23,6 +25,7 @@ const dotClasses: Record<DataStatusLabel, string> = {
 
 const textClassesLight: Record<DataStatusLabel, string> = {
   live: "text-blue-700",
+  current: "text-emerald-700",
   "latest-available": "text-slate-600",
   ytd: "text-violet-700",
   historical: "text-purple-700",
@@ -33,6 +36,7 @@ const textClassesLight: Record<DataStatusLabel, string> = {
 
 const textClassesDark: Record<DataStatusLabel, string> = {
   live: "text-blue-300",
+  current: "text-emerald-300",
   "latest-available": "text-slate-300",
   ytd: "text-violet-300",
   historical: "text-purple-300",
@@ -42,7 +46,8 @@ const textClassesDark: Record<DataStatusLabel, string> = {
 };
 
 const detailText: Record<DataStatusLabel, string> = {
-  live: "Updated today",
+  live: "Fetched automatically from the official source",
+  current: "Official rate currently in force, not a live data feed",
   "latest-available": "Most recent published figure",
   ytd: "Year to date",
   historical: "Completed period",

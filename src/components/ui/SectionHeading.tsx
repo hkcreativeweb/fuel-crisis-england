@@ -8,6 +8,7 @@ export function SectionHeading({
   align = "left",
   tone = "light",
   rule = false,
+  as: Heading = "h2",
   className,
 }: {
   eyebrow?: string;
@@ -19,6 +20,8 @@ export function SectionHeading({
   tone?: "light" | "dark";
   /** Adds a thin horizontal rule between the eyebrow and the headline. */
   rule?: boolean;
+  /** Heading level for the title. Use "h1" only for a page's main heading. */
+  as?: "h1" | "h2";
   className?: string;
 }) {
   return (
@@ -38,14 +41,14 @@ export function SectionHeading({
       {rule ? (
         <div className={cn("mb-4 h-px w-12 bg-current opacity-30", tone === "light" ? "text-navy-900" : "text-white")} aria-hidden="true" />
       ) : null}
-      <h2
+      <Heading
         className={cn(
           "text-3xl font-extrabold tracking-tight sm:text-4xl",
           tone === "light" ? "text-navy-900" : "text-white"
         )}
       >
         {title}
-      </h2>
+      </Heading>
       {description ? (
         <p className={cn("mt-4 text-base leading-relaxed sm:text-lg", tone === "light" ? "text-charcoal-700" : "text-slate-300")}>
           {description}

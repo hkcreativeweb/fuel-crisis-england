@@ -14,7 +14,7 @@ export default function AskYourMPPage() {
     <>
       <section className="bg-navy-950 py-16 sm:py-20">
         <Container>
-          <SectionHeading
+          <SectionHeading as="h1"
             tone="dark"
             eyebrow="Make your voice heard"
             title="Your MP Can Hear From You"

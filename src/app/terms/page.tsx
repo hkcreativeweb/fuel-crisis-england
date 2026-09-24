@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: `Terms and Conditions for using ${siteConfig.name}.`,
 };
 
-const LAST_UPDATED = "2025-09-18";
+const LAST_UPDATED = "2026-09-24";
 
 export default function TermsPage() {
   return (
@@ -38,9 +38,9 @@ export default function TermsPage() {
             <div>
               <h2 className="text-lg font-bold text-navy-900">Accuracy of information</h2>
               <p className="mt-2">
-                We take care to clearly label live, historical, and demo data, and to only present
-                verified figures as fact. Where a verified figure or live data source is not yet
-                connected, we display a clear placeholder instead of an estimate. We do not guarantee the
+                We take care to label figures as live, current official rates, latest published, historical,
+                our own calculations or illustrative scenarios, and to only present verified figures as fact.
+                Where no verified figure is available, we say so rather than showing a guess. We do not guarantee the
                 site is free of errors and encourage you to check the linked official sources directly.
               </p>
             </div>

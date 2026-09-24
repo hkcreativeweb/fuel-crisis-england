@@ -10,7 +10,7 @@ function formatGBPMillions(value: number): string {
 
 function CompanyTimeline({ label, years }: { label: string; years: typeof companyProfitTimelines.shell }) {
   return (
-    <div className="rounded border border-slate-200 bg-white p-6">
+    <div className="min-w-0 rounded border border-slate-200 bg-white p-6">
       <div className="flex items-center justify-between gap-3">
         <h3 className="text-lg font-bold text-navy-900">{label}</h3>
         <DataStatusBadge status={years.length > 0 ? "historical" : "unavailable"} />

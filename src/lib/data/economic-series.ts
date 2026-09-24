@@ -81,6 +81,9 @@ export const bankRateSeries: EconomicSeries = {
  * interpolating any value. Each plotted point is still a genuine,
  * dated, single-week snapshot for that month, never an average.
  */
+// The date of the newest weekly row in the pump price history, so the "as of" label can never lag the data.
+const pumpPriceHistoryAsOf = pumpPriceHistoryMonthly[pumpPriceHistoryMonthly.length - 1].date;
+
 export const petrolPriceSeries: EconomicSeries = {
   id: "petrol-price",
   label: "UK average petrol price",
@@ -89,7 +92,7 @@ export const petrolPriceSeries: EconomicSeries = {
   points: pumpPriceHistoryMonthly.map((p) => ({ period: monthKey(p.date), value: p.petrol })),
   source: pumpPriceHistorySource.name,
   sourceUrl: pumpPriceHistorySource.url,
-  asOf: "2026-09-14",
+  asOf: pumpPriceHistoryAsOf,
   status: "historical",
 };
 
@@ -101,7 +104,7 @@ export const dieselPriceSeries: EconomicSeries = {
   points: pumpPriceHistoryMonthly.map((p) => ({ period: monthKey(p.date), value: p.diesel })),
   source: pumpPriceHistorySource.name,
   sourceUrl: pumpPriceHistorySource.url,
-  asOf: "2026-09-14",
+  asOf: pumpPriceHistoryAsOf,
   status: "historical",
 };
 

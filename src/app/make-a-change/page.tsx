@@ -15,7 +15,7 @@ export default function TakeActionPage() {
     <>
       <section className="bg-navy-950 py-14 sm:py-16">
         <Container>
-          <SectionHeading
+          <SectionHeading as="h1"
             tone="dark"
             eyebrow="We can make a change"
             title="People deserve a voice on fuel affordability."

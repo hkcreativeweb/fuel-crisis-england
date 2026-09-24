@@ -9,7 +9,7 @@ const CONTACT_EMAIL = "contact.fuelcrisisengland@gmail.com";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `About ${siteConfig.fullBrand}: an independent information and education website about fuel prices, taxation, household costs, wages and the wider economics behind what motorists pay at the pump.`,
+  description: `About ${siteConfig.fullBrand}: an independent information site explaining UK fuel prices, their wider impact and the policy debate around them, with clearly labelled ways to take part.`,
 };
 
 const purposes = [
@@ -70,9 +70,10 @@ export default function AboutPage() {
           <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
           <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Evidence before opinion.</h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
-            {siteConfig.name} is an independent information and education website created to help people
-            understand fuel prices, taxation, household costs, wages, supply chains and the wider economics
-            behind what motorists pay at the pump.
+            {siteConfig.name} is an independent information site explaining UK fuel prices, their wider
+            impact and the policy debate around them. It also provides clearly labelled opportunities for
+            civic participation. We are not a political party and are not affiliated with any government or
+            political party. Campaign proposals are clearly identified as proposals.
           </p>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
             The website brings together data, explanations and interactive tools so visitors can explore
