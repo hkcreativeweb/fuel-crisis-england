@@ -9,7 +9,8 @@ import { formatNumber } from "@/lib/utils";
  * (src/app/api/visits). Renders nothing if the count can't be loaded,
  * rather than showing a fabricated or stale number.
  */
-export function VisitCounter() {
+/** Counts the visit via /api/visits. With `showCount={false}` it still counts but displays nothing. */
+export function VisitCounter({ showCount = true }: { showCount?: boolean }) {
   const [count, setCount] = useState<number | null>(null);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export function VisitCounter() {
     };
   }, []);
 
-  if (count === null) return null;
+  if (!showCount || count === null) return null;
 
   return (
     <section className="border-t border-slate-200 bg-slate-50 py-10">

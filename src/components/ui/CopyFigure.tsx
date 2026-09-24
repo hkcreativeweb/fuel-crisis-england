@@ -22,7 +22,7 @@ export function CopyFigure({ text, className }: { text: string; className?: stri
       type="button"
       onClick={handleCopy}
       aria-label={`Copy figure: ${text}`}
-      className={cn("text-[11px] font-semibold text-charcoal-500 underline decoration-slate-300 underline-offset-2 hover:text-petrol-600 hover:decoration-petrol-400", className)}
+      className={cn("text-xs font-semibold text-charcoal-500 underline decoration-slate-300 underline-offset-2 hover:text-petrol-600 hover:decoration-petrol-400", className)}
     >
       {copied ? "Copied" : "Copy figure"}
     </button>

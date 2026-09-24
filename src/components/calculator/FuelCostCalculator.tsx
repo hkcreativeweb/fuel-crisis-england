@@ -207,7 +207,7 @@ export function FuelCostCalculator({
         <button
           type="button"
           onClick={reset}
-          className="rounded-full border border-slate-300 px-4 py-2 text-xs font-semibold text-navy-900 hover:bg-slate-50"
+          className="min-h-11 rounded-full border border-slate-300 px-4 py-2 text-xs font-semibold text-navy-900 hover:bg-slate-50"
         >
           Reset to defaults
         </button>

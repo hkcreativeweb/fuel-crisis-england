@@ -2,45 +2,43 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatCard } from "@/components/ui/StatCard";
 import { fuelDutyReceiptsFullYear } from "@/lib/data/hmrc-receipts";
-import { yearlySnapshots } from "@/lib/data/yearly-snapshots";
+import { petrolPumpPriceBreakdown } from "@/lib/data/pump-price-breakdown";
 
-export function TheQuestionWeShouldAsk() {
-  const now = yearlySnapshots["2026"];
+/**
+ * Four figures that separate the policy-set part of the pump price from the
+ * market part. The pump price is the live GOV.UK weekly average passed in
+ * by the page (the same figure as the hero); the split is calculated from
+ * the fixed Fuel Duty rate and 20% VAT.
+ */
+export function TheQuestionWeShouldAsk({ petrolPence, dataPeriod }: { petrolPence: number; dataPeriod: string }) {
+  const duty = petrolPumpPriceBreakdown.components.find((c) => c.label.startsWith("Fuel duty"))?.approxPencePerLitre ?? 0;
+  const vat = petrolPence / 6; // 20% VAT is one-sixth of a VAT-inclusive price
+  const tax = duty + vat;
+  const market = petrolPence - tax;
+  const share = (pence: number) => Math.round((pence / petrolPence) * 100);
 
   return (
-    <section className="bg-charcoal-900 py-16 sm:py-20">
+    <section className="bg-white py-16 sm:py-20">
       <Container>
         <SectionHeading
-          tone="dark"
-          eyebrow="Look at the evidence"
-          title="So what should government do about fuel affordability?"
-          description="We won't answer this for you. Here's the evidence, and you decide what it suggests."
+          eyebrow="Policy and markets"
+          title="The numbers behind the policy debate"
+          description="How much of the pump price is shaped by policy, and how much by markets? Explore the figures and decide for yourself."
         />
-
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <StatCard label="Current Fuel Duty" value="52.95p" caption="per litre, since 23 March 2022" />
-          <StatCard label="Previous Fuel Duty" value="57.95p" caption="per litre, before March 2022" />
-          <StatCard label="Fuel Duty receipts" value={`£${fuelDutyReceiptsFullYear.amountGBP}bn`} caption={fuelDutyReceiptsFullYear.periodLabel} />
-          <StatCard label="VAT on fuel" value="20%" caption="standard rate, on price + duty" />
-          <StatCard label="Average petrol price" value={now.petrolPencePerLitre ? `${now.petrolPencePerLitre.toFixed(1)}p` : "—"} caption="per litre" />
-          <StatCard label="Average diesel price" value={now.dieselPencePerLitre ? `${now.dieselPencePerLitre.toFixed(1)}p` : "—"} caption="per litre" />
-          <StatCard label="National Living Wage" value={now.minimumWagePerHour ? `£${now.minimumWagePerHour.toFixed(2)}` : "—"} caption="per hour, 21+" />
-          <StatCard label="Bank Rate" value={now.bankRatePercent ? `${now.bankRatePercent}%` : "—"} caption="affects mortgage & borrowing costs" />
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-10 sm:gap-4 lg:grid-cols-4">
+          <StatCard tone="light" label="Average petrol price" value={`${petrolPence.toFixed(1)}p`} caption={`per litre, UK, ${dataPeriod.charAt(0).toLowerCase() + dataPeriod.slice(1)}`} />
+          <StatCard tone="light" label="Set by policy" value={`${tax.toFixed(1)}p`} caption={`about ${share(tax)}%: Fuel Duty ${duty}p plus VAT (calculated)`} />
+          <StatCard tone="light" label="Set by markets and retailers" value={`${market.toFixed(1)}p`} caption={`about ${share(market)}%: oil, refining, delivery and retail (calculated remainder)`} />
+          <StatCard tone="light" label="Fuel Duty receipts" value={`£${fuelDutyReceiptsFullYear.amountGBP}bn`} caption={fuelDutyReceiptsFullYear.periodLabel} />
         </div>
-
-        <div className="mt-10 max-w-2xl rounded border border-white/10 bg-white/5 p-6">
-          <p className="text-lg font-bold text-white">
-            How much of the pressure at the pump is influenced by government taxation, and what policy
-            choices could reduce that pressure?
-          </p>
-          <p className="mt-3 text-sm leading-relaxed text-slate-300">
-            Explore the full evidence, including historical trends and every source, on the{" "}
-            <a href="/follow-the-money" className="font-semibold text-petrol-400 underline underline-offset-2">
-              Follow the Money page
-            </a>
-            .
-          </p>
-        </div>
+        <p className="mt-6 max-w-2xl text-sm leading-relaxed text-charcoal-700">
+          Petrol price from GOV.UK / DESNZ; receipts from HMRC. The split between tax and market costs is our
+          calculation from those figures. See the{" "}
+          <a href="/follow-the-money" className="-my-3 inline-block py-3 font-semibold text-petrol-600 underline underline-offset-2">
+            full breakdown and sources
+          </a>
+          .
+        </p>
       </Container>
     </section>
   );

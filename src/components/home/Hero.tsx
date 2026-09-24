@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { PhotoCredit } from "@/components/ui/PhotoCredit";
+import { LinkButton } from "@/components/ui/Button";
 import { HeroFuelDataStrip } from "@/components/home/HeroFuelDataStrip";
 import { getLatestUkWeeklyAverage } from "@/lib/data/desnz-weekly-prices";
 import { imageCredits } from "@/lib/data/image-credits";
@@ -12,17 +13,16 @@ const manifestoLines: { lead: string; rest: string }[] = [
   { lead: "Save", rest: "fuel." },
   { lead: "Save", rest: "money." },
   { lead: "Follow", rest: "the money." },
-  { lead: "Demand", rest: "accountability." },
+  { lead: "Check", rest: "the evidence." },
 ];
 
 const exploreLinks: { label: string; href: string }[] = [
-  { label: "Understand the price.", href: "/live-fuel-prices" },
-  { label: "Understand the costs.", href: "/why-is-fuel-expensive" },
-  { label: "Understand the tax.", href: "/fuel-duty-and-tax" },
-  { label: "Understand the supply chain.", href: "/why-is-fuel-expensive#one-litre" },
-  { label: "Understand the impact.", href: "/cost-of-living" },
-  { label: "Check the evidence.", href: "/sources" },
-  { label: "Ask the questions.", href: "/ask-your-mp" },
+  { label: "Today's prices", href: "/live-fuel-prices" },
+  { label: "What's in a litre", href: "/why-is-fuel-expensive#one-litre" },
+  { label: "Fuel Duty & VAT", href: "/fuel-duty-and-tax" },
+  { label: "Who feels the cost", href: "/cost-of-living" },
+  { label: "Check the evidence", href: "/sources" },
+  { label: "Ask your MP", href: "/ask-your-mp" },
 ];
 
 export async function Hero() {
@@ -41,16 +41,20 @@ export async function Hero() {
             pay, and check the figures for yourself.
           </p>
 
+          <LinkButton href="#follow-the-money" size="lg" className="mt-6 min-h-12">
+            See where your money goes <span aria-hidden="true">&darr;</span>
+          </LinkButton>
+
           <HeroFuelDataStrip ukWeekly={ukWeekly} />
 
-          <div className="relative mt-8 aspect-[16/10] max-w-lg overflow-hidden">
+          <div className="relative mt-8 hidden aspect-[16/10] max-w-lg overflow-hidden sm:block">
             <Image src={credit.src} alt={credit.alt} fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
           </div>
-          <PhotoCredit credit={credit} tone="light" className="mt-2 max-w-lg" />
+          <PhotoCredit credit={credit} tone="light" className="mt-2 hidden max-w-lg sm:block" />
         </div>
 
         <div className="lg:border-l lg:border-petrol-500/15 lg:pl-12">
-          <div className="space-y-0.5">
+          <div className="hidden space-y-0.5 sm:block">
             {manifestoLines.map((line) => (
               <p
                 key={line.rest}
@@ -61,9 +65,9 @@ export async function Hero() {
             ))}
           </div>
 
-          <div className="mt-8 h-px w-full bg-slate-200" aria-hidden="true" />
+          <div className="mt-8 hidden h-px w-full bg-slate-200 sm:block" aria-hidden="true" />
 
-          <p className="mt-8 text-[11px] font-bold uppercase tracking-[0.14em] text-charcoal-500">Start exploring</p>
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-charcoal-500 sm:mt-8">Start exploring</p>
           <nav aria-label="Explore Fuel Crisis England" className="mt-3">
             <ul className="border-t border-slate-200">
               {exploreLinks.map((item) => (
@@ -83,16 +87,6 @@ export async function Hero() {
               ))}
             </ul>
           </nav>
-
-          <a
-            href="#explore-evidence"
-            className="group mt-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-charcoal-500 transition-colors hover:text-petrol-600"
-          >
-            Explore the evidence
-            <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-y-0.5">
-              ↓
-            </span>
-          </a>
         </div>
       </Container>
     </section>

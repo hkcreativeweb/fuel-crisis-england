@@ -135,7 +135,7 @@ export default function FuelDutyAndTaxPage() {
         </Container>
       </section>
 
-      <section className="bg-navy-950 py-14 sm:py-16">
+      <section id="timeline" className="scroll-mt-24 bg-navy-950 py-14 sm:py-16">
         <Container>
           <SectionHeading
             tone="dark"

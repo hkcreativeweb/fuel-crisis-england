@@ -14,12 +14,12 @@ export function FollowOneLitreTeaser() {
           title="Why does filling up cost so much?"
           description="Follow one litre from crude oil to the forecourt and see what happens to its price along the way."
         />
-        <ol className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <ol className="mt-8 grid grid-cols-2 gap-2 sm:mt-10 sm:grid-cols-4 sm:gap-3">
           {litreJourneySteps.map((step) => (
             <li
               key={step.number}
               className={cn(
-                "flex flex-col justify-between gap-3 rounded border p-4",
+                "flex flex-col justify-between gap-1.5 rounded border p-3 sm:gap-3 sm:p-4",
                 step.category === "tax" ? "border-navy-900 bg-navy-900 text-white" : "border-slate-200 bg-white text-navy-900"
               )}
             >
@@ -27,7 +27,7 @@ export function FollowOneLitreTeaser() {
                 {String(step.number).padStart(2, "0")}
               </span>
               <span className="text-base font-bold leading-tight">{step.title}</span>
-              <span className={cn("text-[10px] font-bold uppercase tracking-wide", step.category === "tax" ? "text-slate-300" : "text-charcoal-500")}>
+              <span className={cn("text-xs font-bold uppercase tracking-wide", step.category === "tax" ? "text-slate-300" : "text-charcoal-500")}>
                 {step.category === "tax" ? "Tax" : "Market cost"}
               </span>
             </li>
@@ -37,7 +37,7 @@ export function FollowOneLitreTeaser() {
           Steps 1–6 are market and company costs. Steps 7 and 8 are taxes set by government.
         </p>
         <div className="mt-8">
-          <LinkButton href="/why-is-fuel-expensive#one-litre" variant="secondary">
+          <LinkButton href="/why-is-fuel-expensive#one-litre" variant="secondary" className="min-h-12">
             Follow one litre
           </LinkButton>
         </div>

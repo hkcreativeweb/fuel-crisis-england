@@ -38,7 +38,7 @@ export function FollowTheMoneyFlow({ defaultAmount = 50 }: { defaultAmount?: num
             onClick={() => setAmount(a)}
             aria-pressed={amount === a}
             className={cn(
-              "rounded-full border px-4 py-2 text-sm font-bold transition-colors",
+              "min-h-11 min-w-11 rounded-full border px-4 py-2 text-sm font-bold transition-colors",
               amount === a ? "border-petrol-500 bg-petrol-500 text-white" : "border-white/20 text-slate-200 hover:border-petrol-400"
             )}
           >
@@ -57,7 +57,7 @@ export function FollowTheMoneyFlow({ defaultAmount = 50 }: { defaultAmount?: num
               onClick={() => setYear(y)}
               aria-pressed={year === y}
               className={cn(
-                "rounded-full border px-3 py-1.5 text-xs font-bold transition-colors",
+                "min-h-11 rounded-full border px-3 py-1.5 text-xs font-bold transition-colors",
                 year === y ? "border-petrol-400 bg-white/10 text-white" : "border-white/15 text-slate-400 hover:text-white"
               )}
             >
@@ -67,7 +67,7 @@ export function FollowTheMoneyFlow({ defaultAmount = 50 }: { defaultAmount?: num
         </div>
       ) : null}
 
-      <div className="mt-5 flex flex-wrap items-center gap-3 text-[10px] font-bold uppercase tracking-wide text-slate-400">
+      <div className="mt-5 flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-wide text-slate-400">
         <span className="inline-flex items-center gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden="true" /> Known — directly published rate
         </span>
@@ -84,7 +84,7 @@ export function FollowTheMoneyFlow({ defaultAmount = 50 }: { defaultAmount?: num
                 {c.label} <span className="text-slate-400">&middot; {c.group}</span>{" "}
                 <span
                   className={cn(
-                    "ml-1 rounded-full px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide",
+                    "ml-1 rounded-full px-1.5 py-0.5 text-xs font-bold uppercase tracking-wide",
                     c.confidence === "known" ? "bg-emerald-500/20 text-emerald-300" : "bg-amber-500/20 text-amber-300"
                   )}
                 >

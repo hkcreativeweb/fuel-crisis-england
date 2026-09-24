@@ -11,17 +11,13 @@ export function AboutHomeSection() {
 
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-charcoal-700 sm:text-base">
             <p>
-              Fuel Crisis England is an independent information and education website. We are not a
-              political party and are not affiliated with any government or political organisation.
+              Fuel Crisis England is an independent information site explaining UK fuel prices, their wider
+              impact and the policy debate around them. It also offers clearly labelled ways to take part in
+              civic discussion.
             </p>
             <p>
-              Our aim is to help people understand fuel prices, taxation, household costs and the
-              evidence behind them, so they can make informed decisions and ask better questions.
-            </p>
-            <p>
-              By making information accessible and encouraging informed public discussion, we want to
-              support lawful civic engagement and help people hold governments accountable for their
-              decisions.
+              We are not a political party and are not affiliated with any government or political party.
+              Campaign proposals are clearly identified as proposals, so you can tell them apart from the facts.
             </p>
           </div>
 

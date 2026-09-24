@@ -16,7 +16,7 @@ export function CalculatorSection() {
           <FuelCostCalculator showPriceChangeEffect />
         </div>
         <div className="mt-8">
-          <LinkButton href="/save-fuel-money" variant="secondary">
+          <LinkButton href="/save-fuel-money" variant="secondary" className="min-h-12">
             Ways to cut your fuel cost
           </LinkButton>
         </div>

@@ -5,13 +5,14 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { petrolPumpPriceBreakdown } from "@/lib/data/pump-price-breakdown";
-import { cn, formatDate } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 /*
  * Every answer and explanation below restates facts already published on
  * this site (litre-journey.ts, pump-price-breakdown.ts, the fuel cost
- * calculator and the CMA findings on /live-fuel-prices). Figures are read
- * from the site's own data files so the quiz never drifts out of date.
+ * calculator and the CMA findings on /live-fuel-prices). The pump price is
+ * the live GOV.UK weekly average passed in by the homepage, the same figure
+ * the hero shows, so the quiz never disagrees with the rest of the page.
  * Nothing is sent anywhere: the score lives only in this component's state.
  */
 
@@ -20,11 +21,13 @@ function componentPence(label: string): number {
 }
 
 const duty = componentPence("Fuel duty");
-const vat = componentPence("VAT");
-// The breakdown file always carries these for petrol; the fallbacks only satisfy the types.
-const total = petrolPumpPriceBreakdown.totalPencePerLitre ?? duty + vat;
-const asOf = petrolPumpPriceBreakdown.asOf ? ` (UK average, ${formatDate(petrolPumpPriceBreakdown.asOf)})` : "";
-const taxShare = Math.round(((duty + vat) / total) * 100);
+/** Uses the same live GOV.UK weekly average as the hero, so the homepage never shows two prices. */
+function vatExplanation(petrolPence: number, dataPeriod: string): string {
+  // VAT is 20% of the pre-VAT price, i.e. one-sixth of a VAT-inclusive pump price.
+  const vat = petrolPence / 6;
+  const taxShare = Math.round(((duty + vat) / petrolPence) * 100);
+  return `VAT is added after Fuel Duty, so you pay VAT on the duty too. At the UK average of ${petrolPence.toFixed(1)}p a litre (${dataPeriod.charAt(0).toLowerCase() + dataPeriod.slice(1)}), that's ${duty}p duty plus about ${vat.toFixed(1)}p VAT: roughly ${taxShare}% of the price is tax.`;
+}
 
 type Question = {
   question: string;
@@ -49,7 +52,7 @@ const QUESTIONS: Question[] = [
     question: "VAT on fuel is 20%. But 20% of what?",
     answers: ["The price before any tax", "The retailer's margin only", "The price including Fuel Duty"],
     correct: 2,
-    explanation: `VAT is added after Fuel Duty, so you pay VAT on the duty too. On a ${total.toFixed(1)}p litre, that's ${duty}p duty plus about ${vat.toFixed(1)}p VAT: roughly ${taxShare}% of the price is tax${asOf}.`,
+    explanation: "", // filled in from the live price by vatExplanation()
   },
   {
     question: "Crude oil is mainly traded internationally in which currency?",
@@ -94,7 +97,8 @@ function scoreMessage(score: number): { title: string; body: string } {
 
 type Phase = "intro" | "question" | "done";
 
-export function FuelQuiz() {
+export function FuelQuiz({ petrolPence, dataPeriod }: { petrolPence: number; dataPeriod: string }) {
+  const questions = QUESTIONS.map((q, i) => (i === 1 ? { ...q, explanation: vatExplanation(petrolPence, dataPeriod) } : q));
   const [phase, setPhase] = useState<Phase>("intro");
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
@@ -118,7 +122,7 @@ export function FuelQuiz() {
   function answer(i: number) {
     if (selected !== null) return;
     setSelected(i);
-    if (i === QUESTIONS[index].correct) setScore((s) => s + 1);
+    if (i === questions[index].correct) setScore((s) => s + 1);
   }
 
   function next() {
@@ -130,7 +134,7 @@ export function FuelQuiz() {
     }
   }
 
-  const q = QUESTIONS[index];
+  const q = questions[index];
   const answered = selected !== null;
   const isCorrect = answered && selected === q.correct;
   const progress = ((index + (answered ? 1 : 0)) / QUESTIONS.length) * 100;

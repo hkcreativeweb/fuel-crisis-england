@@ -7,7 +7,7 @@ export const siteConfig = {
     "Fuel Crisis England provides practical ways to save fuel and money, explains fuel prices and taxation, follows energy-company profits and helps people make their voices heard lawfully.",
   supportingStatement:
     "Fuel Crisis England is an independent public-interest information and accountability platform focused on fuel prices, fuel taxation, energy-company profits, household costs and the wider impact of the fuel crisis.",
-  url: "https://www.fuelcrisisengland.example",
+  url: "https://www.fuelcrisisengland.co.uk",
   locale: "en-GB",
   petitionTarget: 25000,
   hashtag: "#FuelCrisisEngland",
