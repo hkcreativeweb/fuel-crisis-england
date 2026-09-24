@@ -51,6 +51,7 @@ export const metadata: Metadata = {
 export default async function HomePage() {
   const { figures } = await getLatestUkWeeklyAverage();
   const petrol = { petrolPence: figures.petrol.current, dataPeriod: figures.petrol.dataPeriod };
+  const prices = { petrol: figures.petrol.current, diesel: figures.diesel.current, dataPeriod: figures.petrol.dataPeriod };
 
   return (
     <>
@@ -62,7 +63,7 @@ export default async function HomePage() {
       <FuelQuiz {...petrol} />
       <TwentyPoundsSection {...petrol} />
       <ImpactSection />
-      <CalculatorSection />
+      <CalculatorSection prices={prices} />
       <GovernmentHasChoice />
       <TheQuestionWeShouldAsk {...petrol} />
       <SourcesTeaser />

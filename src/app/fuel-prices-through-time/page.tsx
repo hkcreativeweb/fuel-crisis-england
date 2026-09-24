@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
 import { PhotoCredit } from "@/components/ui/PhotoCredit";
 import { ThenVsNow } from "@/components/live/ThenVsNow";
+import { getLatestUkWeeklyAverage } from "@/lib/data/desnz-weekly-prices";
 import { HistoricalExplorer } from "@/components/cost-of-living/HistoricalExplorer";
 import { CostOfLivingContext } from "@/components/cost-of-living/CostOfLivingContext";
 import { WageVsPump } from "@/components/cost-of-living/WageVsPump";
@@ -19,7 +20,8 @@ export const metadata: Metadata = {
   description: "How UK fuel prices, taxes, wages and purchasing power have changed across completed historical years, kept strictly separate from live, current-day figures.",
 };
 
-export default function FuelPricesThroughTimePage() {
+export default async function FuelPricesThroughTimePage() {
+  const { figures } = await getLatestUkWeeklyAverage();
   return (
     <>
       <section className="bg-navy-950 py-16 sm:py-20">
@@ -54,7 +56,7 @@ export default function FuelPricesThroughTimePage() {
         <Container>
           <SectionHeading eyebrow="Same £20, different years" title="Then vs Now" description="Choose a historical year and compare it directly against today, with every figure's period made explicit." />
           <div className="mt-10">
-            <ThenVsNow />
+            <ThenVsNow nowPrices={{ petrol: figures.petrol.current, diesel: figures.diesel.current, dataPeriod: figures.petrol.dataPeriod }} />
           </div>
         </Container>
       </section>

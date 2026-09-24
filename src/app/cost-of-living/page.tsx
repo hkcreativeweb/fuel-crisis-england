@@ -6,6 +6,7 @@ import { PhotoCredit } from "@/components/ui/PhotoCredit";
 import { FuelCostCalculator } from "@/components/calculator/FuelCostCalculator";
 import { impactGroups } from "@/lib/data/impact-groups";
 import { imageCredits } from "@/lib/data/image-credits";
+import { getLatestUkWeeklyAverage } from "@/lib/data/desnz-weekly-prices";
 
 export const metadata: Metadata = {
   title: "Cost-of-Living Impact",
@@ -14,7 +15,8 @@ export const metadata: Metadata = {
 
 const credit = imageCredits["commute-traffic"];
 
-export default function ImpactPage() {
+export default async function ImpactPage() {
+  const { figures } = await getLatestUkWeeklyAverage();
   return (
     <>
       <section className="relative overflow-hidden bg-navy-950 py-14 sm:py-16">
@@ -60,7 +62,7 @@ export default function ImpactPage() {
             description="Enter your miles per week, your vehicle's fuel economy, the fuel price, and the number of weeks to estimate your costs."
           />
           <div className="mt-8 max-w-3xl">
-            <FuelCostCalculator />
+            <FuelCostCalculator prices={{ petrol: figures.petrol.current, diesel: figures.diesel.current, dataPeriod: figures.petrol.dataPeriod }} />
           </div>
         </Container>
       </section>

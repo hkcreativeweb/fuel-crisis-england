@@ -38,12 +38,26 @@ type Row = {
 
 const DEFAULT_HISTORICAL_YEAR = "2010";
 
-export function ThenVsNow() {
+const LITRES_PER_UK_GALLON = 4.54609;
+// The same assumption as the site's 100-mile journey figure elsewhere: a 40 mpg petrol car.
+const JOURNEY_MILES = 100;
+const JOURNEY_MPG = 40;
+const journeyCost = (pencePerLitre: number) => ((JOURNEY_MILES / JOURNEY_MPG) * LITRES_PER_UK_GALLON * pencePerLitre) / 100;
+
+type NowPrices = { petrol: number; diesel: number; dataPeriod: string };
+
+/** `nowPrices` lets the page pass the live GOV.UK weekly averages so "now" always matches the rest of the site. */
+export function ThenVsNow({ nowPrices }: { nowPrices?: NowPrices }) {
   const [thenYear, setThenYear] = useState(
     historicalYears.includes(DEFAULT_HISTORICAL_YEAR) ? DEFAULT_HISTORICAL_YEAR : historicalYears[0]
   );
   const then = yearlySnapshots[thenYear];
-  const now = yearlySnapshots[currentYear];
+  const now = useMemo(() => {
+    const base = yearlySnapshots[currentYear];
+    return nowPrices
+      ? { ...base, petrolPencePerLitre: nowPrices.petrol, dieselPencePerLitre: nowPrices.diesel, pricesAsOf: nowPrices.dataPeriod }
+      : base;
+  }, [nowPrices]);
   const nowEarnings = findLive("earnings");
 
   const rows: Row[] = useMemo(() => {
@@ -156,7 +170,7 @@ export function ThenVsNow() {
             onClick={() => setThenYear(y)}
             aria-pressed={thenYear === y}
             className={cn(
-              "border px-3.5 py-1.5 text-sm font-bold transition-colors",
+              "min-h-11 border px-3.5 py-1.5 text-sm font-bold transition-colors",
               thenYear === y ? "border-slate-600 bg-slate-700 text-white" : "border-slate-300 text-charcoal-700 hover:bg-slate-50"
             )}
           >
@@ -166,6 +180,50 @@ export function ThenVsNow() {
         <span className="ml-2 text-sm font-semibold text-navy-900">vs NOW:</span>
         <StatusBadge status="latest-available" />
       </div>
+
+      <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {[
+          {
+            label: "Petrol, per litre",
+            then: then.petrolPencePerLitre !== null ? `${then.petrolPencePerLitre.toFixed(1)}p` : null,
+            now: now.petrolPencePerLitre !== null ? `${now.petrolPencePerLitre.toFixed(1)}p` : null,
+          },
+          {
+            label: "Litres from 1 hour of minimum wage",
+            then: thenLitres !== null ? `${thenLitres.toFixed(1)} L` : null,
+            now: nowLitres !== null ? `${nowLitres.toFixed(1)} L` : null,
+          },
+          {
+            label: `A ${JOURNEY_MILES}-mile journey (${JOURNEY_MPG} mpg petrol car)`,
+            then: then.petrolPencePerLitre !== null ? `£${journeyCost(then.petrolPencePerLitre).toFixed(2)}` : null,
+            now: now.petrolPencePerLitre !== null ? `£${journeyCost(now.petrolPencePerLitre).toFixed(2)}` : null,
+          },
+          {
+            label: "What £20 buys",
+            then: then.petrolPencePerLitre !== null ? `${(2000 / then.petrolPencePerLitre).toFixed(1)} L` : null,
+            now: now.petrolPencePerLitre !== null ? `${(2000 / now.petrolPencePerLitre).toFixed(1)} L` : null,
+          },
+        ].map((tile) => (
+          <li key={tile.label} className="rounded border border-slate-200 bg-slate-50 p-4">
+            <p className="text-xs font-bold uppercase tracking-wide text-charcoal-600">{tile.label}</p>
+            <p className="mt-2 flex items-baseline gap-2 tabular-nums">
+              <span className="text-lg font-bold text-charcoal-600">{tile.then ?? "n/a"}</span>
+              <span aria-hidden="true" className="text-petrol-500">
+                &rarr;
+              </span>
+              <span className="text-2xl font-extrabold text-navy-900">{tile.now ?? "n/a"}</span>
+            </p>
+            <p className="mt-1 text-xs text-charcoal-600">
+              {thenYear} &rarr; {now.pricesAsOf ?? currentYear}
+            </p>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-3 text-xs leading-relaxed text-charcoal-600">
+        Calculated from the petrol prices and minimum wage rates in the table below. The journey assumes {JOURNEY_MPG} mpg
+        and {LITRES_PER_UK_GALLON} litres per UK gallon. No single figure shows whether people were better or worse off
+        overall.
+      </p>
 
       <div className="mt-6 overflow-x-auto">
         <table className="w-full min-w-[680px] border-collapse text-sm">
@@ -185,7 +243,7 @@ export function ThenVsNow() {
                   {row.thenDisplay !== null ? (
                     <>
                       <span className="font-bold tabular-nums text-navy-900">{row.thenDisplay}</span>
-                      <p className="mt-0.5 text-[11px] text-charcoal-600">{row.thenNote}</p>
+                      <p className="mt-0.5 text-xs text-charcoal-600">{row.thenNote}</p>
                     </>
                   ) : (
                     <span className="text-xs font-medium text-amber-800">DATA NOT AVAILABLE</span>
@@ -195,7 +253,7 @@ export function ThenVsNow() {
                   {row.nowDisplay !== null ? (
                     <>
                       <span className="font-bold tabular-nums text-navy-900">{row.nowDisplay}</span>
-                      <p className="mt-0.5 text-[11px] text-charcoal-600">{row.nowNote}</p>
+                      <p className="mt-0.5 text-xs text-charcoal-600">{row.nowNote}</p>
                     </>
                   ) : (
                     <span className="text-xs font-medium text-amber-800">DATA NOT AVAILABLE</span>

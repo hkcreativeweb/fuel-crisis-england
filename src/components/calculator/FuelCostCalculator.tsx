@@ -5,6 +5,7 @@ import { calculateFuelCost } from "@/lib/calculator/fuel-cost";
 import { ukWeeklyAverage } from "@/lib/data/hero-fuel-snapshot";
 import { formatGBP } from "@/lib/utils";
 import { Card } from "@/components/ui/Card";
+import { HowWeCalculate } from "@/components/ui/HowWeCalculate";
 
 type FieldSpec = { min: number; max: number; step: number };
 
@@ -96,28 +97,33 @@ function Result({ label, value, highlight = false }: { label: string; value: str
   );
 }
 
+export type LiveFuelPrices = { petrol: number; diesel: number; dataPeriod: string };
+
+const PRICE_RISE_PENCE = 10;
+
 /**
  * Personal fuel cost calculator. Everything runs in the browser: nothing
  * entered here, including income, is sent to or stored on a server.
- * `defaultPencePerLitre` lets server pages pass the latest GOV.UK figure;
- * otherwise the last verified weekly average is used.
+ * `prices` lets server pages pass the latest GOV.UK weekly averages;
+ * otherwise the last verified weekly averages are used.
  */
-export function FuelCostCalculator({
-  defaultPencePerLitre,
-  showPriceChangeEffect = false,
-}: {
-  defaultPencePerLitre?: number;
-  /** Adds a line showing what a 10p/litre price change would mean for the annual cost. */
-  showPriceChangeEffect?: boolean;
-}) {
+export function FuelCostCalculator({ prices }: { prices?: LiveFuelPrices }) {
+  const averages: LiveFuelPrices = prices ?? {
+    petrol: ukWeeklyAverage.petrol.current,
+    diesel: ukWeeklyAverage.diesel.current,
+    dataPeriod: ukWeeklyAverage.petrol.dataPeriod,
+  };
+  const round = (p: number) => Math.round(p * 10) / 10;
   const defaults = {
+    fuel: "petrol" as const,
     milesPerWeek: 150,
     mpg: 45,
-    pencePerLitre: Math.round((defaultPencePerLitre ?? ukWeeklyAverage.petrol.current) * 10) / 10,
+    pencePerLitre: round(averages.petrol),
     weeks: 52,
     monthlyIncome: Number.NaN,
   };
 
+  const [fuel, setFuel] = useState<"petrol" | "diesel">(defaults.fuel);
   const [milesPerWeek, setMilesPerWeek] = useState(defaults.milesPerWeek);
   const [mpg, setMpg] = useState(defaults.mpg);
   const [pencePerLitre, setPencePerLitre] = useState(defaults.pencePerLitre);
@@ -134,11 +140,22 @@ export function FuelCostCalculator({
     () => (inputsValid ? calculateFuelCost({ milesPerWeek, mpg, pencePerLitre, weeks }) : null),
     [inputsValid, milesPerWeek, mpg, pencePerLitre, weeks]
   );
+  // Same calculation at a price 10p higher, so the "what if" uses the one shared formula.
+  const risen = useMemo(
+    () => (inputsValid ? calculateFuelCost({ milesPerWeek, mpg, pencePerLitre: pencePerLitre + PRICE_RISE_PENCE, weeks }) : null),
+    [inputsValid, milesPerWeek, mpg, pencePerLitre, weeks]
+  );
 
   const incomeShare =
     result && !validationMessage(monthlyIncome, LIMITS.income) ? (result.monthlyCost / monthlyIncome) * 100 : null;
 
+  function chooseFuel(next: "petrol" | "diesel") {
+    setFuel(next);
+    setPencePerLitre(round(averages[next]));
+  }
+
   function reset() {
+    setFuel(defaults.fuel);
     setMilesPerWeek(defaults.milesPerWeek);
     setMpg(defaults.mpg);
     setPencePerLitre(defaults.pencePerLitre);
@@ -148,17 +165,40 @@ export function FuelCostCalculator({
 
   return (
     <Card className="p-6 sm:p-8">
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div role="radiogroup" aria-labelledby="fuel-type-label">
+        <p id="fuel-type-label" className="text-sm font-semibold text-navy-900">
+          Fuel type
+        </p>
+        <div className="mt-1.5 inline-flex rounded-md border border-slate-300 p-1">
+          {(["petrol", "diesel"] as const).map((f) => (
+            <button
+              key={f}
+              type="button"
+              role="radio"
+              aria-checked={fuel === f}
+              onClick={() => chooseFuel(f)}
+              className={
+                "min-h-11 min-w-24 rounded px-4 text-sm font-semibold capitalize transition-colors " +
+                (fuel === f ? "bg-navy-900 text-white" : "text-navy-900 hover:bg-slate-50")
+              }
+            >
+              {f}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-5 grid gap-5 sm:grid-cols-2">
         <Field id="miles" label="Miles driven per week" suffix="miles" value={milesPerWeek} onChange={setMilesPerWeek} spec={LIMITS.miles} />
         <Field id="mpg" label="Vehicle fuel economy" suffix="UK mpg" value={mpg} onChange={setMpg} spec={LIMITS.mpg} />
         <Field
           id="price"
-          label="Fuel price"
+          label={`Current ${fuel} price`}
           suffix="pence / litre"
           value={pencePerLitre}
           onChange={setPencePerLitre}
           spec={LIMITS.price}
-          hint={`Starts at the latest UK average petrol price (GOV.UK). Change it to your local price or diesel.`}
+          hint={`Starts at the UK average ${fuel} price, ${averages.dataPeriod.charAt(0).toLowerCase() + averages.dataPeriod.slice(1)} (GOV.UK). Change it to your local price.`}
         />
         <Field id="weeks" label="Weeks of driving per year" suffix="weeks" value={weeks} onChange={setWeeks} spec={LIMITS.weeks} />
         <Field
@@ -176,18 +216,24 @@ export function FuelCostCalculator({
       <div className="mt-7 grid grid-cols-2 gap-4 border-t border-slate-200 pt-6 sm:grid-cols-3 lg:grid-cols-5" aria-live="polite">
         <Result label="Cost per mile" value={result ? `${result.costPerMilePence.toFixed(1)}p` : "—"} />
         <Result label="Litres / week" value={result ? result.litresPerWeek.toFixed(1) : "—"} />
-        <Result label="Weekly cost" value={result ? formatGBP(result.weeklyCost) : "—"} />
-        <Result label="Monthly (average)" value={result ? formatGBP(result.monthlyCost) : "—"} />
-        <Result label="Annual cost" value={result ? formatGBP(result.annualCost) : "—"} highlight />
+        <Result label="Per week" value={result ? formatGBP(result.weeklyCost) : "—"} />
+        <Result label="Per month (average)" value={result ? formatGBP(result.monthlyCost) : "—"} />
+        <Result label="Per year" value={result ? formatGBP(result.annualCost) : "—"} highlight />
       </div>
 
-      {showPriceChangeEffect && result ? (
-        <p className="mt-5 rounded-md border-l-4 border-petrol-500 bg-petrol-50 p-4 text-sm text-charcoal-700">
-          At your mileage, a <strong className="text-navy-900">10p per litre</strong> rise or fall would change
-          your annual fuel cost by about{" "}
-          <strong className="text-navy-900">{formatGBP(result.litresPerWeek * weeks * 0.1)}</strong>. Change the
-          fuel price above to try other amounts.
-        </p>
+      {result && risen ? (
+        <div className="mt-5 rounded-md border-l-4 border-petrol-500 bg-petrol-50 p-4 text-sm text-charcoal-700" aria-live="polite">
+          <p className="font-bold text-navy-900">
+            What if {fuel} rises by {PRICE_RISE_PENCE}p a litre?
+          </p>
+          <p className="mt-1">
+            Your yearly cost would go from {formatGBP(result.annualCost)} to{" "}
+            <strong className="text-navy-900">{formatGBP(risen.annualCost)}</strong>, an extra{" "}
+            <strong className="text-navy-900">{formatGBP(risen.annualCost - result.annualCost)}</strong> a year (
+            {formatGBP(risen.weeklyCost - result.weeklyCost)} a week). A fall of the same size would save the same
+            amount.
+          </p>
+        </div>
       ) : null}
 
       {incomeShare !== null ? (
@@ -199,11 +245,23 @@ export function FuelCostCalculator({
       ) : null}
 
       <div className="mt-6 flex flex-wrap items-start justify-between gap-4">
-        <p className="max-w-2xl text-xs leading-relaxed text-charcoal-600">
-          Calculated estimate. Assumes UK mpg and a UK gallon of 4.54609 litres; the monthly figure is the
-          weekly cost × 52 ÷ 12 and the annual figure is the weekly cost × the weeks you enter. It does not
-          account for driving style, terrain, weather or vehicle condition, and is not financial advice.
-        </p>
+        <HowWeCalculate className="min-w-0 flex-1 basis-72">
+          <p>
+            <strong>Litres used</strong> = miles ÷ mpg × 4.54609 (the litres in a UK gallon).
+          </p>
+          <p>
+            <strong>Cost</strong> = litres × price per litre. Per month is the weekly cost × 52 ÷ 12; per year is the
+            weekly cost × the weeks you drive.
+          </p>
+          <p>
+            <strong>The 10p rise</strong> repeats the same sum with the price 10p higher.
+          </p>
+          <p className="text-xs text-charcoal-600">
+            A calculated estimate from the numbers you enter. It doesn&apos;t account for driving style, terrain,
+            weather or vehicle condition, and isn&apos;t financial advice. Default prices are the latest UK weekly
+            averages from GOV.UK / DESNZ.
+          </p>
+        </HowWeCalculate>
         <button
           type="button"
           onClick={reset}

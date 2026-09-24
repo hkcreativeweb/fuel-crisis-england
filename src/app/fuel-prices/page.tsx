@@ -8,7 +8,7 @@ import { FuelPriceChart } from "@/components/fuel-prices/FuelPriceChart";
 import { RegionalComparison } from "@/components/fuel-prices/RegionalComparison";
 import { FuelCostCalculator } from "@/components/calculator/FuelCostCalculator";
 import { getRegionalFuelPrices } from "@/lib/data/fuel-prices";
-import { getCurrentFuelPriceSnapshot, getHistoricalFuelPrices } from "@/lib/data/desnz-weekly-prices";
+import { getCurrentFuelPriceSnapshot, getHistoricalFuelPrices, getLatestUkWeeklyAverage } from "@/lib/data/desnz-weekly-prices";
 import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -17,10 +17,11 @@ export const metadata: Metadata = {
 };
 
 export default async function FuelPricesPage() {
-  const [snapshot, historical, regional] = await Promise.all([
+  const [snapshot, historical, regional, { figures: weekly }] = await Promise.all([
     getCurrentFuelPriceSnapshot(),
     getHistoricalFuelPrices(),
     getRegionalFuelPrices(),
+    getLatestUkWeeklyAverage(),
   ]);
 
   return (
@@ -86,7 +87,7 @@ export default async function FuelPricesPage() {
             description="Use your own mileage and fuel economy to estimate what you're actually spending."
           />
           <div className="mt-8 max-w-3xl">
-            <FuelCostCalculator defaultPencePerLitre={snapshot?.petrolPencePerLitre} />
+            <FuelCostCalculator prices={{ petrol: weekly.petrol.current, diesel: weekly.diesel.current, dataPeriod: weekly.petrol.dataPeriod }} />
           </div>
         </Container>
       </section>
