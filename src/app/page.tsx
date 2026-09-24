@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { IntroStatement } from "@/components/home/IntroStatement";
 import { Hero } from "@/components/home/Hero";
 import { QuestionIsNotJustPrice } from "@/components/home/QuestionIsNotJustPrice";
 import { FollowOneLitreTeaser } from "@/components/home/FollowOneLitreTeaser";
@@ -53,6 +54,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <IntroStatement />
       <Hero />
       <QuestionIsNotJustPrice />
       <FollowOneLitreTeaser />
