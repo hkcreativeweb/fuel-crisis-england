@@ -20,8 +20,8 @@ export function Footer() {
               <Logo />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-400">
-              Independent information and education about fuel prices, taxation, costs and the evidence
-              behind them.
+              Fuel Crisis England is an independent information site bringing together fuel prices, taxes,
+              costs, history and public information. Campaign and civic content is clearly labelled.
             </p>
             <p className="mt-2 max-w-sm text-sm font-semibold text-slate-300">
               Independent of political parties and government.
