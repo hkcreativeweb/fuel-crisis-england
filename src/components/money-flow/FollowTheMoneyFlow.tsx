@@ -4,6 +4,7 @@ import { useState } from "react";
 import { calculateMoneyFlow, getAvailableMoneyFlowYears } from "@/lib/calculator/money-flow";
 import { formatGBP, cn } from "@/lib/utils";
 import { Alert } from "@/components/ui/Alert";
+import type { PumpPriceBreakdown } from "@/lib/types";
 
 const AMOUNTS = [10, 20, 30, 50, 100];
 
@@ -13,12 +14,12 @@ const GROUP_COLORS: Record<string, string> = {
   Retail: "#ef4444",
 };
 
-export function FollowTheMoneyFlow({ defaultAmount = 50 }: { defaultAmount?: number }) {
+export function FollowTheMoneyFlow({ defaultAmount = 50, currentBreakdown }: { defaultAmount?: number; currentBreakdown: PumpPriceBreakdown }) {
   const years = getAvailableMoneyFlowYears();
   const [amount, setAmount] = useState(defaultAmount);
   const [year, setYear] = useState(years[years.length - 1] ?? "2026");
 
-  const result = calculateMoneyFlow(year, amount);
+  const result = calculateMoneyFlow(year, amount, currentBreakdown);
 
   if (!result) {
     return (

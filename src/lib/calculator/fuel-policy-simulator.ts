@@ -2,9 +2,8 @@ import { calculatePumpPriceModel } from "@/lib/calculator/pump-price-model";
 import {
   currentDutyPencePerLitre,
   currentVatPercent,
-  currentWholesalePencePerLitre,
-  currentMarginPencePerLitre,
   impliedAnnualLitresTaxed,
+  type PumpBaseline,
 } from "@/lib/data/fiscal-baseline";
 
 export type ScenarioInputs = {
@@ -12,19 +11,19 @@ export type ScenarioInputs = {
   vatPercent: number;
 };
 
-export function calculateScenario({ dutyPencePerLitre, vatPercent }: ScenarioInputs) {
+export function calculateScenario({ dutyPencePerLitre, vatPercent }: ScenarioInputs, pump: PumpBaseline) {
   const baseline = calculatePumpPriceModel({
-    wholesalePence: currentWholesalePencePerLitre,
+    wholesalePence: pump.wholesalePence,
     dutyPence: currentDutyPencePerLitre,
     vatPercent: currentVatPercent,
-    retailerMarginPence: currentMarginPencePerLitre,
+    retailerMarginPence: pump.marginPence,
   });
 
   const scenario = calculatePumpPriceModel({
-    wholesalePence: currentWholesalePencePerLitre,
+    wholesalePence: pump.wholesalePence,
     dutyPence: dutyPencePerLitre,
     vatPercent,
-    retailerMarginPence: currentMarginPencePerLitre,
+    retailerMarginPence: pump.marginPence,
   });
 
   const changePencePerLitre = scenario.total - baseline.total;

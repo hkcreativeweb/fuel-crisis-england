@@ -10,6 +10,8 @@ import { LocalPriceVariation } from "@/components/live/LocalPriceVariation";
 import { FollowTheMoneyFlow } from "@/components/money-flow/FollowTheMoneyFlow";
 import { liveIndicators, withLatestFuelPrices } from "@/lib/data/live-snapshot";
 import { getLatestUkWeeklyAverage } from "@/lib/data/desnz-weekly-prices";
+import { getPumpPriceBreakdowns } from "@/lib/data/current-fuel-prices";
+import { FuelPricesUpdated } from "@/components/ui/FuelPricesUpdated";
 import { getBrentWeekly, getGbpUsdDaily } from "@/lib/data/market-data";
 import { WhatChangedThisWeek } from "@/components/live/WhatChangedThisWeek";
 import type { LiveIndicator } from "@/lib/data/live-snapshot";
@@ -21,8 +23,8 @@ export const metadata: Metadata = pageMetadata("/live-fuel-prices", {
 });
 
 export default async function LiveFuelPricesPage() {
-  const [{ figures, fromLiveSource }, brent, fx] = await Promise.all([getLatestUkWeeklyAverage(), getBrentWeekly(), getGbpUsdDaily()]);
-  const withFuel = fromLiveSource ? withLatestFuelPrices(liveIndicators, figures) : liveIndicators;
+  const [{ figures }, brent, fx, breakdowns] = await Promise.all([getLatestUkWeeklyAverage(), getBrentWeekly(), getGbpUsdDaily(), getPumpPriceBreakdowns()]);
+  const withFuel = withLatestFuelPrices(liveIndicators, figures);
 
   // Crude oil and the exchange rate come from their publishers (EIA, Bank of England) when they can be
   // read; Bank Rate is left off this page because it doesn't help explain the pump price.
@@ -70,6 +72,7 @@ export default async function LiveFuelPricesPage() {
       <section className="bg-slate-50 py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="What is happening now" title="Live and latest-available indicators" />
+          <FuelPricesUpdated className="mt-3" />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {indicators.map((indicator) => (
               <LiveIndicatorCard key={indicator.id} indicator={indicator} />
@@ -82,8 +85,8 @@ export default async function LiveFuelPricesPage() {
         <Container>
           <SectionHeading eyebrow="2026 is not over yet" title="The year in progress" description="Three genuinely different things: today's price, the year-to-date average, and the full-year average. Only one of these exists right now." />
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
-            <YearInProgressCard fuel="petrol" />
-            <YearInProgressCard fuel="diesel" />
+            <YearInProgressCard fuel="petrol" price={figures.petrol.current} dataPeriod={figures.petrol.dataPeriod} />
+            <YearInProgressCard fuel="diesel" price={figures.diesel.current} dataPeriod={figures.diesel.dataPeriod} />
           </div>
         </Container>
       </section>
@@ -92,7 +95,7 @@ export default async function LiveFuelPricesPage() {
         <Container>
           <SectionHeading eyebrow="Where does your money go today?" title="Live Follow the Money" description="Uses today's verified pump price and current tax rates." />
           <div className="mt-10 max-w-2xl border border-white/10 bg-navy-950 p-6 sm:p-8">
-            <FollowTheMoneyFlow defaultAmount={50} />
+            <FollowTheMoneyFlow defaultAmount={50} currentBreakdown={breakdowns.petrol} />
           </div>
         </Container>
       </section>

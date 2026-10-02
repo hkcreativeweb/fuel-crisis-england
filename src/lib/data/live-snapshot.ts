@@ -26,7 +26,7 @@ export const liveIndicators: LiveIndicator[] = [
   {
     id: "petrol-price",
     label: "Average petrol price",
-    value: "172.0",
+    value: null,
     unit: "pence/litre",
     status: "latest-available",
     lastUpdated: "2026-09-21",
@@ -38,7 +38,7 @@ export const liveIndicators: LiveIndicator[] = [
   {
     id: "diesel-price",
     label: "Average diesel price",
-    value: "195.5",
+    value: null,
     unit: "pence/litre",
     status: "latest-available",
     lastUpdated: "2026-09-21",
@@ -159,7 +159,7 @@ export const liveIndicators: LiveIndicator[] = [
   {
     id: "hundred-mile-journey",
     label: "Cost of a 100-mile journey (40mpg petrol car)",
-    value: "19.55",
+    value: null,
     unit: "£",
     status: "estimate",
     lastUpdated: "2026-09-21",

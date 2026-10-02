@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { LegalPageHeader } from "@/components/ui/LegalPageHeader";
+import { ContactDetails } from "@/components/ui/ContactDetails";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = pageMetadata("/contact", {
@@ -20,8 +21,9 @@ export default function ContactPage() {
           <div className="max-w-2xl space-y-5 text-sm leading-relaxed text-charcoal-700 sm:text-base">
             <p>
               {siteConfig.fullBrand} is an independent public-interest information and campaign platform.
-              This is a preview build, and a dedicated contact channel has not yet been connected.
+              You can contact us directly by phone or email:
             </p>
+            <ContactDetails />
             <p>
               If you&apos;ve spotted an inaccuracy, an outdated figure, or a broken source link, please
               treat every statistic on this site as something we want to get right. See our{" "}

@@ -10,7 +10,7 @@ export const metadata: Metadata = pageMetadata("/privacy", {
 });
 
 const LAST_UPDATED = "2026-09-24";
-const CONTACT_EMAIL = "contact.fuelcrisisengland@gmail.com";
+const CONTACT_EMAIL = siteConfig.contact.email;
 
 export default function PrivacyPage() {
   return (

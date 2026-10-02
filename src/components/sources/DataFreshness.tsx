@@ -6,7 +6,6 @@ import { liveIndicators } from "@/lib/data/live-snapshot";
 import { fuelDutyTimeline } from "@/lib/data/fuel-duty-timeline";
 import { fuelDutyReceiptsPartYear } from "@/lib/data/hmrc-receipts";
 import { cmaMarginSource } from "@/lib/data/cma-margins";
-import { petrolPumpPriceBreakdown } from "@/lib/data/pump-price-breakdown";
 import { yearlySnapshots, currentYear } from "@/lib/data/yearly-snapshots";
 import { formatDate } from "@/lib/utils";
 
@@ -117,9 +116,9 @@ export async function DataFreshness() {
     {
       dataset: "Pump price breakdown",
       method: "manual",
-      dateLabel: `Calculated for ${date(petrolPumpPriceBreakdown.asOf)}`,
+      dateLabel: `Calculated for ${date(figures.petrol.lastUpdated)}`,
       source: "Calculated from GOV.UK and CMA figures",
-      url: petrolPumpPriceBreakdown.sourceUrl ?? null,
+      url: cmaMarginSource.url,
     },
     {
       dataset: `Year-by-year snapshots (${currentYear} row)`,

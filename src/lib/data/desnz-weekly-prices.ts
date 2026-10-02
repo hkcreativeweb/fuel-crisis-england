@@ -1,6 +1,7 @@
 import "server-only";
 
 import { ukWeeklyAverage, type WeeklyFigure } from "@/lib/data/hero-fuel-snapshot";
+import { appendHistory, readLastGoodPrices, saveLastGoodPrices } from "@/lib/server/fuel-price-store";
 import type { FuelPricePoint, FuelPriceSnapshot, FuelType } from "@/lib/types";
 
 /**
@@ -36,8 +37,12 @@ export type DesnzWeeklyRow = {
 
 type ContentApiAttachment = { title?: string; url?: string; content_type?: string };
 
-async function findCurrentCsvUrl(): Promise<string> {
-  const res = await fetch(CONTENT_API_URL, { next: { revalidate: REVALIDATE_SECONDS } });
+/** `fresh` bypasses the cache (used by the scheduled refresh); page renders use the cached copy. */
+type FetchOptions = RequestInit & { next?: { revalidate: number } };
+const cacheOptions = (fresh: boolean): FetchOptions => (fresh ? { cache: "no-store" } : { next: { revalidate: REVALIDATE_SECONDS } });
+
+async function findCurrentCsvUrl(fresh: boolean): Promise<string> {
+  const res = await fetch(CONTENT_API_URL, cacheOptions(fresh));
   if (!res.ok) throw new Error(`GOV.UK Content API responded ${res.status}`);
   const body = (await res.json()) as { details?: { attachments?: ContentApiAttachment[] } };
   const csv = body.details?.attachments?.find(
@@ -77,9 +82,9 @@ export function parseDesnzCsv(text: string): DesnzWeeklyRow[] {
 }
 
 /** Every weekly UK average since 2018, newest last. Throws if GOV.UK cannot be read. */
-export async function fetchDesnzWeeklyRows(): Promise<DesnzWeeklyRow[]> {
-  const csvUrl = await findCurrentCsvUrl();
-  const res = await fetch(csvUrl, { next: { revalidate: REVALIDATE_SECONDS } });
+export async function fetchDesnzWeeklyRows(fresh = false): Promise<DesnzWeeklyRow[]> {
+  const csvUrl = await findCurrentCsvUrl(fresh);
+  const res = await fetch(csvUrl, cacheOptions(fresh));
   if (!res.ok) throw new Error(`DESNZ CSV responded ${res.status}`);
   return parseDesnzCsv(await res.text());
 }
@@ -94,29 +99,116 @@ function weekLabel(iso: string): string {
  * for comparison, in the same shape as the manually maintained
  * `ukWeeklyAverage`. Never throws: falls back to that static snapshot.
  */
-export async function getLatestUkWeeklyAverage(): Promise<{
+export type LatestUkWeeklyAverage = {
   figures: Record<FuelType, WeeklyFigure>;
+  /** True only when the figures were just read and validated from GOV.UK. */
   fromLiveSource: boolean;
-}> {
+  /** True when GOV.UK could not be read/validated and the last verified figures are shown instead. */
+  awaitingUpdate: boolean;
+  /** ISO timestamp of the last successful, validated check (null if unknown). */
+  lastSuccessfulUpdate: string | null;
+};
+
+/** Plausible UK pump-price range in pence per litre, and the largest believable week-on-week move. */
+const MIN_PENCE = 80;
+const MAX_PENCE = 400;
+const MAX_WEEKLY_MOVE = 0.25;
+
+function validDate(iso: string): boolean {
+  const t = Date.parse(`${iso}T00:00:00Z`);
+  return Number.isFinite(t) && t <= Date.now() + 2 * 86_400_000;
+}
+
+/**
+ * Rejects anything suspicious rather than displaying it: non-numeric or
+ * out-of-range prices, invalid/future dates, or an implausible jump from
+ * the previous week (or from the last stored good value).
+ */
+export function validateWeeklyRows(rows: DesnzWeeklyRow[], lastGood?: { petrol: number; diesel: number } | null): string | null {
+  const latest = rows[rows.length - 1];
+  const previous = rows[rows.length - 2];
+  if (!latest || !previous) return "fewer than two weekly rows";
+  for (const row of [latest, previous]) {
+    if (!validDate(row.date)) return `invalid date ${row.date}`;
+    for (const fuel of ["petrol", "diesel"] as const) {
+      const v = row[fuel];
+      if (typeof v !== "number" || !Number.isFinite(v) || v < MIN_PENCE || v > MAX_PENCE) return `${fuel} ${v} outside ${MIN_PENCE}–${MAX_PENCE}p`;
+    }
+  }
+  for (const fuel of ["petrol", "diesel"] as const) {
+    for (const ref of [previous[fuel], lastGood?.[fuel]]) {
+      if (ref && Math.abs(latest[fuel] - ref) / ref > MAX_WEEKLY_MOVE) return `${fuel} moved more than ${MAX_WEEKLY_MOVE * 100}%`;
+    }
+  }
+  return null;
+}
+
+function figuresFrom(latest: { date: string; petrol: number; diesel: number }, previous: { date: string; petrol: number | null; diesel: number | null } | null): Record<FuelType, WeeklyFigure> {
+  const build = (fuel: FuelType): WeeklyFigure => ({
+    current: latest[fuel],
+    previous: previous ? previous[fuel] : null,
+    dataPeriod: weekLabel(latest.date),
+    previousDataPeriod: previous ? weekLabel(previous.date) : "",
+    lastUpdated: latest.date,
+  });
+  return { petrol: build("petrol"), diesel: build("diesel") };
+}
+
+export async function getLatestUkWeeklyAverage(): Promise<LatestUkWeeklyAverage> {
   try {
     const rows = await fetchDesnzWeeklyRows();
+    const problem = validateWeeklyRows(rows);
+    if (problem) throw new Error(`Rejected GOV.UK data: ${problem}`);
     const latest = rows[rows.length - 1];
     const previous = rows[rows.length - 2];
-    // Never let an automated fetch roll the site BACKWARDS behind a manually verified newer figure.
-    if (latest.date < ukWeeklyAverage.petrol.lastUpdated) {
-      return { figures: ukWeeklyAverage, fromLiveSource: false };
-    }
-    const build = (fuel: FuelType): WeeklyFigure => ({
-      current: latest[fuel],
-      previous: previous[fuel],
-      dataPeriod: weekLabel(latest.date),
-      previousDataPeriod: weekLabel(previous.date),
-      lastUpdated: latest.date,
-    });
-    return { figures: { petrol: build("petrol"), diesel: build("diesel") }, fromLiveSource: true };
+    return { figures: figuresFrom(latest, previous), fromLiveSource: true, awaitingUpdate: false, lastSuccessfulUpdate: new Date().toISOString() };
   } catch (error) {
-    console.error("[fuel-prices] Falling back to static DESNZ snapshot:", error);
-    return { figures: ukWeeklyAverage, fromLiveSource: false };
+    console.error("[fuel-prices] Live GOV.UK read failed, using last verified figures:", error);
+  }
+
+  const stored = await readLastGoodPrices();
+  if (stored) {
+    const previous = stored.previousDate ? { date: stored.previousDate, petrol: stored.previousPetrol, diesel: stored.previousDiesel } : null;
+    return { figures: figuresFrom(stored, previous), fromLiveSource: false, awaitingUpdate: true, lastSuccessfulUpdate: stored.checkedAt };
+  }
+  // Last resort (nothing stored yet): the manually verified snapshot, always flagged as awaiting an update.
+  return { figures: ukWeeklyAverage, fromLiveSource: false, awaitingUpdate: true, lastSuccessfulUpdate: null };
+}
+
+/**
+ * Scheduled refresh (called by the daily cron). Fetches uncached, validates,
+ * then stores the latest price as the "last good" value and appends weekly
+ * history without ever overwriting an existing record. On any failure the
+ * stored last-good value is left untouched.
+ */
+export async function refreshFuelPrices(): Promise<{ ok: boolean; reason?: string; date?: string; petrol?: number; diesel?: number }> {
+  try {
+    const rows = await fetchDesnzWeeklyRows(true);
+    const lastGood = await readLastGoodPrices();
+    const problem = validateWeeklyRows(rows, lastGood);
+    if (problem) return { ok: false, reason: problem };
+
+    const latest = rows[rows.length - 1];
+    const previous = rows[rows.length - 2];
+    const now = new Date().toISOString();
+    const saved = await saveLastGoodPrices({
+      date: latest.date,
+      petrol: latest.petrol,
+      diesel: latest.diesel,
+      previousDate: previous.date,
+      previousPetrol: previous.petrol,
+      previousDiesel: previous.diesel,
+      checkedAt: now,
+      source: desnzWeeklySource.name,
+    });
+    if (!saved) return { ok: false, reason: "storage unavailable" };
+
+    await appendHistory(
+      rows.slice(-52).map((r) => ({ date: r.date, petrol: r.petrol, diesel: r.diesel, source: desnzWeeklySource.name, recordedAt: now }))
+    );
+    return { ok: true, date: latest.date, petrol: latest.petrol, diesel: latest.diesel };
+  } catch (error) {
+    return { ok: false, reason: error instanceof Error ? error.message : "fetch failed" };
   }
 }
 

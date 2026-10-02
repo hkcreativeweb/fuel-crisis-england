@@ -39,6 +39,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/food-and-essential-costs-news",
+        destination: "/news",
+        permanent: true,
+      },
+      {
         source: "/save-money",
         destination: "/save-fuel-money",
         permanent: true,
@@ -51,11 +56,6 @@ const nextConfig: NextConfig = {
       {
         source: "/mp",
         destination: "/ask-your-mp",
-        permanent: true,
-      },
-      {
-        source: "/take-action",
-        destination: "/make-a-change",
         permanent: true,
       },
     ];

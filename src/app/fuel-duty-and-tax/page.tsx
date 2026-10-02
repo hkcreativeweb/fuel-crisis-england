@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { getLatestUkWeeklyAverage } from "@/lib/data/desnz-weekly-prices";
+import { fuelDutyPenceOn } from "@/lib/data/pump-price-breakdown";
 import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
@@ -36,7 +38,13 @@ function TaxFigureCard({ figure }: { figure: TaxFigure }) {
   );
 }
 
-export default function FuelDutyAndTaxPage() {
+export default async function FuelDutyAndTaxPage() {
+  const { figures } = await getLatestUkWeeklyAverage();
+  const petrolNow = figures.petrol.current;
+  const dutyNow = fuelDutyPenceOn(figures.petrol.lastUpdated);
+  const preVat = petrolNow / 1.2;
+  const vatNow = petrolNow - preVat;
+  const taxNow = vatNow + dutyNow;
   return (
     <>
       <section className="bg-navy-950 py-14 sm:py-16">
@@ -122,11 +130,11 @@ export default function FuelDutyAndTaxPage() {
           <div className="mt-10">
             <h2 className="text-lg font-bold text-navy-900">Calculating the tax component</h2>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-charcoal-700">
-              Using the verified rates above: fuel duty is a flat 52.95 pence on every litre. VAT is then
+              Using the verified rates above: fuel duty is a flat {dutyNow} pence on every litre. VAT is then
               charged at 20% on the fuel price <em>including</em> that duty. For example, on a litre
-              priced at 172.0p (petrol, 21 September 2026): the pre-VAT price is 172.0p ÷ 1.2 ≈ 143.3p, so
-              VAT is roughly 28.7p. Added to the 52.95p duty, tax makes up around 82p of that litre,
-              close to half the total pump price. See our{" "}
+              priced at {petrolNow.toFixed(1)}p (UK average petrol, {figures.petrol.dataPeriod.charAt(0).toLowerCase() + figures.petrol.dataPeriod.slice(1)}): the pre-VAT price is {petrolNow.toFixed(1)}p ÷ 1.2 ≈ {preVat.toFixed(1)}p, so
+              VAT is roughly {vatNow.toFixed(1)}p. Added to the {dutyNow}p duty, tax makes up around {Math.round(taxNow)}p of that litre,
+              about {Math.round((taxNow / petrolNow) * 100)}% of the total pump price. See our{" "}
               <Link href="/follow-the-money#pump-price-breakdown" className="font-semibold text-petrol-600 underline underline-offset-2">
                 full pump price breakdown
               </Link>{" "}

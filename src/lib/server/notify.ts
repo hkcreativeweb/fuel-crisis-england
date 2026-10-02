@@ -1,7 +1,8 @@
 import "server-only";
+import { siteConfig } from "@/lib/site-config";
 import type { StoredComment } from "@/lib/server/comment-store";
 
-const NOTIFY_TO = "contact.fuelcrisisengland@gmail.com";
+const NOTIFY_TO = siteConfig.contact.email;
 const ADMIN_URL = "https://www.fuelcrisisengland.co.uk/admin/comments";
 
 function escapeHtml(value: string): string {

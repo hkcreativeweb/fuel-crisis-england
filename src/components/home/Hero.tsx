@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { PhotoCredit } from "@/components/ui/PhotoCredit";
 import { LinkButton } from "@/components/ui/Button";
 import { HeroFuelDataStrip } from "@/components/home/HeroFuelDataStrip";
+import { FuelPricesUpdated } from "@/components/ui/FuelPricesUpdated";
 import { getLatestUkWeeklyAverage } from "@/lib/data/desnz-weekly-prices";
 import { imageCredits } from "@/lib/data/image-credits";
 
@@ -46,6 +47,7 @@ export async function Hero() {
           </LinkButton>
 
           <HeroFuelDataStrip ukWeekly={ukWeekly} />
+          <FuelPricesUpdated className="mt-3 max-w-md" />
 
           <div className="relative mt-8 hidden aspect-[16/10] max-w-lg overflow-hidden sm:block">
             <Image src={credit.src} alt={credit.alt} fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />

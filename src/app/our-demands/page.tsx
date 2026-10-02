@@ -13,6 +13,8 @@ import { ContentTag } from "@/components/ui/ContentTag";
 import { PageNav } from "@/components/our-demands/PageNav";
 import { SourceCard } from "@/components/sources/SourceCard";
 import { officialSources } from "@/lib/data/sources";
+import { getPumpPriceBreakdowns } from "@/lib/data/current-fuel-prices";
+import { buildPumpBaseline } from "@/lib/data/fiscal-baseline";
 
 const sourceGroups = [
   { label: "Government", names: ["GOV.UK", "HM Revenue & Customs (HMRC)"] },
@@ -25,7 +27,8 @@ export const metadata: Metadata = pageMetadata("/our-demands", {
   description: "Fuel Crisis England's public policy demands on Fuel Duty, fuel taxation, energy-company profits, and support for essential drivers, with clear explainers on what government can actually change.",
 });
 
-export default function OurDemandsPage() {
+export default async function OurDemandsPage() {
+  const pump = buildPumpBaseline((await getPumpPriceBreakdowns()).petrol);
   return (
     <>
       <section className="bg-navy-950 py-16 sm:py-20">
@@ -65,7 +68,7 @@ export default function OurDemandsPage() {
           />
           <ContentTag type="illustrative-scenario" className="mt-4" />
           <div className="mt-6">
-            <FuelPolicySimulator />
+            <FuelPolicySimulator pump={pump} />
           </div>
         </Container>
       </section>

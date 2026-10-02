@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react";
 import { calculateFuelCost } from "@/lib/calculator/fuel-cost";
-import { ukWeeklyAverage } from "@/lib/data/hero-fuel-snapshot";
 import { formatGBP } from "@/lib/utils";
 import { Card } from "@/components/ui/Card";
 import { HowWeCalculate } from "@/components/ui/HowWeCalculate";
@@ -104,15 +103,10 @@ const PRICE_RISE_PENCE = 10;
 /**
  * Personal fuel cost calculator. Everything runs in the browser: nothing
  * entered here, including income, is sent to or stored on a server.
- * `prices` lets server pages pass the latest GOV.UK weekly averages;
- * otherwise the last verified weekly averages are used.
+ * `prices` are the latest GOV.UK weekly averages, passed in by the server page.
  */
-export function FuelCostCalculator({ prices }: { prices?: LiveFuelPrices }) {
-  const averages: LiveFuelPrices = prices ?? {
-    petrol: ukWeeklyAverage.petrol.current,
-    diesel: ukWeeklyAverage.diesel.current,
-    dataPeriod: ukWeeklyAverage.petrol.dataPeriod,
-  };
+export function FuelCostCalculator({ prices }: { prices: LiveFuelPrices }) {
+  const averages: LiveFuelPrices = prices;
   const round = (p: number) => Math.round(p * 10) / 10;
   const defaults = {
     fuel: "petrol" as const,

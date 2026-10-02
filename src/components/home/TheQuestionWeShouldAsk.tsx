@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatCard } from "@/components/ui/StatCard";
 import { fuelDutyReceiptsFullYear } from "@/lib/data/hmrc-receipts";
-import { petrolPumpPriceBreakdown } from "@/lib/data/pump-price-breakdown";
+import { fuelDutyPenceOn } from "@/lib/data/pump-price-breakdown";
 
 /**
  * Four figures that separate the policy-set part of the pump price from the
@@ -11,7 +11,7 @@ import { petrolPumpPriceBreakdown } from "@/lib/data/pump-price-breakdown";
  * the fixed Fuel Duty rate and 20% VAT.
  */
 export function TheQuestionWeShouldAsk({ petrolPence, dataPeriod }: { petrolPence: number; dataPeriod: string }) {
-  const duty = petrolPumpPriceBreakdown.components.find((c) => c.label.startsWith("Fuel duty"))?.approxPencePerLitre ?? 0;
+  const duty = fuelDutyPenceOn(new Date().toISOString().slice(0, 10));
   const vat = petrolPence / 6; // 20% VAT is one-sixth of a VAT-inclusive price
   const tax = duty + vat;
   const market = petrolPence - tax;

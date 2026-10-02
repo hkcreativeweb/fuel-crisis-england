@@ -1,17 +1,19 @@
 import { fuelDutyTimeline } from "@/lib/data/fuel-duty-timeline";
 import { fuelDutyReceiptsFullYear } from "@/lib/data/hmrc-receipts";
-import { petrolPumpPriceBreakdown } from "@/lib/data/pump-price-breakdown";
+import type { PumpPriceBreakdown } from "@/lib/types";
 
 const currentDutyEvent = fuelDutyTimeline.find((e) => e.status === "current");
 
-const wholesaleComponent = petrolPumpPriceBreakdown.components.find((c) => c.label.startsWith("Wholesale"));
-const marginComponent = petrolPumpPriceBreakdown.components.find((c) => c.label.startsWith("Retailer"));
-
 export const currentDutyPencePerLitre = currentDutyEvent?.ratePencePerLitre ?? 52.95;
 export const currentVatPercent = 20;
-export const currentWholesalePencePerLitre = wholesaleComponent?.approxPencePerLitre ?? 0;
-export const currentMarginPencePerLitre = marginComponent?.approxPencePerLitre ?? 0;
-export const currentPumpPricePencePerLitre = petrolPumpPriceBreakdown.totalPencePerLitre;
+
+/** The petrol split behind the simulator, calculated from the live central price (never typed in). */
+export type PumpBaseline = { wholesalePence: number; marginPence: number; totalPence: number; asOf: string };
+
+export function buildPumpBaseline(breakdown: PumpPriceBreakdown): PumpBaseline {
+  const pence = (label: string) => breakdown.components.find((c) => c.label.startsWith(label))?.approxPencePerLitre ?? 0;
+  return { wholesalePence: pence("Wholesale"), marginPence: pence("Retailer"), totalPence: breakdown.totalPencePerLitre ?? 0, asOf: breakdown.asOf ?? "" };
+}
 
 /**
  * UK annual road-fuel litres taxed at the current Fuel Duty rate, implied
@@ -30,5 +32,4 @@ export const fiscalBaselineMeta = {
   receiptsPeriodLabel: fuelDutyReceiptsFullYear.periodLabel,
   receiptsAmountGBPBillion,
   receiptsSourceUrl: fuelDutyReceiptsFullYear.sourceUrl,
-  pumpPriceAsOf: petrolPumpPriceBreakdown.asOf ?? "",
 };

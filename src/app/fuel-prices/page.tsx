@@ -9,6 +9,7 @@ import { FuelPriceChart } from "@/components/fuel-prices/FuelPriceChart";
 import { RegionalComparison } from "@/components/fuel-prices/RegionalComparison";
 import { FuelCostCalculator } from "@/components/calculator/FuelCostCalculator";
 import { getRegionalFuelPrices } from "@/lib/data/fuel-prices";
+import { FuelPricesUpdated } from "@/components/ui/FuelPricesUpdated";
 import { getCurrentFuelPriceSnapshot, getHistoricalFuelPrices, getLatestUkWeeklyAverage } from "@/lib/data/desnz-weekly-prices";
 import { formatDate } from "@/lib/utils";
 
@@ -35,6 +36,7 @@ export default async function FuelPricesPage() {
             title="UK petrol and diesel prices"
             description="Official UK weekly average pump prices from GOV.UK, checked for updates every few hours. These are national averages, not the price at any single station."
           />
+          <FuelPricesUpdated className="mt-4 text-slate-300" />
         </Container>
       </section>
 

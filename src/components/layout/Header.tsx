@@ -4,7 +4,7 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/ui/Logo";
-import { navCategories, utilityNav, type NavCategory } from "@/lib/site-config";
+import { navCategories, primaryNavLinks, utilityNav, type NavCategory } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 type Category = (typeof navCategories)[number];
@@ -20,6 +20,26 @@ function pathOf(href: string): string {
  */
 function isCategoryActive(category: NavCategory, pathname: string): boolean {
   return pathOf(category.href) === pathname || category.items.some((item) => !item.href.includes("#") && item.href === pathname);
+}
+
+function PrimaryLink({ item, pathname }: { item: { label: string; href: string }; pathname: string }) {
+  const active = pathname.startsWith(item.href);
+  return (
+    <Link
+      href={item.href}
+      aria-current={active ? "page" : undefined}
+      className={cn(
+        "flex min-h-11 items-center whitespace-nowrap rounded-md px-2.5 text-[13px] font-semibold tracking-wide transition-colors hover:text-accent-orange xl:px-3.5",
+        active ? "text-white" : "text-slate-300",
+        focusRing
+      )}
+    >
+      <span className="relative">
+        {item.label}
+        <span className={cn("absolute -bottom-1.5 left-0 h-[2px] w-full bg-petrol-500", active ? "scale-x-100" : "scale-x-0")} aria-hidden="true" />
+      </span>
+    </Link>
+  );
 }
 
 const focusRing = "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-petrol-300";
@@ -296,6 +316,9 @@ export function Header() {
         </Link>
 
         <nav ref={desktopNavRef} aria-label="Main" className="hidden lg:flex lg:items-center lg:gap-0.5 xl:gap-1">
+          {primaryNavLinks.map((item) => (
+            <PrimaryLink key={item.href} item={item} pathname={pathname} />
+          ))}
           {navCategories.map((category) => (
             <DesktopDropdown
               key={category.label}
@@ -355,6 +378,18 @@ export function Header() {
           className="overflow-y-auto overscroll-contain border-t border-white/10 bg-navy-950 px-4 pb-6 lg:hidden"
         >
           <ul>
+            {primaryNavLinks.map((item) => (
+              <li key={item.href} className="border-b border-white/10">
+                <Link
+                  href={item.href}
+                  onClick={() => closeMobile(false)}
+                  aria-current={pathname.startsWith(item.href) ? "page" : undefined}
+                  className={cn("flex min-h-12 items-center rounded-md px-3 text-base font-semibold text-white transition-colors hover:text-accent-orange", focusRing)}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
             {navCategories.map((category) => (
               <MobileCategory key={category.label} category={category} pathname={pathname} onNavigate={() => closeMobile(false)} />
             ))}

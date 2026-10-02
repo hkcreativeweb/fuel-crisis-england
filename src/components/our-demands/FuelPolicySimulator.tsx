@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { calculateScenario } from "@/lib/calculator/fuel-policy-simulator";
 import { calculateFuelCost } from "@/lib/calculator/fuel-cost";
-import { currentDutyPencePerLitre, currentVatPercent, fiscalBaselineMeta } from "@/lib/data/fiscal-baseline";
+import { currentDutyPencePerLitre, currentVatPercent, fiscalBaselineMeta, type PumpBaseline } from "@/lib/data/fiscal-baseline";
 import { formatGBP, formatDate, cn } from "@/lib/utils";
 
 const DUTY_PRESETS = [
@@ -145,7 +145,7 @@ function PresetButtons<T>({
   );
 }
 
-export function FuelPolicySimulator() {
+export function FuelPolicySimulator({ pump }: { pump: PumpBaseline }) {
   const [dutyPreset, setDutyPreset] = useState(0);
   const [customDuty, setCustomDuty] = useState(currentDutyPencePerLitre);
   const [dutyMode, setDutyMode] = useState<"preset" | "custom">("preset");
@@ -157,7 +157,7 @@ export function FuelPolicySimulator() {
   const dutyPencePerLitre = dutyMode === "custom" ? customDuty : Math.max(0, currentDutyPencePerLitre + dutyPreset);
   const vatPercent = vatMode === "custom" ? customVat : vatPreset;
 
-  const scenario = useMemo(() => calculateScenario({ dutyPencePerLitre, vatPercent }), [dutyPencePerLitre, vatPercent]);
+  const scenario = useMemo(() => calculateScenario({ dutyPencePerLitre, vatPercent }, pump), [dutyPencePerLitre, vatPercent, pump]);
 
   const [annualMileage, setAnnualMileage] = useState(HOUSEHOLD_PRESETS[0].annualMileage);
   const [mpg, setMpg] = useState(HOUSEHOLD_PRESETS[0].mpg);
@@ -502,7 +502,7 @@ export function FuelPolicySimulator() {
       </details>
 
       <p className="mt-6 text-xs text-charcoal-500">
-        Baseline pump price and Fuel Duty rate — last verified {formatDate(fiscalBaselineMeta.pumpPriceAsOf)}, GOV.UK / DESNZ.
+        Baseline pump price and Fuel Duty rate — last verified {formatDate(pump.asOf)}, GOV.UK / DESNZ.
       </p>
     </div>
   );

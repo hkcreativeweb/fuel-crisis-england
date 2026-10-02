@@ -2,10 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { calculateOwnership, evComparisonDefaults } from "@/lib/calculator/ev-comparison";
-import { liveIndicators } from "@/lib/data/live-snapshot";
 import { formatGBP, cn, formatDate } from "@/lib/utils";
 
-const petrolLive = liveIndicators.find((i) => i.id === "petrol-price")!;
 const YEAR_OPTIONS = [1, 3, 5, 8, 10];
 
 function Field({
@@ -93,14 +91,14 @@ function CumulativeChart({ ice, ev }: { ice: number[]; ev: number[] }) {
   );
 }
 
-export function EVComparisonCalculator() {
+export function EVComparisonCalculator({ petrolPence, petrolUpdated }: { petrolPence: number; petrolUpdated: string }) {
   const d = evComparisonDefaults;
   const [years, setYears] = useState(d.years);
   const [annualMileage, setAnnualMileage] = useState(d.annualMileage);
   const [icePurchasePrice, setIcePurchasePrice] = useState(d.icePurchasePrice);
   const [evPurchasePrice, setEvPurchasePrice] = useState(d.evPurchasePrice);
   const [mpg, setMpg] = useState(d.mpg);
-  const [fuelPricePerLitre, setFuelPricePerLitre] = useState(Number(petrolLive.value) || 172.0);
+  const [fuelPricePerLitre, setFuelPricePerLitre] = useState(petrolPence);
   const [kwhPer100Miles, setKwhPer100Miles] = useState(d.kwhPer100Miles);
   const [homeElecPricePerKwh, setHomeElecPricePerKwh] = useState(d.homeElecPricePerKwh);
   const [publicElecPricePerKwh, setPublicElecPricePerKwh] = useState(d.publicElecPricePerKwh);
@@ -160,7 +158,7 @@ export function EVComparisonCalculator() {
           <span className="h-[6px] w-[6px] rounded-full bg-accent-live" aria-hidden="true" />
           Live: UK petrol price
         </span>
-        <span className="text-charcoal-500">Last updated {formatDate(petrolLive.lastUpdated)} — GOV.UK / DESNZ</span>
+        <span className="text-charcoal-500">Last updated {formatDate(petrolUpdated)} — GOV.UK / DESNZ</span>
       </div>
 
       {/* Ownership period */}

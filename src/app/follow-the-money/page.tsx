@@ -17,6 +17,7 @@ import { WageGapExplorer } from "@/components/cost-of-living/WageGapExplorer";
 import { InterestRatesSection } from "@/components/cost-of-living/InterestRatesSection";
 import { BiggerPictureFlow } from "@/components/cost-of-living/BiggerPictureFlow";
 import { FollowTheMoneyFlow } from "@/components/money-flow/FollowTheMoneyFlow";
+import { getPumpPriceBreakdowns } from "@/lib/data/current-fuel-prices";
 import { CorporateProfitsTimeline } from "@/components/cost-of-living/CorporateProfitsTimeline";
 import { ProfiteeringFAQ } from "@/components/cost-of-living/ProfiteeringFAQ";
 import { CampaignStatement } from "@/components/cost-of-living/CampaignStatement";
@@ -47,7 +48,8 @@ const tocLinks = [
   { href: "#sources", label: "Our sources" },
 ];
 
-export default function FollowTheMoneyPage() {
+export default async function FollowTheMoneyPage() {
+  const { petrol: petrolBreakdown } = await getPumpPriceBreakdowns();
   return (
     <>
       <section className="bg-navy-950 py-16 sm:py-20">
@@ -100,7 +102,7 @@ export default function FollowTheMoneyPage() {
               minHeight="min-h-[240px] lg:min-h-full"
             />
             <div className="rounded border border-white/10 bg-white/5 p-6 sm:p-8">
-              <FollowTheMoneyFlow defaultAmount={50} />
+              <FollowTheMoneyFlow defaultAmount={50} currentBreakdown={petrolBreakdown} />
             </div>
           </div>
         </Container>

@@ -1,9 +1,9 @@
 import { StatusBadge } from "@/components/ui/StatusBadge";
-import { yearlySnapshots, currentYear } from "@/lib/data/yearly-snapshots";
+import { currentYear } from "@/lib/data/yearly-snapshots";
 
-export function YearInProgressCard({ fuel }: { fuel: "petrol" | "diesel" }) {
-  const now = yearlySnapshots[currentYear];
-  const liveValue = fuel === "petrol" ? now.petrolPencePerLitre : now.dieselPencePerLitre;
+export function YearInProgressCard({ fuel, price, dataPeriod }: { fuel: "petrol" | "diesel"; price: number; dataPeriod: string }) {
+  const liveValue: number | null = price;
+  const now = { pricesAsOf: `${dataPeriod}, a weekly snapshot rather than a ${currentYear} annual average, since ${currentYear} is still in progress` };
 
   return (
     <div className="rounded border border-slate-200 bg-white p-6">

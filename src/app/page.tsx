@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { PlannedProtestTeaser } from "@/components/home/PlannedProtestTeaser";
+import { LatestNewsPreview } from "@/components/news/LatestNewsPreview";
 import { IntroStatement } from "@/components/home/IntroStatement";
 import { Hero } from "@/components/home/Hero";
 import { QuestionIsNotJustPrice } from "@/components/home/QuestionIsNotJustPrice";
@@ -67,6 +69,8 @@ export default async function HomePage() {
       <GovernmentHasChoice />
       <TheQuestionWeShouldAsk {...petrol} />
       <SourcesTeaser />
+      <PlannedProtestTeaser />
+      <LatestNewsPreview count={4} />
       <TakeActionSection />
       <FinalMessage />
       <VisitCounter showCount={false} />

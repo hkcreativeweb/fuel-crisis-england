@@ -1,4 +1,4 @@
-import { petrolPumpPriceBreakdown } from "@/lib/data/pump-price-breakdown";
+import type { PumpPriceBreakdown } from "@/lib/types";
 import { yearlySnapshots } from "@/lib/data/yearly-snapshots";
 
 export type MoneyFlowCategory = {
@@ -32,14 +32,14 @@ export function getAvailableMoneyFlowYears(): string[] {
     .sort();
 }
 
-export function calculateMoneyFlow(year: string, amount: number): MoneyFlowResult | null {
+/** `currentBreakdown` is the petrol split calculated from the live central price; it is used for the current year. */
+export function calculateMoneyFlow(year: string, amount: number, currentBreakdown: PumpPriceBreakdown): MoneyFlowResult | null {
   const snapshot = yearlySnapshots[year];
   if (!snapshot || !snapshot.verified || snapshot.petrolPencePerLitre === null) return null;
 
-  const totalPencePerLitre = snapshot.petrolPencePerLitre;
-
   if (FULL_BREAKDOWN_YEARS.has(year)) {
-    const categories: MoneyFlowCategory[] = petrolPumpPriceBreakdown.components.map((c) => {
+    const totalPencePerLitre = currentBreakdown.totalPencePerLitre as number;
+    const categories: MoneyFlowCategory[] = currentBreakdown.components.map((c) => {
       const percent = c.approxPercent ?? 0;
       const key =
         c.label.startsWith("Fuel duty") ? "duty" : c.label.startsWith("VAT") ? "vat" : c.label.startsWith("Retailer") ? "retail" : "industry";
@@ -57,6 +57,7 @@ export function calculateMoneyFlow(year: string, amount: number): MoneyFlowResul
     return { year, amount, totalPencePerLitre, detailLevel: "full", categories };
   }
 
+  const totalPencePerLitre = snapshot.petrolPencePerLitre;
   if (snapshot.fuelDutyPencePerLitre === null || snapshot.vatRatePercent === null) return null;
 
   const duty = snapshot.fuelDutyPencePerLitre;

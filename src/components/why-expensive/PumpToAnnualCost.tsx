@@ -5,7 +5,6 @@ import { liveIndicators } from "@/lib/data/live-snapshot";
 import { formatGBP, cn } from "@/lib/utils";
 
 const LITRES_PER_UK_GALLON = 4.54609;
-const petrol = liveIndicators.find((i) => i.id === "petrol-price")!;
 const earnings = liveIndicators.find((i) => i.id === "earnings")!;
 const minimumWage = liveIndicators.find((i) => i.id === "minimum-wage")!;
 
@@ -15,11 +14,10 @@ const COMMUTE_PRESETS = [
   { label: "Long commute", milesPerDay: 40 },
 ];
 
-const pencePerLitre = Number(petrol.value);
 const weeklyEarnings = Number(earnings.value);
 const hourlyMinimumWage = Number(minimumWage.value);
 
-export function PumpToAnnualCost() {
+export function PumpToAnnualCost({ pencePerLitre, dataPeriod }: { pencePerLitre: number; dataPeriod: string }) {
   const [milesPerDay, setMilesPerDay] = useState(20);
   const [mpg, setMpg] = useState(40);
   const [daysPerWeek, setDaysPerWeek] = useState(5);
@@ -31,7 +29,7 @@ export function PumpToAnnualCost() {
     const monthlyCost = (weeklyCost * 52) / 12;
     const annualCost = weeklyCost * 52;
     return { dailyCost, weeklyCost, monthlyCost, annualCost };
-  }, [milesPerDay, mpg, daysPerWeek]);
+  }, [milesPerDay, mpg, daysPerWeek, pencePerLitre]);
 
   const percentOfWeeklyEarnings = (figures.weeklyCost / weeklyEarnings) * 100;
   const hoursOfMinimumWageWork = figures.weeklyCost / hourlyMinimumWage;
@@ -43,7 +41,7 @@ export function PumpToAnnualCost() {
       </p>
       <p className="mt-3 text-sm leading-relaxed text-charcoal-700">
         Choose a commute distance to see how a small daily number becomes a much larger annual one. This
-        uses today&apos;s verified petrol price ({pencePerLitre}p/litre); the mileage and vehicle economy
+        uses today&apos;s verified petrol price ({pencePerLitre.toFixed(1)}p/litre); the mileage and vehicle economy
         below are assumptions you can change, not published averages.
       </p>
 
@@ -132,7 +130,7 @@ export function PumpToAnnualCost() {
         </p>
         <p className="mt-2 text-xs text-charcoal-600">
           Sources: {earnings.source}; {minimumWage.source}. Fuel figures calculated from today&apos;s
-          verified petrol price ({petrol.dataPeriod}).
+          verified petrol price ({dataPeriod}).
         </p>
       </div>
     </div>

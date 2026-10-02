@@ -2,9 +2,11 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
 import { FollowTheMoneyFlow } from "@/components/money-flow/FollowTheMoneyFlow";
+import { getPumpPriceBreakdowns } from "@/lib/data/current-fuel-prices";
 import { fuelDutyReceiptsFullYear } from "@/lib/data/hmrc-receipts";
 
-export function TheBigQuestion() {
+export async function TheBigQuestion() {
+  const { petrol: petrolBreakdown } = await getPumpPriceBreakdowns();
   const receipts = fuelDutyReceiptsFullYear;
   return (
     <section id="follow-the-money" className="relative scroll-mt-24 overflow-hidden border-y-4 border-petrol-500 bg-navy-950 py-16 sm:py-24">
@@ -39,7 +41,7 @@ export function TheBigQuestion() {
           </div>
           <div className="rounded border border-white/10 bg-white/5 p-5 sm:p-8">
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-petrol-300">Where does your £50 go?</p>
-            <FollowTheMoneyFlow defaultAmount={50} />
+            <FollowTheMoneyFlow defaultAmount={50} currentBreakdown={petrolBreakdown} />
           </div>
         </div>
       </Container>

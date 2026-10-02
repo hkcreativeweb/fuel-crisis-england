@@ -5,8 +5,9 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site-config";
+import { ContactDetails } from "@/components/ui/ContactDetails";
 
-const CONTACT_EMAIL = "contact.fuelcrisisengland@gmail.com";
+const CONTACT_EMAIL = siteConfig.contact.email;
 
 export const metadata: Metadata = pageMetadata("/about", {
   title: "About",
@@ -291,7 +292,7 @@ export default function AboutPage() {
               and make sure we&apos;re covering the issues that matter to motorists, households and
               businesses.
             </p>
-            <p className="mt-5 break-words text-sm font-semibold text-petrol-600 sm:text-base">{CONTACT_EMAIL}</p>
+            <ContactDetails className="mt-5 items-center text-sm sm:text-base" />
             <div className="mt-6">
               <LinkButton href={`mailto:${CONTACT_EMAIL}`} size="lg">
                 Email Us

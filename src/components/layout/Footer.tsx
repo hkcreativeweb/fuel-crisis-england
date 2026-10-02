@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
-import { navCategories, siteConfig, utilityNav } from "@/lib/site-config";
+import { ContactDetails } from "@/components/ui/ContactDetails";
+import { navCategories, primaryNavLinks, siteConfig, utilityNav } from "@/lib/site-config";
 
 // Reference pages from the header's utility list, plus the legal pages.
 const moreLinks = [
+  ...primaryNavLinks,
   ...utilityNav,
   { label: "Privacy", href: "/privacy" },
   { label: "Accessibility", href: "/accessibility" },
@@ -26,6 +28,7 @@ export function Footer() {
             <p className="mt-2 max-w-sm text-sm font-semibold text-slate-300">
               Independent of political parties and government.
             </p>
+            <ContactDetails tone="dark" className="mt-3 text-sm" />
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">

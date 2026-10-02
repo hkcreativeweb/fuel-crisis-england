@@ -7,6 +7,7 @@ import { LinkButton } from "@/components/ui/Button";
 import { EVComparisonCalculator } from "@/components/ev/EVComparisonCalculator";
 import { PhotoCredit } from "@/components/ui/PhotoCredit";
 import { imageCredits } from "@/lib/data/image-credits";
+import { getCurrentFuelPrices } from "@/lib/data/current-fuel-prices";
 
 export const metadata: Metadata = pageMetadata("/fuel-vs-electric", {
   title: "Traditional Fuel vs Electric",
@@ -18,7 +19,8 @@ const credit = imageCredits["ev-charging-hub"];
 const iceMaintenance = ["Engine oil & oil filter", "Air filters", "Spark plugs (petrol)", "Exhaust & emissions components", "Timing belt/chain", "Gearbox servicing", "Brakes", "Tyres"];
 const evMaintenance = ["Tyres", "Brakes (often lower wear, regenerative braking)", "Suspension", "Cabin filter", "Coolant/service items", "Battery health & warranty checks"];
 
-export default function FuelVsElectricPage() {
+export default async function FuelVsElectricPage() {
+  const { petrol } = await getCurrentFuelPrices();
   return (
     <>
       <section className="relative overflow-hidden bg-navy-950 py-16 sm:py-20">
@@ -43,7 +45,7 @@ export default function FuelVsElectricPage() {
 
       <section className="bg-slate-50 py-14 sm:py-20">
         <Container>
-          <EVComparisonCalculator />
+          <EVComparisonCalculator petrolPence={petrol.price} petrolUpdated={petrol.updatedAt} />
         </Container>
       </section>
 

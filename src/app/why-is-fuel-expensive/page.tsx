@@ -143,7 +143,7 @@ export default async function WhyIsFuelExpensivePage() {
         <Container>
           <SectionHeading eyebrow="How much of the price is tax?" title="The tax question" />
           <div className="mt-10 max-w-2xl">
-            <TaxTransparentCalc />
+            <TaxTransparentCalc pumpPrice={figures.petrol.current} asOf={figures.petrol.lastUpdated} />
           </div>
         </Container>
       </section>
@@ -168,7 +168,7 @@ export default async function WhyIsFuelExpensivePage() {
           />
           <div className="mt-8 space-y-3">
             <Expandable summary="From the pump to the year" hint="A year of fuel against real earnings figures">
-              <PumpToAnnualCost />
+              <PumpToAnnualCost pencePerLitre={figures.petrol.current} dataPeriod={figures.petrol.dataPeriod} />
             </Expandable>
             <Expandable summary="The cost of a 100-mile journey" hint="In a petrol or diesel car, at today's price">
               <HundredMileJourney />

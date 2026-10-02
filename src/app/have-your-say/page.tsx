@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site-config";
+import { ContactDetails } from "@/components/ui/ContactDetails";
 import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -6,7 +8,7 @@ import { LinkButton } from "@/components/ui/Button";
 import { HaveYourSaySection } from "@/components/have-your-say/HaveYourSaySection";
 import { PetitionsSection } from "@/components/have-your-say/PetitionsSection";
 
-const CONTACT_EMAIL = "contact.fuelcrisisengland@gmail.com";
+const CONTACT_EMAIL = siteConfig.contact.email;
 
 export const metadata: Metadata = pageMetadata("/have-your-say", {
   title: "Have Your Say",
@@ -46,7 +48,7 @@ export default function HaveYourSayPage() {
               and make sure we&apos;re covering the issues that matter to motorists, households and
               businesses.
             </p>
-            <p className="mt-5 break-words text-sm font-semibold text-petrol-600 sm:text-base">{CONTACT_EMAIL}</p>
+            <ContactDetails className="mt-5 items-center text-sm sm:text-base" />
             <div className="mt-6">
               <LinkButton href={`mailto:${CONTACT_EMAIL}`} size="lg">
                 Email Us

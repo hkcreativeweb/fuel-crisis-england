@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { petrolPumpPriceBreakdown } from "@/lib/data/pump-price-breakdown";
+import { fuelDutyPenceOn } from "@/lib/data/pump-price-breakdown";
 import { cn } from "@/lib/utils";
 
 /*
@@ -16,11 +16,7 @@ import { cn } from "@/lib/utils";
  * Nothing is sent anywhere: the score lives only in this component's state.
  */
 
-function componentPence(label: string): number {
-  return petrolPumpPriceBreakdown.components.find((c) => c.label.startsWith(label))?.approxPencePerLitre ?? 0;
-}
-
-const duty = componentPence("Fuel duty");
+const duty = fuelDutyPenceOn(new Date().toISOString().slice(0, 10));
 /** Uses the same live GOV.UK weekly average as the hero, so the homepage never shows two prices. */
 function vatExplanation(petrolPence: number, dataPeriod: string): string {
   // VAT is 20% of the pre-VAT price, i.e. one-sixth of a VAT-inclusive pump price.

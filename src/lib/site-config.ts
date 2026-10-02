@@ -12,7 +12,18 @@ export const siteConfig = {
   petitionTarget: 25000,
   hashtag: "#FuelCrisisEngland",
   shortHashtag: "#FCE",
+  contact: {
+    phoneDisplay: "07943 137238",
+    phoneHref: "tel:07943137238",
+    email: "contact.fuelcrisisengland@gmail.com",
+  },
 } as const;
+
+/** Prominent top-level links (News, Planned Protest), shown beside the topic menus in the header and in the footer. */
+export const primaryNavLinks = [
+  { label: "News", href: "/news" },
+  { label: "Planned Protest", href: "/planned-protest" },
+] as const;
 
 export type NavItem = {
   label: string;
@@ -94,6 +105,7 @@ export const navCategories: (NavCategory & { align?: "left" | "right" })[] = [
     href: "/have-your-say",
     align: "right",
     items: [
+      { label: "Take Action", href: "/take-action", description: "Fuel news, contact your MP and register your interest" },
       { label: "Have Your Say", href: "/have-your-say", description: "Read and post moderated comments" },
       { label: "Petition", href: "/petition", description: "Sign FCE's petition and share your experience" },
       { label: "Ask Your MP", href: "/ask-your-mp", description: "Draft a message to your MP using official figures" },

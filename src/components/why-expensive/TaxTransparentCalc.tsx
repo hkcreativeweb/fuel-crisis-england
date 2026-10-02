@@ -1,11 +1,8 @@
-import { yearlySnapshots } from "@/lib/data/yearly-snapshots";
+import { fuelDutyPenceOn } from "@/lib/data/pump-price-breakdown";
 
-const now = yearlySnapshots["2026"];
-
-export function TaxTransparentCalc() {
-  const pumpPrice = now.petrolPencePerLitre!;
-  const duty = now.fuelDutyPencePerLitre!;
-  const vatRate = now.vatRatePercent! / 100;
+export function TaxTransparentCalc({ pumpPrice, asOf }: { pumpPrice: number; asOf: string }) {
+  const duty = fuelDutyPenceOn(asOf);
+  const vatRate = 0.2;
   const vatPence = pumpPrice - pumpPrice / (1 + vatRate);
   const remaining = pumpPrice - duty - vatPence;
 
