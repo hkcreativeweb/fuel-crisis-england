@@ -1,5 +1,3 @@
-import { siteConfig } from "@/lib/site-config";
-
 /**
  * Single place to update the /take-action page by hand.
  * Nothing here is invented: only add details once they are confirmed.
@@ -23,9 +21,6 @@ export const plannedProtest = {
 
 /** FCE's own petition page (not an official UK Parliament petition). */
 export const petitionPath = "/petition";
-
-/** Where "Register Your Interest" submissions are emailed (opens the visitor's email app; nothing is stored by the site). */
-export const interestContactEmail = siteConfig.contact.email;
 
 export const interestTopics = ["Protest updates", "Petition updates", "Fuel-price updates", "News updates"] as const;
 

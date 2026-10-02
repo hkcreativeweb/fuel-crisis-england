@@ -34,6 +34,7 @@ export default function PrivacyPage() {
                 <li>Your full name, email address and an optional postcode. These are checked but <strong>not stored</strong>. We keep only a one-way scrambled (hashed) copy of your email, so the same address cannot sign twice.</li>
                 <li>Your general area or county, driver/business category, your written experience, the changes you would like to see, and your public-display choice. These are stored.</li>
               </ul>
+              <p className="mt-2">When you register for updates (for example on the Planned Protest or Take Action pages), we store your name, email address, optional postcode and the types of update you chose. We use them only to send you those updates, never publish them and never share them. You can ask us to remove them at any time using the contact details on this site. Registering is not a booking and does not commit you to attending anything.</p>
               <p className="mt-2">When you post a comment on Have Your Say, we store your name, topic, comment and, if you give it, your email address. Your email is never shown publicly. Comments are held for review and only published once approved.</p>
               <p className="mt-2">To prevent spam, we briefly keep a scrambled (hashed) form of your connection&apos;s IP address, which expires automatically within an hour.</p>
             </div>
@@ -41,7 +42,7 @@ export default function PrivacyPage() {
             <div>
               <h2 className="text-lg font-bold text-navy-900">Where your data is kept</h2>
               <p className="mt-2">
-                Stored petition and comment data is kept in a secure hosted database (Upstash Redis, via
+                Stored petition, comment and registration data is kept in a secure hosted database (Upstash Redis, via
                 our hosting provider Vercel). When a comment is submitted, the site owner receives an email
                 alert containing the comment, sent through Resend. We do not sell or share your data with
                 anyone else.

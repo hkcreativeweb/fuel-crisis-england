@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { interestContactEmail, interestTopics, shareText } from "@/lib/data/take-action-config";
+import { interestTopics, shareText } from "@/lib/data/take-action-config";
 
 const field =
   "w-full rounded-md border border-slate-300 px-3 py-2.5 text-sm text-charcoal-700 focus:border-petrol-500 focus:outline-none";
@@ -58,42 +58,73 @@ export function ShareButtons() {
   );
 }
 
-/**
- * TODO: there is no backend for sign-ups yet. This opens the visitor's own
- * email app with a pre-filled message to interestContactEmail; nothing is
- * stored by the website. Swap handleSubmit for a POST to a real endpoint
- * (and update the privacy wording) when one exists.
- */
 export function InterestForm() {
   const [topics, setTopics] = useState<string[]>([]);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   function toggle(topic: string) {
     setTopics((t) => (t.includes(topic) ? t.filter((x) => x !== topic) : [...t, topic]));
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const body = [
-      "I would like to register my interest in Fuel Crisis England updates.",
-      "",
-      `Name: ${data.get("name") ?? ""}`,
-      `Email: ${data.get("email") ?? ""}`,
-      `Postcode (optional): ${data.get("postcode") ?? ""}`,
-      `Interested in: ${topics.length ? topics.join(", ") : "Not specified"}`,
-    ].join("\n");
-    window.location.href = `mailto:${interestContactEmail}?subject=${encodeURIComponent("Register my interest")}&body=${encodeURIComponent(body)}`;
+    if (status === "submitting") return;
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    setStatus("submitting");
+    setErrors({});
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          postcode: data.get("postcode"),
+          interests: topics,
+          consent: data.get("consent") === "on",
+          companyWebsite: data.get("companyWebsite"),
+        }),
+      });
+      const body = await res.json().catch(() => null);
+      if (res.ok && body?.success) {
+        form.reset();
+        setTopics([]);
+        setStatus("success");
+        return;
+      }
+      setErrors(body?.errors ?? { form: "Something went wrong. Please try again." });
+      setStatus("error");
+    } catch {
+      setErrors({ form: "Couldn't reach the server. Please check your connection and try again." });
+      setStatus("error");
+    }
   }
+
+  if (status === "success") {
+    return (
+      <div role="status" className="border-l-2 border-emerald-600 py-1 pl-4 text-sm leading-relaxed text-charcoal-700">
+        <p className="font-semibold text-emerald-800">Thank you. You&apos;re registered for updates.</p>
+        <p className="mt-1">We&apos;ll only send the updates you chose. Registering is not a booking and doesn&apos;t commit you to attending anything. To be removed, contact us using the details on this page.</p>
+      </div>
+    );
+  }
+
+  const err = (k: string) => (errors[k] ? <p className="mt-1 text-xs font-semibold text-red-700">{errors[k]}</p> : null);
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-4 sm:grid-cols-2">
+      <input type="text" name="companyWebsite" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 opacity-0" />
       <div>
         <label htmlFor="ta-name" className="mb-1 block text-sm font-semibold text-navy-900">Name</label>
         <input id="ta-name" name="name" type="text" required maxLength={80} autoComplete="name" className={field} />
+        {err("name")}
       </div>
       <div>
         <label htmlFor="ta-email" className="mb-1 block text-sm font-semibold text-navy-900">Email</label>
         <input id="ta-email" name="email" type="email" required maxLength={254} autoComplete="email" className={field} />
+        {err("email")}
       </div>
       <div className="sm:col-span-2">
         <label htmlFor="ta-postcode" className="mb-1 block text-sm font-semibold text-navy-900">Postcode (optional)</label>
@@ -109,13 +140,31 @@ export function InterestForm() {
             </label>
           ))}
         </div>
+        {err("interests")}
       </fieldset>
       <div className="sm:col-span-2">
-        <Button type="submit" size="lg" className="min-h-11 w-full sm:w-auto">Register Your Interest</Button>
+        <label className="flex items-start gap-2.5 text-sm text-charcoal-700">
+          <input type="checkbox" name="consent" className="mt-0.5 h-4 w-4" />
+          <span>
+            I&apos;m happy for Fuel Crisis England to contact me by email with the updates I&apos;ve chosen. See the{" "}
+            <a href="/privacy" className="font-semibold text-petrol-600 underline underline-offset-2">Privacy Policy</a>.
+          </span>
+        </label>
+        {err("consent")}
+      </div>
+      {errors.form ? (
+        <div className="sm:col-span-2" role="alert">
+          <p className="border-l-2 border-red-600 py-1 pl-4 text-sm text-red-800">{errors.form}</p>
+        </div>
+      ) : null}
+      <div className="sm:col-span-2">
+        <Button type="submit" size="lg" disabled={status === "submitting"} className="min-h-11 w-full sm:w-auto">
+          {status === "submitting" ? "Registering…" : "Register Your Interest"}
+        </Button>
         <p className="mt-3 text-xs leading-relaxed text-charcoal-500">
-          Submitting opens your email app with these details addressed to Fuel Crisis England; the website does not store
-          them. We will only use them to send the updates you choose and will not share them. Registering your interest
-          is not a booking and does not guarantee a place at, or the going ahead of, any event.
+          We store your name, email, optional postcode and your choices in our secure database so we can send you those updates, and
+          we don&apos;t share them. Registering is not a booking and doesn&apos;t commit you to attending any event or guarantee that one
+          will take place.
         </p>
       </div>
     </form>

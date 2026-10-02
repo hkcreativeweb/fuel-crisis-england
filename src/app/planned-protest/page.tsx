@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { LinkButton } from "@/components/ui/Button";
 import { ContactDetails } from "@/components/ui/ContactDetails";
+import { PetitionCounter } from "@/components/petition/PetitionCounter";
 import { InterestForm } from "@/components/take-action/TakeActionClient";
 import { petitionPath, plannedProtest } from "@/lib/data/take-action-config";
 
@@ -146,6 +147,9 @@ export default function PlannedProtestPage() {
             retailer margins make up the pump price, and what government will do when prices rise sharply. It is Fuel Crisis
             England&apos;s own petition, not an official UK Parliament petition.
           </p>
+          <div className="mt-5 max-w-md">
+            <PetitionCounter tone="light" />
+          </div>
           <div className="mt-5 flex flex-col gap-3 sm:flex-row">
             <LinkButton href={petitionPath} size="lg" className="min-h-12">
               Sign FCE&apos;s Petition
@@ -155,8 +159,8 @@ export default function PlannedProtestPage() {
             </LinkButton>
           </div>
           <p className="mt-3 max-w-3xl text-xs leading-relaxed text-charcoal-500">
-            The petition page explains what is collected and how it is handled. We do not publish a signature total here because
-            it cannot yet be verified from a stored petition system.
+            Signatures are stored in our database, one per email address, and the total above is the real count. The petition page
+            explains what is collected and how it is handled.
           </p>
         </Container>
       </section>
