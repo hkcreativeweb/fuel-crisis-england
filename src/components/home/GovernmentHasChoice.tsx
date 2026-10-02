@@ -20,7 +20,7 @@ export function GovernmentHasChoice() {
 
   const columns = [
     current && {
-      label: "Current policy",
+      label: "Current rate",
       body: (
         <>
           <p className="text-3xl font-extrabold tabular-nums text-white">
@@ -32,12 +32,12 @@ export function GovernmentHasChoice() {
       source: current,
     },
     confirmed.length > 0 && {
-      label: "Confirmed change",
+      label: "Confirmed changes",
       body: (
         <ul className="space-y-1">
           {confirmed.map((e) => (
             <li key={e.id} className="text-white">
-              <strong className="text-xl tabular-nums">{e.ratePencePerLitre}p</strong>{" "}
+              <strong className="text-xl tabular-nums">{e.ratePencePerLitre}p/L</strong>{" "}
               <span className="text-sm text-slate-300">from {formatDate(e.date)}</span>
             </li>
           ))}
@@ -46,20 +46,20 @@ export function GovernmentHasChoice() {
       source: confirmed[0],
     },
     intention && {
-      label: "Stated intention, not yet law",
+      label: "Policy intention — not yet law",
       body: <p className="text-sm leading-relaxed text-slate-300">{intention.title}. No confirmed rate exists yet.</p>,
       source: intention,
     },
   ].filter((c) => !!c);
 
   return (
-    <section className="bg-navy-950 py-16 sm:py-20">
+    <section className="bg-navy-950 py-12 sm:py-16">
       <Container>
         <SectionHeading
           tone="dark"
-          eyebrow="Policy choices"
-          title="What could change?"
-          description="Fuel Duty is a fixed tax per litre, set by government. It has been changed many times, and further changes are already confirmed in law."
+          eyebrow="Policy"
+          title="Fuel Duty: what is actually confirmed?"
+          description="Fuel Duty is a fixed tax per litre, set by government. Below: what is in force, what is already confirmed in law, and what is only a stated intention."
         />
 
         <div className="mt-10 grid gap-4 md:grid-cols-3">

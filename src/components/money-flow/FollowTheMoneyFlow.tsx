@@ -73,7 +73,7 @@ export function FollowTheMoneyFlow({ defaultAmount = 50, currentBreakdown }: { d
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden="true" /> Known — directly published rate
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-amber-400" aria-hidden="true" /> Estimated — calculated or averaged
+          <span className="h-1.5 w-1.5 rounded-full bg-amber-400" aria-hidden="true" /> Estimated — calculated or derived amount
         </span>
       </div>
 
@@ -120,9 +120,8 @@ export function FollowTheMoneyFlow({ defaultAmount = 50, currentBreakdown }: { d
         split varies with the fuel price, wholesale costs, retailer margins, and VAT at any given time —
         this is not a fixed formula.
       </p>
-      <p className="mt-2 text-xs font-semibold leading-relaxed text-slate-300">
-        The &quot;Oil &amp; energy industry&quot; and &quot;Retail&quot; amounts include costs and margins
-        across the fuel supply chain. They are not the same thing as industry profit.
+      <p className="mt-4 rounded-md border border-amber-400/40 bg-amber-400/10 p-3 text-sm font-semibold leading-relaxed text-amber-100">
+        The wholesale, refining, distribution and retail figures are estimates and should not be interpreted as company profit.
       </p>
     </div>
   );

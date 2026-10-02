@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import { IndependenceNotice } from "@/components/ui/IndependenceNotice";
 import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { LegalPageHeader } from "@/components/ui/LegalPageHeader";
-import { ContactDetails } from "@/components/ui/ContactDetails";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = pageMetadata("/contact", {
@@ -23,7 +23,17 @@ export default function ContactPage() {
               {siteConfig.fullBrand} is an independent public-interest information and campaign platform.
               You can contact us directly by phone or email:
             </p>
-            <ContactDetails />
+            <div className="grid gap-3 sm:grid-cols-2">
+              <a href={siteConfig.contact.phoneHref} className="flex min-h-16 flex-col justify-center rounded border border-slate-200 bg-white p-4 transition-colors hover:border-petrol-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-petrol-500">
+                <span className="text-xs font-bold uppercase tracking-wide text-charcoal-500">Phone</span>
+                <span className="text-xl font-extrabold text-navy-900">{siteConfig.contact.phoneDisplay}</span>
+              </a>
+              <a href={`mailto:${siteConfig.contact.email}`} className="flex min-h-16 flex-col sm:col-span-2 justify-center rounded border border-slate-200 bg-white p-4 transition-colors hover:border-petrol-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-petrol-500">
+                <span className="text-xs font-bold uppercase tracking-wide text-charcoal-500">Email</span>
+                <span className="break-words text-base font-extrabold text-navy-900 sm:text-lg">{siteConfig.contact.email}</span>
+              </a>
+            </div>
+            <IndependenceNotice variant="text" />
             <p>
               If you&apos;ve spotted an inaccuracy, an outdated figure, or a broken source link, please
               treat every statistic on this site as something we want to get right. See our{" "}

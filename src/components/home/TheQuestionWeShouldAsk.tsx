@@ -1,7 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatCard } from "@/components/ui/StatCard";
-import { fuelDutyReceiptsFullYear } from "@/lib/data/hmrc-receipts";
 import { fuelDutyPenceOn } from "@/lib/data/pump-price-breakdown";
 
 /**
@@ -18,22 +17,20 @@ export function TheQuestionWeShouldAsk({ petrolPence, dataPeriod }: { petrolPenc
   const share = (pence: number) => Math.round((pence / petrolPence) * 100);
 
   return (
-    <section className="bg-white py-16 sm:py-20">
+    <section className="bg-white py-12 sm:py-16">
       <Container>
         <SectionHeading
           eyebrow="Policy and markets"
           title="The numbers behind the policy debate"
-          description="How much of the pump price is shaped by policy, and how much by markets? Explore the figures and decide for yourself."
+          description="How much of the current petrol price comes from tax, and how much is the remainder after tax?"
         />
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-10 sm:gap-4 lg:grid-cols-4">
-          <StatCard tone="light" label="Average petrol price" value={`${petrolPence.toFixed(1)}p`} caption={`per litre, UK, ${dataPeriod.charAt(0).toLowerCase() + dataPeriod.slice(1)}`} />
-          <StatCard tone="light" label="Set by policy" value={`${tax.toFixed(1)}p`} caption={`about ${share(tax)}%: Fuel Duty ${duty}p plus VAT (calculated)`} />
-          <StatCard tone="light" label="Set by markets and retailers" value={`${market.toFixed(1)}p`} caption={`about ${share(market)}%: oil, refining, delivery and retail (calculated remainder)`} />
-          <StatCard tone="light" label="Fuel Duty receipts" value={`£${fuelDutyReceiptsFullYear.amountGBP}bn`} caption={fuelDutyReceiptsFullYear.periodLabel} />
+        <div className="mt-8 grid gap-3 sm:grid-cols-3 sm:gap-4">
+          <StatCard tone="light" label="Petrol" value={`${petrolPence.toFixed(1)}p/L`} caption={`UK average, ${dataPeriod.charAt(0).toLowerCase() + dataPeriod.slice(1)}`} />
+          <StatCard tone="light" label="Fuel Duty + VAT" value={`${tax.toFixed(1)}p/L`} caption={`about ${share(tax)}% (calculated: Fuel Duty ${duty}p plus VAT)`} />
+          <StatCard tone="light" label="Remaining price" value={`${market.toFixed(1)}p/L`} caption={`about ${share(market)}% (calculated remainder)`} />
         </div>
         <p className="mt-6 max-w-2xl text-sm leading-relaxed text-charcoal-700">
-          Petrol price from GOV.UK / DESNZ; receipts from HMRC. The split between tax and market costs is our
-          calculation from those figures. See the{" "}
+          These figures are calculated from the published pump price (GOV.UK / DESNZ) and tax rates. The remainder is not a measure of industry profit. See the{" "}
           <a href="/follow-the-money" className="-my-3 inline-block py-3 font-semibold text-petrol-600 underline underline-offset-2">
             full breakdown and sources
           </a>

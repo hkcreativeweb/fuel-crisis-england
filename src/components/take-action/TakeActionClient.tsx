@@ -162,9 +162,7 @@ export function InterestForm() {
           {status === "submitting" ? "Registering…" : "Register Your Interest"}
         </Button>
         <p className="mt-3 text-xs leading-relaxed text-charcoal-500">
-          We store your name, email, optional postcode and your choices in our secure database so we can send you those updates, and
-          we don&apos;t share them. Registering is not a booking and doesn&apos;t commit you to attending any event or guarantee that one
-          will take place.
+          Your registration details are stored securely so we can manage the updates you have requested. We do not sell your information. See our <a href="/privacy" className="font-semibold underline underline-offset-2">Privacy Policy</a> for details. Registering is not a booking and does not commit you to attending any event or guarantee that one will take place.
         </p>
       </div>
     </form>

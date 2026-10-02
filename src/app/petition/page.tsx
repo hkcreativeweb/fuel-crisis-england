@@ -23,7 +23,7 @@ export default function PetitionPage() {
             description="Every verified submission helps show the real scale of fuel affordability across England."
           />
           <p className="mt-4 max-w-2xl text-sm text-slate-300">
-            This is Fuel Crisis England&apos;s own petition and evidence-gathering resource, not an official UK
+            This petition is operated by Fuel Crisis England, an independent initiative. It is not a government petition and is not run by any other organisation, and it is not an official UK
             Parliament petition.{" "}
             <a href="#uk-parliament-petitions" className="font-semibold text-petrol-300 underline underline-offset-2">
               See official UK Parliament petitions on fuel duty and VAT below

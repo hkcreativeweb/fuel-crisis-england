@@ -136,15 +136,15 @@ export function FuelQuiz({ petrolPence, dataPeriod }: { petrolPence: number; dat
   const progress = ((index + (answered ? 1 : 0)) / QUESTIONS.length) * 100;
 
   return (
-    <section id="quiz" aria-labelledby="quiz-title" className="scroll-mt-24 bg-navy-950 py-16 sm:py-24">
+    <section id="quiz" aria-labelledby="quiz-title" className="scroll-mt-24 bg-navy-950 py-10 sm:py-14">
       <Container>
         <div className="mx-auto max-w-2xl">
           <p className="text-xs font-bold uppercase tracking-[0.14em] text-petrol-300">Test yourself in 60 seconds</p>
-          <h2 id="quiz-title" className="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+          <h2 id="quiz-title" className="mt-2 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
             Think You Know Fuel?
           </h2>
 
-          <div className="mt-8 rounded border border-white/10 bg-white p-5 text-navy-900 sm:p-8">
+          <div className="mt-5 rounded border border-white/10 bg-white p-5 text-navy-900 sm:p-6">
             {phase === "intro" ? (
               <div>
                 <p className="text-lg leading-relaxed text-charcoal-700">

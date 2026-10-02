@@ -5,12 +5,12 @@ import { FuelCostCalculator, type LiveFuelPrices } from "@/components/calculator
 
 export function CalculatorSection({ prices }: { prices: LiveFuelPrices }) {
   return (
-    <section id="calculator" className="scroll-mt-24 border-y border-slate-200 bg-slate-50 py-16 sm:py-24">
+    <section id="calculator" className="scroll-mt-24 border-y border-slate-200 bg-slate-50 py-12 sm:py-16">
       <Container>
         <SectionHeading
           eyebrow="What changes when the price changes?"
           title="How much does fuel cost you?"
-          description="Enter your miles and your car's fuel economy. See your cost per week, month and year, and what a 10p rise would add."
+          description="Enter your mileage and vehicle economy to estimate your fuel cost."
         />
         <div className="mt-10 max-w-4xl">
           <FuelCostCalculator prices={prices} />

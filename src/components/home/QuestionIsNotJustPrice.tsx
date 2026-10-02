@@ -12,8 +12,7 @@ export function QuestionIsNotJustPrice() {
           The number on the pump is only the beginning.
         </p>
         <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-charcoal-700 sm:text-lg">
-          Part of what you pay is set by world markets. Part is set by government. This site shows
-          which is which, using official figures, so you can decide for yourself what it means.
+          Part of the price comes from global markets. Part comes from taxes. This site shows how the different parts fit together using published figures.
         </p>
         <a
           href="#one-litre"

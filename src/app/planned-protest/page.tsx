@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { LinkButton } from "@/components/ui/Button";
 import { ContactDetails } from "@/components/ui/ContactDetails";
+import { IndependenceNotice } from "@/components/ui/IndependenceNotice";
 import { PetitionCounter } from "@/components/petition/PetitionCounter";
 import { InterestForm } from "@/components/take-action/TakeActionClient";
 import { petitionPath, plannedProtest } from "@/lib/data/take-action-config";
@@ -53,6 +54,12 @@ export default function PlannedProtestPage() {
         </Container>
       </section>
 
+      <section className="border-b border-slate-200 bg-white py-6">
+        <Container>
+          <IndependenceNotice variant="full" className="max-w-3xl" />
+        </Container>
+      </section>
+
       <section className="bg-white py-12 sm:py-14">
         <Container>
           <SectionHeading eyebrow="Event details" title="Protest details" />
@@ -72,15 +79,17 @@ export default function PlannedProtestPage() {
               ))}
             </dl>
             <p className="mt-5 text-sm leading-relaxed text-charcoal-600">
-              Nothing here is confirmed until it appears in this table. Meeting point, accessibility and participation
-              information will be added once they are agreed. Registering your interest does not mean an event is going ahead.
+              <strong className="font-semibold text-navy-900">Nothing here is confirmed until it appears in this table.</strong> Event
+              details will only be published here once they are confirmed. Meeting point, accessibility and participation
+              information will be added when agreed. Registering your interest does not mean an event is confirmed or that you are
+              committing to attend.
             </p>
           </Card>
 
-          <div className="mt-6 max-w-2xl">
+          <div className="mt-8 max-w-2xl">
             <h3 className="text-base font-bold text-navy-900">Enquiries and organiser contact</h3>
             <p className="mt-1 text-sm text-charcoal-700">
-              For enquiries about planned peaceful demonstrations or getting involved with Fuel Crisis England, contact us directly.
+              For enquiries about the planned demonstration or getting involved with Fuel Crisis England, contact us directly.
             </p>
             <ContactDetails className="mt-2 text-sm" />
           </div>
@@ -91,22 +100,19 @@ export default function PlannedProtestPage() {
         <Container>
           <SectionHeading eyebrow="Background" title="Why are we organising?" />
           <div className="mt-4 max-w-3xl space-y-3 text-base leading-relaxed text-charcoal-700">
+            <p>Fuel is a significant cost for many motorists, households and businesses, particularly for people whose work depends on driving.</p>
+            <p>Pump prices are influenced by several factors, including wholesale costs, Fuel Duty, VAT and retailer costs and margins.</p>
             <p>
-              Fuel is a significant cost for many motorists, households and businesses, and for people whose work depends on
-              driving. Pump prices reflect several things: wholesale costs, Fuel Duty, VAT and retailer margins, and government
-              sets the tax part.
-            </p>
-            <p>
-              The purpose of a demonstration would be to raise awareness of those costs and of the questions we are asking
-              government and regulators, which are set out in{" "}
+              The purpose of a potential demonstration would be to raise public awareness of these costs and the questions Fuel Crisis
+              England is raising with government and regulators, set out in{" "}
               <a href="/our-demands" className="font-semibold text-petrol-600 underline underline-offset-2">
                 Our Demands
               </a>
-              . The current official figures are on our{" "}
+              . Current figures are on our{" "}
               <a href="/live-fuel-prices" className="font-semibold text-petrol-600 underline underline-offset-2">
                 Live Fuel Prices
               </a>{" "}
-              page, with sources.
+              page, which names the source of each one.
             </p>
             <p className="text-sm text-charcoal-600">
               Fuel Crisis England is independent of political parties and government and does not tell anyone how to vote.
@@ -118,9 +124,11 @@ export default function PlannedProtestPage() {
       <section className="bg-white py-12 sm:py-14">
         <Container>
           <SectionHeading eyebrow="Ground rules" title="Peaceful and lawful participation" />
-          <p className="mt-4 max-w-3xl text-base font-semibold leading-relaxed text-navy-900">
-            This planned demonstration is intended to be peaceful and lawful. Participants are expected to respect other road
-            users, residents, emergency services, businesses and members of the public.
+          <p className="mt-4 max-w-3xl text-xl font-extrabold leading-snug text-navy-900">
+            This planned demonstration is intended to be peaceful and lawful.
+          </p>
+          <p className="mt-2 max-w-3xl text-base leading-relaxed text-charcoal-700">
+            Participants are expected to respect other road users, residents, emergency services, businesses and members of the public.
           </p>
           <ul className="mt-4 max-w-3xl list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-charcoal-700">
             <li>No violence, intimidation or harassment.</li>
@@ -141,11 +149,14 @@ export default function PlannedProtestPage() {
 
       <section id="petition" className="scroll-mt-24 bg-slate-50 py-12 sm:py-14">
         <Container>
-          <SectionHeading eyebrow="Add your name" title="Sign the Petition" />
+          <SectionHeading eyebrow="Petition" title="Sign the Petition" />
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-charcoal-700">
-            FCE&apos;s petition calls for transparency and answers on fuel affordability: how fuel taxes, wholesale costs and
-            retailer margins make up the pump price, and what government will do when prices rise sharply. It is Fuel Crisis
-            England&apos;s own petition, not an official UK Parliament petition.
+            FCE&apos;s petition calls for transparency and answers on fuel affordability: how fuel taxes, wholesale costs and retailer
+            margins make up the pump price, and what government will do when prices rise sharply.
+          </p>
+          <p className="mt-3 max-w-3xl text-base leading-relaxed text-charcoal-700">
+            It is operated by Fuel Crisis England as an independent campaign petition. It is not a government petition and is not run
+            by another organisation.
           </p>
           <div className="mt-5 max-w-md">
             <PetitionCounter tone="light" />
@@ -159,8 +170,8 @@ export default function PlannedProtestPage() {
             </LinkButton>
           </div>
           <p className="mt-3 max-w-3xl text-xs leading-relaxed text-charcoal-500">
-            Signatures are stored in our database, one per email address, and the total above is the real count. The petition page
-            explains what is collected and how it is handled.
+            The second link leads to petitions run by the UK Parliament. It is an external official resource and is not connected to
+            Fuel Crisis England. The petition page explains what we collect and how it is handled.
           </p>
         </Container>
       </section>
@@ -168,6 +179,7 @@ export default function PlannedProtestPage() {
       <section id="register" className="scroll-mt-24 bg-white py-12 sm:py-14">
         <Container>
           <SectionHeading eyebrow="Stay informed" title="Register for Protest Updates" />
+          <IndependenceNotice className="mt-6 max-w-2xl" />
           <div className="mt-6 max-w-2xl">
             <InterestForm />
           </div>

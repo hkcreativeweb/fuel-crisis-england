@@ -14,7 +14,7 @@ export function TwentyPoundsSection({ petrolPence, dataPeriod }: { petrolPence: 
   const litres = (pence: number) => ((20 * 100) / pence).toFixed(1);
 
   return (
-    <section className="bg-slate-50 py-14 sm:py-20">
+    <section className="bg-slate-50 py-12 sm:py-16">
       <Container>
         <div className="grid gap-8 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-16">
           <p aria-hidden="true" className="text-[6rem] font-extrabold leading-none tracking-tighter text-petrol-500 sm:text-[8rem]">
@@ -22,7 +22,7 @@ export function TwentyPoundsSection({ petrolPence, dataPeriod }: { petrolPence: 
           </p>
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.14em] text-petrol-600">Then. Now. What changed?</p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">What does £20 actually buy you?</h2>
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">What does £20 buy you?</h2>
             {then && then.petrolPencePerLitre ? (
               <dl className="mt-6 grid max-w-xl grid-cols-2 gap-4">
                 <div className="rounded border border-slate-200 bg-white p-4">
@@ -42,12 +42,11 @@ export function TwentyPoundsSection({ petrolPence, dataPeriod }: { petrolPence: 
               </dl>
             ) : null}
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-charcoal-700">
-              Petrol, UK weekly average, GOV.UK / DESNZ. Wages changed too, so compare the years side by side before
-              drawing conclusions.
+              These are weekly UK average prices, not annual averages. Wages changed too, so compare the figures alongside earnings before drawing conclusions. Source: GOV.UK / DESNZ.
             </p>
             <div className="mt-6">
               <LinkButton href="/fuel-prices-through-time" variant="secondary" className="min-h-12">
-                Compare the past, with wages
+                Compare the past with wages →
               </LinkButton>
             </div>
           </div>

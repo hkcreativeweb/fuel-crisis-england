@@ -3,22 +3,22 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
 import { PhotoCredit } from "@/components/ui/PhotoCredit";
-import { impactGroups } from "@/lib/data/impact-groups";
 import { imageCredits } from "@/lib/data/image-credits";
 
 const credit = imageCredits["commute-traffic"];
 
-const chain = [
-  "Higher fuel costs",
-  "Higher transport and delivery costs",
-  "Higher business running costs",
-  "Pressure on prices and household budgets",
+const chain = ["Higher fuel costs", "Transport costs", "Business costs", "Pressure on prices"];
+
+const cards = [
+  { title: "Families & households", summary: "School runs, shopping and family journeys can all be affected by higher fuel costs." },
+  { title: "Commuters", summary: "People without practical public-transport alternatives may have fewer options when driving costs rise." },
+  { title: "Delivery drivers", summary: "High mileage can make fuel a significant operating cost." },
+  { title: "Taxi & private hire", summary: "High daily mileage can make drivers particularly exposed to fuel-price changes." },
 ];
 
 export function ImpactSection() {
-  const preview = impactGroups.slice(0, 4);
   return (
-    <section className="relative overflow-hidden bg-navy-950 py-16 sm:py-20">
+    <section className="relative overflow-hidden bg-navy-950 py-12 sm:py-16">
       <div className="absolute inset-0">
         <Image src={credit.src} alt={credit.alt} fill sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-navy-950/85" />
@@ -28,10 +28,10 @@ export function ImpactSection() {
           tone="dark"
           eyebrow="The same price doesn't affect everyone equally"
           title="The pump isn't where the cost ends"
-          description="Fuel affects the journeys people make, the work they do and the businesses that depend on driving. How much depends on each situation."
+          description="Fuel costs can affect households, workers and businesses differently depending on how much they drive and what alternatives they have."
         />
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {preview.map((group) => (
+          {cards.map((group) => (
             <div key={group.title} className="rounded border border-white/15 bg-navy-950/70 p-5">
               <h3 className="text-base font-bold text-white">{group.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-300">{group.summary}</p>
@@ -50,8 +50,7 @@ export function ImpactSection() {
             ))}
           </ol>
           <p className="mt-3 max-w-2xl text-xs leading-relaxed text-slate-300">
-            A general economic mechanism, not a fixed rule. The actual effect depends on the industry and the
-            circumstances.
+            This is a general economic mechanism, not a fixed rule. The effect varies by industry and circumstances.
           </p>
         </div>
 

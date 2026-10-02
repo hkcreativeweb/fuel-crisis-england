@@ -12,10 +12,10 @@ export async function LatestNewsPreview({ count = 4 }: { count?: number }) {
   const picks = [...articles.filter((a) => a.section === "Fuel"), ...articles.filter((a) => a.section !== "Fuel")].slice(0, count);
 
   return (
-    <section className="bg-white py-14 sm:py-16">
+    <section className="bg-white py-12 sm:py-14">
       <Container>
-        <SectionHeading eyebrow="News" title="Latest News" description="Recent coverage from external publishers. Newest first." />
-        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <SectionHeading eyebrow="News" title="Latest News" description="Recent coverage from external publishers." />
+        <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {picks.map((a) => (
             <li key={a.url}>
               <NewsCard article={a} />
@@ -24,10 +24,10 @@ export async function LatestNewsPreview({ count = 4 }: { count?: number }) {
         </ul>
         <div className="mt-6">
           <LinkButton href="/news" size="lg" className="min-h-12">
-            View All News <span aria-hidden="true">→</span>
+            View all news <span aria-hidden="true">→</span>
           </LinkButton>
         </div>
-        <p className="mt-3 text-xs text-charcoal-500">External coverage; Fuel Crisis England does not own or endorse these articles.</p>
+        <p className="mt-3 text-xs text-charcoal-500">External coverage. Fuel Crisis England does not own or endorse these articles.</p>
       </Container>
     </section>
   );

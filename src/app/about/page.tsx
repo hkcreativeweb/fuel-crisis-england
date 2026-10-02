@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { IndependenceNotice } from "@/components/ui/IndependenceNotice";
 import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
@@ -74,14 +75,33 @@ export default function AboutPage() {
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
             {siteConfig.name} is an independent information site explaining UK fuel prices, their wider
             impact and the policy debate around them. It also provides clearly labelled opportunities for
-            civic participation. We are not a political party and are not affiliated with any government or
-            political party. Campaign proposals are clearly identified as proposals.
+            civic participation. Campaign proposals are clearly identified as proposals.
           </p>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
             The website brings together data, explanations and interactive tools so visitors can explore
             the numbers for themselves.
           </p>
           <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Data &bull; Context &bull; Transparency &bull; Public information</p>
+        </Container>
+      </section>
+
+      {/* Quick answers */}
+      <section aria-label="Quick answers" className="border-b border-slate-200 bg-slate-50 py-10 sm:py-12">
+        <Container>
+          <dl className="grid gap-x-10 gap-y-5 md:grid-cols-2">
+            {[
+              ["What is Fuel Crisis England?", "An independent initiative that brings together UK fuel prices, taxes, costs, history and public information in one place."],
+              ["Why does it exist?", "The price on a forecourt sign is one number, but many things feed into it. We make those parts easier to understand."],
+              ["What does it provide?", "Live and historical fuel data, explainers, calculators, links to news coverage and clearly labelled ways to take part."],
+              ["How is it sourced?", "Figures link to original sources such as GOV.UK, HMRC, ONS and the CMA, with dates and labels showing whether each is live, calculated or estimated."],
+              ["Is it affiliated with government or a political party?", "No. See Independent Initiative below."],
+            ].map(([q, a]) => (
+              <div key={q}>
+                <dt className="text-sm font-bold text-navy-900">{q}</dt>
+                <dd className="mt-1 text-sm leading-relaxed text-charcoal-700">{a}</dd>
+              </div>
+            ))}
+          </dl>
         </Container>
       </section>
 
@@ -108,10 +128,11 @@ export default function AboutPage() {
       </section>
 
       {/* 02: INDEPENDENCE, FUNDING & BACKING */}
-      <section className="bg-navy-950 py-16 sm:py-20">
+      <section id="independence" className="scroll-mt-24 bg-navy-950 py-16 sm:py-20">
         <Container>
-          <SectionHeading tone="dark" number="02" eyebrow="Independence" title="Independent of political parties and government" rule />
-          <div className="mt-8 max-w-2xl rounded-md border border-white/15 bg-white/5 p-6">
+          <SectionHeading tone="dark" number="02" eyebrow="Independence" title="Independent Initiative" rule />
+          <IndependenceNotice variant="full" tone="dark" className="mt-8 max-w-2xl" />
+          <div className="mt-6 max-w-2xl rounded-md border border-white/15 bg-white/5 p-6">
             <p className="text-lg font-bold text-white">
               {siteConfig.name} is not affiliated with, owned by, operated by, or controlled by any
               political party, political campaign, government department, elected representative or

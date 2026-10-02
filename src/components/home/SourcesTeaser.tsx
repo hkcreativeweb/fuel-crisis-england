@@ -4,27 +4,29 @@ import { LinkButton } from "@/components/ui/Button";
 import { SourceCard } from "@/components/sources/SourceCard";
 import { officialSources } from "@/lib/data/sources";
 
+const FEATURED = ["GOV.UK", "UK Parliament", "Office for National Statistics (ONS)"];
+
 export function SourcesTeaser() {
-  const preview = officialSources.slice(0, 3);
+  const preview = FEATURED.map((name) => officialSources.find((s) => s.name === name)).filter((s) => s !== undefined);
   return (
-    <section className="bg-slate-50 py-16 sm:py-20">
+    <section className="bg-slate-50 py-12 sm:py-16">
       <Container>
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading
-            eyebrow="Evidence before opinion"
-            title="Don't take our word for it. Check the figures."
-            description="Figures on this site are linked to their official sources, with the date and a label showing whether each one is live, historical or a calculation."
-          />
-          <LinkButton href="/sources" variant="secondary" className="min-h-12">
-            Check the sources
-          </LinkButton>
-        </div>
-        <div className="mt-10 grid gap-5 sm:grid-cols-3">
+        <SectionHeading
+          eyebrow="Evidence before opinion"
+          title="Don't take our word for it. Check the figures against the sources."
+          description="Figures on this site are linked to their original sources and labelled as live, historical, provisional or calculated."
+        />
+        <div className="mt-8 grid gap-5 sm:grid-cols-3">
           {preview.map((source, i) => (
             <div key={source.name} className={i > 0 ? "hidden sm:block" : undefined}>
               <SourceCard source={source} />
             </div>
           ))}
+        </div>
+        <div className="mt-6">
+          <LinkButton href="/sources" variant="secondary" className="min-h-12">
+            See all sources <span aria-hidden="true">→</span>
+          </LinkButton>
         </div>
       </Container>
     </section>

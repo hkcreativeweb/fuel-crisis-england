@@ -80,25 +80,36 @@ export function NewsHub({ articles }: { articles: Article[] }) {
             </Chip>
           ))}
         </div>
-        <div role="group" aria-label="Filter by publisher" className="flex flex-wrap items-center gap-2">
-          <span className="text-xs font-bold uppercase tracking-wide text-charcoal-500">Publisher</span>
-          {["All publishers", ...publisherChips].map((p) => (
-            <Chip
-              key={p}
-              active={publisher === p}
-              onClick={() => {
-                setPublisher(p);
-                reset();
-              }}
-            >
-              {p}
-            </Chip>
-          ))}
+        <div className="flex flex-wrap items-center gap-3">
+          <label htmlFor="news-publisher" className="text-xs font-bold uppercase tracking-wide text-charcoal-500">
+            Publisher
+          </label>
+          <select
+            id="news-publisher"
+            value={publisher}
+            onChange={(e) => {
+              setPublisher(e.target.value);
+              reset();
+            }}
+            className="min-h-11 rounded-md border border-slate-300 bg-white px-3 text-sm font-semibold text-navy-900 focus:border-petrol-500 focus:outline-none"
+          >
+            {["All publishers", ...publisherChips].map((p) => (
+              <option key={p} value={p}>
+                {p}
+              </option>
+            ))}
+          </select>
+          <span className="text-xs text-charcoal-500" aria-live="polite">
+            {matches.length} {matches.length === 1 ? "article" : "articles"}
+          </span>
         </div>
       </div>
 
       {matches.length === 0 ? (
-        <p className="mt-10 text-sm text-charcoal-600">No recent articles match these filters right now. Try another topic or publisher.</p>
+        <div className="mt-10 rounded border border-slate-200 bg-slate-50 p-5 text-sm text-charcoal-700">
+          <p className="font-semibold text-navy-900">No recent articles match these filters.</p>
+          <p className="mt-1">We only show relevant, recent stories from the feeds we read, so some combinations have no results right now. Try a different topic or choose all publishers.</p>
+        </div>
       ) : topic === "All News" ? (
         SECTIONS.map((section) => {
           const items = matches.filter((a) => a.section === section.key);
@@ -111,7 +122,7 @@ export function NewsHub({ articles }: { articles: Article[] }) {
               <ul className="mt-5 grid gap-4 sm:grid-cols-2">
                 {items.slice(0, n).map((a) => (
                   <li key={a.url}>
-                    <NewsCard article={a} />
+                    <NewsCard article={{ ...a, category: a.topics[0] }} />
                   </li>
                 ))}
               </ul>
@@ -125,7 +136,7 @@ export function NewsHub({ articles }: { articles: Article[] }) {
           <ul className="mt-5 grid gap-4 sm:grid-cols-2">
             {matches.slice(0, limit("flat", 8)).map((a) => (
               <li key={a.url}>
-                <NewsCard article={a} />
+                <NewsCard article={{ ...a, category: a.topics[0] }} />
               </li>
             ))}
           </ul>

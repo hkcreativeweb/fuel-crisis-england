@@ -60,8 +60,8 @@ export default function TermsPage() {
               <h2 className="text-lg font-bold text-navy-900">Civic action and protest</h2>
               <p className="mt-2">
                 Any guidance about protest or civic action on this site is general awareness information
-                only, not legal advice, and does not constitute organisation or endorsement of any
-                specific event. You are responsible for ensuring your own actions comply with the law.
+                only, not legal advice, and is not an invitation to, or endorsement of, any specific event
+                unless Fuel Crisis England has expressly announced it. You are responsible for ensuring your own actions comply with the law.
               </p>
             </div>
 

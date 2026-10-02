@@ -36,8 +36,8 @@ export default async function NewsPage() {
         <Container>
           <p className="max-w-3xl text-sm leading-relaxed text-charcoal-600">
             Fuel Crisis England aggregates links to external news coverage for informational purposes. Articles remain the
-            property of their respective publishers. We do not own or endorse the articles shown, and no publisher listed is
-            affiliated with Fuel Crisis England. Newest first; every date is the publisher&apos;s own.
+            property of their respective publishers. We do not own or endorse the articles shown. The publishers named are independent sources: Fuel Crisis England
+            is not affiliated with them and does not represent or speak for them, and linking to an article does not imply any endorsement either way. Newest first; every date is the publisher&apos;s own.
           </p>
 
           {ok && retrievedAt ? (

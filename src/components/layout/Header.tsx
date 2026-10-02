@@ -4,10 +4,10 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/ui/Logo";
-import { navCategories, primaryNavLinks, utilityNav, type NavCategory } from "@/lib/site-config";
+import { headerNav, utilityNav, type NavCategory } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
-type Category = (typeof navCategories)[number];
+type Category = NavCategory;
 
 function pathOf(href: string): string {
   return href.split("#")[0];
@@ -22,8 +22,12 @@ function isCategoryActive(category: NavCategory, pathname: string): boolean {
   return pathOf(category.href) === pathname || category.items.some((item) => !item.href.includes("#") && item.href === pathname);
 }
 
+function isLinkActive(href: string, pathname: string): boolean {
+  return href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
+}
+
 function PrimaryLink({ item, pathname }: { item: { label: string; href: string }; pathname: string }) {
-  const active = pathname.startsWith(item.href);
+  const active = isLinkActive(item.href, pathname);
   return (
     <Link
       href={item.href}
@@ -119,11 +123,13 @@ function DesktopDropdown({
           open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0"
         )}
       >
-        <ul className="overflow-hidden rounded border border-slate-200 bg-[#F8F7F4] p-2 shadow-lg shadow-navy-950/10">
-          {category.items.map((item) => {
+        <ul className="max-h-[calc(100dvh-5.5rem)] overflow-y-auto overscroll-contain rounded border border-slate-200 bg-[#F8F7F4] p-2 shadow-lg shadow-navy-950/10">
+          {category.items.map((item, i) => {
             const itemActive = pathOf(item.href) === pathname && !item.href.includes("#");
+            const showGroup = item.group && item.group !== category.items[i - 1]?.group;
             return (
               <li key={item.href}>
+                {showGroup ? <p className="px-3.5 pb-1 pt-3 text-[11px] font-bold uppercase tracking-[0.12em] text-charcoal-500">{item.group}</p> : null}
                 <Link
                   href={item.href}
                   onClick={onClose}
@@ -173,10 +179,12 @@ function MobileCategory({ category, pathname, onNavigate }: { category: Category
         </svg>
       </button>
       <ul id={panelId} hidden={!expanded} className="pb-3">
-        {category.items.map((item) => {
+        {category.items.map((item, i) => {
           const itemActive = pathOf(item.href) === pathname && !item.href.includes("#");
+          const showGroup = item.group && item.group !== category.items[i - 1]?.group;
           return (
             <li key={item.href}>
+              {showGroup ? <p className="px-3 pb-1 pt-3 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">{item.group}</p> : null}
               <Link
                 href={item.href}
                 onClick={onNavigate}
@@ -316,23 +324,24 @@ export function Header() {
         </Link>
 
         <nav ref={desktopNavRef} aria-label="Main" className="hidden lg:flex lg:items-center lg:gap-0.5 xl:gap-1">
-          {primaryNavLinks.map((item) => (
-            <PrimaryLink key={item.href} item={item} pathname={pathname} />
-          ))}
-          {navCategories.map((category) => (
-            <DesktopDropdown
-              key={category.label}
-              category={category}
-              pathname={pathname}
-              open={openCategory === category.label}
-              onToggle={() => setOpenCategory((current) => (current === category.label ? null : category.label))}
-              onOpen={() => setOpenCategory(category.label)}
-              onClose={() => setOpenCategory((current) => (current === category.label ? null : current))}
-              triggerRef={(el) => {
-                triggerRefs.current[category.label] = el;
-              }}
-            />
-          ))}
+          {headerNav.map((entry) =>
+            entry.type === "link" ? (
+              <PrimaryLink key={entry.href} item={entry} pathname={pathname} />
+            ) : (
+              <DesktopDropdown
+                key={entry.category.label}
+                category={entry.category}
+                pathname={pathname}
+                open={openCategory === entry.category.label}
+                onToggle={() => setOpenCategory((current) => (current === entry.category.label ? null : entry.category.label))}
+                onOpen={() => setOpenCategory(entry.category.label)}
+                onClose={() => setOpenCategory((current) => (current === entry.category.label ? null : current))}
+                triggerRef={(el) => {
+                  triggerRefs.current[entry.category.label] = el;
+                }}
+              />
+            )
+          )}
         </nav>
 
         <div className="flex shrink-0 items-center gap-2">
@@ -378,21 +387,27 @@ export function Header() {
           className="overflow-y-auto overscroll-contain border-t border-white/10 bg-navy-950 px-4 pb-6 lg:hidden"
         >
           <ul>
-            {primaryNavLinks.map((item) => (
-              <li key={item.href} className="border-b border-white/10">
-                <Link
-                  href={item.href}
-                  onClick={() => closeMobile(false)}
-                  aria-current={pathname.startsWith(item.href) ? "page" : undefined}
-                  className={cn("flex min-h-12 items-center rounded-md px-3 text-base font-semibold text-white transition-colors hover:text-accent-orange", focusRing)}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-            {navCategories.map((category) => (
-              <MobileCategory key={category.label} category={category} pathname={pathname} onNavigate={() => closeMobile(false)} />
-            ))}
+            {headerNav.map((entry) =>
+              entry.type === "link" ? (
+                <li key={entry.href} className="border-b border-white/10">
+                  <Link
+                    href={entry.href}
+                    onClick={() => closeMobile(false)}
+                    aria-current={isLinkActive(entry.href, pathname) ? "page" : undefined}
+                    className={cn(
+                      "flex min-h-12 items-center gap-2 rounded-md px-3 text-base font-semibold transition-colors hover:text-accent-orange",
+                      isLinkActive(entry.href, pathname) ? "text-white" : "text-slate-200",
+                      focusRing
+                    )}
+                  >
+                    {isLinkActive(entry.href, pathname) ? <span className="h-1.5 w-1.5 rounded-full bg-petrol-500" aria-hidden="true" /> : null}
+                    {entry.label}
+                  </Link>
+                </li>
+              ) : (
+                <MobileCategory key={entry.category.label} category={entry.category} pathname={pathname} onNavigate={() => closeMobile(false)} />
+              )
+            )}
           </ul>
           <ul className="mt-4 grid grid-cols-2 gap-x-4">
             <li className="sm:hidden">
@@ -400,7 +415,7 @@ export function Header() {
                 This week
               </Link>
             </li>
-            {utilityNav.map((item) => (
+            {utilityNav.filter((item) => item.href !== "/about" && item.href !== "/contact").map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}

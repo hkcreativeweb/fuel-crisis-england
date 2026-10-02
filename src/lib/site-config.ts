@@ -12,6 +12,11 @@ export const siteConfig = {
   petitionTarget: 25000,
   hashtag: "#FuelCrisisEngland",
   shortHashtag: "#FCE",
+  independence: {
+    full: "Fuel Crisis England is an independent initiative and is not affiliated with, funded by, endorsed by, or acting on behalf of any government body, political party, company or other organisation.",
+    short: "Fuel Crisis England is an independent initiative and is not affiliated with any government body, political party, company or other organisation.",
+    badge: "Fuel Crisis England is independent and unaffiliated with government, political parties, companies or other organisations.",
+  },
   contact: {
     phoneDisplay: "07943 137238",
     phoneHref: "tel:07943137238",
@@ -29,6 +34,8 @@ export type NavItem = {
   label: string;
   href: string;
   description?: string;
+  /** Optional sub-heading inside a long menu (set automatically for the merged Fuel Prices menu). */
+  group?: string;
 };
 
 /** A short top-level label ("Prices", "Why?") with a dropdown of the actual pages/sections it covers. */
@@ -37,6 +44,8 @@ export type NavCategory = {
   /** Where the top-level word itself links/navigates to (also used for active-state matching). */
   href: string;
   items: NavItem[];
+  /** Which edge the dropdown panel lines up with; right-hand menus open towards the left. */
+  align?: "left" | "right";
 };
 
 /**
@@ -114,6 +123,48 @@ export const navCategories: (NavCategory & { align?: "left" | "right" })[] = [
       { label: "Make a Change", href: "/make-a-change", description: "Lawful, peaceful ways to take part" },
     ],
   },
+];
+
+const categoryNamed = (label: string) => {
+  const c = navCategories.find((x) => x.label === label);
+  if (!c) throw new Error("Unknown nav category: " + label);
+  return c;
+};
+
+/** All data and explainer pages, grouped, under the single "Fuel Prices" menu. */
+const fuelPricesMenu: NavCategory = {
+  label: "Fuel Prices",
+  href: "/live-fuel-prices",
+  items: [
+    ["Prices", "Prices & data"],
+    ["Why fuel costs so much", "Why prices are what they are"],
+    ["Money", "Follow the money"],
+    ["Impact", "Who feels the cost"],
+    ["Save money", "Save money"],
+  ].flatMap(([label, group]) => categoryNamed(label).items.map((item) => ({ ...item, group }))),
+};
+
+const takeActionMenu: NavCategory = {
+  label: "Take Action",
+  href: "/take-action",
+  align: "right",
+  items: [
+    { label: "Take Action overview", href: "/take-action", description: "Understand the issue and the ways to take part" },
+    ...categoryNamed("Take part").items.filter((item) => item.href !== "/take-action"),
+  ],
+};
+
+export type HeaderEntry = { type: "link"; label: string; href: string } | { type: "menu"; category: NavCategory };
+
+/** The header's seven entries, in order. The logo also links home. Everything else stays reachable through the two menus and the footer. */
+export const headerNav: HeaderEntry[] = [
+  { type: "link", label: "Home", href: "/" },
+  { type: "menu", category: fuelPricesMenu },
+  { type: "link", label: "News", href: "/news" },
+  { type: "link", label: "Planned Protest", href: "/planned-protest" },
+  { type: "menu", category: takeActionMenu },
+  { type: "link", label: "About", href: "/about" },
+  { type: "link", label: "Contact", href: "/contact" },
 ];
 
 /** Site-wide reference pages: shown in the mobile menu and the footer rather than the main bar. */
