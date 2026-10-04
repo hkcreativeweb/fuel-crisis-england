@@ -28,7 +28,7 @@ export function TakeActionSection() {
             >
               <h3 className="text-base font-bold text-white">{option.title}</h3>
               <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-300">{option.description}</p>
-              <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-petrol-400 group-hover:text-petrol-300">
+              <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-petrol-300 group-hover:text-white">
                 {option.linkLabel}
                 <span aria-hidden="true">&rarr;</span>
               </span>

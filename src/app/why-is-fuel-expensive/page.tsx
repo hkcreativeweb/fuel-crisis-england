@@ -18,6 +18,7 @@ import { HundredMileJourney } from "@/components/why-expensive/HundredMileJourne
 import { OilDownPumpDown } from "@/components/why-expensive/OilDownPumpDown";
 import { BigFCEQuestionChain } from "@/components/why-expensive/BigFCEQuestionChain";
 import { PumpToAnnualCost } from "@/components/why-expensive/PumpToAnnualCost";
+import { CartoonPanel } from "@/components/home/CartoonPanel";
 import { StopAndThink } from "@/components/ui/StopAndThink";
 import { PhotoDataCallout } from "@/components/ui/PhotoDataCallout";
 import { imageCredits } from "@/lib/data/image-credits";
@@ -179,6 +180,8 @@ export default async function WhyIsFuelExpensivePage() {
           </div>
         </Container>
       </section>
+
+      <CartoonPanel n={5} />
 
       <section id="money-and-profits" className="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
         <Container>

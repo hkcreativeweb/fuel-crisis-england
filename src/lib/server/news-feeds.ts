@@ -33,6 +33,9 @@ const FEEDS: Feed[] = [
   { publisher: "GOV.UK", url: "https://www.gov.uk/search/news-and-communications.atom?keywords=cost+of+living", hosts: ["gov.uk"] },
 ];
 
+/** The publishers whose public RSS/Atom feeds are read automatically (for the transparency note on /news). */
+export const feedPublishers = [...new Set(FEEDS.map((f) => f.publisher))];
+
 const REVALIDATE_SECONDS = 60 * 30;
 const MAX_AGE_DAYS = 45;
 const MAX_ARTICLES = 150;

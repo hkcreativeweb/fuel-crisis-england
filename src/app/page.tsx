@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { PlannedProtestTeaser } from "@/components/home/PlannedProtestTeaser";
 import { LatestNewsPreview } from "@/components/news/LatestNewsPreview";
 import { LatestFuelPrices } from "@/components/home/LatestFuelPrices";
+import { CartoonPanel } from "@/components/home/CartoonPanel";
+import { HistoryTeaser } from "@/components/home/HistoryTeaser";
+import { EuropeTeaser } from "@/components/home/EuropeTeaser";
+import { PumpSign } from "@/components/home/PumpSign";
 import { Hero } from "@/components/home/Hero";
 import { QuestionIsNotJustPrice } from "@/components/home/QuestionIsNotJustPrice";
 import { FollowOneLitreTeaser } from "@/components/home/FollowOneLitreTeaser";
@@ -44,11 +48,10 @@ export const metadata: Metadata = {
 };
 
 /**
- * The homepage reads as one investigation: the hook, how a litre is priced,
- * where the money goes, a quick quiz, what £20 buys, who feels it, what a
- * 10p change means for you, the policy picture and its numbers, the
- * evidence, then what you can do, ending with who we are. Every price on the page comes from the
- * same live GOV.UK weekly average as the hero.
+ * Homepage hierarchy: DATA -> EXPLANATION -> SOURCES -> EDITORIAL. Current prices, Fuel Duty and
+ * VAT, key statistics, price history, Europe, then sources; the explainers, cartoons, tools,
+ * news and calls to action follow. Every price comes from the same live GOV.UK weekly average
+ * as the hero.
  */
 export default async function HomePage() {
   const { figures } = await getLatestUkWeeklyAverage();
@@ -59,20 +62,25 @@ export default async function HomePage() {
     <>
       <Hero />
       <LatestFuelPrices />
-      <QuestionIsNotJustPrice />
-      <FollowOneLitreTeaser />
+      <PumpSign />
       <TheBigQuestion />
-      <FuelQuiz {...petrol} />
-      <TwentyPoundsSection {...petrol} />
-      <ImpactSection />
-      <CalculatorSection prices={prices} />
       <GovernmentHasChoice />
-      <TheQuestionWeShouldAsk {...petrol} />
+      <TwentyPoundsSection {...petrol} />
+      <HistoryTeaser />
+      <EuropeTeaser />
       <SourcesTeaser />
-      <PlannedProtestTeaser />
-      <LatestNewsPreview count={3} />
-      <TakeActionSection />
-      <FinalMessage />
+      <div className="cv-auto"><CartoonPanel n={2} tone="slate" /></div>
+      <div className="cv-auto"><QuestionIsNotJustPrice /></div>
+      <div className="cv-auto"><FollowOneLitreTeaser /></div>
+      <div className="cv-auto"><ImpactSection /></div>
+      <div className="cv-auto"><CalculatorSection prices={prices} /></div>
+      <div className="cv-auto"><CartoonPanel n={4} tone="slate" /></div>
+      <div className="cv-auto"><FuelQuiz {...petrol} /></div>
+      <div className="cv-auto"><TheQuestionWeShouldAsk {...petrol} /></div>
+      <div className="cv-auto"><PlannedProtestTeaser /></div>
+      <div className="cv-auto"><LatestNewsPreview count={3} /></div>
+      <div className="cv-auto"><TakeActionSection /></div>
+      <div className="cv-auto"><FinalMessage /></div>
       <VisitCounter showCount={false} />
     </>
   );

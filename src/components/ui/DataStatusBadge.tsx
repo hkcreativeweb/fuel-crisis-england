@@ -2,9 +2,9 @@ import { cn } from "@/lib/utils";
 import type { DataStatus } from "@/lib/types";
 
 const labels: Record<DataStatus, string> = {
-  live: "Live data",
-  historical: "Historical data",
-  unavailable: "Data unavailable",
+  live: "Live",
+  historical: "Historical",
+  unavailable: "Not yet available",
 };
 
 const dotClasses: Record<DataStatus, string> = {

@@ -16,6 +16,7 @@ import { FuelAdditivesSection } from "@/components/save-money/FuelAdditivesSecti
 import { UseTheRightFuelSection } from "@/components/save-money/UseTheRightFuelSection";
 import { DontPayMoreSection } from "@/components/save-money/DontPayMoreSection";
 import { MaintenanceChecklist } from "@/components/save-money/MaintenanceChecklist";
+import { CartoonPanel } from "@/components/home/CartoonPanel";
 import { imageCredits } from "@/lib/data/image-credits";
 
 export const metadata: Metadata = pageMetadata("/save-fuel-money", {
@@ -55,6 +56,8 @@ export default function SaveMoneyPage() {
           </div>
         </Container>
       </section>
+
+      <CartoonPanel n={3} />
 
       <section id="maintenance" className="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
         <Container>

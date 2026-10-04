@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Alert } from "@/components/ui/Alert";
 import { NewsHub } from "@/components/news/NewsHub";
-import { getNews } from "@/lib/server/news-feeds";
+import { feedPublishers, getNews } from "@/lib/server/news-feeds";
 
 export const metadata: Metadata = pageMetadata("/news", {
   title: "News",
@@ -58,7 +58,7 @@ export default async function NewsPage() {
           </div>
 
           <p className="mt-10 max-w-3xl text-xs leading-relaxed text-charcoal-500">
-            Sources currently read: BBC News, The Guardian, Sky News, CNN, Which?, GOV.UK and RAC. For official figures see our{" "}
+            Read automatically from their public feeds: {feedPublishers.join(", ")}. A small number of articles from other reputable publishers are added by hand and labelled with their publisher. For each story we show only the publisher&apos;s headline, date and a short summary, then link to the original article; we do not copy or republish article text, and we only list publishers whose feeds we can read legitimately. For official figures see our{" "}
             <a href="/sources" className="font-semibold text-petrol-600 underline underline-offset-2">
               Sources &amp; Methodology
             </a>{" "}

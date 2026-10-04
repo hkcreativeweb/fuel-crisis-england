@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
 import { EVComparisonCalculator } from "@/components/ev/EVComparisonCalculator";
+import { CartoonPanel } from "@/components/home/CartoonPanel";
 import { PhotoCredit } from "@/components/ui/PhotoCredit";
 import { imageCredits } from "@/lib/data/image-credits";
 import { getCurrentFuelPrices } from "@/lib/data/current-fuel-prices";
@@ -83,6 +84,8 @@ export default async function FuelVsElectricPage() {
           </p>
         </Container>
       </section>
+
+      <CartoonPanel n={7} />
 
       <section className="bg-slate-50 py-14 sm:py-16">
         <Container>

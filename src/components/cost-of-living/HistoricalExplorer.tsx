@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { yearlySnapshots, availableYears } from "@/lib/data/yearly-snapshots";
+import { yearlySnapshots, availableYears, currentYear } from "@/lib/data/yearly-snapshots";
 import { DataStatusBadge } from "@/components/ui/DataStatusBadge";
 import { cn } from "@/lib/utils";
 
@@ -84,6 +84,12 @@ export function HistoricalExplorer() {
         <p className="text-4xl font-extrabold tabular-nums text-navy-900">{year}</p>
         <DataStatusBadge status={s.verified ? "historical" : "unavailable"} />
       </div>
+      {year === currentYear ? (
+        <p className="mt-3 rounded border border-amber-200 bg-amber-50 p-3 text-xs leading-relaxed text-charcoal-700">
+          <strong className="text-navy-900">Historical snapshot, not today’s price.</strong> {currentYear} is still in progress. These prices are a dated reading kept for comparison. For the current figure, see{" "}
+          <a href="/live-fuel-prices" className="font-semibold text-petrol-700 underline underline-offset-2">Live Fuel Prices</a>.
+        </p>
+      ) : null}
 
       <input
         type="range"

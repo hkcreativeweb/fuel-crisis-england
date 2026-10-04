@@ -17,8 +17,8 @@ export function SourcesTeaser() {
           description="Figures on this site are linked to their original sources and labelled as live, historical, provisional or calculated."
         />
         <div className="mt-8 grid gap-5 sm:grid-cols-3">
-          {preview.map((source, i) => (
-            <div key={source.name} className={i > 0 ? "hidden sm:block" : undefined}>
+          {preview.map((source) => (
+            <div key={source.name}>
               <SourceCard source={source} />
             </div>
           ))}

@@ -8,6 +8,13 @@ import { siteConfig } from "@/lib/site-config";
  * title), and a shared link to any page would preview as the homepage.
  * Paths are resolved against metadataBase (the real site domain).
  */
+const shareImage = {
+  url: "/opengraph-image.jpg",
+  width: 1200,
+  height: 630,
+  alt: "Fuel Crisis England: Fuel isn't just a number on a pump.",
+};
+
 export function pageMetadata(path: string, { title, description }: { title: string; description: string }): Metadata {
   const fullTitle = `${title} | ${siteConfig.brandShort}`;
   return {
@@ -21,7 +28,8 @@ export function pageMetadata(path: string, { title, description }: { title: stri
       siteName: siteConfig.fullBrand,
       locale: siteConfig.locale,
       type: "website",
+      images: [shareImage],
     },
-    twitter: { card: "summary_large_image", title: fullTitle, description },
+    twitter: { card: "summary_large_image", title: fullTitle, description, images: [shareImage] },
   };
 }

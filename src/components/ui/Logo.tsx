@@ -29,7 +29,7 @@ export function Logo({ className, dark = false, compact = false }: { className?:
         <span className={cn("font-extrabold tracking-tight", compact ? "text-lg" : "text-xl sm:text-2xl", dark ? "text-navy-900" : "text-white")}>
           FCE
         </span>
-        <span className={cn("mt-0.5 font-semibold tracking-wide text-petrol-400", compact ? "text-[9px]" : "text-[10px] sm:text-xs")}>
+        <span className={cn("mt-0.5 font-semibold tracking-wide text-petrol-300", compact ? "text-[9px]" : "text-[10px] sm:text-xs")}>
           Fuel Crisis England
         </span>
       </span>

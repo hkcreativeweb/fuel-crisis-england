@@ -20,7 +20,7 @@
   --color-charcoal-900: #12151b;
   --color-charcoal-800: #1b202a;
   --color-charcoal-700: #1f2937;
-  --color-charcoal-600: #64748b;
+  --color-charcoal-600: #5a667a;
 
   /* FCE Red scale — logo accent, key CTAs, important statistics,
      fuel-price highlights, warning/attention elements, selected emphasis.
@@ -160,4 +160,10 @@ html {
   main input[type="email"] {
     min-height: 44px;
   }
+}
+
+/* Defers rendering work for below-the-fold homepage sections until they near the viewport. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
 }

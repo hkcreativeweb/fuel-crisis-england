@@ -1,10 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { PhotoCredit } from "@/components/ui/PhotoCredit";
 import { LinkButton } from "@/components/ui/Button";
-import { imageCredits } from "@/lib/data/image-credits";
-
-const credit = imageCredits["forecourt-close"];
 
 export function Hero() {
   return (
@@ -31,12 +27,19 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="hidden sm:block">
-          <div className="relative aspect-[16/10] w-full overflow-hidden">
-            <Image src={credit.src} alt={credit.alt} fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
-          </div>
-          <PhotoCredit credit={credit} tone="light" className="mt-2" />
-        </div>
+        <figure className="mx-auto w-full max-w-md lg:max-w-none">
+          <Image
+            src="/images/bus-fare-cartoon.webp"
+            alt="A cartoon character beside a petrol station price board showing £2.09 unleaded and £2.19 diesel, pointing at a bus and saying: Don't worry about petrol prices, it's now £2 to catch the bus."
+            width={1024}
+            height={940}
+            priority
+            fetchPriority="high"
+            sizes="(min-width: 1024px) 45vw, (min-width: 640px) 448px, 100vw"
+            className="h-auto w-full rounded-lg border border-slate-200 shadow-md"
+          />
+          <figcaption className="mt-2 text-xs text-charcoal-600">Editorial cartoon: satire, not a statement of fact. Prices shown are illustrative.</figcaption>
+        </figure>
       </Container>
     </section>
   );

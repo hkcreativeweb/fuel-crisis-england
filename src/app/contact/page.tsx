@@ -24,13 +24,13 @@ export default function ContactPage() {
               You can contact us directly by phone or email:
             </p>
             <div className="grid gap-3 sm:grid-cols-2">
-              <a href={siteConfig.contact.phoneHref} className="flex min-h-16 flex-col justify-center rounded border border-slate-200 bg-white p-4 transition-colors hover:border-petrol-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-petrol-500">
+              <a href={siteConfig.contact.phoneHref} className="flex min-h-16 min-w-0 flex-col justify-center rounded border border-slate-200 bg-white p-4 transition-colors hover:border-petrol-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-petrol-500">
                 <span className="text-xs font-bold uppercase tracking-wide text-charcoal-500">Phone</span>
                 <span className="text-xl font-extrabold text-navy-900">{siteConfig.contact.phoneDisplay}</span>
               </a>
-              <a href={`mailto:${siteConfig.contact.email}`} className="flex min-h-16 flex-col sm:col-span-2 justify-center rounded border border-slate-200 bg-white p-4 transition-colors hover:border-petrol-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-petrol-500">
+              <a href={`mailto:${siteConfig.contact.email}`} className="flex min-h-16 min-w-0 flex-col sm:col-span-2 justify-center rounded border border-slate-200 bg-white p-4 transition-colors hover:border-petrol-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-petrol-500">
                 <span className="text-xs font-bold uppercase tracking-wide text-charcoal-500">Email</span>
-                <span className="break-words text-base font-extrabold text-navy-900 sm:text-lg">{siteConfig.contact.email}</span>
+                <span className="text-sm font-extrabold text-navy-900 [overflow-wrap:anywhere] min-[360px]:text-base sm:text-lg">{siteConfig.contact.email}</span>
               </a>
             </div>
             <IndependenceNotice variant="text" />
