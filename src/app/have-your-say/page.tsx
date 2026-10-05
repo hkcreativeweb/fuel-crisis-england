@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
 import { HaveYourSaySection } from "@/components/have-your-say/HaveYourSaySection";
 import { PetitionsSection } from "@/components/have-your-say/PetitionsSection";
+import { PetitionBanner } from "@/components/petition/PetitionBanner";
 
 const CONTACT_EMAIL = siteConfig.contact.email;
 
@@ -34,7 +35,11 @@ export default function HaveYourSayPage() {
         </div>
       </Container>
 
-      <div className="mt-16 border-t border-slate-200 bg-slate-50 py-14 sm:py-16">
+      <div className="mt-14">
+        <PetitionBanner variant="hall" tone="slate" />
+      </div>
+
+      <div className="border-t border-slate-200 bg-slate-50 py-14 sm:py-16">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-2xl font-extrabold text-navy-900 sm:text-3xl">Have an idea? Get in touch.</h2>

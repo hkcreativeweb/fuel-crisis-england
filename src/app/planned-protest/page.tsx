@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
 import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -36,7 +38,8 @@ export default function PlannedProtestPage() {
   return (
     <>
       <section className="bg-navy-950 py-14 sm:py-20">
-        <Container>
+        <Container className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+          <div>
           <SectionHeading
             as="h1"
             tone="dark"
@@ -52,6 +55,21 @@ export default function PlannedProtestPage() {
               Sign the Petition
             </LinkButton>
           </div>
+          </div>
+          <figure>
+            <Link href="/petition#sign-petition" className="block overflow-hidden rounded-lg border border-white/15 shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-petrol-300">
+              <Image
+                src="/images/petition-crowd.webp"
+                alt="A large crowd gathered outside a building beside a board reading Fuel Crisis England, sign the petition, with a 25,000 signatures target. People hold signs including: Fuel is unaffordable; Heating or driving?; Fair fuel prices now; Share your experience, add your voice."
+                width={1024}
+                height={559}
+                priority
+                sizes="(min-width: 1024px) 560px, 100vw"
+                className="h-auto w-full"
+              />
+            </Link>
+            <figcaption className="mt-2 text-xs text-slate-300">Illustration, not a photograph of a real event. Tap the image to sign the petition.</figcaption>
+          </figure>
         </Container>
       </section>
 

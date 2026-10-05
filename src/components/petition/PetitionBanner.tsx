@@ -27,6 +27,14 @@ const variants = {
     alt: "A large crowd gathered outside a building beside a board reading Fuel Crisis England, sign the petition, with a 25,000 signatures target. People hold signs including: Fuel is unaffordable; Heating or driving?; Fair fuel prices now; Share your experience, add your voice.",
     note: "Illustration, not a photograph of a real event.",
   },
+  hall: {
+    src: "/images/petition-hall.webp",
+    width: 1024,
+    height: 559,
+    maxW: "max-w-3xl",
+    alt: "People gathered in a community hall around a Fuel Crisis England banner reading sign the petition, with a 25,000 signatures target. They hold signs including: Fuel is unaffordable; Heating or driving?; Community crisis, no support; Share your experience, add your voice. Two people sign a form at a table.",
+    note: "Illustration, not a photograph of a real event.",
+  },
 } as const;
 
 export function PetitionBanner({
