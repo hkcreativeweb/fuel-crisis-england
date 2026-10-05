@@ -3,6 +3,7 @@
 import { useId, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { Alert } from "@/components/ui/Alert";
+import { PetitionThanks } from "@/components/petition/PetitionThanks";
 import { driverCategoryLabels } from "@/lib/data/public-experiences";
 import type { DriverCategory } from "@/lib/types";
 
@@ -99,16 +100,7 @@ export function PetitionForm() {
   }
 
   if (status === "success") {
-    return (
-      <Alert tone="success" title="Thank you — your submission has been received.">
-        <p>
-          {signatureCount !== null ? `You're signature number ${signatureCount}. ` : ""}
-          Your experience has been saved privately. We don&apos;t currently publish experiences on the site. If
-          you agreed to public display and we start doing so, it would only be shown after review, without
-          your name, email or postcode.
-        </p>
-      </Alert>
-    );
+    return <PetitionThanks signatureCount={signatureCount} />;
   }
 
   return (
