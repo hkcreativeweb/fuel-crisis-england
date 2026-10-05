@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { LinkButton } from "@/components/ui/Button";
+import { LastUpdatedLine } from "@/components/home/LastUpdatedLine";
 
 export function Hero() {
   return (
@@ -25,6 +26,7 @@ export function Hero() {
               Check the sources
             </LinkButton>
           </div>
+          <LastUpdatedLine className="mt-4" />
         </div>
 
         <figure className="mx-auto w-full max-w-md lg:max-w-none">

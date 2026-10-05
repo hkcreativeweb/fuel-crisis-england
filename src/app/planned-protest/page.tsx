@@ -11,7 +11,6 @@ import { IndependenceNotice } from "@/components/ui/IndependenceNotice";
 import { PetitionCounter } from "@/components/petition/PetitionCounter";
 import { InterestForm } from "@/components/take-action/TakeActionClient";
 import { petitionPath, plannedProtest } from "@/lib/data/take-action-config";
-import { PetitionBanner } from "@/components/petition/PetitionBanner";
 
 export const metadata: Metadata = pageMetadata("/planned-protest", {
   title: "Planned Protest",
@@ -78,8 +77,6 @@ export default function PlannedProtestPage() {
           <IndependenceNotice variant="full" className="max-w-3xl" />
         </Container>
       </section>
-
-      <PetitionBanner tone="slate" />
 
       <section className="bg-white py-12 sm:py-14">
         <Container>

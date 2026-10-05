@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PetitionForm } from "@/components/petition/PetitionForm";
 import { PetitionBanner } from "@/components/petition/PetitionBanner";
+import { PetitionFaq } from "@/components/petition/PetitionFaq";
 import { PetitionCounter } from "@/components/petition/PetitionCounter";
 import { PetitionsSection } from "@/components/have-your-say/PetitionsSection";
 
@@ -48,6 +49,8 @@ export default function PetitionPage() {
           </div>
         </Container>
       </section>
+
+      <PetitionFaq />
 
       <section id="uk-parliament-petitions" className="scroll-mt-24 border-t border-slate-200 bg-slate-50 py-14 sm:py-16">
         <Container>
