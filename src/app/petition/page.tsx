@@ -37,7 +37,7 @@ export default function PetitionPage() {
         </Container>
       </section>
 
-      <PetitionBanner />
+      <PetitionBanner showCount={false} />
 
       <section id="sign-petition" className="scroll-mt-24 bg-white py-14 sm:py-16">
         <Container>

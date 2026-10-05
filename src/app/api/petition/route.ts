@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { recordPetitionSubmission } from "@/lib/server/petition-store";
+import { getPetitionSignatureCount, recordPetitionSubmission } from "@/lib/server/petition-store";
 import type { DriverCategory } from "@/lib/types";
 
 const VALID_CATEGORIES: DriverCategory[] = [
@@ -21,6 +21,12 @@ function sanitize(value: unknown, maxLength: number): string {
   if (typeof value !== "string") return "";
   // Strip any HTML tags and collapse excess whitespace to reduce injection / markup risk.
   return value.replace(/<[^>]*>/g, "").trim().slice(0, maxLength);
+}
+
+/** The live signature count (a single number, never anything about individual signers). Read by the petition banners, which sit on cached pages. */
+export async function GET() {
+  const count = await getPetitionSignatureCount();
+  return NextResponse.json({ count }, { headers: { "Cache-Control": "no-store" } });
 }
 
 export async function POST(request: Request) {

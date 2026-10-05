@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/ui/Logo";
 import { headerNav, utilityNav, type NavCategory } from "@/lib/site-config";
+import { petitionPath } from "@/lib/data/take-action-config";
 import { cn } from "@/lib/utils";
 
 type Category = NavCategory;
@@ -33,7 +34,7 @@ function PrimaryLink({ item, pathname }: { item: { label: string; href: string }
       href={item.href}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "flex min-h-11 items-center whitespace-nowrap rounded-md px-2.5 text-[13px] font-semibold tracking-wide transition-colors hover:text-accent-orange xl:px-3.5",
+        "flex min-h-11 items-center whitespace-nowrap rounded-md px-2 text-[13px] font-semibold tracking-wide transition-colors hover:text-accent-orange xl:px-3.5",
         active ? "text-white" : "text-slate-300",
         focusRing
       )}
@@ -93,7 +94,7 @@ function DesktopDropdown({
         aria-controls={panelId}
         aria-current={active ? "true" : undefined}
         className={cn(
-          "flex min-h-11 items-center gap-1 whitespace-nowrap rounded-md px-2.5 text-[13px] font-semibold tracking-wide transition-colors hover:text-accent-orange xl:px-3.5",
+          "flex min-h-11 items-center gap-1 whitespace-nowrap rounded-md px-2 text-[13px] font-semibold tracking-wide transition-colors hover:text-accent-orange xl:px-3.5",
           active ? "text-white" : "text-slate-300",
           focusRing
         )}
@@ -356,6 +357,18 @@ export function Header() {
             This week
           </Link>
 
+          <Link
+            href={petitionPath}
+            aria-label="Sign the petition"
+            className={cn(
+              "inline-flex min-h-10 items-center justify-center whitespace-nowrap rounded-md bg-petrol-500 px-3 text-xs font-bold tracking-wide text-white transition-colors hover:bg-petrol-600 active:bg-petrol-600 sm:px-4 sm:text-[13px]",
+              focusRing
+            )}
+          >
+            <span className="min-[375px]:hidden" aria-hidden="true">Sign</span>
+            <span className="hidden min-[375px]:inline" aria-hidden="true">Sign the petition</span>
+          </Link>
+
           <button
             ref={menuButtonRef}
             type="button"
@@ -386,6 +399,13 @@ export function Header() {
           style={{ maxHeight: `calc(100dvh - ${barHeight}px)` }}
           className="overflow-y-auto overscroll-contain border-t border-white/10 bg-navy-950 px-4 pb-6 lg:hidden"
         >
+          <Link
+            href={petitionPath}
+            onClick={() => closeMobile(false)}
+            className={cn("mt-4 flex min-h-12 w-full items-center justify-center rounded-md bg-petrol-500 px-4 text-base font-bold text-white transition-colors hover:bg-petrol-600 active:bg-petrol-600", focusRing)}
+          >
+            Sign the petition
+          </Link>
           <ul>
             {headerNav.map((entry) =>
               entry.type === "link" ? (
