@@ -18,6 +18,7 @@ import { siteConfig } from "@/lib/site-config";
 import { PetitionCounter } from "@/components/petition/PetitionCounter";
 import { LatestNewsPreview } from "@/components/news/LatestNewsPreview";
 import { FuelPricesUpdated } from "@/components/ui/FuelPricesUpdated";
+import { PetitionBanner } from "@/components/petition/PetitionBanner";
 
 export const metadata: Metadata = {
   title: "Take Action | Fuel Crisis England",
@@ -353,6 +354,7 @@ export default async function TakeActionPage() {
 
 
 
+      <PetitionBanner />
     </>
   );
 }

@@ -3,6 +3,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PetitionForm } from "@/components/petition/PetitionForm";
+import { PetitionBanner } from "@/components/petition/PetitionBanner";
 import { PetitionCounter } from "@/components/petition/PetitionCounter";
 import { PetitionsSection } from "@/components/have-your-say/PetitionsSection";
 
@@ -36,7 +37,9 @@ export default function PetitionPage() {
         </Container>
       </section>
 
-      <section className="bg-white py-14 sm:py-16">
+      <PetitionBanner />
+
+      <section id="sign-petition" className="scroll-mt-24 bg-white py-14 sm:py-16">
         <Container>
           <div className="mx-auto max-w-2xl">
             <p className="text-xs font-bold uppercase tracking-[0.08em] text-petrol-600">FCE petition</p>

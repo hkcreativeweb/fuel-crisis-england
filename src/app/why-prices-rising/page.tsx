@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Alert } from "@/components/ui/Alert";
 import { LinkButton } from "@/components/ui/Button";
 import { priceFactors } from "@/lib/data/price-factors";
+import { PetitionBanner } from "@/components/petition/PetitionBanner";
 
 export const metadata: Metadata = pageMetadata("/why-prices-rising", {
   title: "Why Are Prices Rising?",
@@ -69,6 +70,7 @@ export default function WhyPricesRisingPage() {
           </LinkButton>
         </Container>
       </section>
+      <PetitionBanner variant="demand" tone="slate" />
     </>
   );
 }

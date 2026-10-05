@@ -15,6 +15,7 @@ import { SourceCard } from "@/components/sources/SourceCard";
 import { officialSources } from "@/lib/data/sources";
 import { getPumpPriceBreakdowns } from "@/lib/data/current-fuel-prices";
 import { buildPumpBaseline } from "@/lib/data/fiscal-baseline";
+import { PetitionBanner } from "@/components/petition/PetitionBanner";
 
 const sourceGroups = [
   { label: "Government", names: ["GOV.UK", "HM Revenue & Customs (HMRC)"] },
@@ -131,6 +132,7 @@ export default async function OurDemandsPage() {
           </Expandable>
         </Container>
       </section>
+      <PetitionBanner />
     </>
   );
 }

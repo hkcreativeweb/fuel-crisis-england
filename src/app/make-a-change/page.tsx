@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
 import { ProtestGuidance } from "@/components/action/ProtestGuidance";
 import { takeActionOptions } from "@/lib/data/take-action-options";
+import { PetitionBanner } from "@/components/petition/PetitionBanner";
 
 export const metadata: Metadata = pageMetadata("/make-a-change", {
   title: "We Can Make A Change",
@@ -103,6 +104,7 @@ export default function TakeActionPage() {
           </LinkButton>
         </Container>
       </section>
+      <PetitionBanner />
     </>
   );
 }

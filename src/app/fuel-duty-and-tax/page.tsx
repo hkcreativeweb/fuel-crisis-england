@@ -9,6 +9,7 @@ import { Alert } from "@/components/ui/Alert";
 import { fuelDutyFigure, vatOnFuelFigure, type TaxFigure } from "@/lib/data/tax-info";
 import { PolicyTimeline } from "@/components/money-flow/PolicyTimeline";
 import { FuelDutyHistoryTable } from "@/components/money-flow/FuelDutyHistoryTable";
+import { PetitionBanner } from "@/components/petition/PetitionBanner";
 
 export const metadata: Metadata = pageMetadata("/fuel-duty-and-tax", {
   title: "Fuel Duty & Tax",
@@ -166,6 +167,7 @@ export default async function FuelDutyAndTaxPage() {
           </div>
         </Container>
       </section>
+      <PetitionBanner variant="demand" tone="slate" />
     </>
   );
 }

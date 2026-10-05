@@ -8,6 +8,7 @@ import { PhotoCredit } from "@/components/ui/PhotoCredit";
 import { AskForEvidenceSection } from "@/components/mp/AskForEvidenceSection";
 import { ShareVerifiedInfoSection } from "@/components/mp/ShareVerifiedInfoSection";
 import { imageCredits } from "@/lib/data/image-credits";
+import { PetitionBanner } from "@/components/petition/PetitionBanner";
 
 const credit = imageCredits.parliament;
 
@@ -57,6 +58,7 @@ export default function GovernmentAccountabilityPage() {
           <ShareVerifiedInfoSection />
         </Container>
       </section>
+      <PetitionBanner variant="demand" tone="slate" />
     </>
   );
 }

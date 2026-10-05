@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Alert } from "@/components/ui/Alert";
 import { NewsHub } from "@/components/news/NewsHub";
 import { feedPublishers, getNews } from "@/lib/server/news-feeds";
+import { PetitionBanner } from "@/components/petition/PetitionBanner";
 
 export const metadata: Metadata = pageMetadata("/news", {
   title: "News",
@@ -66,6 +67,7 @@ export default async function NewsPage() {
           </p>
         </Container>
       </section>
+      <PetitionBanner />
     </>
   );
 }

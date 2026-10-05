@@ -8,6 +8,7 @@ import { FuelCostCalculator } from "@/components/calculator/FuelCostCalculator";
 import { impactGroups } from "@/lib/data/impact-groups";
 import { imageCredits } from "@/lib/data/image-credits";
 import { getLatestUkWeeklyAverage } from "@/lib/data/desnz-weekly-prices";
+import { PetitionBanner } from "@/components/petition/PetitionBanner";
 
 export const metadata: Metadata = pageMetadata("/cost-of-living", {
   title: "Cost-of-Living Impact",
@@ -67,6 +68,7 @@ export default async function ImpactPage() {
           </div>
         </Container>
       </section>
+      <PetitionBanner variant="demand" tone="slate" />
     </>
   );
 }
