@@ -132,7 +132,7 @@ export default async function OurDemandsPage() {
           </Expandable>
         </Container>
       </section>
-      <PetitionBanner />
+      <PetitionBanner variant="crowd" />
     </>
   );
 }

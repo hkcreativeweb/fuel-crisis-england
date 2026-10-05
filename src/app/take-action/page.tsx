@@ -354,7 +354,7 @@ export default async function TakeActionPage() {
 
 
 
-      <PetitionBanner />
+      <PetitionBanner variant="crowd" />
     </>
   );
 }

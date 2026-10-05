@@ -19,6 +19,14 @@ const variants = {
     maxW: "max-w-xl",
     alt: "Demand fuel affordability. Four people hold a banner reading Fuel Crisis England: a public concern, beside a petrol pump. Sign, share, speak up. Target: 25,000 signatures.",
   },
+  crowd: {
+    src: "/images/petition-crowd.webp",
+    width: 1024,
+    height: 559,
+    maxW: "max-w-3xl",
+    alt: "A large crowd gathered outside a building beside a board reading Fuel Crisis England, sign the petition, with a 25,000 signatures target. People hold signs including: Fuel is unaffordable; Heating or driving?; Fair fuel prices now; Share your experience, add your voice.",
+    note: "Illustration, not a photograph of a real event.",
+  },
 } as const;
 
 export function PetitionBanner({
@@ -50,7 +58,7 @@ export function PetitionBanner({
         </Link>
         {showCount ? <PetitionCountLine className={`mx-auto mt-3 ${v.maxW}`} /> : null}
         <p className={`mx-auto mt-2 ${v.maxW} text-xs text-charcoal-600`}>
-          Tap the image to sign. This is Fuel Crisis England&apos;s own petition, not an official UK Parliament petition.
+          {"note" in v ? `${v.note} ` : ""}Tap the image to sign. This is Fuel Crisis England&apos;s own petition, not an official UK Parliament petition.
         </p>
       </Container>
     </section>
