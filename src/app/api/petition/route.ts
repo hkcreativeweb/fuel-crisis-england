@@ -52,7 +52,7 @@ export async function POST(request: Request) {
   if (!email || !EMAIL_RE.test(email)) errors.email = "Enter a valid email address.";
   if (!areaOrCounty) errors.areaOrCounty = "Enter your general area or county.";
   if (!VALID_CATEGORIES.includes(category)) errors.category = "Select an option.";
-  if (!impactSummary || impactSummary.length < 10) errors.impactSummary = "Tell us how fuel prices are affecting you (at least 10 characters).";
+  if (!impactSummary || impactSummary.length < 3) errors.impactSummary = "Tell us how fuel prices are affecting you (at least 3 characters).";
   if (!privacyConsent) errors.privacyConsent = "You must agree to the privacy policy to submit the form.";
 
   if (Object.keys(errors).length > 0) {

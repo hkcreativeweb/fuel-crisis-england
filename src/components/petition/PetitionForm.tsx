@@ -61,7 +61,7 @@ export function PetitionForm() {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) nextErrors.email = "Enter a valid email address.";
     if (!values.areaOrCounty.trim()) nextErrors.areaOrCounty = "Enter your general area or county.";
     if (!values.category) nextErrors.category = "Select an option.";
-    if (values.impactSummary.trim().length < 10) nextErrors.impactSummary = "Tell us how fuel prices are affecting you (at least 10 characters).";
+    if (values.impactSummary.trim().length < 3) nextErrors.impactSummary = "Tell us how fuel prices are affecting you (at least 3 characters).";
     if (!values.privacyConsent) nextErrors.privacyConsent = "You must agree to the privacy policy to submit the form.";
     return nextErrors;
   }
