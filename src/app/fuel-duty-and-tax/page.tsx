@@ -169,7 +169,7 @@ export default async function FuelDutyAndTaxPage() {
           </div>
         </Container>
       </section>
-      <PetitionBanner variant="demand" tone="slate" />
+      <PetitionBanner variant="cost" tone="slate" />
     </>
   );
 }

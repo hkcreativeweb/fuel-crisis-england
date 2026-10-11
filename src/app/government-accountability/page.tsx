@@ -58,7 +58,7 @@ export default function GovernmentAccountabilityPage() {
           <ShareVerifiedInfoSection />
         </Container>
       </section>
-      <PetitionBanner variant="demand" tone="slate" />
+      <PetitionBanner variant="cost" tone="slate" />
     </>
   );
 }

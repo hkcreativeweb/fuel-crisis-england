@@ -9,6 +9,7 @@ import { PhotoFigure } from "@/components/ui/PhotoFigure";
 import { LinkButton } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site-config";
 import { ContactDetails } from "@/components/ui/ContactDetails";
+import { PetitionBanner } from "@/components/petition/PetitionBanner";
 
 const CONTACT_EMAIL = siteConfig.contact.email;
 
@@ -325,6 +326,7 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
+      <PetitionBanner variant="voice" tone="slate" />
     </>
   );
 }

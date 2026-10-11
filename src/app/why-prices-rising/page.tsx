@@ -70,7 +70,7 @@ export default function WhyPricesRisingPage() {
           </LinkButton>
         </Container>
       </section>
-      <PetitionBanner variant="demand" tone="slate" />
+      <PetitionBanner variant="cost" tone="slate" />
     </>
   );
 }

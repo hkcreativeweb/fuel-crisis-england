@@ -6,11 +6,25 @@ import { PetitionCountLine } from "@/components/petition/PetitionCountLine";
 /** A clickable "sign the petition" banner. It links to the sign-up form on /petition. */
 const variants = {
   sign: {
-    src: "/images/sign-the-petition.webp",
-    width: 1024,
-    height: 559,
+    src: "/images/banner-sign-the-petition.webp",
+    width: 1536,
+    height: 838,
     maxW: "max-w-3xl",
-    alt: "Fuel Crisis England: sign the petition. A group of people hold a Fuel Crisis England banner beside a petrol station. Share your experience, add your voice. Sign, share, speak up. Target: 25,000 signatures.",
+    alt: "Fuel Crisis England: sign the petition. Add your voice on fuel affordability. 25,000 signature target. fuelcrisisengland.co.uk. An independent campaign; this is not an official UK Parliament petition.",
+  },
+  voice: {
+    src: "/images/banner-add-your-voice.webp",
+    width: 1536,
+    height: 838,
+    maxW: "max-w-3xl",
+    alt: "Add your voice. Share how fuel costs affect you and sign the Fuel Crisis England petition. Three people hold a banner reading Fuel is unaffordable. 25,000 signature target. fuelcrisisengland.co.uk.",
+  },
+  cost: {
+    src: "/images/banner-cost-of-living.webp",
+    width: 1536,
+    height: 838,
+    maxW: "max-w-3xl",
+    alt: "Fuel affordability is a cost-of-living issue. See the figures, check the sources and share your experience. fuelcrisisengland.co.uk. Independent and evidence-led, not affiliated with any political party.",
   },
   demand: {
     src: "/images/demand-affordability.webp",

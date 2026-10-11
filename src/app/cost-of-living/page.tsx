@@ -68,7 +68,7 @@ export default async function ImpactPage() {
           </div>
         </Container>
       </section>
-      <PetitionBanner variant="demand" tone="slate" />
+      <PetitionBanner variant="cost" tone="slate" />
     </>
   );
 }
