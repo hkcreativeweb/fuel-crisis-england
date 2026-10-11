@@ -82,7 +82,7 @@ export default async function HomePage() {
       <div className="cv-auto"><FuelQuiz {...petrol} /></div>
       <div className="cv-auto"><TheQuestionWeShouldAsk {...petrol} /></div>
       <div className="cv-auto"><PlannedProtestTeaser /></div>
-      <div className="cv-auto"><LatestNewsPreview count={3} /></div>
+      <LatestNewsPreview count={3} />
       <div className="cv-auto"><TakeActionSection /></div>
       <div className="cv-auto"><FinalMessage /></div>
       <VisitCounter showCount={false} />
