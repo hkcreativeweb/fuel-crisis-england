@@ -250,6 +250,9 @@ export function FuelCostCalculator({ prices }: { prices: LiveFuelPrices }) {
           <p>
             <strong>The 10p rise</strong> repeats the same sum with the price 10p higher.
           </p>
+          <p>
+            <strong>Worked example:</strong> 100 miles a week at 40 mpg is 100 ÷ 40 × 4.54609 = 11.4 litres. At {prices.petrol.toFixed(1)}p a litre (the latest UK weekly average for petrol) that is £{((100 / 40) * 4.54609 * prices.petrol / 100).toFixed(2)} a week. The numbers in the boxes above are yours to change.
+          </p>
           <p className="text-xs text-charcoal-600">
             A calculated estimate from the numbers you enter. It doesn&apos;t account for driving style, terrain,
             weather or vehicle condition, and isn&apos;t financial advice. Default prices are the latest UK weekly

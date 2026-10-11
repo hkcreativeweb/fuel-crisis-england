@@ -18,6 +18,7 @@ import { getBrentWeekly, getGbpUsdDaily } from "@/lib/data/market-data";
 import type { LiveIndicator } from "@/lib/data/live-snapshot";
 import { currentYear } from "@/lib/data/yearly-snapshots";
 import { formatDate } from "@/lib/utils";
+import { FuelFinderSection } from "@/components/live/FuelFinderSection";
 
 export const metadata: Metadata = pageMetadata("/live-fuel-prices", {
   title: "Live Fuel Prices",
@@ -82,6 +83,13 @@ export default async function LiveFuelPricesPage() {
           <p className="mt-2 max-w-2xl text-base leading-relaxed text-slate-400">
             Pump prices, Fuel Duty, VAT, crude oil, exchange rates and other indicators are shown with their relevant date and source.
           </p>
+          <p className="mt-2 max-w-2xl text-base leading-relaxed text-slate-300">
+            The petrol and diesel figures are UK weekly average pump prices published by GOV.UK / DESNZ. They are not live prices at individual stations. For station prices, see{" "}
+            <a href="#fuel-finder" className="font-semibold text-white underline underline-offset-2">
+              fuel prices on Google Maps and Waze
+            </a>
+            .
+          </p>
           <aside aria-label="Live does not mean annual average" className="mt-6 max-w-2xl border-l-2 border-sky-400 py-1 pl-4 text-sm leading-relaxed text-slate-200">
             <p className="font-semibold text-white">Live does not mean annual average</p>
             <p className="mt-1">
@@ -136,6 +144,8 @@ export default async function LiveFuelPricesPage() {
           </div>
         </Container>
       </section>
+
+      <FuelFinderSection prices={{ petrol: figures.petrol.current, diesel: figures.diesel.current, dataPeriod: figures.petrol.dataPeriod }} />
 
       <section id="year-in-progress" className="scroll-mt-24 bg-slate-50 py-12 sm:py-14">
         <Container>

@@ -126,7 +126,7 @@ export default async function TakeActionPage() {
                 <span className="ml-1 text-base font-bold text-charcoal-500">p/litre</span>
               </p>
               <p className="mt-2 text-sm text-charcoal-700">
-                {nextDuty ? `Confirmed to change to ${nextDuty.ratePencePerLitre?.toFixed(2)}p from ${formatDate(nextDuty.date)}.` : "No further change currently confirmed."}
+                {nextDuty ? `Scheduled to change to ${nextDuty.ratePencePerLitre?.toFixed(2)}p from ${formatDate(nextDuty.date)} (final rate to be confirmed at Budget 2026).` : "No further change currently scheduled."}
               </p>
               <p className="mt-1 text-xs text-charcoal-500">In force since {duty ? formatDate(duty.date) : "—"}</p>
             </Card>

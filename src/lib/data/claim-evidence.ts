@@ -69,9 +69,9 @@ export async function getClaimEvidence(): Promise<ClaimEvidence[]> {
       shows: `Fuel Duty has been ${dutyRate}p a litre since ${since ? formatDate(since.date) : "its last change"}${
         previousRate !== null ? `, when it was ${previousRate > dutyRate ? "cut" : "raised"} from ${previousRate}p` : ""
       }. It has not changed since.${
-        upcoming.length ? ` Increases are now confirmed in law: ${upcoming.map((e) => `${e.ratePencePerLitre}p from ${formatDate(e.date)}`).join(", then ")}.` : ""
+        upcoming.length ? ` Increases are scheduled under current legislation (final rates to be confirmed at Budget 2026): ${upcoming.map((e) => `${e.ratePencePerLitre}p from ${formatDate(e.date)}`).join(", then ")}.` : ""
       }`,
-      context: "Whether a rate is current, confirmed or only proposed is labelled on the full Fuel Duty timeline.",
+      context: "Whether a rate is current, scheduled or only proposed is labelled on the full Fuel Duty timeline.",
       date: duty ? duty.title : "Current rate",
       source: { name: duty?.source ?? "GOV.UK", url: duty?.sourceUrl ?? "https://www.gov.uk" },
     },

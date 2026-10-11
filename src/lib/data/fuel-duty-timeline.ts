@@ -101,8 +101,9 @@ export const fuelDutyTimeline: FuelDutyPolicyEvent[] = [
     id: "2027-01-announced",
     date: "2027-01-01",
     status: "announced",
-    title: "Confirmed rate change: 1 January 2027",
-    description: "SI 2026/555 confirms the rate rises to 55.95 pence per litre from this date, a partial unwinding of the 2022 cut.",
+    title: "Scheduled rate change: 1 January 2027 (final rate to be confirmed at Budget 2026)",
+    description:
+      "Under the current legislative default the rate rises to 55.95 pence per litre from this date, a partial unwinding of the 2022 cut. GOV.UK says the government will confirm final rates at Budget 2026, so this is a scheduled rate, not a final one.",
     ratePencePerLitre: 55.95,
     source: "GOV.UK, Amended Fuel Duty rates: 2026 to 2027",
     sourceUrl: AMENDED_RATES_2026_27,
@@ -112,9 +113,9 @@ export const fuelDutyTimeline: FuelDutyPolicyEvent[] = [
     id: "2027-03-announced",
     date: "2027-03-01",
     status: "announced",
-    title: "Confirmed rate change: 1 March 2027",
+    title: "Scheduled rate change: 1 March 2027 (final rate to be confirmed at Budget 2026)",
     description:
-      "SI 2026/555 confirms the rate rises to 57.95 pence per litre from this date, a full return to the rate that applied before the March 2022 cut.",
+      "Under the current legislative default the rate rises to 57.95 pence per litre from this date, a full return to the rate that applied before the March 2022 cut. As above, the government says final rates will be confirmed at Budget 2026.",
     ratePencePerLitre: 57.95,
     source: "GOV.UK, Amended Fuel Duty rates: 2026 to 2027",
     sourceUrl: AMENDED_RATES_2026_27,

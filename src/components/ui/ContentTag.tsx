@@ -7,7 +7,9 @@ export type ContentTagType =
   | "illustrative-scenario"
   | "campaign-proposal"
   | "campaign-commentary"
-  | "public-opinion";
+  | "public-opinion"
+  | "official-fact"
+  | "government-claim";
 
 const labels: Record<ContentTagType, string> = {
   "verified-figure": "Verified financial figure",
@@ -17,6 +19,8 @@ const labels: Record<ContentTagType, string> = {
   "campaign-proposal": "FCE campaign proposal",
   "campaign-commentary": "Campaign commentary",
   "public-opinion": "Public opinion",
+  "official-fact": "Official fact",
+  "government-claim": "Government claim, not independently verified",
 };
 
 const dotClasses: Record<ContentTagType, string> = {
@@ -27,6 +31,8 @@ const dotClasses: Record<ContentTagType, string> = {
   "campaign-proposal": "bg-petrol-500",
   "campaign-commentary": "bg-petrol-500",
   "public-opinion": "bg-slate-400",
+  "official-fact": "bg-emerald-600",
+  "government-claim": "bg-sky-600",
 };
 
 /** A typographic content-type label — dot + small caps text, not a filled pill. */

@@ -13,6 +13,7 @@ import {
 } from "@/lib/data/hero-fuel-snapshot";
 import { formatDate, cn } from "@/lib/utils";
 import { CopyFigure } from "@/components/ui/CopyFigure";
+import { CountUp } from "@/components/ui/CountUp";
 
 /** Weekly movement in words as well as an arrow, so it never relies on the symbol alone. */
 function Trend({ figure, unit }: { figure: WeeklyFigure; unit: "p" | "$" }) {
@@ -54,7 +55,7 @@ export function UkPriceCards({ ukWeekly }: { ukWeekly: Record<FuelType, WeeklyFi
             <Link href="/live-fuel-prices" className="group block">
               <h3 className="text-sm font-bold uppercase tracking-[0.12em] text-charcoal-600 group-hover:text-petrol-600">{label}</h3>
               <p className="mt-1.5 text-5xl font-extrabold tabular-nums text-navy-900 transition-colors group-hover:text-petrol-600">
-                {figure.current.toFixed(1)}
+                <CountUp value={figure.current} decimals={1} />
                 <span className="ml-1 text-lg font-bold text-charcoal-500">p/L</span>
               </p>
             </Link>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useId } from "react";
+import { useId, useState } from "react";
 import type { FuelPricePoint } from "@/lib/types";
 import { DataStatusBadge } from "@/components/ui/DataStatusBadge";
 import { Alert } from "@/components/ui/Alert";
@@ -23,13 +23,23 @@ function buildPath(points: FuelPricePoint[], key: "petrolPencePerLitre" | "diese
     .join(" ");
 }
 
+type Series = "both" | "petrol" | "diesel";
+const seriesOptions: { id: Series; label: string }[] = [
+  { id: "both", label: "Both" },
+  { id: "petrol", label: "Petrol" },
+  { id: "diesel", label: "Diesel" },
+];
+
 export function FuelPriceChart({ realData }: { realData: FuelPricePoint[] }) {
   const gradientId = useId();
+  const [series, setSeries] = useState<Series>("both");
+  const showPetrol = series !== "diesel";
+  const showDiesel = series !== "petrol";
 
   const data = realData;
   const hasData = data.length > 0;
 
-  const allValues = hasData ? data.flatMap((p) => [p.petrolPencePerLitre, p.dieselPencePerLitre]) : [];
+  const allValues = hasData ? data.flatMap((p) => [...(showPetrol ? [p.petrolPencePerLitre] : []), ...(showDiesel ? [p.dieselPencePerLitre] : [])]) : [];
   const min = hasData ? Math.min(...allValues) - 3 : 0;
   const max = hasData ? Math.max(...allValues) + 3 : 1;
 
@@ -42,7 +52,20 @@ export function FuelPriceChart({ realData }: { realData: FuelPricePoint[] }) {
 
       {hasData ? (
         <>
-          <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} role="img" aria-label="Line chart of petrol and diesel prices over time" className="mt-4 w-full">
+          <div role="group" aria-label="Fuel shown on the chart" className="mt-4 inline-flex rounded-md border border-slate-300 p-0.5">
+            {seriesOptions.map((o) => (
+              <button
+                key={o.id}
+                type="button"
+                aria-pressed={series === o.id}
+                onClick={() => setSeries(o.id)}
+                className={"min-h-11 rounded px-4 text-sm font-semibold transition-colors " + (series === o.id ? "bg-navy-900 text-white" : "text-charcoal-700 hover:bg-slate-100")}
+              >
+                {o.label}
+              </button>
+            ))}
+          </div>
+          <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} role="img" aria-label={`Line chart of ${series === "both" ? "petrol and diesel" : series} prices over time`} className="mt-4 w-full">
             <defs>
               <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#d62828" stopOpacity="0.18" />
@@ -63,9 +86,13 @@ export function FuelPriceChart({ realData }: { realData: FuelPricePoint[] }) {
               );
             })}
 
-            <path d={`${buildPath(data, "petrolPencePerLitre", min, max)} L${WIDTH - PADDING.right},${HEIGHT - PADDING.bottom} L${PADDING.left},${HEIGHT - PADDING.bottom} Z`} fill={`url(#${gradientId})`} stroke="none" />
-            <path d={buildPath(data, "petrolPencePerLitre", min, max)} fill="none" stroke="#d62828" strokeWidth="2.5" />
-            <path d={buildPath(data, "dieselPencePerLitre", min, max)} fill="none" stroke="#111827" strokeWidth="2.5" strokeDasharray="5 4" />
+            {showPetrol ? (
+              <>
+                <path d={`${buildPath(data, "petrolPencePerLitre", min, max)} L${WIDTH - PADDING.right},${HEIGHT - PADDING.bottom} L${PADDING.left},${HEIGHT - PADDING.bottom} Z`} fill={`url(#${gradientId})`} stroke="none" />
+                <path d={buildPath(data, "petrolPencePerLitre", min, max)} fill="none" stroke="#d62828" strokeWidth="2.5" />
+              </>
+            ) : null}
+            {showDiesel ? <path d={buildPath(data, "dieselPencePerLitre", min, max)} fill="none" stroke="#111827" strokeWidth="2.5" strokeDasharray="5 4" /> : null}
 
             {data.map((p, i) => {
               const innerW = WIDTH - PADDING.left - PADDING.right;
@@ -79,12 +106,16 @@ export function FuelPriceChart({ realData }: { realData: FuelPricePoint[] }) {
           </svg>
 
           <div className="mt-4 flex flex-wrap items-center gap-5 text-xs font-semibold text-charcoal-700">
-            <span className="inline-flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-full bg-petrol-500" /> Petrol
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <span className="h-2.5 w-4 border-t-2 border-dashed border-navy-900" /> Diesel
-            </span>
+            {showPetrol ? (
+              <span className="inline-flex items-center gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-petrol-500" /> Petrol
+              </span>
+            ) : null}
+            {showDiesel ? (
+              <span className="inline-flex items-center gap-1.5">
+                <span className="h-2.5 w-4 border-t-2 border-dashed border-navy-900" /> Diesel
+              </span>
+            ) : null}
           </div>
           <p className="mt-3 text-xs leading-relaxed text-charcoal-600">
             UK weekly average pump prices, pence per litre, one point per month (latest week in each month).

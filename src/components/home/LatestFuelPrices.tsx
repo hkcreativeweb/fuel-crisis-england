@@ -11,7 +11,7 @@ export async function LatestFuelPrices() {
   return (
     <section id="latest-prices" className="scroll-mt-24 border-b border-slate-200 bg-white py-8 sm:py-14">
       <Container>
-        <SectionHeading eyebrow="Now" title="Latest fuel prices" description="Latest available UK pump-price data from GOV.UK / DESNZ." />
+        <SectionHeading eyebrow="Now" title="Latest fuel prices" description="UK national weekly average pump prices from GOV.UK / DESNZ. These are averages, not live prices at any one station." />
         <div className="mt-6">
           <UkPriceCards ukWeekly={figures} />
         </div>

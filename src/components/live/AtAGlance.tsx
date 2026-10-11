@@ -119,7 +119,7 @@ export async function AtAGlance() {
                 <span className="ml-1 text-sm font-bold text-charcoal-500">p/L</span>
               </p>
               <p className="mt-1 text-xs text-charcoal-600">
-                {nextDuty ? `Next confirmed change: ${nextDuty.ratePencePerLitre}p from ${formatDate(nextDuty.date)}.` : "No further change currently confirmed."}
+                {nextDuty ? `Next scheduled change: ${nextDuty.ratePencePerLitre}p from ${formatDate(nextDuty.date)} (final rate to be confirmed at Budget 2026).` : "No further change currently scheduled."}
               </p>
               <p className="mt-1 text-xs text-charcoal-600">
                 Source: <Source name={duty.source} url={duty.sourceUrl} />

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
+import { PhotoBand } from "@/components/ui/PhotoBand";
+import { PhotoFigure } from "@/components/ui/PhotoFigure";
+import { PetrolDieselCompare } from "@/components/fuel-prices/PetrolDieselCompare";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { DataStatusBadge } from "@/components/ui/DataStatusBadge";
 import { Alert } from "@/components/ui/Alert";
@@ -28,8 +31,7 @@ export default async function FuelPricesPage() {
 
   return (
     <>
-      <section className="bg-navy-950 py-14 sm:py-16">
-        <Container>
+      <PhotoBand id="forecourt-asda" position="object-[50%_55%]">
           <SectionHeading as="h1"
             tone="dark"
             eyebrow="Fuel price dashboard"
@@ -37,8 +39,14 @@ export default async function FuelPricesPage() {
             description="Official UK weekly average pump prices from GOV.UK, checked for updates every few hours. These are national averages, not the price at any single station."
           />
           <FuelPricesUpdated className="mt-4 text-slate-300" />
-        </Container>
-      </section>
+          <p className="mt-3 max-w-2xl text-sm text-slate-300">
+            For the price at a particular station, use Google Maps or Waze.{" "}
+            <a href="/live-fuel-prices#fuel-finder" className="font-semibold text-white underline underline-offset-2">
+              How fuel prices on those apps work
+            </a>
+            .
+          </p>
+      </PhotoBand>
 
       <section className="bg-slate-50 py-14 sm:py-16">
         <Container>
@@ -70,6 +78,15 @@ export default async function FuelPricesPage() {
               </div>
             </div>
           )}
+        </Container>
+      </section>
+
+      <section className="bg-white py-14 sm:py-16">
+        <Container>
+          <div className="grid items-start gap-8 lg:grid-cols-2">
+            <PhotoFigure id="hero-petrol-station" caption="A forecourt price sign photographed in May 2026, showing 164.9p unleaded and 182.9p diesel. It is a past price, shown to illustrate what a price display looks like. Today's averages are beside it." />
+            <PetrolDieselCompare petrol={weekly.petrol} diesel={weekly.diesel} />
+          </div>
         </Container>
       </section>
 

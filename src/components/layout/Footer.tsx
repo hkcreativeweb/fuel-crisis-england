@@ -54,7 +54,7 @@ const linkClass = "inline-flex min-h-9 sm:min-h-8 items-center text-slate-400 ho
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-white/10 bg-navy-950 text-slate-300">
+    <footer className="border-t-2 border-petrol-500/70 bg-navy-950 text-slate-300">
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
         <div className="grid gap-5 lg:grid-cols-[1.1fr_2.6fr] lg:gap-12">
           <div>

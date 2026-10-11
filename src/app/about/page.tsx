@@ -4,6 +4,8 @@ import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { PhotoBand } from "@/components/ui/PhotoBand";
+import { PhotoFigure } from "@/components/ui/PhotoFigure";
 import { LinkButton } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site-config";
 import { ContactDetails } from "@/components/ui/ContactDetails";
@@ -67,8 +69,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-navy-950 py-16 sm:py-20">
-        <Container>
+      <PhotoBand id="high-street-london" className="py-16 sm:py-20" position="object-[50%_40%]">
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-petrol-300">About Fuel Crisis England</p>
           <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
           <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Evidence before opinion.</h1>
@@ -82,8 +83,7 @@ export default function AboutPage() {
             the numbers for themselves.
           </p>
           <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Data &bull; Context &bull; Transparency &bull; Public information</p>
-        </Container>
-      </section>
+      </PhotoBand>
 
       {/* Quick answers */}
       <section aria-label="Quick answers" className="border-b border-slate-200 bg-slate-50 py-10 sm:py-12">
@@ -109,10 +109,13 @@ export default function AboutPage() {
       <section className="bg-white py-16 sm:py-20">
         <Container>
           <SectionHeading number="01" eyebrow="Our purpose" title="What this website is for" rule />
-          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-charcoal-700 sm:text-base">
-            Fuel prices can look like a single number on a forecourt sign, but that number is influenced by
-            multiple parts of the economy. Our purpose is to make those parts easier to understand.
-          </p>
+          <div className="mt-6 grid items-start gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10">
+            <p className="max-w-2xl text-sm leading-relaxed text-charcoal-700 sm:text-base">
+              Fuel prices can look like a single number on a forecourt sign, but that number is influenced by
+              multiple parts of the economy. Our purpose is to make those parts easier to understand.
+            </p>
+            <PhotoFigure id="high-street-erdington" aspect="aspect-[16/8]" sizes="(min-width: 1024px) 420px, 100vw" caption="Everyday costs, from the forecourt to the high street. An illustrative photo, not a campaign event." />
+          </div>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {purposes.map((p) => (
               <div key={p} className="rounded-md border border-slate-200 px-4 py-3">

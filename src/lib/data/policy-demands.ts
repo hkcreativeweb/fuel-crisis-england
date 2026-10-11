@@ -20,8 +20,8 @@ export const policyDemands: PolicyDemand[] = [
     description:
       "Maintain Fuel Duty at a level that recognises the financial pressure placed on motorists, households and businesses, particularly during periods of exceptionally high fuel prices.",
     supportingPoints: [
-      "The current rate is 52.95 pence per litre, in force since 15 June 2026 and confirmed to run to 31 December 2026.",
-      "Two future rate changes are already confirmed in legislation: 55.95p from 1 January 2027, then 57.95p from 1 March 2027 — these are officially confirmed, not FCE estimates.",
+      "The current rate is 52.95 pence per litre, in force since 15 June 2026 and set to run to 31 December 2026 (GOV.UK, Amended Fuel Duty rates, published 22 May 2026).",
+      "The scheduled rates under current legislation are 55.95p from 1 January 2027, then 57.95p from 1 March 2027. GOV.UK describes this as a legislative default and says the government will confirm final rates at Budget 2026, so these figures are scheduled, not final.",
       "Fuel Duty is a fixed tax set by government, charged per litre before VAT is applied, so a rate change also has a knock-on effect via VAT.",
       "This does not claim Fuel Duty is the only reason fuel is expensive — wholesale costs, VAT and retailer margins also affect the pump price.",
     ],

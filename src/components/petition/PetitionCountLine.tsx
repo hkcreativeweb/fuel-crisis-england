@@ -9,7 +9,7 @@ import { formatNumber } from "@/lib/utils";
  * Redis counter as the petition page, fetched when the page loads so it stays live on cached pages.
  * Nothing is shown until a real figure arrives: never an estimate.
  */
-export function PetitionCountLine({ className }: { className?: string }) {
+export function PetitionCountLine({ className, tone = "light" }: { className?: string; tone?: "light" | "dark" }) {
   const [count, setCount] = useState<number | null>(null);
   const target = siteConfig.petitionTarget;
 
@@ -34,11 +34,11 @@ export function PetitionCountLine({ className }: { className?: string }) {
         <p className="min-h-5 text-sm font-semibold text-charcoal-700">&nbsp;</p>
       ) : (
         <>
-          <p className="text-sm font-semibold text-navy-900">
+          <p className={"text-sm font-semibold " + (tone === "dark" ? "text-white" : "text-navy-900")}>
             <span className="tabular-nums">{formatNumber(count)}</span> of <span className="tabular-nums">{formatNumber(target)}</span> signed
           </p>
           <div
-            className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-slate-200"
+            className={"mt-1.5 h-1.5 w-full overflow-hidden rounded-full " + (tone === "dark" ? "bg-white/20" : "bg-slate-200")}
             role="progressbar"
             aria-valuenow={Math.round(progress)}
             aria-valuemin={0}

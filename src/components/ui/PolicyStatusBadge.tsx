@@ -4,7 +4,7 @@ import type { PolicyStatus } from "@/lib/types";
 const labels: Record<PolicyStatus, string> = {
   current: "Current rate",
   previous: "Previous rate",
-  announced: "Announced future rate",
+  announced: "Scheduled future rate",
   proposed: "Proposed — not yet confirmed",
 };
 

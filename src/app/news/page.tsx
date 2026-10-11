@@ -48,6 +48,16 @@ export default async function NewsPage() {
             </p>
           ) : null}
 
+          <aside aria-label="Related on this site" className="mt-6 max-w-3xl rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm leading-relaxed text-charcoal-700">
+            <p className="font-semibold text-navy-900">In the news: fuel prices on Google Maps and Waze</p>
+            <p className="mt-1">
+              Petrol and diesel prices from the government&apos;s Fuel Finder scheme launched on both apps on 8 October 2026. See{" "}
+              <a href="/live-fuel-prices#fuel-finder" className="font-semibold text-petrol-600 underline underline-offset-2">what it does and doesn&apos;t change</a>, the{" "}
+              <a href="/live-fuel-prices" className="font-semibold text-petrol-600 underline underline-offset-2">latest weekly price data</a> and{" "}
+              <a href="/our-demands" className="font-semibold text-petrol-600 underline underline-offset-2">our policy demands</a>.
+            </p>
+          </aside>
+
           <div className="mt-8">
             {ok && articles.length > 0 ? (
               <NewsHub articles={articles} />

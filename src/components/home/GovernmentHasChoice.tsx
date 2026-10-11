@@ -11,7 +11,7 @@ import { formatDate } from "@/lib/utils";
  * campaign proposals.
  */
 export function GovernmentHasChoice() {
-  // Chosen by date, not status label, so a confirmed change moves into "current policy" on the day it takes effect.
+  // Chosen by date, not status label, so a scheduled change moves into "current policy" on the day it takes effect.
   const today = new Date().toISOString().slice(0, 10);
   const dated = fuelDutyTimeline.filter((e) => e.ratePencePerLitre !== null).sort((a, b) => a.date.localeCompare(b.date));
   const current = [...dated].reverse().find((e) => e.date <= today);
@@ -32,7 +32,7 @@ export function GovernmentHasChoice() {
       source: current,
     },
     confirmed.length > 0 && {
-      label: "Confirmed changes",
+      label: "Scheduled changes (final rates to be confirmed at Budget 2026)",
       body: (
         <ul className="space-y-1">
           {confirmed.map((e) => (
@@ -58,8 +58,8 @@ export function GovernmentHasChoice() {
         <SectionHeading
           tone="dark"
           eyebrow="Policy"
-          title="Fuel Duty: what is actually confirmed?"
-          description="Fuel Duty is a fixed tax per litre, set by government. Below: what is in force, what is already confirmed in law, and what is only a stated intention."
+          title="Fuel Duty: what is in force, and what is only scheduled?"
+          description="Fuel Duty is a fixed tax per litre, set by government. Below: what is in force, what is scheduled under current legislation (final rates to be confirmed at Budget 2026), and what is only a stated intention."
         />
 
         <div className="mt-10 grid gap-4 md:grid-cols-3">

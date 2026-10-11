@@ -62,6 +62,14 @@ export type NewsArticle = {
  */
 export const newsArticles: NewsArticle[] = [
   {
+    source: "GOV.UK",
+    title: "Drivers set to save as petrol prices launch on Google Maps",
+    date: "2026-10-08",
+    summary:
+      "The Department for Energy Security and Net Zero and HM Treasury announce that Google Maps and Waze now show petrol and diesel prices from the government's Fuel Finder scheme. The release says the scheme covers around 99% of fuel sold and could save a car-owning household about £40 a year on average. These are government claims.",
+    url: "https://www.gov.uk/government/news/drivers-set-to-save-as-petrol-prices-launch-on-google-maps",
+  },
+  {
     source: "RAC",
     title: "UK diesel price hits new record high of £2 a litre",
     date: "2026-10-02",

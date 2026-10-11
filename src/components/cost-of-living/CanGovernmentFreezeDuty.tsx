@@ -32,7 +32,7 @@ export function CanGovernmentFreezeDuty() {
         <div className="rounded-md bg-sky-50 p-4">
           <PolicyStatusBadge status="announced" />
           <p className="mt-2 text-xl font-extrabold tabular-nums text-navy-900">{announced?.ratePencePerLitre?.toFixed(2)}p</p>
-          <p className="text-xs text-charcoal-600">From 1 January 2027</p>
+          <p className="text-xs text-charcoal-600">Scheduled from 1 January 2027; final rate to be confirmed at Budget 2026</p>
         </div>
         <div className="rounded-md bg-petrol-50 p-4">
           <ContentTag type="campaign-commentary" />

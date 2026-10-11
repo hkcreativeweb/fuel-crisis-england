@@ -8,11 +8,11 @@ const londonDate = (iso: string) => new Intl.DateTimeFormat("en-GB", { day: "num
  * A quiet "Last updated" line for the top of the homepage. It reads the same central price record as the
  * "Fuel prices updated" line further down (the last successful automatic check), so the two never disagree.
  */
-export async function LastUpdatedLine({ className }: { className?: string }) {
+export async function LastUpdatedLine({ className, tone = "light" }: { className?: string; tone?: "light" | "dark" }) {
   const prices = await getCurrentFuelPrices();
   const date = prices.lastSuccessfulUpdate ? londonDate(prices.lastSuccessfulUpdate) : formatDate(prices.petrol.updatedAt);
   return (
-    <p className={cn("text-xs text-charcoal-600", className)}>
+    <p className={cn("text-xs", tone === "dark" ? "text-slate-300" : "text-charcoal-600", className)}>
       Last updated: <time dateTime={(prices.lastSuccessfulUpdate ?? prices.petrol.updatedAt).slice(0, 10)}>{date}</time>
     </p>
   );

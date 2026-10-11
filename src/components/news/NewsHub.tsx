@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { NewsCard, type NewsCardArticle } from "@/components/news/NewsCard";
+import { PhotoCredit } from "@/components/ui/PhotoCredit";
+import { imageCredits } from "@/lib/data/image-credits";
 import { cn } from "@/lib/utils";
 
 type Article = NewsCardArticle & { topics: string[]; section: "Fuel" | "Food" | "Economy" };
@@ -17,6 +19,23 @@ const SECTIONS: { key: Article["section"]; id: string; title: string; blurb: str
 ];
 
 const STEP = 6;
+
+/**
+ * Illustrative topic photos. Every card gets one so the page reads as a consistent grid; they rotate so neighbouring cards differ.
+ * They are decorative and never claim to show the story itself.
+ */
+const TOPIC_IMAGES: Record<string, string[]> = {
+  Fuel: ["forecourt-asda", "forecourt-wentworth", "forecourt-close", "hero-petrol-station"],
+  "Food & Groceries": ["supermarket-aisle", "delivery-van"],
+  "Cost of Living": ["high-street-erdington", "community-notice-board", "commute-traffic"],
+  Economy: ["high-street-london", "parliament"],
+  Transport: ["motorway-traffic", "bus-stop", "rural-lane"],
+};
+
+function imageFor(a: { topics: string[] }, index: number) {
+  const list = TOPIC_IMAGES[a.topics[0]] ?? TOPIC_IMAGES.Fuel;
+  return imageCredits[list[index % list.length]];
+}
 
 function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
@@ -120,9 +139,9 @@ export function NewsHub({ articles }: { articles: Article[] }) {
               <h2 className="text-2xl font-extrabold text-navy-900">{section.title}</h2>
               <p className="mt-2 max-w-3xl text-sm text-charcoal-600">{section.blurb}</p>
               <ul className="mt-5 grid gap-4 sm:grid-cols-2">
-                {items.slice(0, n).map((a) => (
-                  <li key={a.url}>
-                    <NewsCard article={{ ...a, category: a.topics[0] }} />
+                {items.slice(0, n).map((a, i) => (
+                  <li key={a.url} className={i === 0 ? "sm:col-span-2" : undefined}>
+                    <NewsCard article={{ ...a, category: a.topics[0] }} image={imageFor(a, i)} lead={i === 0} />
                   </li>
                 ))}
               </ul>
@@ -134,15 +153,25 @@ export function NewsHub({ articles }: { articles: Article[] }) {
         <section className="mt-10">
           <h2 className="text-2xl font-extrabold text-navy-900">{topic}</h2>
           <ul className="mt-5 grid gap-4 sm:grid-cols-2">
-            {matches.slice(0, limit("flat", 8)).map((a) => (
-              <li key={a.url}>
-                <NewsCard article={{ ...a, category: a.topics[0] }} />
+            {matches.slice(0, limit("flat", 8)).map((a, i) => (
+              <li key={a.url} className={i === 0 ? "sm:col-span-2" : undefined}>
+                <NewsCard article={{ ...a, category: a.topics[0] }} image={imageFor(a, i)} lead={i === 0} />
               </li>
             ))}
           </ul>
           {matches.length > limit("flat", 8) ? <LoadMore onClick={() => more("flat", 8)} /> : null}
         </section>
       )}
+
+      <details className="mt-10 border-t border-slate-200 pt-4">
+        <summary className="min-h-11 cursor-pointer text-[11px] font-semibold uppercase tracking-wide text-charcoal-700">Photo credits and licences</summary>
+        <p className="mt-1 text-xs text-charcoal-600">The photos on these cards are illustrative and do not show the stories themselves.</p>
+        <div className="mt-2 space-y-0.5">
+          {[...new Set(Object.values(TOPIC_IMAGES).flat())].map((id) => (
+            <PhotoCredit key={id} credit={imageCredits[id]} tone="light" />
+          ))}
+        </div>
+      </details>
     </div>
   );
 }

@@ -151,7 +151,7 @@ export default async function FuelDutyAndTaxPage() {
             tone="dark"
             eyebrow="Fuel Duty is a policy choice, not a fixed law"
             title="The current era: 2022 to today"
-            description="Fuel Duty rates since the Spring Statement 2022 cut, including confirmed future changes."
+            description="Fuel Duty rates since the Spring Statement 2022 cut, including scheduled future changes (final rates to be confirmed at Budget 2026)."
           />
           <div className="mt-10 max-w-3xl">
             <PolicyTimeline />
