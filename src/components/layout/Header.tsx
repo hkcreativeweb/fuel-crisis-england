@@ -320,8 +320,9 @@ export function Header() {
           scrolled ? "h-14" : "h-[68px]"
         )}
       >
-        <Link href="/" aria-label="FCE Fuel Crisis England — Home" className={cn("shrink-0 rounded-md", focusRing)}>
+        <Link href="/" className={cn("shrink-0 rounded-md", focusRing)}>
           <Logo compact />
+          <span className="sr-only"> — Home</span>
         </Link>
 
         <nav ref={desktopNavRef} aria-label="Main" className="hidden lg:flex lg:items-center lg:gap-0.5 xl:gap-1">

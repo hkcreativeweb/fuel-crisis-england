@@ -189,3 +189,17 @@ export const fuelDutyHistoricalEvents: FuelDutyPolicyEvent[] = [
   { id: "hist-2010-10", date: "2010-10-04", status: "previous", title: "October 2010", description: "Rate increase.", ratePencePerLitre: 58.19, source: "GOV.UK/DESNZ weekly road fuel prices (first weekly report at this rate)", sourceUrl: DESNZ_WEEKLY, verified: true },
   { id: "hist-2011-01", date: "2011-01-03", status: "previous", title: "January 2011", description: "Rate increase, the peak rate before the 2011 Budget cut below.", ratePencePerLitre: 58.95, source: "GOV.UK/DESNZ weekly road fuel prices (first weekly report at this rate)", sourceUrl: DESNZ_WEEKLY, verified: true },
 ];
+
+/**
+ * Budget 2026, the event at which the government says it will confirm final Fuel Duty rates. The date comes from the
+ * Chancellor's letter to the Treasury Committee (HM Treasury, published 31 July 2026). Update `held` and the rates above
+ * only after the published Budget decision has been checked on GOV.UK.
+ */
+export const budget2026 = {
+  date: "2026-10-28",
+  checked: "2026-10-11",
+  held: false,
+  source: "HM Treasury: Chancellor letter to the Treasury Select Committee, Budget 2026 date (31 July 2026)",
+  sourceUrl: "https://www.gov.uk/government/publications/chancellor-letter-to-the-treasury-select-committee-tsc-budget-2026-date",
+  ratesSourceUrl: "https://www.gov.uk/government/publications/amended-fuel-duty-rates-for-2026-to-2027/amended-fuel-duty-rates-2026-to-2027",
+};

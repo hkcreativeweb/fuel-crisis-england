@@ -58,8 +58,9 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
         <div className="grid gap-5 lg:grid-cols-[1.1fr_2.6fr] lg:gap-12">
           <div>
-            <Link href="/" aria-label="FCE Fuel Crisis England — Home" className="inline-block rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-petrol-300">
+            <Link href="/" className="inline-block rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-petrol-300">
               <Logo />
+              <span className="sr-only"> — Home</span>
             </Link>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-400">{siteConfig.independence.short}</p>
             <ContactDetails tone="dark" className="mt-3 text-sm" />

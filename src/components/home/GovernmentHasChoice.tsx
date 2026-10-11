@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
+import { BudgetNote } from "@/components/ui/BudgetNote";
 import { fuelDutyTimeline } from "@/lib/data/fuel-duty-timeline";
 import { formatDate } from "@/lib/utils";
 
@@ -81,7 +82,9 @@ export function GovernmentHasChoice() {
           ))}
         </div>
 
-        <div className="mt-8 flex flex-wrap gap-3">
+        <BudgetNote tone="dark" className="mt-4 max-w-2xl" />
+
+        <div className="mt-6 flex flex-wrap gap-3">
           <LinkButton href="/fuel-duty-and-tax#timeline" variant="outline-light" className="min-h-12">
             See the full Fuel Duty timeline
           </LinkButton>

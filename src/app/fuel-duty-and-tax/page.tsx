@@ -4,6 +4,7 @@ import { fuelDutyPenceOn } from "@/lib/data/pump-price-breakdown";
 import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { BudgetNote } from "@/components/ui/BudgetNote";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Alert } from "@/components/ui/Alert";
 import { fuelDutyFigure, vatOnFuelFigure, type TaxFigure } from "@/lib/data/tax-info";
@@ -153,7 +154,8 @@ export default async function FuelDutyAndTaxPage() {
             title="The current era: 2022 to today"
             description="Fuel Duty rates since the Spring Statement 2022 cut, including scheduled future changes (final rates to be confirmed at Budget 2026)."
           />
-          <div className="mt-10 max-w-3xl">
+          <BudgetNote tone="dark" className="mt-4 max-w-3xl" />
+          <div className="mt-8 max-w-3xl">
             <PolicyTimeline />
           </div>
         </Container>

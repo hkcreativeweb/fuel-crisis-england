@@ -21,20 +21,30 @@ const SECTIONS: { key: Article["section"]; id: string; title: string; blurb: str
 const STEP = 6;
 
 /**
- * Illustrative topic photos. Every card gets one so the page reads as a consistent grid; they rotate so neighbouring cards differ.
- * They are decorative and never claim to show the story itself.
+ * Illustrative topic photos, decorative and never claiming to show the story itself. Each photo is used at most once on the
+ * page: a story gets the first unused photo for its topic, and a story with none left simply has no picture.
  */
 const TOPIC_IMAGES: Record<string, string[]> = {
-  Fuel: ["forecourt-asda", "forecourt-wentworth", "forecourt-close", "hero-petrol-station"],
+  Fuel: ["forecourt-asda", "forecourt-wentworth", "forecourt-close", "hero-petrol-station", "refinery"],
   "Food & Groceries": ["supermarket-aisle", "delivery-van"],
   "Cost of Living": ["high-street-erdington", "community-notice-board", "commute-traffic"],
   Economy: ["high-street-london", "parliament"],
-  Transport: ["motorway-traffic", "bus-stop", "rural-lane"],
+  Transport: ["motorway-traffic", "bus-stop", "rural-lane", "ev-charging-hub"],
 };
 
-function imageFor(a: { topics: string[] }, index: number) {
-  const list = TOPIC_IMAGES[a.topics[0]] ?? TOPIC_IMAGES.Fuel;
-  return imageCredits[list[index % list.length]];
+/** Gives each visible story the first photo for its topic that nothing earlier on the page has used. */
+function assignImages(visible: { url: string; topics: string[] }[]) {
+  const used = new Set<string>();
+  const byUrl = new Map<string, (typeof imageCredits)[string]>();
+  for (const a of visible) {
+    const list = TOPIC_IMAGES[a.topics[0]] ?? TOPIC_IMAGES.Fuel;
+    const id = list.find((x) => !used.has(x));
+    if (id) {
+      used.add(id);
+      byUrl.set(a.url, imageCredits[id]);
+    }
+  }
+  return byUrl;
 }
 
 function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
@@ -79,6 +89,11 @@ export function NewsHub({ articles }: { articles: Article[] }) {
   );
 
   const limit = (key: string, initial: number) => counts[key] ?? initial;
+  const visible =
+    topic === "All News"
+      ? SECTIONS.flatMap((section) => matches.filter((a) => a.section === section.key).slice(0, limit(section.key, STEP)))
+      : matches.slice(0, limit("flat", 8));
+  const images = assignImages(visible);
   const more = (key: string, initial: number) => setCounts((c) => ({ ...c, [key]: (c[key] ?? initial) + STEP }));
   const reset = () => setCounts({});
 
@@ -141,7 +156,7 @@ export function NewsHub({ articles }: { articles: Article[] }) {
               <ul className="mt-5 grid gap-4 sm:grid-cols-2">
                 {items.slice(0, n).map((a, i) => (
                   <li key={a.url} className={i === 0 ? "sm:col-span-2" : undefined}>
-                    <NewsCard article={{ ...a, category: a.topics[0] }} image={imageFor(a, i)} lead={i === 0} />
+                    <NewsCard article={{ ...a, category: a.topics[0] }} image={images.get(a.url)} lead={i === 0} />
                   </li>
                 ))}
               </ul>
@@ -155,7 +170,7 @@ export function NewsHub({ articles }: { articles: Article[] }) {
           <ul className="mt-5 grid gap-4 sm:grid-cols-2">
             {matches.slice(0, limit("flat", 8)).map((a, i) => (
               <li key={a.url} className={i === 0 ? "sm:col-span-2" : undefined}>
-                <NewsCard article={{ ...a, category: a.topics[0] }} image={imageFor(a, i)} lead={i === 0} />
+                <NewsCard article={{ ...a, category: a.topics[0] }} image={images.get(a.url)} lead={i === 0} />
               </li>
             ))}
           </ul>
