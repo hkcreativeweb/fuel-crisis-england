@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState, type FormEvent } from "react";
+import { useId, useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { Alert } from "@/components/ui/Alert";
 import { PetitionThanks } from "@/components/petition/PetitionThanks";
@@ -51,6 +51,17 @@ export function PetitionForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [signatureCount, setSignatureCount] = useState<number | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const formErrorRef = useRef<HTMLDivElement>(null);
+
+  /** Brings the first problem into view, so a failed submit is never silent at the bottom of a long form. */
+  function showFirstProblem() {
+    window.setTimeout(() => {
+      const target = formErrorRef.current?.dataset.hasError === "true" ? formErrorRef.current : formRef.current?.querySelector<HTMLElement>("[aria-invalid=true]");
+      target?.scrollIntoView({ block: "center", behavior: "instant" });
+      target?.focus({ preventScroll: true });
+    }, 50);
+  }
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setValues((v) => ({ ...v, [key]: value }));
@@ -71,7 +82,10 @@ export function PetitionForm() {
     e.preventDefault();
     const clientErrors = validateClientSide();
     setErrors(clientErrors);
-    if (Object.keys(clientErrors).length > 0) return;
+    if (Object.keys(clientErrors).length > 0) {
+      showFirstProblem();
+      return;
+    }
 
     setStatus("submitting");
     try {
@@ -85,6 +99,7 @@ export function PetitionForm() {
       if (!res.ok || !data.success) {
         setErrors(data.errors ?? { form: "Something went wrong. Please try again." });
         setStatus("error");
+        showFirstProblem();
         return;
       }
 
@@ -96,6 +111,7 @@ export function PetitionForm() {
     } catch {
       setStatus("error");
       setErrors({ form: "We couldn't reach the server. Please check your connection and try again." });
+      showFirstProblem();
     }
   }
 
@@ -104,15 +120,13 @@ export function PetitionForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-6">
+    <form ref={formRef} onSubmit={handleSubmit} noValidate className="space-y-6">
       <Alert tone="info" title="How your details are handled">
         Your name, email and postcode are checked but not stored. We keep only a scrambled (hashed) copy of
         your email so the same address can&apos;t sign twice, plus your area, category and message. Nothing
         is published without review. See our{" "}
         <a href="/privacy" className="font-semibold underline underline-offset-2">privacy policy</a>.
       </Alert>
-
-      {errors.form ? <Alert tone="error">{errors.form}</Alert> : null}
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
@@ -280,6 +294,10 @@ export function PetitionForm() {
           .
         </label>
         <FieldError id={`${formId}-privacy-error`} message={errors.privacyConsent} />
+      </div>
+
+      <div ref={formErrorRef} tabIndex={-1} data-has-error={errors.form ? "true" : "false"} className="outline-none">
+        {errors.form ? <Alert tone="error" title="Your signature has not been recorded.">{errors.form}</Alert> : null}
       </div>
 
       <button

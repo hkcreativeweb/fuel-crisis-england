@@ -78,7 +78,7 @@ export async function recordPetitionSubmission(input: {
   const claimed = await redisWithStatus<string | null>(["SET", emailKey(input.email), "1", "NX"]);
   if (!claimed.ok) return { ok: false, status: 503, error: UNAVAILABLE };
   if (claimed.result === null) {
-    return { ok: false, status: 409, error: "This email address has already signed the petition." };
+    return { ok: false, status: 409, error: "This email address has already signed the petition, and each email address can sign once. Please use a different email address, or contact us if you think this is a mistake." };
   }
 
   const submission: PetitionSubmission = {
