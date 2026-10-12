@@ -7,7 +7,7 @@ const WIDTH = 640;
 const HEIGHT = 280;
 const PADDING = { top: 20, right: 16, bottom: 34, left: 52 };
 
-const PALETTE = ["#d62828", "#111827", "#2563eb", "#7c3aed", "#16a34a"];
+const PALETTE = ["#0f7577", "#172033", "#2563eb", "#7c3aed", "#16a34a"];
 
 function buildPath(values: (number | null)[], innerW: number, innerH: number, min: number, max: number) {
   const range = max - min || 1;

@@ -11,6 +11,12 @@ import { PetitionsSection } from "@/components/have-your-say/PetitionsSection";
 export const metadata: Metadata = pageMetadata("/petition", {
   title: "Petition & Share Your Experience",
   description: "Sign FCE's own petition on fuel affordability (not an official UK Parliament petition) and share how rising petrol and diesel prices are affecting you.",
+  image: {
+    url: "/share/petition-card.jpg",
+    width: 1200,
+    height: 630,
+    alt: "Fuel Crisis England: Finding cheaper fuel is useful. Making fuel affordable is the bigger challenge. Sign the petition.",
+  },
 });
 
 export default function PetitionPage() {
@@ -31,6 +37,9 @@ export default function PetitionPage() {
               See official UK Parliament petitions on fuel duty and VAT below
             </a>
             .
+          </p>
+          <p className="mt-5 max-w-2xl border-l-4 border-petrol-400 pl-4 text-base font-bold leading-snug text-white sm:text-lg">
+            Finding cheaper fuel is useful. Making fuel affordable is the bigger challenge. Add your name to ask for further practical action.
           </p>
           <div className="mt-8 max-w-md rounded bg-white/5 p-6">
             <PetitionCounter tone="dark" />

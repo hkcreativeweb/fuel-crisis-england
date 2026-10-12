@@ -34,7 +34,7 @@ function PrimaryLink({ item, pathname }: { item: { label: string; href: string }
       href={item.href}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "flex min-h-11 items-center whitespace-nowrap rounded-md px-2 text-[13px] font-semibold tracking-wide transition-colors hover:text-accent-orange xl:px-3.5",
+        "flex min-h-11 items-center whitespace-nowrap rounded-md px-2 text-[13px] font-semibold tracking-wide transition-colors hover:text-petrol-300 xl:px-3.5",
         active ? "text-white" : "text-slate-300",
         focusRing
       )}
@@ -110,7 +110,7 @@ function DesktopDropdown({
         aria-controls={panelId}
         aria-current={active ? "true" : undefined}
         className={cn(
-          "flex min-h-11 items-center gap-1 whitespace-nowrap rounded-md px-2 text-[13px] font-semibold tracking-wide transition-colors hover:text-accent-orange xl:px-3.5",
+          "flex min-h-11 items-center gap-1 whitespace-nowrap rounded-md px-2 text-[13px] font-semibold tracking-wide transition-colors hover:text-petrol-300 xl:px-3.5",
           active ? "text-white" : "text-slate-300",
           focusRing
         )}
@@ -140,7 +140,7 @@ function DesktopDropdown({
           open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0"
         )}
       >
-        <ul className="max-h-[calc(100dvh-5.5rem)] overflow-y-auto overscroll-contain rounded border border-slate-200 bg-[#F8F7F4] p-2 shadow-lg shadow-navy-950/10">
+        <ul className="max-h-[calc(100dvh-5.5rem)] overflow-y-auto overscroll-contain rounded border border-slate-200 bg-[#FAFAF7] p-2 shadow-lg shadow-navy-950/10">
           {category.items.map((item, i) => {
             const itemActive = pathOf(item.href) === pathname && !item.href.includes("#");
             const showGroup = item.group && item.group !== category.items[i - 1]?.group;
@@ -182,7 +182,7 @@ function MobileCategory({ category, pathname, onNavigate }: { category: Category
         aria-controls={panelId}
         aria-current={active ? "true" : undefined}
         className={cn(
-          "flex min-h-12 w-full items-center justify-between rounded-md px-3 text-left text-base font-semibold transition-colors hover:text-accent-orange",
+          "flex min-h-12 w-full items-center justify-between rounded-md px-3 text-left text-base font-semibold transition-colors hover:text-petrol-300",
           active ? "text-white" : "text-slate-200",
           focusRing
         )}
@@ -364,17 +364,6 @@ export function Header() {
 
         <div className="flex shrink-0 items-center gap-2">
           <Link
-            href="/live-fuel-prices#this-week"
-            className={cn(
-              "hidden min-h-11 items-center gap-1.5 rounded-md px-1 text-xs font-bold uppercase tracking-wider text-accent-live sm:inline-flex",
-              focusRing
-            )}
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-accent-live" aria-hidden="true" />
-            This week
-          </Link>
-
-          <Link
             href={petitionPath}
             aria-label="Sign the petition"
             className={cn(
@@ -432,7 +421,7 @@ export function Header() {
                     onClick={() => closeMobile(false)}
                     aria-current={isLinkActive(entry.href, pathname) ? "page" : undefined}
                     className={cn(
-                      "flex min-h-12 items-center gap-2 rounded-md px-3 text-base font-semibold transition-colors hover:text-accent-orange",
+                      "flex min-h-12 items-center gap-2 rounded-md px-3 text-base font-semibold transition-colors hover:text-petrol-300",
                       isLinkActive(entry.href, pathname) ? "text-white" : "text-slate-200",
                       focusRing
                     )}
@@ -447,11 +436,6 @@ export function Header() {
             )}
           </ul>
           <ul className="mt-4 grid grid-cols-2 gap-x-4">
-            <li className="sm:hidden">
-              <Link href="/live-fuel-prices#this-week" onClick={() => closeMobile(false)} className={cn("flex min-h-11 items-center text-sm font-semibold text-accent-live", focusRing)}>
-                This week
-              </Link>
-            </li>
             {utilityNav.filter((item) => item.href !== "/about" && item.href !== "/contact").map((item) => (
               <li key={item.href}>
                 <Link

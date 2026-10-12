@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const isDev = process.env.NODE_ENV === "development";
+// Local phone testing over plain http (http://192.168.x.x) only: set FCE_LAN_TEST=1 when building. Never set on Vercel.
+const lanTest = process.env.FCE_LAN_TEST === "1";
 
 /*
  * Content Security Policy without nonces (nonces would force every page to
@@ -21,7 +23,7 @@ const contentSecurityPolicy = [
   "base-uri 'self'",
   "form-action 'self'",
   "frame-ancestors 'none'",
-  "upgrade-insecure-requests",
+  ...(lanTest ? [] : ["upgrade-insecure-requests"]),
 ].join("; ");
 
 const securityHeaders = [

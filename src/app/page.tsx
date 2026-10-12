@@ -10,6 +10,7 @@ import { FuelFinderSection } from "@/components/live/FuelFinderSection";
 import { FuelCrisisExplainer } from "@/components/home/FuelCrisisExplainer";
 import { PumpSign } from "@/components/home/PumpSign";
 import { Hero } from "@/components/home/Hero";
+import { CampaignMessage } from "@/components/home/CampaignMessage";
 import { QuestionIsNotJustPrice } from "@/components/home/QuestionIsNotJustPrice";
 import { FollowOneLitreTeaser } from "@/components/home/FollowOneLitreTeaser";
 import { TheBigQuestion } from "@/components/home/TheBigQuestion";
@@ -64,6 +65,7 @@ export default async function HomePage() {
   return (
     <>
       <Hero />
+      <CampaignMessage />
       <LatestFuelPrices />
       <FuelCrisisExplainer />
       <FuelFinderSection compact />

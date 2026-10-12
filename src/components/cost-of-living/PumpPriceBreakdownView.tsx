@@ -10,7 +10,7 @@ import { findGlossaryTerm } from "@/lib/data/glossary";
 import { formatDate } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
-const COLORS = ["#111827", "#d62828", "#ef4444", "#94a3b8"];
+const COLORS = ["#172033", "#0f7577", "#6fcfd1", "#94a3b8"];
 
 function Breakdown({ breakdown }: { breakdown: PumpPriceBreakdown }) {
   const verifiedComponents = breakdown.components.filter((c) => c.verified && c.approxPercent !== null);

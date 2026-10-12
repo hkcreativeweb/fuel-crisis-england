@@ -4,7 +4,7 @@
   /* Warm White — main page background */
   --background: #fafaf7;
   /* Charcoal — main text */
-  --foreground: #1f2937;
+  --foreground: #172033;
 
   /* Deep Navy scale — navbar, footer, headings, dark/investigative sections.
      --color-navy-900 is the exact FCE "Deep Navy" (#172033). */
@@ -22,8 +22,9 @@
   --color-charcoal-700: #1f2937;
   --color-charcoal-600: #5a667a;
 
-  /* FCE Teal action scale (kept under the legacy petrol-* class names so every CTA and accent follows one palette).
-     -400 is the brand teal #159A9C; -500/-600 are darker shades so white text on buttons and teal text on white pass contrast; -300 is for text on navy. */
+  /* FCE palette: off-white #FAFAF7 (--background), navy #172033 (navy-900), brand teal #159A9C (petrol-400 / accent-teal, decoration),
+     primary buttons and links #0F7577 (petrol-500), hover #0B5F61 (petrol-600), pale teals #EAF7F7 / #C9ECEC (petrol-50 / -100),
+     highlights on dark backgrounds #6FCFD1 (petrol-300). The petrol-* names are legacy; they hold the teal scale. Red is for errors only. */
   --color-petrol-600: #0b5f61;
   --color-petrol-500: #0f7577;
   --color-petrol-400: #159a9c;
@@ -49,7 +50,7 @@
   --color-slate-200: #d9dde2;
 
   /* Section accent colours — each major area of the site carries its own
-     accent while staying within the same Navy + Red + Warm White base
+     accent while staying within the same Navy + Teal + Warm White base
      identity. Used for eyebrow badges, icons and section-level CTAs,
      never for the global navbar/footer chrome. */
   --color-accent-live: #2563eb; /* LIVE / NOW */
@@ -64,8 +65,6 @@
   --color-accent-money: #16a34a; /* FOLLOW THE MONEY */
   --color-accent-save: #0f766e; /* SAVE FUEL & MONEY */
   --color-accent-cost: #ea580c; /* COST OF LIVING */
-  --color-accent-gov: #991b1b; /* GOVERNMENT ACCOUNTABILITY */
-  --color-accent-sources: #475569; /* SOURCES */
 }
 
 @theme inline {
@@ -112,8 +111,6 @@
   --color-accent-money: var(--color-accent-money);
   --color-accent-save: var(--color-accent-save);
   --color-accent-cost: var(--color-accent-cost);
-  --color-accent-gov: var(--color-accent-gov);
-  --color-accent-sources: var(--color-accent-sources);
 }
 
 body {

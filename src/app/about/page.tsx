@@ -168,7 +168,13 @@ export default function AboutPage() {
               Fuel prices can look like a single number on a forecourt sign, but that number is influenced by
               multiple parts of the economy. Our purpose is to make those parts easier to understand.
             </p>
-            <PhotoFigure id="high-street-erdington" aspect="aspect-[16/8]" sizes="(min-width: 1024px) 420px, 100vw" caption="Everyday costs, from the forecourt to the high street. An illustrative photo, not a campaign event." />
+            <figure>
+              <div className="grid grid-cols-2 gap-2">
+                <PhotoFigure id="fuel-pumps-truro" aspect="aspect-[4/5]" sizes="(min-width: 1024px) 210px, 50vw" position="object-right" />
+                <PhotoFigure id="high-street-erdington" aspect="aspect-[4/5]" sizes="(min-width: 1024px) 210px, 50vw" />
+              </div>
+              <figcaption className="mt-2 text-xs leading-snug text-charcoal-600">Everyday costs, from the forecourt to the high street. An illustrative photo, not a campaign event.</figcaption>
+            </figure>
           </div>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {purposes.map((p) => (

@@ -68,8 +68,8 @@ export function FuelPriceChart({ realData }: { realData: FuelPricePoint[] }) {
           <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} role="img" aria-label={`Line chart of ${series === "both" ? "petrol and diesel" : series} prices over time`} className="mt-4 w-full">
             <defs>
               <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#d62828" stopOpacity="0.18" />
-                <stop offset="100%" stopColor="#d62828" stopOpacity="0" />
+                <stop offset="0%" stopColor="#0f7577" stopOpacity="0.18" />
+                <stop offset="100%" stopColor="#0f7577" stopOpacity="0" />
               </linearGradient>
             </defs>
 
@@ -89,10 +89,10 @@ export function FuelPriceChart({ realData }: { realData: FuelPricePoint[] }) {
             {showPetrol ? (
               <>
                 <path d={`${buildPath(data, "petrolPencePerLitre", min, max)} L${WIDTH - PADDING.right},${HEIGHT - PADDING.bottom} L${PADDING.left},${HEIGHT - PADDING.bottom} Z`} fill={`url(#${gradientId})`} stroke="none" />
-                <path d={buildPath(data, "petrolPencePerLitre", min, max)} fill="none" stroke="#d62828" strokeWidth="2.5" />
+                <path d={buildPath(data, "petrolPencePerLitre", min, max)} fill="none" stroke="#0f7577" strokeWidth="2.5" />
               </>
             ) : null}
-            {showDiesel ? <path d={buildPath(data, "dieselPencePerLitre", min, max)} fill="none" stroke="#111827" strokeWidth="2.5" strokeDasharray="5 4" /> : null}
+            {showDiesel ? <path d={buildPath(data, "dieselPencePerLitre", min, max)} fill="none" stroke="#172033" strokeWidth="2.5" strokeDasharray="5 4" /> : null}
 
             {data.map((p, i) => {
               const innerW = WIDTH - PADDING.left - PADDING.right;

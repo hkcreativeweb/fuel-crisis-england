@@ -45,6 +45,9 @@ export default async function OurDemandsPage() {
             set out specific policy questions and requests based on publicly available evidence. Governments
             and regulators can choose how to respond, and visitors can make up their own minds.
           </p>
+          <p className="mt-6 max-w-2xl border-l-4 border-petrol-400 pl-4 text-lg font-extrabold leading-snug text-white sm:text-xl">
+            Finding cheaper fuel is useful. Making fuel affordable is the bigger challenge.
+          </p>
           <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-petrol-300">7 policy demands · Evidence-led · Illustrative modelling</p>
           <div className="mt-6">
             <LinkButton href="/ask-your-mp" size="lg">

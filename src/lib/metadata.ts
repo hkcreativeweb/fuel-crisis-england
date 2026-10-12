@@ -15,7 +15,8 @@ const shareImage = {
   alt: "Fuel Crisis England: Fuel isn't just a number on a pump.",
 };
 
-export function pageMetadata(path: string, { title, description }: { title: string; description: string }): Metadata {
+export function pageMetadata(path: string, { title, description, image }: { title: string; description: string; image?: typeof shareImage }): Metadata {
+  const card = image ?? shareImage;
   const fullTitle = `${title} | ${siteConfig.brandShort}`;
   return {
     title,
@@ -28,8 +29,8 @@ export function pageMetadata(path: string, { title, description }: { title: stri
       siteName: siteConfig.fullBrand,
       locale: siteConfig.locale,
       type: "website",
-      images: [shareImage],
+      images: [card],
     },
-    twitter: { card: "summary_large_image", title: fullTitle, description, images: [shareImage] },
+    twitter: { card: "summary_large_image", title: fullTitle, description, images: [card] },
   };
 }

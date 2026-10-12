@@ -9,9 +9,9 @@ import type { PumpPriceBreakdown } from "@/lib/types";
 const AMOUNTS = [10, 20, 30, 50, 100];
 
 const GROUP_COLORS: Record<string, string> = {
-  Government: "#111827",
-  "Oil & energy industry": "#d62828",
-  Retail: "#ef4444",
+  Government: "#172033",
+  "Oil & energy industry": "#0f7577",
+  Retail: "#6fcfd1",
 };
 
 export function FollowTheMoneyFlow({ defaultAmount = 50, currentBreakdown }: { defaultAmount?: number; currentBreakdown: PumpPriceBreakdown }) {

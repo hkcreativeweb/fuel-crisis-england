@@ -35,7 +35,7 @@ export default function SaveMoneyPage() {
           <div className="absolute inset-0 bg-navy-950/80" />
         </div>
         <Container className="relative">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-teal-300">Protect your household today</p>
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-petrol-300">Protect your household today</p>
           <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
           <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Save Fuel. Save Money.</h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">

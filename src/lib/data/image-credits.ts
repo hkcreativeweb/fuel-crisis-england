@@ -177,6 +177,16 @@ export const imageCredits: Record<string, ImageCredit> = {
     license: "CC BY-SA 2.0",
     licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
   },
+  "fuel-pumps-truro": {
+    id: "fuel-pumps-truro",
+    src: "/images/photos/fuel-pumps-truro.webp",
+    alt: "Rows of fuel pumps with nozzles, price displays and grade labels (V-Power, Unleaded, Diesel) under the canopy of a Shell petrol station in Truro, Cornwall.",
+    photographer: "Mutney",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Fuel_pumps,_Shell_petrol_station,_Trafalgar_Roundabout,_Truro,_Cornwall_-_August_2023.jpg",
+    license: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+  },
   "delivery-van": {
     id: "delivery-van",
     src: "/images/photos/delivery-van.webp",

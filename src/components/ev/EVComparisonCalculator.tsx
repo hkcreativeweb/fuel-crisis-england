@@ -86,7 +86,7 @@ function CumulativeChart({ ice, ev }: { ice: number[]; ev: number[] }) {
         </text>
       ))}
       <path d={pathFor(ice)} fill="none" stroke="#565b66" strokeWidth="2.5" />
-      <path d={pathFor(ev)} fill="none" stroke="#d62828" strokeWidth="2.5" />
+      <path d={pathFor(ev)} fill="none" stroke="#0f7577" strokeWidth="2.5" />
     </svg>
   );
 }

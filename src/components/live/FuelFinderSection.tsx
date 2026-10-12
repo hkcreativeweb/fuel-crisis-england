@@ -60,10 +60,15 @@ export function FuelFinderSection({ compact = false, prices }: { compact?: boole
           )}
         </div>
 
-        <blockquote className="mt-6 rounded-lg border-l-4 border-petrol-500 bg-slate-50 p-5">
-          <ContentTag type="campaign-commentary" />
-          <p className="mt-2 text-xl font-extrabold leading-snug text-navy-900 sm:text-2xl">Finding cheaper fuel is useful. Making fuel affordable is the bigger challenge.</p>
-        </blockquote>
+        {compact ? null : (
+          <blockquote className="mt-6 rounded-lg border-l-4 border-petrol-400 bg-slate-50 p-5">
+            <ContentTag type="campaign-commentary" />
+            <p className="mt-2 text-xl font-extrabold leading-snug text-navy-900 sm:text-2xl">Finding cheaper fuel is useful. Making fuel affordable is the bigger challenge.</p>
+            <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
+              Price comparison is one useful part of the picture. The wider challenge needs attention to government policy, including Fuel Duty and VAT, alongside the other costs that sit behind the pump price. Our criticism is not of Google Maps or Waze; it is of treating price comparison as an adequate answer to fuel affordability.
+            </p>
+          </blockquote>
+        )}
 
         <div className="mt-6">
           <ComparisonPanels />
