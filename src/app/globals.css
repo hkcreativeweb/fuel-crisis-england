@@ -22,15 +22,14 @@
   --color-charcoal-700: #1f2937;
   --color-charcoal-600: #5a667a;
 
-  /* FCE Red scale — logo accent, key CTAs, important statistics,
-     fuel-price highlights, warning/attention elements, selected emphasis.
-     --color-petrol-500 is the exact FCE Red (#C62828). */
-  --color-petrol-600: #a02020;
-  --color-petrol-500: #c62828;
-  --color-petrol-400: #e14343;
-  --color-petrol-300: #f08585;
-  --color-petrol-100: #fbd5d5;
-  --color-petrol-50: #fdecec;
+  /* FCE Teal action scale (kept under the legacy petrol-* class names so every CTA and accent follows one palette).
+     -400 is the brand teal #159A9C; -500/-600 are darker shades so white text on buttons and teal text on white pass contrast; -300 is for text on navy. */
+  --color-petrol-600: #0b5f61;
+  --color-petrol-500: #0f7577;
+  --color-petrol-400: #159a9c;
+  --color-petrol-300: #6fcfd1;
+  --color-petrol-100: #c9ecec;
+  --color-petrol-50: #eaf7f7;
 
   /* Amber Orange — interaction/hover accent only (navbar hover, button
      hover, small highlights). Not used for permanent/active-page state. */
