@@ -34,12 +34,13 @@ function SliderRow({
       </div>
       <input
         type="range"
+        aria-label={label}
         min={min}
         max={max}
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="mt-2 h-2 w-full accent-petrol-500"
+        className="mt-2 h-8 w-full cursor-pointer accent-petrol-500"
       />
     </div>
   );

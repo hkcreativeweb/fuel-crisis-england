@@ -12,7 +12,7 @@ export function RegularServicingSection() {
         <div className="relative aspect-[4/3] overflow-hidden rounded">
           <Image src={credit.src} alt={credit.alt} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
         </div>
-        <PhotoCredit credit={credit} className="mt-3 text-charcoal-500" />
+        <PhotoCredit credit={credit} tone="light" className="mt-3" />
       </div>
 
       <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">

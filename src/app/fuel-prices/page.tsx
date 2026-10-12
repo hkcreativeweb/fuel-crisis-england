@@ -40,7 +40,11 @@ export default async function FuelPricesPage() {
           />
           <FuelPricesUpdated className="mt-4 text-slate-300" />
           <p className="mt-3 max-w-2xl text-sm text-slate-300">
-            For the price at a particular station, use Google Maps or Waze.{" "}
+            A fuel crisis is about affordability, not just supply.{" "}
+            <a href="/about#fuel-crisis" className="font-semibold text-white underline underline-offset-2">
+              What we mean by a fuel crisis
+            </a>
+            . For the price at a particular station, use Google Maps or Waze.{" "}
             <a href="/live-fuel-prices#fuel-finder" className="font-semibold text-white underline underline-offset-2">
               How fuel prices on those apps work
             </a>
@@ -69,8 +73,8 @@ export default async function FuelPricesPage() {
             </>
           ) : (
             <div className="mt-6">
-              <Alert tone="info" title="Fuel price data is currently being connected.">
-                Prices will be displayed once verified. We do not show estimated or fabricated prices.
+              <Alert tone="info" title="The latest official prices could not be loaded just now.">
+                They will appear here as soon as they can be verified. We do not show estimated or made-up prices in their place.
               </Alert>
               <div className="mt-6 grid gap-5 sm:grid-cols-2">
                 <FuelPriceCard fuel="petrol" pencePerLitre={null} />

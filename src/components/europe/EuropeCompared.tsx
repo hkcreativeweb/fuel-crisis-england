@@ -112,7 +112,7 @@ export function EuropeCompared() {
                 <div className="flex items-baseline justify-between text-sm">
                   <span className="text-charcoal-700">
                     {row.label}
-                    {!row.known ? <span className="ml-1.5 text-xs font-bold uppercase tracking-wide text-amber-600">Est.</span> : null}
+                    {!row.known ? <span className="ml-1.5 text-xs font-bold uppercase tracking-wide text-amber-700">Est.</span> : null}
                   </span>
                   <span className="font-bold tabular-nums text-navy-900">€{row.value.toFixed(3)}</span>
                 </div>

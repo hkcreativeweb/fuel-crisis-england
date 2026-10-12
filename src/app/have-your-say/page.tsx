@@ -31,7 +31,7 @@ export default function HaveYourSayPage() {
         </div>
 
         <div id="uk-petitions" className="mt-14 max-w-3xl scroll-mt-24 border-t border-slate-200 pt-10">
-          <PetitionsSection />
+          <PetitionsSection headingLevel="h2" />
         </div>
       </Container>
 

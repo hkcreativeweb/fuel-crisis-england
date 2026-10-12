@@ -133,10 +133,10 @@ export async function WhatChangedThisWeek() {
                     target="_blank"
                     rel="noopener noreferrer"
                     title={row.source.name}
-                    aria-label={"Source: " + row.source.name + " (opens in a new tab)"}
                     className="inline-block py-1.5 font-semibold text-petrol-600 underline underline-offset-2"
                   >
                     {shortSource(row.source.name)}
+                    <span className="sr-only"> (full source: {row.source.name}; opens in a new tab)</span>
                   </a>
                   <CopyFigure path="/live-fuel-prices#this-week" text={row.value + ": " + row.label + ", " + row.date + ". Source: " + row.source.name} />
                 </div>

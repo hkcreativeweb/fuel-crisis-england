@@ -95,8 +95,8 @@ export default function PrivacyPage() {
             <div>
               <h2 className="text-lg font-bold text-navy-900">Changes to this policy</h2>
               <p className="mt-2">
-                We may update this policy as the site develops, particularly once a live data source and
-                production backend are connected. The &quot;last updated&quot; date at the top of this
+                We may update this policy as the site develops, for example if we add a feature that collects
+                or stores new information. The &quot;last updated&quot; date at the top of this
                 page will always reflect the most recent change.
               </p>
             </div>

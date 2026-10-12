@@ -42,7 +42,7 @@ export function CanGovernmentFreezeDuty() {
       </div>
 
       <details className="group mt-8">
-        <summary className="cursor-pointer list-none text-sm font-semibold text-petrol-600">
+        <summary className="flex min-h-11 cursor-pointer list-none items-center text-sm font-semibold text-petrol-600">
           <span className="group-open:hidden">Who controls Fuel Duty, and how does a freeze work? →</span>
           <span className="hidden group-open:inline">Hide detail</span>
         </summary>

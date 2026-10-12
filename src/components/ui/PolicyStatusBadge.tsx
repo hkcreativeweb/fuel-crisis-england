@@ -22,11 +22,18 @@ const textClasses: Record<PolicyStatus, string> = {
   proposed: "text-amber-700",
 };
 
-export function PolicyStatusBadge({ status, className }: { status: PolicyStatus; className?: string }) {
+const textClassesDark: Record<PolicyStatus, string> = {
+  current: "text-emerald-300",
+  previous: "text-slate-300",
+  announced: "text-sky-300",
+  proposed: "text-amber-300",
+};
+
+export function PolicyStatusBadge({ status, className, tone = "light" }: { status: PolicyStatus; className?: string; tone?: "light" | "dark" }) {
   return (
     <span className={cn("inline-flex items-center gap-1.5", className)}>
       <span className={cn("h-[6px] w-[6px] rounded-full", dotClasses[status])} aria-hidden="true" />
-      <span className={cn("text-xs font-bold uppercase tracking-[0.08em]", textClasses[status])}>{labels[status]}</span>
+      <span className={cn("text-xs font-bold uppercase tracking-[0.08em]", (tone === "dark" ? textClassesDark : textClasses)[status])}>{labels[status]}</span>
     </span>
   );
 }

@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import type { DataStatus } from "@/lib/types";
 
 const labels: Record<DataStatus, string> = {
-  live: "Live",
+  live: "Updated automatically",
   historical: "Historical",
   unavailable: "Not yet available",
 };

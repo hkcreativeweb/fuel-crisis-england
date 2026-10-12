@@ -11,7 +11,7 @@ const DEFAULT_MPG = 40;
 function InfoNote({ text }: { text: string }) {
   return (
     <details className="group mt-1">
-      <summary className="inline-block cursor-pointer list-none text-xs font-semibold text-charcoal-400 underline decoration-dotted underline-offset-2 hover:text-petrol-600">
+      <summary className="inline-flex min-h-11 cursor-pointer list-none items-center text-xs font-semibold text-charcoal-400 underline decoration-dotted underline-offset-2 hover:text-petrol-600">
         Why?
       </summary>
       <p className="mt-1.5 max-w-sm text-xs leading-relaxed text-charcoal-600">{text}</p>
@@ -99,7 +99,7 @@ export function HistoricalExplorer() {
         value={index}
         onChange={(e) => setIndex(Number(e.target.value))}
         aria-label="Select year"
-        className="mt-6 h-2 w-full accent-petrol-500"
+        className="mt-6 h-8 w-full cursor-pointer accent-petrol-500"
       />
       <div className="mt-2 flex flex-wrap justify-between gap-1 text-xs font-semibold text-charcoal-600">
         {availableYears.map((y, i) => (
@@ -127,7 +127,7 @@ export function HistoricalExplorer() {
 
       {/* PAY */}
       <div className="mt-2 border-t border-slate-200 pt-1">
-        <p className="mt-4 text-xs font-bold uppercase tracking-[0.14em] text-accent-money">Pay</p>
+        <p className="mt-4 text-xs font-bold uppercase tracking-[0.14em] text-accent-money-ink">Pay</p>
         <div className="grid gap-x-6 divide-y divide-slate-100 sm:grid-cols-2 sm:divide-y-0">
           <DataCell
             label="Minimum / Living Wage"
@@ -150,7 +150,7 @@ export function HistoricalExplorer() {
 
       {/* COST OF LIVING */}
       <div className="mt-2 border-t border-slate-200 pt-1">
-        <p className="mt-4 text-xs font-bold uppercase tracking-[0.14em] text-accent-cost">Cost of living</p>
+        <p className="mt-4 text-xs font-bold uppercase tracking-[0.14em] text-accent-cost-ink">Cost of living</p>
         <div className="grid gap-x-6 divide-y divide-slate-100 sm:grid-cols-2 sm:divide-y-0">
           <DataCell label="CPI index" value={s.cpiIndex !== null ? s.cpiIndex.toFixed(1) : null} meta={s.cpiPeriod} />
           <DataCell

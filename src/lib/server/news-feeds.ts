@@ -18,15 +18,15 @@ export type FeedArticle = {
   section: NewsSection;
 };
 
-type Feed = { publisher: string; url: string; hosts: string[] };
+type Feed = { publisher: string; url: string; hosts: string[]; /** General or international feeds: keep only stories that mention the UK. */ ukOnly?: boolean };
 
 /** Free public RSS/Atom feeds. To add a publisher, add a line here. Links are only accepted from the listed hosts. */
 const FEEDS: Feed[] = [
-  { publisher: "BBC News", url: "https://feeds.bbci.co.uk/news/business/rss.xml", hosts: ["bbc.co.uk", "bbc.com"] },
-  { publisher: "The Guardian", url: "https://www.theguardian.com/uk/business/rss", hosts: ["theguardian.com"] },
-  { publisher: "The Guardian", url: "https://www.theguardian.com/money/rss", hosts: ["theguardian.com"] },
-  { publisher: "Sky News", url: "https://feeds.skynews.com/feeds/rss/business.xml", hosts: ["news.sky.com", "sky.com"] },
-  { publisher: "CNN", url: "http://rss.cnn.com/rss/money_news_economy.rss", hosts: ["cnn.com", "edition.cnn.com"] },
+  { publisher: "BBC News", url: "https://feeds.bbci.co.uk/news/business/rss.xml", hosts: ["bbc.co.uk", "bbc.com"], ukOnly: true },
+  { publisher: "The Guardian", url: "https://www.theguardian.com/uk/business/rss", hosts: ["theguardian.com"], ukOnly: true },
+  { publisher: "The Guardian", url: "https://www.theguardian.com/money/rss", hosts: ["theguardian.com"], ukOnly: true },
+  { publisher: "Sky News", url: "https://feeds.skynews.com/feeds/rss/business.xml", hosts: ["news.sky.com", "sky.com"], ukOnly: true },
+  { publisher: "CNN", url: "http://rss.cnn.com/rss/money_news_economy.rss", hosts: ["cnn.com", "edition.cnn.com"], ukOnly: true },
   { publisher: "Which?", url: "https://www.which.co.uk/news/feed", hosts: ["which.co.uk"] },
   { publisher: "GOV.UK", url: "https://www.gov.uk/search/news-and-communications.atom?keywords=food+prices", hosts: ["gov.uk"] },
   { publisher: "GOV.UK", url: "https://www.gov.uk/search/news-and-communications.atom?keywords=fuel+duty", hosts: ["gov.uk"] },
@@ -48,8 +48,14 @@ const FOOD_TOPIC =
 const COST_ANGLE =
   /\b(prices?|costs?|inflation|bills?|afford\w*|cheaper|dearer|shortages?|supply|squeeze|expensive|rise[sn]?|rising|fell|fall(?:s|ing)?|wages?|subsid\w*|tariffs?|vat)\b/i;
 const COL = /\b(cost[- ]of[- ]living|living costs?|household (?:bills?|costs?|budgets?|finances)|energy bills?|price cap|squeeze)\b/i;
-const ECON =
-  /\b(inflation|cpi|consumer prices?|wages?|pay rises?|interest rates?|bank of england|economy|economic|gdp|tax(?:es|ation)?|budget|chancellor|business costs?|unemployment)\b/i;
+const ECON = /\b(inflation|cpi|consumer prices?|interest rates?|bank of england|wages?|pay rises?)\b/i;
+
+/** Stories must be about the UK (for general or international feeds), and not opinion, letters, cartoons or party politics. */
+const UK_TERMS = /\b(uk|u\.k\.|britain|british|england|scotland|wales|london|sterling|bank of england|motorists?|ofgem|rac|cma|desnz|hmrc|pump prices?)\b/i;
+const NOT_NEWS = /(\bcartoon\b|\bbrief letters\b|\bletters?\b\s*\||\s\|\s|\bopinion\b)/i;
+const PARTY_POLITICS = /\b(labour|conservatives?|tories|tory|reform uk|lib dems?|liberal democrats?|green party|snp|plaid cymru|starmer|badenoch|farage|reeves|trump|putin)\b/i;
+/** Party names anywhere in the headline or summary keep a story out of the hub: it should not read as party-political coverage. */
+const PARTY_NAMES = /\b(labour|conservatives?|tories|tory|reform uk|lib dems?|liberal democrats?|green party|snp|plaid cymru)\b/i;
 const TRANSPORT = /\b(transport|motorists?|drivers?|haulage|freight|rail fares?|bus fares?|roads?|vehicles?|electric cars?)\b/i;
 
 /** Decides whether an article is relevant and which topics it belongs to; null means "not relevant". */
@@ -131,6 +137,8 @@ function parseFeed(xml: string, feed: Feed): FeedArticle[] {
     const haystack = `${title} ${description} ${feedCategories}`;
     const result = classify(haystack);
     if (!result) continue;
+    if (NOT_NEWS.test(title) || PARTY_POLITICS.test(title) || PARTY_NAMES.test(`${title} ${description}`)) continue;
+    if (feed.ukOnly && !UK_TERMS.test(haystack)) continue;
 
     out.push({ publisher: feed.publisher, title, date: new Date(published).toISOString(), summary: snippet(description), url, topics: result.topics, section: result.section });
   }

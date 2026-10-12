@@ -13,7 +13,7 @@ export function DataSourcePanel() {
               href={entry.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group mt-1 inline-flex items-center gap-1 text-xs font-semibold text-petrol-600 hover:text-petrol-700"
+              className="group inline-flex min-h-11 items-center gap-1 text-xs font-semibold text-petrol-600 hover:text-petrol-700"
             >
               View original source
               <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">

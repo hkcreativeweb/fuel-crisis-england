@@ -31,7 +31,7 @@ export default async function ResourcesPage() {
       <section className="bg-white py-14 sm:py-16">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <FAQAccordion items={faqs} />
+            <FAQAccordion items={faqs} headingLevel="h2" />
           </div>
         </Container>
       </section>

@@ -4,6 +4,7 @@ import { fuelDutyPenceOn } from "@/lib/data/pump-price-breakdown";
 import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { PumpPriceFactors } from "@/components/ui/PumpPriceFactors";
 import { BudgetNote } from "@/components/ui/BudgetNote";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Alert } from "@/components/ui/Alert";
@@ -143,6 +144,15 @@ export default async function FuelDutyAndTaxPage() {
               for the complete picture, including wholesale cost and retailer margin.
             </p>
           </div>
+        </Container>
+      </section>
+
+      <section className="bg-white py-12 sm:py-14">
+        <Container>
+          <PumpPriceFactors />
+          <p className="mt-4 text-sm text-charcoal-700">
+            Why does this matter? <a href="/about#fuel-crisis" className="font-semibold text-petrol-600 underline underline-offset-2">What we mean by a fuel crisis</a>: affordability, not just supply.
+          </p>
         </Container>
       </section>
 

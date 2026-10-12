@@ -455,7 +455,7 @@ export function FuelPolicySimulator({ pump }: { pump: PumpBaseline }) {
         </div>
 
         <details className="group mt-4">
-          <summary className="cursor-pointer list-none text-sm font-semibold text-petrol-600">
+          <summary className="flex min-h-11 cursor-pointer list-none items-center text-sm font-semibold text-petrol-600">
             <span className="group-open:hidden">How is this calculated? →</span>
             <span className="hidden group-open:inline">Hide calculation detail</span>
           </summary>

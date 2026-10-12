@@ -4,7 +4,7 @@ import { useId, useState } from "react";
 import type { Faq } from "@/lib/data/faqs";
 import { cn } from "@/lib/utils";
 
-export function FAQAccordion({ items }: { items: Faq[] }) {
+export function FAQAccordion({ items, headingLevel: Heading = "h3" }: { items: Faq[]; headingLevel?: "h2" | "h3" }) {
   const idPrefix = useId();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -17,7 +17,7 @@ export function FAQAccordion({ items }: { items: Faq[] }) {
 
         return (
           <div key={item.question}>
-            <h3>
+            <Heading>
               <button
                 type="button"
                 id={buttonId}
@@ -38,7 +38,7 @@ export function FAQAccordion({ items }: { items: Faq[] }) {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 7.5l5 5 5-5" />
                 </svg>
               </button>
-            </h3>
+            </Heading>
             {isOpen ? (
               <div id={panelId} role="region" aria-labelledby={buttonId} className="px-5 pb-5">
                 <p className="text-sm leading-relaxed text-charcoal-700">{item.answer}</p>

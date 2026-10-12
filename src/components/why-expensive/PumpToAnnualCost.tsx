@@ -36,7 +36,7 @@ export function PumpToAnnualCost({ pencePerLitre, dataPeriod }: { pencePerLitre:
 
   return (
     <div className="rounded border border-slate-200 bg-white p-6 sm:p-8">
-      <p className="inline-flex items-center rounded-full bg-accent-why/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-accent-why">
+      <p className="inline-flex items-center rounded-full bg-accent-why/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-accent-why-ink">
         Illustrative example — not a national average
       </p>
       <p className="mt-3 text-sm leading-relaxed text-charcoal-700">
@@ -115,7 +115,7 @@ export function PumpToAnnualCost({ pencePerLitre, dataPeriod }: { pencePerLitre:
           <p className="mt-1 text-xl font-extrabold tabular-nums text-navy-900">{formatGBP(figures.monthlyCost)}</p>
         </div>
         <div className="rounded-md bg-accent-why/10 p-4 text-center ring-1 ring-accent-why/30">
-          <p className="text-xs font-bold uppercase tracking-wide text-accent-why">Per year</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-accent-why-ink">Per year</p>
           <p className="mt-1 text-xl font-extrabold tabular-nums text-navy-900">{formatGBP(figures.annualCost)}</p>
         </div>
       </div>

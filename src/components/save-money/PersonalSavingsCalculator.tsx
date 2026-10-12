@@ -104,7 +104,7 @@ export function PersonalSavingsCalculator() {
             step={1}
             value={reductionPercent}
             onChange={(e) => setReductionPercent(Number(e.target.value))}
-            className="h-2 w-full accent-petrol-500"
+            className="h-8 w-full cursor-pointer accent-petrol-500"
           />
           <span className="w-14 shrink-0 text-lg font-extrabold tabular-nums text-navy-900">{reductionPercent}%</span>
         </div>

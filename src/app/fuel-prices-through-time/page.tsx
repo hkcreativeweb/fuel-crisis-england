@@ -29,8 +29,8 @@ export default async function FuelPricesThroughTimePage() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
             <div>
-              <p className="mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-accent-then">
-                <span className="h-[6px] w-[6px] rounded-full bg-accent-then" aria-hidden="true" /> Then
+              <p className="mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-accent-then-soft">
+                <span className="h-[6px] w-[6px] rounded-full bg-accent-then-soft" aria-hidden="true" /> Then
               </p>
               <div className="mb-5 h-px w-12 bg-white/20" aria-hidden="true" />
               <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Fuel Prices Through Time</h1>

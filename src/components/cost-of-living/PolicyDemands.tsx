@@ -37,7 +37,7 @@ export function PolicyDemands() {
               </div>
             ) : null}
             <div className="flex items-start gap-4">
-              <span className="text-3xl font-extrabold text-slate-200" aria-hidden="true">
+              <span className="text-3xl font-extrabold text-slate-500" aria-hidden="true">
                 {String(demand.number).padStart(2, "0")}
               </span>
               <div>
@@ -67,6 +67,13 @@ export function PolicyDemands() {
             ) : null}
           </div>
         ))}
+      </div>
+
+      <div className="mt-8 flex flex-col gap-3 rounded-lg bg-navy-950 p-5 text-white sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-base font-bold">If you agree these are worth discussing, add your voice.</p>
+        <LinkButton href="/petition#sign-petition" size="lg" className="min-h-12">
+          Sign the petition
+        </LinkButton>
       </div>
 
       <details className="mt-6 text-xs text-charcoal-600">

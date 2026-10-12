@@ -4,6 +4,7 @@ import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { PumpPriceFactors } from "@/components/ui/PumpPriceFactors";
 import { PhotoBand } from "@/components/ui/PhotoBand";
 import { PhotoFigure } from "@/components/ui/PhotoFigure";
 import { LinkButton } from "@/components/ui/Button";
@@ -103,6 +104,58 @@ export default function AboutPage() {
               </div>
             ))}
           </dl>
+        </Container>
+      </section>
+
+      {/* What do we mean by a fuel crisis? */}
+      <section id="fuel-crisis" className="scroll-mt-24 bg-white py-16 sm:py-20">
+        <Container>
+          <SectionHeading eyebrow="Our campaign" title="What do we mean by a fuel crisis?" rule />
+          <div className="mt-6 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+            <div className="space-y-4 text-sm leading-relaxed text-charcoal-700 sm:text-base">
+              <p>A fuel crisis is not just about running out of petrol or diesel. It is also about what happens when fuel becomes too expensive for ordinary people to afford.</p>
+              <p>
+                For commuters, families, delivery drivers, tradespeople and small businesses, fuel can be an essential expense rather than an optional purchase. Even when fuel is available, rising prices can put pressure on household budgets, work and everyday life.
+              </p>
+              <p>
+                The price at the pump reflects several factors, including international oil prices, refining and distribution costs, retailer margins and government taxation. Fuel Duty and VAT are important parts of the tax picture, and government decisions can influence what motorists pay.
+              </p>
+              <p>Fuel Crisis England campaigns for practical action on fuel affordability, fairer outcomes for motorists and greater transparency about fuel prices and taxation.</p>
+              <p className="border-l-4 border-petrol-500 pl-4 font-bold text-navy-900">Finding a cheaper petrol station helps, but it does not solve the wider affordability problem.</p>
+            </div>
+            <div className="rounded-lg border border-slate-200 bg-slate-50 p-5">
+              <h3 className="text-base font-bold text-navy-900">The issues are connected</h3>
+              <ul className="mt-3 space-y-2 text-sm leading-snug text-charcoal-700">
+                {[
+                  "High petrol and diesel prices at the pump.",
+                  "Fuel Duty: a tax charged per litre, set by government.",
+                  "VAT on fuel purchases.",
+                  "International oil prices, refining and distribution costs, and retailer margins.",
+                  "The effect of expensive fuel on commuters, families, delivery drivers, tradespeople, carers and small businesses.",
+                  "The wider cost of living, and the difficulty of travelling when driving is essential.",
+                ].map((item) => (
+                  <li key={item} className="flex gap-3">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-petrol-500" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-xs leading-relaxed text-charcoal-600">
+                We do not claim that all price rises come from taxation, or that the government sets every pump price. Taxes are one part of a price shaped by global markets and by retailers too.
+              </p>
+            </div>
+          </div>
+          <div className="mt-8">
+            <PumpPriceFactors />
+          </div>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <LinkButton href="/our-demands" className="min-h-12">
+              Our policy demands <span aria-hidden="true">→</span>
+            </LinkButton>
+            <LinkButton href="/fuel-duty-and-tax" variant="secondary" className="min-h-12">
+              Fuel Duty and tax in detail
+            </LinkButton>
+          </div>
         </Container>
       </section>
 

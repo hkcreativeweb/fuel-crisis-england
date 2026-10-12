@@ -42,16 +42,22 @@ export function CanGovernmentCapProfits() {
             <dt className="font-semibold text-charcoal-600">Legal process</dt>
             <dd className="mt-0.5 text-charcoal-700">{option.legalProcess}</dd>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-md bg-emerald-50 p-4">
+        </dl>
+        <div className="mt-3 grid gap-4 sm:grid-cols-2">
+          <dl className="rounded-md bg-emerald-50 p-4 text-sm">
+            <div>
               <dt className="font-semibold text-emerald-800">Possible benefits</dt>
               <dd className="mt-0.5 text-emerald-900">{option.possibleBenefits}</dd>
             </div>
-            <div className="rounded-md bg-amber-50 p-4">
+          </dl>
+          <dl className="rounded-md bg-amber-50 p-4 text-sm">
+            <div>
               <dt className="font-semibold text-amber-900">Possible risks</dt>
               <dd className="mt-0.5 text-amber-900">{option.possibleRisks}</dd>
             </div>
-          </div>
+          </dl>
+        </div>
+        <dl className="mt-3 text-sm">
           <div>
             <dt className="font-semibold text-charcoal-600">What evidence would be needed</dt>
             <dd className="mt-0.5 text-charcoal-700">{option.evidenceNeeded}</dd>

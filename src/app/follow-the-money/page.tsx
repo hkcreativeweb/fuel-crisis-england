@@ -68,7 +68,7 @@ export default async function FollowTheMoneyPage() {
           <div className="mt-8 rounded border border-white/10 bg-white/5 p-5">
             <p className="text-xs font-bold uppercase tracking-wide text-slate-400">How to read this page</p>
             <div className="mt-3">
-              <ContentTagLegend />
+              <ContentTagLegend tone="dark" />
             </div>
             <p className="mt-3 text-xs leading-relaxed text-slate-400">
               Every claim below is labelled as one of these. We do not present campaign commentary or
@@ -248,10 +248,10 @@ export default async function FollowTheMoneyPage() {
         <Container className="text-center">
           <p className="text-2xl font-extrabold text-white sm:text-3xl">
             Ask questions. Follow the money. Check the evidence.{" "}
-            <span className="text-petrol-400">Make your voice heard.</span>
+            <span className="text-petrol-300">Make your voice heard.</span>
           </p>
           <div className="mt-8">
-            <Alert tone="info" className="mx-auto max-w-2xl text-left">
+            <Alert tone="info" className="mx-auto max-w-2xl text-left !text-slate-200">
               This page gives you the data, sources, and explanations to understand the situation yourself.
               It does not tell you what conclusion to reach.
             </Alert>

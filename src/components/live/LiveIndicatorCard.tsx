@@ -42,10 +42,10 @@ export function LiveIndicatorCard({ indicator }: { indicator: LiveIndicator }) {
               target="_blank"
               rel="noopener noreferrer"
               title={indicator.source}
-              aria-label={`Source: ${indicator.source} (opens in a new tab)`}
               className="inline-block py-1 text-petrol-600 underline underline-offset-2"
             >
               {shortSource(indicator.source)}
+              <span className="sr-only"> (full source: {indicator.source}; opens in a new tab)</span>
             </a>
           ) : (
             <span className="text-charcoal-700" title={indicator.source}>

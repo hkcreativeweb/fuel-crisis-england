@@ -19,7 +19,7 @@ export function FCEClosingMessage() {
           </li>
         ))}
       </ul>
-      <p className="mt-6 text-lg font-bold text-petrol-400">Follow the money. Check the evidence. Ask the questions.</p>
+      <p className="mt-6 text-lg font-bold text-petrol-300">Follow the money. Check the evidence. Ask the questions.</p>
     </div>
   );
 }

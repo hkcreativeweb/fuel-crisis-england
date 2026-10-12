@@ -15,7 +15,7 @@ export function PolicyTimeline() {
             />
             <div className="flex flex-wrap items-center gap-2.5">
               <span className="text-sm font-bold text-white">{formatDate(event.date)}</span>
-              <PolicyStatusBadge status={event.status} />
+              <PolicyStatusBadge status={event.status} tone="dark" />
               {event.ratePencePerLitre !== null ? (
                 <span className="text-sm font-extrabold tabular-nums text-petrol-300">{event.ratePencePerLitre.toFixed(2)}p/litre</span>
               ) : null}
@@ -26,7 +26,7 @@ export function PolicyTimeline() {
               href={event.sourceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 inline-block text-xs font-semibold text-petrol-400 underline underline-offset-2 hover:text-petrol-300"
+              className="mt-2 inline-block text-xs font-semibold text-petrol-300 underline underline-offset-2 hover:text-white"
             >
               Source: {event.source}
             </a>

@@ -216,7 +216,7 @@ export function EVComparisonCalculator({ petrolPence, petrolUpdated }: { petrolP
             step={5}
             value={homeChargingPercent}
             onChange={(e) => setHomeChargingPercent(Number(e.target.value))}
-            className="h-2 w-full accent-petrol-500"
+            className="h-8 w-full cursor-pointer accent-petrol-500"
           />
           <span className="w-32 shrink-0 text-right text-sm font-bold tabular-nums text-navy-900">
             {homeChargingPercent}% home / {100 - homeChargingPercent}% public

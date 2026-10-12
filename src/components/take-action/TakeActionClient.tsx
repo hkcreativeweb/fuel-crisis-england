@@ -26,21 +26,23 @@ export function CopyTextButton({ text, label }: { text: string; label: string })
 }
 
 export function ShareButtons() {
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<"idle" | "copied" | "failed">("idle");
   const pageUrl = () => `${window.location.origin}/take-action`;
   const open = (href: string) => window.open(href, "_blank", "noopener,noreferrer");
 
   async function copyLink() {
     try {
       await navigator.clipboard.writeText(pageUrl());
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1800);
+      setCopied("copied");
+      setTimeout(() => setCopied("idle"), 1800);
     } catch {
-      // Clipboard unavailable.
+      // Clipboard blocked or unavailable: show the link so it can be copied by hand.
+      setCopied("failed");
     }
   }
 
   return (
+    <div>
     <div className="flex flex-wrap gap-3">
       <Button type="button" variant="secondary" className="min-h-11" onClick={() => open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl())}`)}>
         Facebook
@@ -52,8 +54,12 @@ export function ShareButtons() {
         WhatsApp
       </Button>
       <Button type="button" variant="secondary" className="min-h-11" onClick={copyLink}>
-        {copied ? "Link copied" : "Copy Link"}
+        {copied === "copied" ? "Link copied" : "Copy Link"}
       </Button>
+    </div>
+    <p role="status" aria-live="polite" className="mt-2 text-xs">
+      {copied === "failed" ? `Couldn't copy automatically. The link is ${typeof window !== "undefined" ? pageUrl() : ""}` : ""}
+    </p>
     </div>
   );
 }

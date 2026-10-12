@@ -53,7 +53,7 @@ export function FollowTheMoneyTimeline() {
         value={index}
         onChange={(e) => setIndex(Number(e.target.value))}
         aria-label="Select year"
-        className="mt-6 h-2 w-full accent-petrol-500"
+        className="mt-6 h-8 w-full cursor-pointer accent-petrol-500"
       />
       <div className="mt-2 flex justify-between text-xs font-semibold text-charcoal-600">
         {availableYears.map((y, i) => (

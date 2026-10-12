@@ -75,7 +75,7 @@ export default async function LiveFuelPricesPage() {
     <>
       <section className="bg-navy-950 py-14 sm:py-16">
         <Container>
-          <p className="mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-accent-live">
+          <p className="mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-accent-live-soft">
             <span className="h-[6px] w-[6px] rounded-full bg-accent-live" aria-hidden="true" /> Now
           </p>
           <h1 className="max-w-2xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Live Fuel Prices</h1>

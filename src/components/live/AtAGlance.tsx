@@ -13,8 +13,9 @@ function formatDateTime(iso: string): string {
 
 function Source({ name, url }: { name: string; url: string }) {
   return (
-    <a href={url} target="_blank" rel="noopener noreferrer" title={name} aria-label={`Source: ${name} (opens in a new tab)`} className="inline-block py-1 font-semibold text-petrol-600 underline underline-offset-2">
+    <a href={url} target="_blank" rel="noopener noreferrer" title={name} className="inline-block py-1 font-semibold text-petrol-600 underline underline-offset-2">
       {shortSource(name)}
+      <span className="sr-only"> (full source: {name}; opens in a new tab)</span>
     </a>
   );
 }

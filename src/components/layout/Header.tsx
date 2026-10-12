@@ -75,6 +75,7 @@ function DesktopDropdown({
   const panelId = useId();
   const active = isCategoryActive(category, pathname);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pointerType = useRef<string>("mouse");
 
   function hoverOpen() {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -85,11 +86,26 @@ function DesktopDropdown({
   }
 
   return (
-    <div className="relative" onMouseEnter={hoverOpen} onMouseLeave={hoverClose}>
+    <div
+      className="relative"
+      // Hover only applies to a real mouse. Touch screens fire a fake mouseenter just before the tap, which used to open the menu and then close it again.
+      onPointerEnter={(e) => e.pointerType === "mouse" && hoverOpen()}
+      onPointerLeave={(e) => e.pointerType === "mouse" && hoverClose()}
+    >
       <button
         ref={triggerRef}
         type="button"
-        onClick={onToggle}
+        onPointerDown={(e) => {
+          pointerType.current = e.pointerType;
+        }}
+        onClick={(e) => {
+          // A mouse click always opens (hovering has usually opened it already); touch and keyboard toggle.
+          if (e.detail > 0 && pointerType.current === "mouse") {
+            onOpen();
+            return;
+          }
+          onToggle();
+        }}
         aria-expanded={open}
         aria-controls={panelId}
         aria-current={active ? "true" : undefined}

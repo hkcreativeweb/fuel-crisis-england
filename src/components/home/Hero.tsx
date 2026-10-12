@@ -31,8 +31,8 @@ export async function Hero() {
 
   return (
     <section className="relative isolate overflow-hidden bg-navy-950 text-white">
-      <SafeImage src={photo.src} alt="" fill priority sizes="100vw" className="-z-10 object-cover object-[70%_60%] opacity-45" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-950/45" aria-hidden="true" />
+      <SafeImage src={photo.src} alt="" fill priority sizes="100vw" className="-z-10 object-cover object-[70%_60%] opacity-80" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-950/80 to-navy-950/20" aria-hidden="true" />
 
       <Container className="grid gap-8 py-10 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-14">
         <div>
@@ -45,20 +45,23 @@ export async function Hero() {
           <p className="mt-5 max-w-md text-lg leading-relaxed text-slate-200">
             Fuel Crisis England brings together fuel prices, taxes, costs, history and public information in one place.
           </p>
-          <p className="mt-3 text-xs font-bold uppercase tracking-[0.12em] text-slate-100">Explore the data. Check the sources. Make up your own mind.</p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <LinkButton href="/live-fuel-prices" size="lg" className="min-h-12">
-              Explore the data
+          <p className="mt-4 max-w-md border-l-2 border-petrol-300 pl-4 text-base font-semibold leading-snug text-white">
+            A fuel crisis is also about affordability, taxation and the cost of living, not only about whether fuel is on the shelf.
+          </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <LinkButton href="/petition#sign-petition" size="lg" className="min-h-12">
+              Sign the petition
             </LinkButton>
-            <LinkButton href="/sources" variant="outline-light" size="lg" className="min-h-12">
-              Check the sources
+            <LinkButton href="/live-fuel-prices" variant="outline-light" size="lg" className="min-h-12">
+              Explore fuel prices
+            </LinkButton>
+            <LinkButton href="/about#fuel-crisis" variant="outline-light" size="lg" className="min-h-12">
+              Why this matters
             </LinkButton>
           </div>
           <div className="mt-5 max-w-sm border-t border-white/15 pt-4">
             <PetitionCountLine tone="dark" />
-            <Link href="/petition#sign-petition" className="mt-1 inline-flex min-h-11 items-center text-sm font-bold text-white underline underline-offset-4 hover:text-petrol-300">
-              Sign the petition <span aria-hidden="true" className="ml-1">→</span>
-            </Link>
+            <p className="mt-1 text-xs text-slate-300">Real signatures on our own campaign petition. <Link href="/sources" className="font-semibold text-white underline underline-offset-2">Check the sources</Link></p>
           </div>
           <LastUpdatedLine tone="dark" className="mt-2" />
         </div>

@@ -79,7 +79,7 @@ export default async function OurDemandsPage() {
           <SectionHeading eyebrow="Our seven public policy demands" title="What We're Calling For" />
           <ContentTag type="campaign-proposal" className="mt-4" />
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-charcoal-700">
-            Price comparison on Google Maps and Waze helps drivers find a cheaper pump, but it does not change what fuel costs. Our demands are about the underlying cost. Read{" "}
+            Our demands start from one idea: <a href="/about#fuel-crisis" className="font-semibold text-petrol-600 underline underline-offset-2">a fuel crisis is about affordability, not just supply</a>. Price comparison on Google Maps and Waze helps drivers find a cheaper pump, but it does not change what fuel costs. Our demands are about the underlying cost. Read{" "}
             <a href="/live-fuel-prices#fuel-finder" className="font-semibold text-petrol-600 underline underline-offset-2">what the new fuel-price tools do and don&apos;t change</a>.
           </p>
           <div className="mt-6">

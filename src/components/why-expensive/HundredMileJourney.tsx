@@ -95,7 +95,7 @@ export function HundredMileJourney() {
       </p>
 
       <details className="group mt-3">
-        <summary className="cursor-pointer list-none text-xs font-semibold text-petrol-600">
+        <summary className="flex min-h-11 cursor-pointer list-none items-center text-xs font-semibold text-petrol-600">
           <span className="group-open:hidden">How is this calculated? ▾</span>
           <span className="hidden group-open:inline">Hide calculation</span>
         </summary>

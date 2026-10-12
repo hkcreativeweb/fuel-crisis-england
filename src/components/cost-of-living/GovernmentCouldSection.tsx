@@ -8,7 +8,7 @@ export function GovernmentCouldSection() {
           <h3 className="text-lg font-bold text-navy-900">{area.title}</h3>
           <p className="mt-3 text-sm text-charcoal-700">{area.whatItIs}</p>
           <details className="group mt-4">
-            <summary className="cursor-pointer list-none text-sm font-semibold text-petrol-600">
+            <summary className="flex min-h-11 cursor-pointer list-none items-center text-sm font-semibold text-petrol-600">
               <span className="group-open:hidden">Who controls it, history &amp; current policy →</span>
               <span className="hidden group-open:inline">Hide detail</span>
             </summary>
@@ -32,7 +32,7 @@ export function GovernmentCouldSection() {
               href={area.sourceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block text-xs font-semibold text-petrol-600 underline underline-offset-2"
+              className="mt-2 inline-flex min-h-11 items-center text-xs font-semibold text-petrol-600 underline underline-offset-2"
             >
               Source: {area.source}
             </a>

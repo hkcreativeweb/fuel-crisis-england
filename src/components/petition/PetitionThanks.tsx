@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Alert } from "@/components/ui/Alert";
+import { markPetitionSigned } from "@/lib/petition-prompt";
 import { siteConfig } from "@/lib/site-config";
 import { petitionPath } from "@/lib/data/take-action-config";
 import { cn } from "@/lib/utils";
@@ -27,6 +28,7 @@ export function PetitionThanks({ signatureCount }: { signatureCount: number | nu
   const [copied, setCopied] = useState<"idle" | "copied" | "failed">("idle");
 
   useEffect(() => {
+    markPetitionSigned(); // so the 60-second invitation stops appearing on this browser
     headingRef.current?.focus();
     headingRef.current?.scrollIntoView({ block: "start", behavior: "smooth" });
   }, []);

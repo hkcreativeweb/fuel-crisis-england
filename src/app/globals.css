@@ -54,6 +54,12 @@
      identity. Used for eyebrow badges, icons and section-level CTAs,
      never for the global navbar/footer chrome. */
   --color-accent-live: #2563eb; /* LIVE / NOW */
+  --color-accent-live-soft: #7fb0f7; /* same, for text on navy */
+  --color-accent-then-soft: #b69cf8; /* HISTORICAL, for text on navy */
+  --color-accent-cost-soft: #fb923c; /* COST OF LIVING, for text on navy */
+  --color-accent-money-ink: #15803d; /* FOLLOW THE MONEY, for text on white */
+  --color-accent-cost-ink: #c2410c; /* COST OF LIVING, for text on white */
+  --color-accent-why-ink: #92400e; /* WHY, for text on white */
   --color-accent-then: #7c3aed; /* HISTORICAL / THEN */
   --color-accent-why: #f59e0b; /* WHY IS FUEL SO EXPENSIVE? */
   --color-accent-money: #16a34a; /* FOLLOW THE MONEY */
@@ -96,6 +102,12 @@
   --color-slate-200: var(--color-slate-200);
 
   --color-accent-live: var(--color-accent-live);
+  --color-accent-live-soft: var(--color-accent-live-soft);
+  --color-accent-then-soft: var(--color-accent-then-soft);
+  --color-accent-cost-soft: var(--color-accent-cost-soft);
+  --color-accent-money-ink: var(--color-accent-money-ink);
+  --color-accent-cost-ink: var(--color-accent-cost-ink);
+  --color-accent-why-ink: var(--color-accent-why-ink);
   --color-accent-then: var(--color-accent-then);
   --color-accent-why: var(--color-accent-why);
   --color-accent-money: var(--color-accent-money);
@@ -184,5 +196,16 @@ html {
         transform: none;
       }
     }
+  }
+}
+
+@keyframes prompt-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }

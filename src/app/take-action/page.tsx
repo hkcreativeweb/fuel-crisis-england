@@ -17,14 +17,14 @@ import { ContactDetails } from "@/components/ui/ContactDetails";
 import { siteConfig } from "@/lib/site-config";
 import { PetitionCounter } from "@/components/petition/PetitionCounter";
 import { LatestNewsPreview } from "@/components/news/LatestNewsPreview";
+import { pageMetadata } from "@/lib/metadata";
 import { FuelPricesUpdated } from "@/components/ui/FuelPricesUpdated";
 import { PetitionBanner } from "@/components/petition/PetitionBanner";
 
-export const metadata: Metadata = {
-  title: "Take Action | Fuel Crisis England",
-  description:
-    "Learn about the UK fuel-price situation, follow fuel news, contact your MP and register your interest in peaceful civic action.",
-};
+export const metadata: Metadata = pageMetadata("/take-action", {
+  title: "Take Action",
+  description: "Learn about the UK fuel-price situation, follow fuel news, contact your MP and register your interest in peaceful civic action.",
+});
 
 // Re-check the official weekly figures regularly so the page never sticks on an old week.
 export const revalidate = 10800;

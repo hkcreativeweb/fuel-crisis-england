@@ -36,16 +36,16 @@ const dotClasses: Record<ContentTagType, string> = {
 };
 
 /** A typographic content-type label — dot + small caps text, not a filled pill. */
-export function ContentTag({ type, className }: { type: ContentTagType; className?: string }) {
+export function ContentTag({ type, className, tone = "light" }: { type: ContentTagType; className?: string; tone?: "light" | "dark" }) {
   return (
     <span className={cn("inline-flex items-center gap-1.5", className)}>
       <span className={cn("h-[6px] w-[6px] rounded-full", dotClasses[type])} aria-hidden="true" />
-      <span className="text-xs font-bold uppercase tracking-[0.08em] text-charcoal-600">{labels[type]}</span>
+      <span className={cn("text-xs font-bold uppercase tracking-[0.08em]", tone === "dark" ? "text-slate-300" : "text-charcoal-600")}>{labels[type]}</span>
     </span>
   );
 }
 
-export function ContentTagLegend() {
+export function ContentTagLegend({ tone = "light" }: { tone?: "light" | "dark" }) {
   const types: ContentTagType[] = [
     "verified-figure",
     "government-statistic",
@@ -58,7 +58,7 @@ export function ContentTagLegend() {
   return (
     <div className="flex flex-wrap gap-x-5 gap-y-2">
       {types.map((t) => (
-        <ContentTag key={t} type={t} />
+        <ContentTag key={t} type={t} tone={tone} />
       ))}
     </div>
   );

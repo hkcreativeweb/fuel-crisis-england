@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import type { DataStatusLabel } from "@/lib/types";
 
 const labels: Record<DataStatusLabel, string> = {
-  live: "Live",
+  live: "Updated automatically",
   current: "Current rate",
   "latest-available": "Latest available",
   ytd: "YTD",
