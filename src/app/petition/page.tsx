@@ -54,6 +54,16 @@ export default function PetitionPage() {
           <div className="mx-auto max-w-2xl">
             <p className="text-xs font-bold uppercase tracking-[0.08em] text-petrol-600">FCE petition</p>
             <p className="mt-1 mb-6 text-sm text-charcoal-700">This is the petition hosted by Fuel Crisis England.</p>
+            <aside aria-labelledby="what-happens-next" className="mb-6 rounded-lg border border-petrol-100 border-l-4 border-l-petrol-400 bg-petrol-50 p-4 sm:p-5">
+              <h2 id="what-happens-next" className="text-base font-extrabold text-navy-900 sm:text-lg">What happens next?</h2>
+              <div className="mt-2 space-y-2 text-sm leading-relaxed text-charcoal-700">
+                <p>Your signature helps demonstrate public concern about the cost of fuel in England.</p>
+                <p>
+                  Fuel Crisis England is an independent, community-led campaign. We have not yet finalised the arrangements for submitting the petition to the relevant decision-makers. We will communicate any confirmed next steps transparently rather than make promises we cannot yet guarantee.
+                </p>
+                <p>Our aim is to encourage meaningful action on fuel affordability and keep the concerns of motorists, families, workers and small businesses visible.</p>
+              </div>
+            </aside>
             <PetitionForm />
           </div>
         </Container>
