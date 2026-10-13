@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { EnlargeableImage } from "@/components/ui/EnlargeableImage";
 import { Container } from "@/components/ui/Container";
 
 const panels = {
@@ -19,13 +19,14 @@ export function CartoonPanel({ n, tone = "white" }: { n: PanelId; tone?: "white"
     <section aria-label="Cartoon" className={`border-b border-slate-200 py-8 sm:py-12 ${tone === "slate" ? "bg-slate-50" : "bg-white"}`}>
       <Container>
         <figure className={`mx-auto ${tall ? "max-w-xs" : "max-w-md"}`}>
-          <Image
+          <EnlargeableImage
             src={`/images/cartoon-panel-${n}.webp`}
             alt={p.alt}
             width={p.w}
             height={p.h}
             sizes={tall ? "(min-width: 640px) 320px, 100vw" : "(min-width: 640px) 448px, 100vw"}
             className="h-auto w-full rounded-lg border border-slate-200 shadow-md"
+            buttonClassName="w-full"
           />
           <figcaption className="mt-2 text-xs text-charcoal-600">Editorial cartoon: satire, not a statement of fact. Scenes and prices are illustrative. Fuel Crisis England is independent and not affiliated with any political party.</figcaption>
         </figure>

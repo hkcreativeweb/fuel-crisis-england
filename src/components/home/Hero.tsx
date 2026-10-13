@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { EnlargeableImage } from "@/components/ui/EnlargeableImage";
 import Link from "next/link";
 import { PetitionCountLine } from "@/components/petition/PetitionCountLine";
 import { Container } from "@/components/ui/Container";
@@ -91,13 +91,14 @@ export async function Hero() {
           </div>
 
           <figure className="flex items-center gap-4 rounded-lg border border-white/15 bg-white p-3 text-navy-900">
-            <Image
+            <EnlargeableImage
               src="/images/bus-fare-cartoon.webp"
               alt="A cartoon character beside a petrol station price board showing £2.09 unleaded and £2.19 diesel, pointing at a bus and saying: Don't worry about petrol prices, it's now £2 to catch the bus."
               width={1024}
               height={940}
               sizes="(min-width: 640px) 128px, 96px"
-              className="h-auto w-24 shrink-0 rounded sm:w-32"
+              className="h-auto w-full rounded"
+              buttonClassName="w-24 shrink-0 sm:w-32"
             />
             <figcaption className="text-xs leading-snug text-charcoal-700">
               <span className="font-bold text-navy-900">Editorial cartoon.</span> Satire, not a statement of fact; the prices in it are illustrative. Fuel Crisis England is independent and not affiliated with any political party.
