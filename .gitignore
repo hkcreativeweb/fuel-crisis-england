@@ -42,3 +42,8 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# AI tooling (local only)
+.agents/
+.claude/skills/
+skills-lock.json
